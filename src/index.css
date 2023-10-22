@@ -1,13 +1,95 @@
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  font-size: 100%;
+}
+
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+h3 {
+  margin: 0;
 }
+
+a {
+  text-decoration: none;
+}
+
+img.small {
+  width: 100%;
+  max-height: 8rem;
+}
+
+.card {
+  padding: 1rem;
+  background-color: #fff;
+}
+.card div button {
+  margin-top: 20px;
+  width: 100%;
+  padding: 0.3rem;
+  border: 0.1rem #404040 solid;
+  background-color: #f0c040;
+  cursor: pointer;
+}
+.card div button.add, .card div button.remove {
+  width: 1.5rem;
+}
+.card div button.add {
+  background-color: #40c0f0;
+}
+.card div button.remove {
+  background-color: #f04040;
+}
+
+.badge {
+  width: 1.5rem;
+  margin-left: 5px;
+  color: #fff;
+  background-color: #f04040;
+  border: none;
+}
+
+.padding-one {
+  padding: 1rem;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.row.center {
+  align-items: center;
+}
+.row.center div a + a {
+  margin-left: 30px;
+}
+
+.col-1, .col-2 {
+  flex-basis: 100%;
+}
+
+@media screen and (min-width: 800px) {
+  .col-1 {
+    flex: 1;
+  }
+  .col-2 {
+    flex: 2;
+  }
+}
+.block {
+  margin: 0.5rem;
+  padding: 1rem;
+  background-color: #bee8f7;
+}
+
+.text-right {
+  text-align: right;
+}/*# sourceMappingURL=index.css.map */
