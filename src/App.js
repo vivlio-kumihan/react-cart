@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useTransition, useDeferredValue } from "react";
 import Header from "./components/Header";
 import Main from "./components/Main";
 import Basket from "./components/Basket";
@@ -43,35 +43,61 @@ function App() {
     }
   };
 
-  // 注意
+  // // 注意
+  // // ローカル・ストレージにキャッシュを保存できる。
+  // useEffect(() => {
+  //   setCartItems(localStorage.getItem("cartItems")
+  //     ? JSON.parse(localStorage.getItem("cartItems"))
+  //     : []
+  //   );
+  // }, []);
+
+  // useTransition
+  // startTransitionという関数を提供していて、
+  // このstartTransitionに渡した関数内で状態を更新された場合、
+  // その状態更新でのレンダリングはノンブロッキングになる。
+  // デフォルトでは、isPending => false
+  // 延滞が発生するとtrueになる。
+  const [isPending, startTransition] = useTransition();
   // ローカル・ストレージにキャッシュを保存できる。
   useEffect(() => {
-    setCartItems(localStorage.getItem("cartItems")
-      ? JSON.parse(localStorage.getItem("cartItems"))
-      : []
-    );
+    startTransition(() => {
+      setCartItems(localStorage.getItem("cartItems")
+        ? JSON.parse(localStorage.getItem("cartItems"))
+        : []
+      );
+    })
   }, []);
 
-  return (
-    <>
-      <Header countCartItems={cartItems.length} />
-      <div className="container">
-        {/* ハッシュをプロップスとして送信する。 */}
-        <Main 
-          products={products} 
-          // 商品をカートへの出し入れを司る関数をプロップスで送信する。
-          onAdd={onAdd}
-          onRemove={onRemove}
-          cartItems={cartItems}
-        />
-        <Basket 
-          onAdd={onAdd}
-          onRemove={onRemove}
-          cartItems={cartItems}
-        />
-      </div>
-    </>
-  );
+  // useDeferredValue
+  // 変更対象の値をマークしていて、その値を使ってレンダリングが発生したときに
+  // レンダリング完了まで画面表示を遅延させてくれる。
+  const cartItemsCount = useDeferredValue(cartItems.length);
+
+  return isPending
+    ? (
+      <div>Loading...</div>
+    ) : (
+      <>
+        {/* useDeferredValueで生成した変数をこちらに充てる */}
+        <Header countCartItems={cartItemsCount} />
+        <div className="container">
+          {/* ハッシュをプロップスとして送信する。 */}
+          <Main 
+            products={products} 
+            // 商品をカートへの出し入れを司る関数をプロップスで送信する。
+            onAdd={onAdd}
+            onRemove={onRemove}
+            cartItems={cartItems}
+          />
+          <Basket 
+            onAdd={onAdd}
+            onRemove={onRemove}
+            cartItems={cartItems}
+          />
+        </div>
+      </>
+    );
 }
 
 export default App;
