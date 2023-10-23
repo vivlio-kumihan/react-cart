@@ -1,0 +1,78 @@
+@use "../forwards" as fw
+
+.card
+  position: relative
+  background-color: #fff
+  box-shadow: 0 0 10px #eee
+  .frame
+    width: 100%
+    aspect-ratio: 4/3
+    background-color: #eee
+    img
+      width: 100%
+      height: 100%
+      object-fit: cover
+  .item-info
+    padding: 20px 20px 30px
+    font-family: fw.$noto-sans
+    .name
+      margin-top: 0
+      font-size: 1.2rem
+      font-weight: 500
+    .type, .color
+      position: relative
+      width: 100%
+      flex-wrap: wrap
+      padding-left: 25px
+      font-size: .95rem
+      line-height: 1.2em
+      &::before
+        position: absolute
+        top: 2px
+        left: 0
+        font-size: .75rem
+        line-height: 1em
+        font-weight: 500p
+        padding: 1.5px 2px
+        color: #fff
+        background-color: #777
+    .type::before
+      content: "種類"
+    .color::before
+      content: "色"
+    .type
+      padding-left: 35px
+    .price
+      font-size: 1.1rem
+      font-weight: 700
+      span
+        font-size: .7rem
+    > div, > ul
+      margin-top: 10px
+    > ul
+      display: flex
+      column-gap: 10px
+      &.display-none
+        display: none
+    .quantity
+      position: absolute
+      bottom: 20px
+      right: 20px
+      button
+        font-size: .95rem
+        line-height: 1
+        font-weight: 700
+        padding: 3px 7px
+        color: #fff
+        background-color: orange
+        border-radius: 9999px
+        transform: translateY(2px)
+        transition: .3s
+        &:hover
+          transform: translateY(0)
+          opacity: .7
+          box-shadow: 0 1px 2px #999
+
+
+
+  
