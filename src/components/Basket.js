@@ -5,7 +5,6 @@ const Basket = (props) => {
   const itemsPrice = cartItems.reduce((sum, item) => sum + item.quantity * item.price, 0);
   const taxPrice = itemsPrice * 0.1;
   const totalPrice = itemsPrice + taxPrice;
-  console.log(cartItems);
 
   return (
     <aside className="basket">

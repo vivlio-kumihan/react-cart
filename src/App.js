@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Header from "./components/Header";
 import Main from "./components/Main";
 import Basket from "./components/Basket";
@@ -18,12 +18,12 @@ function App() {
       const newCartItems = cartItems.map((cartItem) => cartItem.pid === product.pid ? { ...exist, quantity: exist.quantity + 1} : cartItem);
       setCartItems(newCartItems);
       // 注意
-      // localStorage.setItem("cartItems", JSON.stringify(newCartItems));
+      localStorage.setItem("cartItems", JSON.stringify(newCartItems));
     } else {
       const newCartItems = [...cartItems, { ...product, quantity: 1}]
       setCartItems(newCartItems);
       // 注意
-      // localStorage.setItem("cartItems", JSON.stringify(newCartItems));
+      localStorage.setItem("cartItems", JSON.stringify(newCartItems));
     }
   };
   // 商品をカートから取る関数の定義
@@ -34,23 +34,23 @@ function App() {
       const newCartItems = cartItems.filter((cartItem) => cartItem.pid !== product.pid);
       setCartItems(newCartItems);
       // 注意
-      // localStorage.setItem("cartItems", JSON.stringify(newCartItems));
+      localStorage.setItem("cartItems", JSON.stringify(newCartItems));
     } else {
       const newCartItems = cartItems.map((cartItem) => cartItem.pid === product.pid ? { ...exist, quantity: exist.quantity - 1} : cartItem);
       setCartItems(newCartItems);
       // 注意
-      // localStorage.setItem("cartItems", JSON.stringify(newCartItems));
+      localStorage.setItem("cartItems", JSON.stringify(newCartItems));
     }
   };
 
   // 注意
-  // // ローカル・ストレージにキャッシュを保存できる。
-  // useEffect(() => {
-  //   setCartItems(localStorage.getItem("cartItems")
-  //     ? JSON.parse(localStorage.getItem("cartItems"))
-  //     : []
-  //   );
-  // }, []);
+  // ローカル・ストレージにキャッシュを保存できる。
+  useEffect(() => {
+    setCartItems(localStorage.getItem("cartItems")
+      ? JSON.parse(localStorage.getItem("cartItems"))
+      : []
+    );
+  }, []);
 
   return (
     <>
