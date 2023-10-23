@@ -1,4 +1,5 @@
 import Product from "./Product";
+import "./Main.css"
 
 // App.jsからpropsで商品データ・カートへの商品の出し入れを受信する。
 export default function Main(props) {
@@ -6,16 +7,16 @@ export default function Main(props) {
   const { products, cartItems, onAdd, onRemove } = props;
 
   return (
-    <div className="col-2 block">
+    <div className="wrapper">
       <h2>Products</h2>
-      <div className="row">
+      <div className="products-wrapper">
         {/* 商品を陳列する。この一連はイディオム。 */}
         {/* ハッシュのキーで呼び出したら値か返る例のやつ。 */}
         {products.map((product) => (
           <Product 
-            key={product.id} 
+            key={product.pid} 
             product={product}
-            item={cartItems.find((cartItem) => cartItem.id === product.id)}
+            item={cartItems.find((cartItem) => cartItem.pid === product.pid)}
             onAdd={onAdd}
             onRemove={onRemove}
           />

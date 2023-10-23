@@ -1,30 +1,47 @@
+import "./Product.css"
 const Product = (props) => {
-  // 最下層でもプロップスのリレーをやる。
   const { product, item, onAdd, onRemove } = props;
   
   return (
-    <>
-      <div className="card" key={product.id}>
-        <img className="small" src={product.image} alt={product.name} />
-        <h3>{product.name}</h3>
-        <div>${product.price}</div>
-        <div>
+    <div className="card" key={product.pid}>
+      <div className="frame">
+        <img className="image" src={product.image} alt={product.name} />
+      </div>
+      <div className="item-info">
+        <div className="name">{product.name}</div>
+        {product.type.length !== 0
+          ? 
+          <ul className="type">
+            {product.type.map((ins, idx) => (<li key={idx}>{ins}</li>))}
+          </ul>
+          : 
+          <ul className="display-none"></ul>
+        }
+        {product.color.length !== 0 
+          ? 
+          <ul className="color">
+            {product.color.map((ins, idx) => (<li key={idx}>{ins}</li>))}
+          </ul>
+          : 
+          <ul className="display-none"></ul>
+        }
+        <div className="price">{product.price}<span>円</span></div>
         {item 
           ? (
-            <div>
+            <div className="quantity">
               <button onClick={() => onRemove(item)} className="remove">-</button>
               <span className="padding-one">{item.quantity}</span>
               <button onClick={() => onAdd(item)} className="add">+</button>
             </div>
           ) : (
-            <button onClick={() => onAdd(product)}>Add to Cart</button>
+            <button className="quantity" onClick={() => onAdd(product)}>カートに追加</button>
           )
         }
-        </div>
       </div>
-    </>
+    </div>
   );
 };
-
+// f0fe plus
+// f146 minus
 
 export default Product;

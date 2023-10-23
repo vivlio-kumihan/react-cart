@@ -1,43 +1,42 @@
 @use "./forwards" as fw
 
-*
-  box-sizing: border-box
+// WEBフォントのインポート
+// Noto Sans JP
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100;200;300;400;500;600;700;900&display=swap')
+// Noto Serif JP
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@200;300;400;500;600;700;900&display=swap')
 
-:root
-  font-size: 100% // 16px
+:root 
+  font-size: 93.75% // => 15px
+  scroll-behavior: smooth
+  body
+    font-family: fw.$noto-serif, Helvetica, Arial, "Hiragino Kaku Gothic ProN", "ヒラギノ角ゴ ProN", "Hiragino Kaku Gothic Pro", "ヒラギノ角ゴ Pro", "Hiragino Sans", "メイリオ", "Meiryo", sans-serif
+    border: none
+    line-height: 1
+    font-feature-settings: "palt"
+    color: fw.$black
 
-body 
-  margin: 0
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif
-  -webkit-font-smoothing: antialiased
-  -moz-osx-font-smoothing: grayscale
+// img.image
+  // width: 100%
+  // max-height: 8rem
 
-h3
-  margin: 0
-a
-  text-decoration: none
-
-img.small
-  width: 100%
-  max-height: 8rem
-
-.card
-  padding: 1rem
-  background-color: #fff
-  div
-    button
-      margin-top: 20px
-      width: 100%
-      padding: .3rem
-      border: .1rem #404040 solid
-      background-color: #f0c040 
-      cursor: pointer
-      &.add, &.remove
-        width: 1.5rem
-      &.add
-        background-color: #40c0f0
-      &.remove
-        background-color: #f04040
+// .card
+  // padding: 1rem
+  // background-color: #fff
+  // div
+  //   button
+      // margin-top: 20px
+      // width: 100%
+      // padding: .3rem
+      // border: .1rem #404040 solid
+      // background-color: #f0c040 
+      // cursor: pointer
+      // &.add, &.remove
+      //   width: 1.5rem
+      // &.add
+      //   background-color: #40c0f0
+      // &.remove
+      //   background-color: #f04040
 
 .badge 
   width: 1.5rem
@@ -46,32 +45,32 @@ img.small
   background-color: #f04040
   border: none
 
-.padding-one
-  padding: 1rem
+// .padding-one
+  // padding: 1rem
 
-.row
-  display: flex
-  flex-wrap: wrap
-  justify-content: space-between
-  &.center
-    align-items: center
-    div
-      a + a
-        margin-left: 30px
+// .row
+//   display: flex
+//   flex-wrap: wrap
+//   justify-content: space-between
+//   &.center
+//     align-items: center
+//     div
+//       a + a
+//         margin-left: 30px
 
-.col-1, .col-2
-  flex-basis: 100%
+// .col-1, .col-2
+//   flex-basis: 100%
 
 +fw.media(md)
-  .col-1
-    flex: 1
-  .col-2
-    flex: 2
+  // .col-1
+  //   flex: 1
+  // .col-2
+  //   flex: 2
 
-.block
-  margin: .5rem
-  padding: 1rem
-  background-color: #bee8f7
+// .block
+  // margin: .5rem
+  // padding: 1rem
+  // background-color: #bee8f7
 
-.text-right
-  text-align: right
+// .text-right
+  // text-align: right
