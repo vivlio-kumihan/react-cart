@@ -18,12 +18,12 @@ const App = () => {
       const newCartItems = cartItems.map((cartItem) => cartItem.pid === product.pid ? { ...exist, quantity: exist.quantity + 1} : cartItem);
       setCartItems(newCartItems);
       // 注意
-      localStorage.setItem("cartItems", JSON.stringify(newCartItems));
+      // localStorage.setItem("cartItems", JSON.stringify(newCartItems));
     } else {
       const newCartItems = [...cartItems, { ...product, quantity: 1}]
       setCartItems(newCartItems);
       // 注意
-      localStorage.setItem("cartItems", JSON.stringify(newCartItems));
+      // localStorage.setItem("cartItems", JSON.stringify(newCartItems));
     }
   };
   // 商品をカートから取る関数の定義
@@ -34,12 +34,12 @@ const App = () => {
       const newCartItems = cartItems.filter((cartItem) => cartItem.pid !== product.pid);
       setCartItems(newCartItems);
       // 注意
-      localStorage.setItem("cartItems", JSON.stringify(newCartItems));
+      // localStorage.setItem("cartItems", JSON.stringify(newCartItems));
     } else {
       const newCartItems = cartItems.map((cartItem) => cartItem.pid === product.pid ? { ...exist, quantity: exist.quantity - 1} : cartItem);
       setCartItems(newCartItems);
       // 注意
-      localStorage.setItem("cartItems", JSON.stringify(newCartItems));
+      // localStorage.setItem("cartItems", JSON.stringify(newCartItems));
     }
   };
 
@@ -52,35 +52,37 @@ const App = () => {
   //   );
   // }, []);
 
-  // useTransition
-  // startTransitionという関数を提供していて、
-  // このstartTransitionに渡した関数内で状態を更新された場合、
-  // その状態更新でのレンダリングはノンブロッキングになる。
-  // デフォルトでは、isPending => false
-  // 延滞が発生するとtrueになる。
-  const [isPending, startTransition] = useTransition();
-  // ローカル・ストレージにキャッシュを保存できる。
-  useEffect(() => {
-    startTransition(() => {
-      setCartItems(localStorage.getItem("cartItems")
-        ? JSON.parse(localStorage.getItem("cartItems"))
-        : []
-      );
-    })
-  }, []);
+  // // useTransition
+  // // startTransitionという関数を提供していて、
+  // // このstartTransitionに渡した関数内で状態を更新された場合、
+  // // その状態更新でのレンダリングはノンブロッキングになる。
+  // // デフォルトでは、isPending => false
+  // // 延滞が発生するとtrueになる。
+  // const [isPending, startTransition] = useTransition();
+  // // ローカル・ストレージにキャッシュを保存できる。
+  // useEffect(() => {
+  //   startTransition(() => {
+  //     setCartItems(localStorage.getItem("cartItems")
+  //       ? JSON.parse(localStorage.getItem("cartItems"))
+  //       : []
+  //     );
+  //   })
+  // }, []);
 
-  // useDeferredValue
-  // 変更対象の値をマークしていて、その値を使ってレンダリングが発生したときに
-  // レンダリング完了まで画面表示を遅延させてくれる。
-  const cartItemsCount = useDeferredValue(cartItems.length);
+  // // useDeferredValue
+  // // 変更対象の値をマークしていて、その値を使ってレンダリングが発生したときに
+  // // レンダリング完了まで画面表示を遅延させてくれる。
+  // const cartItemsCount = useDeferredValue(cartItems.length);
 
-  return isPending
+  return false
+  // return isPending
     ? (
       <div>Loading...</div>
     ) : (
       <>
         {/* useDeferredValueで生成した変数をこちらに充てる */}
-        <Header countCartItems={cartItemsCount} />
+        {/* <Header countCartItems={cartItemsCount} /> */}
+        <Header countCartItems={cartItems.length} />
         <div className="container">
           {/* ハッシュをプロップスとして送信する。 */}
           <Main 

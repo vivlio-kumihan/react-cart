@@ -28,10 +28,10 @@ const Product = (props) => {
         <div className="price">{product.price}<span>円</span></div>
         {item 
           ? (
-            <div className="quantity">
-              <button onClick={() => onRemove(item)} className="remove">-</button>
+            <div className="add-remove">
+              <button onClick={() => onRemove(item)} className="remove"><div className="fa-solid fa-square-minus"></div></button>
               <span className="padding-one">{item.quantity}</span>
-              <button onClick={() => onAdd(item)} className="add">+</button>
+              <button onClick={() => onAdd(item)} className="add"><div className="fa-solid fa-square-plus"></div></button>
             </div>
           ) : (
             <button className="quantity" onClick={() => onAdd(product)}>カートに追加</button>
