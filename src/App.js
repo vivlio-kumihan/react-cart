@@ -13,9 +13,9 @@ function App() {
   // 商品をカートに入れる関数の定義
   // 同一商品のカートがあるかどうかで処理を変える。
   const onAdd = (product) => {
-    const exist = cartItems.find((cartItem) => cartItem.id === product.id);
+    const exist = cartItems.find((cartItem) => cartItem.pid === product.pid);
     if (exist) {
-      const newCartItems = cartItems.map((cartItem) => cartItem.id === product.id ? { ...exist, quantity: exist.quantity + 1} : cartItem);
+      const newCartItems = cartItems.map((cartItem) => cartItem.pid === product.pid ? { ...exist, quantity: exist.quantity + 1} : cartItem);
       setCartItems(newCartItems);
       // 注意
       // localStorage.setItem("cartItems", JSON.stringify(newCartItems));
@@ -28,15 +28,15 @@ function App() {
   };
   // 商品をカートから取る関数の定義
   const onRemove = (product) => {
-    const exist = cartItems.find((cartItem) => cartItem.id === product.id);
+    const exist = cartItems.find((cartItem) => cartItem.pid === product.pid);
     if (exist.quantity === 1) {
       // 選択した商品以外を収集しろと命令している。
-      const newCartItems = cartItems.filter((cartItem) => cartItem.id !== product.id);
+      const newCartItems = cartItems.filter((cartItem) => cartItem.pid !== product.pid);
       setCartItems(newCartItems);
       // 注意
       // localStorage.setItem("cartItems", JSON.stringify(newCartItems));
     } else {
-      const newCartItems = cartItems.map((cartItem) => cartItem.id === product.id ? { ...exist, quantity: exist.quantity - 1} : cartItem);
+      const newCartItems = cartItems.map((cartItem) => cartItem.pid === product.pid ? { ...exist, quantity: exist.quantity - 1} : cartItem);
       setCartItems(newCartItems);
       // 注意
       // localStorage.setItem("cartItems", JSON.stringify(newCartItems));

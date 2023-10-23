@@ -7,7 +7,6 @@ export default function Main(props) {
   const { products, cartItems, onAdd, onRemove } = props;
 
   return (
-    // <div className="col-2 block">
     <div className="wrapper">
       <h2>Products</h2>
       <div className="products-wrapper">

@@ -1,12 +1,14 @@
-export default function Basket(props) {
+import "./Basket.css"
+
+const Basket = (props) => {
   const { cartItems, onAdd, onRemove } = props;
   const itemsPrice = cartItems.reduce((sum, item) => sum + item.quantity * item.price, 0);
   const taxPrice = itemsPrice * 0.1;
-  // const shippingPrice = itemsPrice > 2000 ? 0 : 20;
-  // const totalPrice = itemsPrice + taxPrice + shippingPrice;
   const totalPrice = itemsPrice + taxPrice;
+  console.log(cartItems);
+
   return (
-    <aside className="col-1 block">
+    <aside className="basket">
       <h2>Cart Items</h2>
       <div>
         {cartItems.length === 0 && <div>Cart is Empty.</div>}
@@ -33,10 +35,6 @@ export default function Basket(props) {
               <div className="col-2">Tax Price</div>
               <div className="col-1 text-right">{taxPrice.toFixed(2)}円</div>
             </div>
-            {/* <div className="row"> */}
-              {/* <div className="col-2">Shipping Price</div> */}
-              {/* <div className="col-1 text-right">{shippingPrice.toFixed(2)}円</div> */}
-            {/* </div> */}
             <div className="row">
               <div className="col-2"><strong>Total Price</strong></div>
               <div className="col-1 text-right">
@@ -54,3 +52,5 @@ export default function Basket(props) {
     </aside>
   );
 };
+
+export default Basket;
