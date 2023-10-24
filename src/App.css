@@ -1,7 +1,44 @@
 .container {
   display: grid;
-  grid-template-columns: 4fr 1fr;
+  grid-template-columns: 3fr 1fr;
+  align-items: start;
   -moz-column-gap: 30px;
        column-gap: 30px;
   padding: 0 5%;
+}
+.container .quantity, .container .quantity-state {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+}
+.container .quantity {
+  padding: 3px 7px;
+  font-size: 0.95rem;
+  line-height: 1em;
+  font-weight: 700;
+  color: #fff;
+  background-color: orange;
+  border-radius: 9999px;
+  transform: translateY(2px);
+  transition: 0.3s;
+}
+.container .quantity:hover {
+  transform: translateY(0);
+  opacity: 0.7;
+  box-shadow: 0 1px 2px #999;
+}
+.container .quantity-state {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 1.1rem;
+  line-height: 1em;
+  color: #11100f;
+  background-color: unset;
+}
+.container .quantity-state .add {
+  color: green;
+}
+.container .quantity-state .remove {
+  color: orange;
 }/*# sourceMappingURL=App.css.map */

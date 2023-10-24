@@ -28,7 +28,7 @@ const Product = (props) => {
         <div className="price">{product.price}<span>円</span></div>
         {item 
           ? (
-            <div className="add-remove">
+            <div className="quantity-state">
               <button onClick={() => onRemove(item)} className="remove"><div className="fa-solid fa-square-minus"></div></button>
               <span className="padding-one">{item.quantity}</span>
               <button onClick={() => onAdd(item)} className="add"><div className="fa-solid fa-square-plus"></div></button>
@@ -41,7 +41,5 @@ const Product = (props) => {
     </div>
   );
 };
-// f0fe plus
-// f146 minus
 
 export default Product;

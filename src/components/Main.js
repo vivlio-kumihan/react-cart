@@ -8,7 +8,7 @@ export default function Main(props) {
 
   return (
     <div className="wrapper">
-      <h2>Products</h2>
+      <h2>お守り・ご祈祷</h2>
       <div className="products-wrapper">
         {/* 商品を陳列する。この一連はイディオム。 */}
         {/* ハッシュのキーで呼び出したら値か返る例のやつ。 */}

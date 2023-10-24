@@ -1,5 +1,39 @@
+@use "./forwards" as fw
+
 .container
   display: grid
-  grid-template-columns: 4fr 1fr
+  grid-template-columns: 3fr 1fr
+  // 明示しないとposition: stickyが効かないよ。
+  align-items: start
   column-gap: 30px
   padding: 0 5%
+  .quantity, .quantity-state
+    position: absolute
+    bottom: 20px
+    right: 20px
+  .quantity 
+    padding: 3px 7px
+    font-size: .95rem
+    line-height: 1em
+    font-weight: 700
+    color: #fff
+    background-color: orange
+    border-radius: 9999px
+    transform: translateY(2px)
+    transition: .3s
+    &:hover
+      transform: translateY(0)
+      opacity: .7
+      box-shadow: 0 1px 2px #999
+  .quantity-state
+    display: flex
+    align-items: center
+    gap: 10px
+    font-size: 1.1rem
+    line-height: 1em
+    color: fw.$black
+    background-color: unset
+    .add
+      color: green
+    .remove
+      color: orange

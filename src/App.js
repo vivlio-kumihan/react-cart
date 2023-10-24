@@ -80,9 +80,6 @@ const App = () => {
       <div>Loading...</div>
     ) : (
       <>
-        {/* useDeferredValueで生成した変数をこちらに充てる */}
-        {/* <Header countCartItems={cartItemsCount} /> */}
-        <Header countCartItems={cartItems.length} />
         <div className="container">
           {/* ハッシュをプロップスとして送信する。 */}
           <Main 

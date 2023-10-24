@@ -1,3 +1,109 @@
 .basket {
-  background-color: #aaa;
+  position: sticky;
+  top: 130px;
+  right: 0;
+  padding: 35px 20px;
+  font-family: "Noto Sans JP", sans-serif;
+  font-size: 0.9rem;
+  line-height: 1em;
+  overflow: scroll;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 0 10px #eee;
+}
+.basket .cart-title {
+  position: relative;
+  width: -moz-fit-content;
+  width: fit-content;
+  margin: 0 auto;
+  padding-left: 18px;
+  line-height: 1em;
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+.basket .cart-title::before {
+  content: "\f07a";
+  font-size: 0.8rem;
+  font-family: "Font Awesome 6 Free";
+  font-weight: 900;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-40%);
+  left: 0;
+  color: orange;
+}
+.basket .cart-title span {
+  display: grid;
+  place-content: center;
+  position: absolute;
+  top: -0.5rem;
+  right: -0.7rem;
+  content: "";
+  width: 0.9rem;
+  height: 0.9rem;
+  font-size: 0.7rem;
+  color: #fff;
+  background-color: red;
+  border-radius: 50%;
+}
+.basket .default-msg {
+  margin-top: 30px;
+  text-align: center;
+  line-height: 1.2em;
+}
+.basket > ul {
+  margin-top: 20px;
+}
+.basket > ul .name {
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 1.2em;
+}
+.basket > ul .sub-name {
+  padding-left: 1rem;
+  font-weight: 300;
+}
+.basket .item > li + li, .basket .calc-amount > li + li {
+  margin-top: 5px;
+}
+.basket .item .quantity-state, .basket .calc-amount .quantity-state {
+  position: unset;
+  bottom: 0;
+  right: 0;
+  justify-content: flex-end;
+}
+.basket .item .sub-total, .basket .calc-amount .sub-total {
+  text-align: right;
+}
+.basket .item {
+  margin: 0;
+  padding: 20px 0;
+  border-bottom: 1px solid #c2bdb8;
+}
+.basket .calc-amount {
+  text-align: right;
+}
+.basket .calc-amount span {
+  margin: 0 3px 0 10px;
+  font-size: 1.2rem;
+}
+.basket .calc-amount li:last-of-type {
+  margin-top: 20px;
+  text-align: center;
+}
+.basket .calc-amount li:last-of-type button {
+  padding: 5px 20px;
+  font-size: 1.05rem;
+  font-weight: 900;
+  letter-spacing: 0.1em;
+  color: #fff;
+  background-color: orange;
+  border-radius: 999px;
+  transition: 0.3s;
+  transform: translateY(2px);
+}
+.basket .calc-amount li:last-of-type button:hover {
+  opacity: 0.7;
+  transform: translateY(0);
+  box-shadow: 0 1px 2px #999;
 }/*# sourceMappingURL=Basket.css.map */

@@ -1,2 +1,93 @@
+@use "../forwards" as fw
+
 .basket
-  background-color: #aaa
+  position: sticky
+  top: 130px
+  right: 0
+  padding: 35px 20px
+  font-family: fw.$noto-sans
+  font-size: .9rem
+  line-height: 1em
+  overflow: scroll
+  background-color: #fff
+  border-radius: 10px
+  box-shadow: 0 0 10px #eee
+  .cart-title
+    position: relative
+    width: fit-content
+    margin: 0 auto
+    padding-left: 18px
+    line-height: 1em
+    font-size: 1.1rem
+    font-weight: 700
+    &::before
+      +fw.font_aws("\f07a", 0.8rem)
+      position: absolute
+      top: 50%
+      transform: translateY(-40%)
+      left: 0
+      color: orange
+    span
+      display: grid
+      place-content: center
+      position: absolute
+      top: -.5rem
+      right: -.7rem
+      content: ""
+      width: .9rem
+      height: .9rem
+      font-size: .7rem
+      color: #fff
+      background-color: red
+      border-radius: 50%
+  .default-msg
+    margin-top: 30px
+    text-align: center
+    line-height: 1.2em
+  > ul
+    margin-top: 20px
+    .name
+      font-size: 1rem
+      font-weight: 500
+      line-height: 1.2em
+    .sub-name
+      padding-left: 1rem
+      font-weight: 300
+  .item, .calc-amount
+    > li + li
+      margin-top: 5px
+    .quantity-state
+      position: unset
+      bottom: 0
+      right: 0
+      justify-content: flex-end
+    .sub-total
+      text-align: right
+  .item
+    margin: 0
+    padding: 20px 0 
+    border-bottom: 1px solid fw.$black-light
+  .calc-amount
+    text-align: right
+    span
+      margin: 0 3px 0 10px
+      font-size: 1.2rem
+    li:last-of-type
+      margin-top: 20px
+      text-align: center
+      button
+        padding: 5px 20px
+        font-size: 1.05rem
+        font-weight: 900
+        letter-spacing: .1em
+        color: #fff
+        background-color: orange
+        border-radius: 999px
+        transition: .3s
+        transform: translateY(2px)
+        &:hover
+          opacity: .7
+          transform: translateY(0)
+          box-shadow: 0 1px 2px #999
+
+        

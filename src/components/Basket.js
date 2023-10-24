@@ -8,46 +8,47 @@ const Basket = (props) => {
 
   return (
     <aside className="basket">
-      <h2>Cart Items</h2>
-      <div>
-        {cartItems.length === 0 && <div>Cart is Empty.</div>}
-        {cartItems.map((cartItem) => (
-          <div key={cartItem.pid} className="row">
-            <div className="col-1">{cartItem.name}</div>
-            <div className="col-1">
-              <button onClick={() => onRemove(cartItem)} className="remove">-</button>
-              <button onClick={() => onAdd(cartItem)} className="add">+</button>
-            </div>
-            <div className="col-1 text-right">
-              {cartItem.quantity} X {cartItem.price.toFixed(2)}円
-            </div>
-          </div>
-        ))}
-        {cartItems.length !== 0 && (
-          <>
-            <hr />
-            <div className="row">
-              <div className="col-2">Item Price</div>
-              <div className="col-1 text-right">{itemsPrice.toFixed(2)}円</div>
-            </div>
-            <div className="row">
-              <div className="col-2">Tax Price</div>
-              <div className="col-1 text-right">{taxPrice.toFixed(2)}円</div>
-            </div>
-            <div className="row">
-              <div className="col-2"><strong>Total Price</strong></div>
-              <div className="col-1 text-right">
-                <strong>{totalPrice.toFixed(2)}円</strong>
-              </div>
-            </div>
-            <hr />
-            <div className="row">
-              <button onClick={() => alert("Implement Checkout")}>Checkout</button>
-            </div>
+      
+      <h2 className="cart-title">カート<span>{cartItems.length}</span></h2>
+      {cartItems.length === 0 && <div className="default-msg">登録された商品はありません。</div>}
+      {cartItems.map((cartItem) => (
+        <ul className="item" key={cartItem.pid}>
+          <li className="name">{cartItem.name}</li>
+          {
+            cartItem.type 
+              ? cartItem.type.map((ins, idx) => (<li className="sub-name" key={idx}>{ins}</li>))
+              : <li className="display-none"></li>
+          }
+          {
+            cartItem.color 
+              ? cartItem.color.map((ins, idx) => (<li className="sub-name" key={idx}>{ins}</li>))
+              : <li className="display-none"></li>
+          }
+          <li className="quantity-state">
+            <button onClick={() => onRemove(cartItem)} className="remove">
+              <div className="fa-solid fa-square-minus"></div>
+            </button>
+            <span>{cartItem.quantity}</span>
+            <button onClick={() => onAdd(cartItem)} className="add">
+              <div className="fa-solid fa-square-plus"></div>
+            </button>
+          </li>
+          <li className="sub-total">
+            {Math.round(cartItem.price)}円&nbsp;×&nbsp;{cartItem.quantity}
+          </li>
+        </ul>
+      ))}
+      {cartItems.length !== 0 && (
+        <ul className="calc-amount">
+          <li>商品小計<span>{Math.round(itemsPrice)}</span>円</li>
+          <li>消費税 <span>{Math.round(taxPrice)}</span>円</li>
+          <li>合計<span>{Math.round(totalPrice)}</span>円</li>
+          <li>
+            <button onClick={() => alert("Implement Checkout")}>用紙出力</button>
+          </li>
+        </ul>
+      )}
 
-          </>
-        )}
-      </div>
     </aside>
   );
 };
