@@ -13,12 +13,14 @@
       height: 100%
       object-fit: cover
   .item-info
-    padding: 20px 20px 30px
+    padding: 20px
     font-family: fw.$noto-sans
     .name
-      margin-top: 0
-      font-size: 1.2rem
+      margin: 0 0 15px
+      padding-bottom: 10px
+      font-size: 1rem
       font-weight: 500
+      border-bottom: 1px solid fw.$black-light
     .type, .color
       position: relative
       width: 100%
@@ -45,13 +47,17 @@
     .price
       font-size: 1.1rem
       font-weight: 700
+      text-align: right
       span
         font-size: .7rem
     > div, > ul
       margin-top: 10px
     > ul
       display: flex
-      column-gap: 10px
+      flex-direction: column
+      row-gap: 2.5px
+      > li
+        position: relative
       &.display-none
         display: none
     // .quantity, .quantity-stateはApp.sassで管理。

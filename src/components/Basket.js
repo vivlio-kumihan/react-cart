@@ -1,7 +1,7 @@
 import "./Basket.css"
 
 const Basket = (props) => {
-  const { cartItems, onAdd, onRemove } = props;
+  const { cartItems, onAddCart, onRemoveCart } = props;
   const itemsPrice = cartItems.reduce((sum, item) => sum + item.quantity * item.price, 0);
   const taxPrice = itemsPrice * 0.1;
   const totalPrice = itemsPrice + taxPrice;
@@ -25,11 +25,11 @@ const Basket = (props) => {
               : <li className="display-none"></li>
           }
           <li className="quantity-state">
-            <button onClick={() => onRemove(cartItem)} className="remove">
+            <button onClick={() => onRemoveCart(cartItem)} className="remove">
               <div className="fa-solid fa-square-minus"></div>
             </button>
             <span>{cartItem.quantity}</span>
-            <button onClick={() => onAdd(cartItem)} className="add">
+            <button onClick={() => onAddCart(cartItem)} className="add">
               <div className="fa-solid fa-square-plus"></div>
             </button>
           </li>

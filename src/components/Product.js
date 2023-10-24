@@ -1,6 +1,6 @@
 import "./Product.css"
 const Product = (props) => {
-  const { product, item, onAdd, onRemove } = props;
+  const { product, item, onAddCart, onRemoveCart } = props;
   
   return (
     <div className="card" key={product.pid}>
@@ -8,33 +8,64 @@ const Product = (props) => {
         <img className="image" src={product.image} alt={product.name} />
       </div>
       <div className="item-info">
-        <div className="name">{product.name}</div>
+        <div className="name">
+          {product.name}
+          {product.type.length === 0 && product.color.length === 0 
+            ? 
+            <div className="quantity-state name">
+              <button onClick={() => onRemoveCart(item)} className="remove"><div className="fa-solid fa-square-minus"></div></button>
+                {item ? <span>{item.quantity}</span> : <span>0</span>}
+              <button onClick={() => onAddCart(item)} className="add"><div className="fa-solid fa-square-plus"></div></button>
+            </div>
+            :
+            <div className="display-none"></div>
+          }
+          </div>
         {product.type.length !== 0
           ? 
           <ul className="type">
-            {product.type.map((ins, idx) => (<li key={idx}>{ins}</li>))}
+            {product.type.map((ins, idx) => (
+              <li key={idx}>
+                {ins}
+                <div className="quantity-state">
+                  <button onClick={() => onRemoveCart(item)} className="remove"><div className="fa-solid fa-square-minus"></div></button>
+                    {item ? <span>{item.quantity}</span> : <span>0</span>}
+                  <button onClick={() => onAddCart(item)} className="add"><div className="fa-solid fa-square-plus"></div></button>
+                </div>
+              </li>
+            ))}
           </ul>
           : 
           <ul className="display-none"></ul>
         }
         {product.color.length !== 0 
-          ? 
+          ? (
           <ul className="color">
-            {product.color.map((ins, idx) => (<li key={idx}>{ins}</li>))}
+            {product.color.map((ins, idx) => (
+              <li key={idx}>
+                {ins}
+                <div className="quantity-state">
+                  <button onClick={() => onRemoveCart(item)} className="remove"><div className="fa-solid fa-square-minus"></div></button>
+                    {item ? <span>{item.quantity}</span> : <span>0</span>}
+                  <button onClick={() => onAddCart(item)} className="add"><div className="fa-solid fa-square-plus"></div></button>
+                </div>
+              </li>
+            ))}
           </ul>
-          : 
+          ) : (
           <ul className="display-none"></ul>
+          )
         }
         <div className="price">{product.price}<span>円</span></div>
         {item 
           ? (
             <div className="quantity-state">
-              <button onClick={() => onRemove(item)} className="remove"><div className="fa-solid fa-square-minus"></div></button>
-              <span className="padding-one">{item.quantity}</span>
-              <button onClick={() => onAdd(item)} className="add"><div className="fa-solid fa-square-plus"></div></button>
+              <button onClick={() => onRemoveCart(item)} className="remove"><div className="fa-solid fa-square-minus"></div></button>
+              <span>{item.quantity}</span>
+              <button onClick={() => onAddCart(item)} className="add"><div className="fa-solid fa-square-plus"></div></button>
             </div>
           ) : (
-            <button className="quantity" onClick={() => onAdd(product)}>カートに追加</button>
+            <button className="quantity" onClick={() => onAddCart(product)}>カートに追加</button>
           )
         }
       </div>

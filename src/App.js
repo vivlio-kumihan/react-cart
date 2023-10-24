@@ -7,11 +7,12 @@ import "./App.css"
 const App = () => {
   // オブジェクトで格納されているdataのデータを（明示的に）ハッシュで受け取る。
   const { products } = data
+
   // カートの初期状態を生成する。ゲッターとセッター。
   const [cartItems, setCartItems] = useState([]);
   // 商品をカートに入れる関数の定義
   // 同一商品のカートがあるかどうかで処理を変える。
-  const onAdd = (product) => {
+  const onAddCart = (product) => {
     const exist = cartItems.find((cartItem) => cartItem.pid === product.pid);
     if (exist) {
       const newCartItems = cartItems.map((cartItem) => cartItem.pid === product.pid ? { ...exist, quantity: exist.quantity + 1} : cartItem);
@@ -26,7 +27,7 @@ const App = () => {
     }
   };
   // 商品をカートから取る関数の定義
-  const onRemove = (product) => {
+  const onRemoveCart = (product) => {
     const exist = cartItems.find((cartItem) => cartItem.pid === product.pid);
     if (exist.quantity === 1) {
       // 選択した商品以外を収集しろと命令している。
@@ -41,6 +42,32 @@ const App = () => {
       // localStorage.setItem("cartItems", JSON.stringify(newCartItems));
     }
   };
+
+  const [thisType, setThisType] = useState({});
+  
+  // 動かない〜！！！！
+  const typeHash = (n, arr) => {
+    const keys = [...Array(n)].map((_, i) => i);
+    const hash = [keys, arr].slice(1).map((item) => {
+      let obj = {};
+      keys.forEach((key, idx) => (obj[key] = item[idx]));
+      return obj;
+    });
+  };
+
+  typeHash(5, ["apple", "banana"]);
+  setThisType(typeHash);
+  
+  const [ThisColor, setThisColor] = useState({});
+  // const colorHash = (n, arr) => {
+  //   const keyArr = [...Array(n)].map((_, i) => i);
+  //   const keys = keyArr;
+  //   const hash = arr.slice(1).map((item) => {
+  //     let obj = {};
+  //     keys.forEach((key, idx) => (obj[key] = item[idx]));
+  //     return obj;
+  //   });
+  // };
 
   // // 注意
   // // ローカル・ストレージにキャッシュを保存できる。
@@ -84,14 +111,18 @@ const App = () => {
           <Main 
             products={products} 
             // 商品をカートへの出し入れを司る関数をプロップスで送信する。
-            onAdd={onAdd}
-            onRemove={onRemove}
+            onAddCart={onAddCart}
+            onRemoveCart={onRemoveCart}
             cartItems={cartItems}
+            thisType={thisType}
+            ThisColor={ThisColor}
           />
           <Basket 
-            onAdd={onAdd}
-            onRemove={onRemove}
+            onAddCart={onAddCart}
+            onRemoveCart={onRemoveCart}
             cartItems={cartItems}
+            thisType={thisType}
+            ThisColor={ThisColor}
           />
         </div>
       </>

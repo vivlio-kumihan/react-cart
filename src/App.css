@@ -8,8 +8,8 @@
 }
 .container .quantity, .container .quantity-state {
   position: absolute;
-  bottom: 20px;
-  right: 20px;
+  top: 0;
+  right: 0;
 }
 .container .quantity {
   padding: 3px 7px;
@@ -41,6 +41,16 @@
 }
 .container .quantity-state .remove {
   color: orange;
+}
+.container .name {
+  position: relative;
+}
+.container .name .quantity-state.name {
+  position: absolute;
+  top: 0;
+  right: 0;
+  font-size: 1.1rem;
+  border-bottom: unset;
 }
 
 @media screen and (min-width: 500px) {

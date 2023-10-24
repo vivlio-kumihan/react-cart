@@ -9,8 +9,8 @@
   padding: 0 5%
   .quantity, .quantity-state
     position: absolute
-    bottom: 20px
-    right: 20px
+    top: 0
+    right: 0
   .quantity 
     padding: 3px 7px
     font-size: .95rem
@@ -37,6 +37,14 @@
       color: green
     .remove
       color: orange
+  .name
+    position: relative
+    .quantity-state.name
+      position: absolute
+      top: 0
+      right: 0
+      font-size: 1.1rem
+      border-bottom: unset
 
 .container
   // 500px以上だったらこの設定
