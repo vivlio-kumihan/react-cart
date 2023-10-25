@@ -2,7 +2,7 @@ import Product from "./Product";
 import "./Main.css"
 
 // App.jsからpropsで商品データ・カートへの商品の出し入れを受信する。
-export default function Main(props) {
+const Main = (props) => {
   // ハッシュへ格納する。
   const { products, cartItems, onAddCart, onRemoveCart, thisType, thisColor } = props;
 
@@ -16,7 +16,7 @@ export default function Main(props) {
           <Product 
             key={product.pid} 
             product={product}
-            item={cartItems.find((cartItem) => cartItem.pid === product.pid)}
+            onCartItem={cartItems.find((cartItem) => cartItem.pid === product.pid)}
             onAddCart={onAddCart}
             onRemoveCart={onRemoveCart}
             thisType={thisType}
@@ -27,3 +27,5 @@ export default function Main(props) {
     </div>
   );
 };
+
+export default Main;

@@ -9,6 +9,7 @@ const App = () => {
   const { products } = data
   // カートの初期状態を生成する。ゲッターとセッター。
   const [cartItems, setCartItems] = useState([]);
+  const [cartItem, setCartItem] = useState([]);
   // 商品をカートに入れる関数の定義
   // 同一商品のカートがあるかどうかで処理を変える。
   const onAddCart = (product) => {
@@ -110,6 +111,7 @@ const App = () => {
             onAddCart={onAddCart}
             onRemoveCart={onRemoveCart}
             cartItems={cartItems}
+            cartItem={cartItem}
             thisName={thisName}
             thisType={thisType}
             thisColor={thisColor}

@@ -1,6 +1,6 @@
 import "./Product.css"
 const Product = (props) => {
-  const { product, item, onAddCart, onRemoveCart } = props;
+  const { product, onCartItem, onAddCart, onRemoveCart } = props;
   
   return (
     <div className="card" key={product.pid}>
@@ -32,7 +32,7 @@ const Product = (props) => {
           <ul className="display-none"></ul>
         }
         <div className="price">{product.price}<span>円</span></div>
-        {item 
+        {onCartItem 
           ? (
             <button 
               className="quantity remove-btn" 
@@ -53,24 +53,3 @@ const Product = (props) => {
 };
 
 export default Product;
-
-
-// カート内で作るリストの参考になるはず
-// {product.color.length !== 0 
-//   ? (
-//   <ul className="color">
-//     {product.color.map((ins, idx) => (
-//       <li key={idx}>
-//         {ins}
-//         <div className="quantity-state">
-//           <button onClick={() => onRemoveCart(item)} className="remove"><div className="fa-solid fa-square-minus"></div></button>
-//             {item ? <span>{item.quantity}</span> : <span>0</span>}
-//           <button onClick={() => onAddCart(item)} className="add"><div className="fa-solid fa-square-plus"></div></button>
-//         </div>
-//       </li>
-//     ))}
-//   </ul>
-//   ) : (
-//   <ul className="display-none"></ul>
-//   )
-// }

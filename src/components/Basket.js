@@ -7,6 +7,7 @@ const Basket = (props) => {
   const totalPrice = itemsPrice + taxPrice;
 
   console.log(cartItems);
+  // console.log(onCartItem);
   
   return (
     <aside className="basket">
@@ -55,3 +56,24 @@ const Basket = (props) => {
 };
 
 export default Basket;
+
+
+// カート内で作るリストの参考になるはず
+// {product.color.length !== 0 
+//   ? (
+//   <ul className="color">
+//     {product.color.map((ins, idx) => (
+//       <li key={idx}>
+//         {ins}
+//         <div className="quantity-state">
+//           <button onClick={() => onRemoveCart(onCartItem)} className="remove"><div className="fa-solid fa-square-minus"></div></button>
+//             {onCartItem ? <span>{onCartItem.quantity}</span> : <span>0</span>}
+//           <button onClick={() => onAddCart(onCartItem)} className="add"><div className="fa-solid fa-square-plus"></div></button>
+//         </div>
+//       </li>
+//     ))}
+//   </ul>
+//   ) : (
+//   <ul className="display-none"></ul>
+//   )
+// }
