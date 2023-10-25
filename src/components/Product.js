@@ -10,62 +10,41 @@ const Product = (props) => {
       <div className="item-info">
         <div className="name">
           {product.name}
-          {product.type.length === 0 && product.color.length === 0 
-            ? 
-            <div className="quantity-state name">
-              <button onClick={() => onRemoveCart(item)} className="remove"><div className="fa-solid fa-square-minus"></div></button>
-                {item ? <span>{item.quantity}</span> : <span>0</span>}
-              <button onClick={() => onAddCart(item)} className="add"><div className="fa-solid fa-square-plus"></div></button>
-            </div>
-            :
-            <div className="display-none"></div>
-          }
-          </div>
+        </div>
         {product.type.length !== 0
           ? 
           <ul className="type">
             {product.type.map((ins, idx) => (
-              <li key={idx}>
-                {ins}
-                <div className="quantity-state">
-                  <button onClick={() => onRemoveCart(item)} className="remove"><div className="fa-solid fa-square-minus"></div></button>
-                    {item ? <span>{item.quantity}</span> : <span>0</span>}
-                  <button onClick={() => onAddCart(item)} className="add"><div className="fa-solid fa-square-plus"></div></button>
-                </div>
-              </li>
+              <li key={idx}>{ins}</li>
             ))}
           </ul>
           : 
           <ul className="display-none"></ul>
         }
         {product.color.length !== 0 
-          ? (
+          ? 
           <ul className="color">
             {product.color.map((ins, idx) => (
-              <li key={idx}>
-                {ins}
-                <div className="quantity-state">
-                  <button onClick={() => onRemoveCart(item)} className="remove"><div className="fa-solid fa-square-minus"></div></button>
-                    {item ? <span>{item.quantity}</span> : <span>0</span>}
-                  <button onClick={() => onAddCart(item)} className="add"><div className="fa-solid fa-square-plus"></div></button>
-                </div>
-              </li>
+              <li key={idx}>{ins}</li>
             ))}
           </ul>
-          ) : (
+          : 
           <ul className="display-none"></ul>
-          )
         }
         <div className="price">{product.price}<span>円</span></div>
         {item 
           ? (
-            <div className="quantity-state">
-              <button onClick={() => onRemoveCart(item)} className="remove"><div className="fa-solid fa-square-minus"></div></button>
-              <span>{item.quantity}</span>
-              <button onClick={() => onAddCart(item)} className="add"><div className="fa-solid fa-square-plus"></div></button>
-            </div>
+            <button 
+              className="quantity remove-btn" 
+              onClick={() => onRemoveCart(product)}>
+              カートから削除
+            </button>
           ) : (
-            <button className="quantity" onClick={() => onAddCart(product)}>カートに追加</button>
+            <button 
+              className="quantity" 
+              onClick={() => onAddCart(product)}>
+              カートに追加
+            </button>
           )
         }
       </div>
@@ -74,3 +53,24 @@ const Product = (props) => {
 };
 
 export default Product;
+
+
+// カート内で作るリストの参考になるはず
+// {product.color.length !== 0 
+//   ? (
+//   <ul className="color">
+//     {product.color.map((ins, idx) => (
+//       <li key={idx}>
+//         {ins}
+//         <div className="quantity-state">
+//           <button onClick={() => onRemoveCart(item)} className="remove"><div className="fa-solid fa-square-minus"></div></button>
+//             {item ? <span>{item.quantity}</span> : <span>0</span>}
+//           <button onClick={() => onAddCart(item)} className="add"><div className="fa-solid fa-square-plus"></div></button>
+//         </div>
+//       </li>
+//     ))}
+//   </ul>
+//   ) : (
+//   <ul className="display-none"></ul>
+//   )
+// }

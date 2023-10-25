@@ -9,15 +9,15 @@
   padding: 0 5%
   .quantity, .quantity-state
     position: absolute
-    top: 0
-    right: 0
   .quantity 
+    bottom: 20px
+    right: 20px
     padding: 3px 7px
     font-size: .95rem
     line-height: 1em
     font-weight: 700
     color: #fff
-    background-color: orange
+    background-color: green
     border-radius: 9999px
     transform: translateY(2px)
     transition: .3s
@@ -25,6 +25,8 @@
       transform: translateY(0)
       opacity: .7
       box-shadow: 0 1px 2px #999
+    &.remove-btn
+      background-color: orange
   .quantity-state
     display: flex
     align-items: center

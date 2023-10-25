@@ -1,14 +1,15 @@
 import "./Basket.css"
 
 const Basket = (props) => {
-  const { cartItems, onAddCart, onRemoveCart } = props;
+  const { cartItems, onAddCart, onRemoveCart, thisName, thisType, thisColor } = props;
   const itemsPrice = cartItems.reduce((sum, item) => sum + item.quantity * item.price, 0);
   const taxPrice = itemsPrice * 0.1;
   const totalPrice = itemsPrice + taxPrice;
 
+  console.log(cartItems);
+  
   return (
     <aside className="basket">
-      
       <h2 className="cart-title">カート<span>{cartItems.length}</span></h2>
       {cartItems.length === 0 && <div className="default-msg">登録された商品はありません。</div>}
       {cartItems.map((cartItem) => (

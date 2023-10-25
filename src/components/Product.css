@@ -57,7 +57,6 @@
 .card .item-info .price {
   font-size: 1.1rem;
   font-weight: 700;
-  text-align: right;
 }
 .card .item-info .price span {
   font-size: 0.7rem;
@@ -67,11 +66,8 @@
 }
 .card .item-info > ul {
   display: flex;
-  flex-direction: column;
-  row-gap: 2.5px;
-}
-.card .item-info > ul > li {
-  position: relative;
+  -moz-column-gap: 10px;
+       column-gap: 10px;
 }
 .card .item-info > ul.display-none {
   display: none;

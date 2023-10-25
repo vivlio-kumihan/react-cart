@@ -40,3 +40,9 @@
 8. useTransition and useDeferedValue
    1. read items in local Storage using useTransition
    2. change cartItems.length to transition effect
+
+ver2
+type, color それぞれにプラス　マイナスをつける。
+
+ver3
+product, cart はそれぞれ別物
