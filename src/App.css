@@ -28,7 +28,7 @@
   box-shadow: 0 1px 2px #999;
 }
 .container .quantity.remove-btn {
-  background-color: orange;
+  background-color: #f2a42f;
 }
 .container .quantity-state {
   display: flex;
@@ -43,7 +43,7 @@
   color: green;
 }
 .container .quantity-state .remove {
-  color: orange;
+  color: #f2a42f;
 }
 .container .name {
   position: relative;

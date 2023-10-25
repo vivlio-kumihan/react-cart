@@ -31,7 +31,7 @@
   top: 50%;
   transform: translateY(-40%);
   left: 0;
-  color: orange;
+  color: #f2a42f;
 }
 .basket .cart-title span {
   display: grid;
@@ -71,7 +71,30 @@
   position: unset;
   bottom: 0;
   right: 0;
-  justify-content: flex-end;
+  justify-content: space-between;
+}
+.basket .item .quantity-state h3, .basket .calc-amount .quantity-state h3 {
+  margin-left: 1rem;
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+.basket .item .quantity-state .wrapper, .basket .calc-amount .quantity-state .wrapper {
+  display: flex;
+  align-items: center;
+  gap: 6.5px;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+.basket .item .quantity-state .wrapper .quantity-count, .basket .calc-amount .quantity-state .wrapper .quantity-count {
+  font-size: 1.2rem;
+}
+.basket .item .quantity-state .wrapper .reset, .basket .calc-amount .quantity-state .wrapper .reset {
+  margin-left: 5px;
+  padding-bottom: 1px;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #999;
+  border-radius: 999px;
 }
 .basket .item .sub-total, .basket .calc-amount .sub-total {
   text-align: right;
@@ -98,7 +121,7 @@
   font-weight: 900;
   letter-spacing: 0.1em;
   color: #fff;
-  background-color: orange;
+  background-color: #f2a42f;
   border-radius: 999px;
   transition: 0.3s;
   transform: translateY(2px);

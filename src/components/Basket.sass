@@ -27,7 +27,7 @@
       top: 50%
       transform: translateY(-40%)
       left: 0
-      color: orange
+      color: fw.$orange
     span
       display: grid
       place-content: center
@@ -61,7 +61,25 @@
       position: unset
       bottom: 0
       right: 0
-      justify-content: flex-end
+      justify-content: space-between
+      h3
+        margin-left: 1rem
+        font-size: .95rem
+        font-weight: 500
+      .wrapper
+        display: flex
+        align-items: center
+        gap: 6.5px
+        width: fit-content
+        .quantity-count
+          font-size: 1.2rem
+        .reset
+          margin-left: 5px
+          padding-bottom: 1px
+          font-size: .95rem
+          font-weight: 700
+          color: #999
+          border-radius: 999px
     .sub-total
       text-align: right
   .item
@@ -82,7 +100,7 @@
         font-weight: 900
         letter-spacing: .1em
         color: #fff
-        background-color: orange
+        background-color: fw.$orange
         border-radius: 999px
         transition: .3s
         transform: translateY(2px)
