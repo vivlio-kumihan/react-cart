@@ -1,6 +1,6 @@
 .basket {
   position: sticky;
-  top: 130px;
+  top: 60px;
   right: 0;
   overflow-y: scroll;
   padding: 35px 20px;
@@ -54,15 +54,6 @@
 }
 .basket > ul {
   margin-top: 20px;
-}
-.basket > ul .name {
-  font-size: 1rem;
-  font-weight: 500;
-  line-height: 1.2em;
-}
-.basket > ul .sub-name {
-  padding-left: 1rem;
-  font-weight: 300;
 }
 .basket .item > li + li, .basket .calc-amount > li + li {
   margin-top: 5px;

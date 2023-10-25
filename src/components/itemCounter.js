@@ -26,3 +26,18 @@ const ItemCounter = ({ title, counter, setCounter }) => {
 };
 
 export default ItemCounter;
+
+
+// const Counter = ({ title, counter, setCounter }) => {
+//   const countUp = () => {
+//     setCounter(counter + 1)
+//   };
+//   const countDown = () => {
+//     setCounter(counter - 1)
+//   };
+// };
+// // カウンター
+// const [count, setCount] = useState(0);
+// const countUp = () => { setCount(count + 1) };
+// const countDown = () => { setCount(count - 1) };
+// const resetCount = () => { setCount(0) };

@@ -3,29 +3,11 @@ import ItemCounter from "./itemCounter";
 import "./Basket.css"
 
 const Basket = (props) => {
-  // const { cartItems, onAddCart, onRemoveCart, thisName, thisType, thisColor } = props;
-  const { cartItems, onAddCart, onRemoveCart } = props;
-  const itemsPrice = cartItems.reduce((sum, item) => sum + item.quantity * item.price, 0);
+  const [counter, setCounter] = useState(0);
+  const { cartItems } = props;
+  const itemsPrice = cartItems.reduce((sum, item) => sum + counter * item.price, 0);
   const taxPrice = itemsPrice * 0.1;
   const totalPrice = itemsPrice + taxPrice;
-
-  // const Counter = ({ title, counter, setCounter }) => {
-  //   const countUp = () => {
-  //     setCounter(counter + 1)
-  //   };
-  //   const countDown = () => {
-  //     setCounter(counter - 1)
-  //   };
-  // };
-  // // カウンター
-  // const [count, setCount] = useState(0);
-  // const countUp = () => { setCount(count + 1) };
-  // const countDown = () => { setCount(count - 1) };
-  // const resetCount = () => { setCount(0) };
-
-  
-  const [counter, setCounter] = useState(0);
-  console.log(counter);
     
   return (
     <aside className="basket">
@@ -33,10 +15,21 @@ const Basket = (props) => {
       {cartItems.length === 0 && <div className="default-msg">登録された商品はありません。</div>}
       {cartItems.map((cartItem) => (
         <ul className="item" key={cartItem.pid}>
-          <li className="name">{cartItem.name}</li>
+          {
+            cartItem.type.length || cartItem.color.length
+              ? <li className="quantity-state name">{cartItem.name}</li>
+              : <li className="quantity-state name">
+                  {cartItem.name}
+                  <ItemCounter title={cartItem.name} key={0} counter={counter} setCounter={setCounter} /> 
+                </li>
+          } 
           {
             cartItem.type 
-              ? cartItem.type.map((ins, idx) => (<li className="sub-name" key={idx}>{ins}</li>))
+              ? cartItem.type.map((ins, idx) => (
+                <li className="quantity-state" key={idx}>
+                  <h3>{ins}</h3> 
+                  <ItemCounter title={ins} key={idx} counter={counter} setCounter={setCounter} /> 
+                </li>))
               : <li className="display-none"></li>
           }
           {
