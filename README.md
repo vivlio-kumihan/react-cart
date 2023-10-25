@@ -3,7 +3,7 @@
 ## lessons
 
 1. create react app
-   1. npx create-react-app
+   1. npx create-react-app my-app
    2. remove extra files
       1. App.css
       2. App.test.js

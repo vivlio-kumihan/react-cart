@@ -15,7 +15,11 @@ const App = () => {
   const onAddCart = (product) => {
     const exist = cartItems.find((cartItem) => cartItem.pid === product.pid);
     if (exist) {
-      const newCartItems = cartItems.map((cartItem) => cartItem.pid === product.pid ? { ...exist, quantity: exist.quantity + 1} : cartItem);
+      const newCartItems = cartItems.map((cartItem) => 
+        cartItem.pid === product.pid 
+          ? { ...exist, quantity: exist.quantity + 1} 
+          : cartItem
+        );
       setCartItems(newCartItems);
       // 注意
       // localStorage.setItem("cartItems", JSON.stringify(newCartItems));
@@ -36,7 +40,10 @@ const App = () => {
       // 注意
       // localStorage.setItem("cartItems", JSON.stringify(newCartItems));
     } else {
-      const newCartItems = cartItems.map((cartItem) => cartItem.pid === product.pid ? { ...exist, quantity: exist.quantity - 1} : cartItem);
+      const newCartItems = cartItems.map((cartItem) => cartItem.pid === product.pid 
+        ? { ...exist, quantity: exist.quantity - 1} 
+        : cartItem
+        );
       setCartItems(newCartItems);
       // 注意
       // localStorage.setItem("cartItems", JSON.stringify(newCartItems));
@@ -45,18 +52,21 @@ const App = () => {
 
   const [thisType, setThisType] = useState({});
   
-  // 動かない〜！！！！
-  const typeHash = (n, arr) => {
-    const keys = [...Array(n)].map((_, i) => i);
-    const hash = [keys, arr].slice(1).map((item) => {
-      let obj = {};
-      keys.forEach((key, idx) => (obj[key] = item[idx]));
-      return obj;
-    });
-  };
+  // 問題　とりえあえず残しておく
+  // name, type, colorで場合分けをしないといけないし、
+  // それぞれにidをつけないといけなくなるはず。
+  // // 動かない〜！！！！
+  // const typeHash = (n, arr) => {
+  //   const keys = [...Array(n)].map((_, i) => i);
+  //   const hash = [keys, arr].slice(1).map((item) => {
+  //     let obj = {};
+  //     keys.forEach((key, idx) => (obj[key] = item[idx]));
+  //     return obj;
+  //   });
+  // };
 
-  typeHash(5, ["apple", "banana"]);
-  setThisType(typeHash);
+  // typeHash(5, ["apple", "banana"]);
+  // setThisType(typeHash);
   
   const [ThisColor, setThisColor] = useState({});
   // const colorHash = (n, arr) => {
@@ -100,6 +110,7 @@ const App = () => {
   // // レンダリング完了まで画面表示を遅延させてくれる。
   // const cartItemsCount = useDeferredValue(cartItems.length);
 
+  // 問題　useTransitionを戻したらここも戻す
   return false
   // return isPending
     ? (
