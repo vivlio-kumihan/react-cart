@@ -7,7 +7,6 @@ import "./App.css"
 const App = () => {
   const { products } = data
   const [cartItems, setCartItems] = useState([]);
-  // const [cartItem, setCartItem] = useState([]);
   const onAddCart = (product) => {
     const exist = cartItems.find((cartItem) => cartItem.pid === product.pid);
     if (!exist) {
@@ -24,11 +23,6 @@ const App = () => {
     // 注意
     // localStorage.setItem("cartItems", JSON.stringify(newCartItems));
   };
-
-  // カートで使う名前、種類、カラーの状態を初期化する。
-  // const [thisName, setThisName] = useState("");
-  // const [thisType, setThisType] = useState({});
-  // const [thisColor, setThisColor] = useState({});
 
   // // 注意
   // // ローカル・ストレージにキャッシュを保存できる。
@@ -63,6 +57,8 @@ const App = () => {
 
   // 問題　useTransitionを戻したらここも戻す
   return false
+  // 質問　言われたとおりにしているだけ、
+  // 実際にローディングさせる方法がわかったない。
   // return isPending
     ? (
       <div>Loading...</div>
@@ -74,18 +70,12 @@ const App = () => {
             onAddCart={onAddCart}
             onRemoveCart={onRemoveCart}
             cartItems={cartItems}
-            // cartItem={cartItem}
-            // thisName={thisName}
-            // thisType={thisType}
-            // thisColor={thisColor}
+
           />
           <Basket 
             onAddCart={onAddCart}
             onRemoveCart={onRemoveCart}
             cartItems={cartItems}
-            // thisName={thisName}
-            // thisType={thisType}
-            // thisColor={thisColor}
           />
         </div>
       </>

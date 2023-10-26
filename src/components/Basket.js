@@ -65,7 +65,7 @@ const Basket = (props) => {
 export default Basket;
 
 
-// カート内で作るリストの参考になるはず
+// カート内で作るリストの参考になるかな？
 // {product.color.length !== 0 
 //   ? (
 //   <ul className="color">
