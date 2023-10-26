@@ -1,19 +1,15 @@
 .container {
-  display: grid;
-  grid-template-columns: 3fr 1fr;
-  align-items: start;
-  -moz-column-gap: 30px;
-       column-gap: 30px;
-  padding: 0 5%;
+  position: relative;
+  padding: 0 10%;
 }
-.container .quantity, .container .quantity-state {
+.container .quantity-state {
   position: absolute;
 }
-.container .quantity {
+.container .toggle-btn {
   bottom: 20px;
   right: 20px;
   padding: 3px 7px;
-  font-size: 0.95rem;
+  font-size: 0.85rem;
   line-height: 1em;
   font-weight: 700;
   color: #fff;
@@ -22,15 +18,15 @@
   transform: translateY(2px);
   transition: 0.3s;
 }
-.container .quantity:hover {
+.container .toggle-btn:hover {
   transform: translateY(0);
   opacity: 0.7;
   box-shadow: 0 1px 2px #999;
 }
-.container .quantity.remove-btn {
+.container .toggle-btn.remove-btn {
   background-color: #f2a42f;
 }
-.container .quantity-state {
+.container .toggle-btn-state {
   display: flex;
   align-items: center;
   gap: 10px;
@@ -39,10 +35,10 @@
   color: #11100f;
   background-color: unset;
 }
-.container .quantity-state .add {
+.container .toggle-btn-state .add {
   color: green;
 }
-.container .quantity-state .remove {
+.container .toggle-btn-state .remove {
   color: #f2a42f;
 }
 .container .name {

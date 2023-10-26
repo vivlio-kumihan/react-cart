@@ -4,6 +4,18 @@
   position: relative
   background-color: #fff
   box-shadow: 0 0 10px #eee
+  .mask
+    display: flex
+    flex-direction: column
+    gap: 80px
+    align-items: center
+    position: absolute
+    top: 0
+    left: 0
+    width: 100%
+    height: 100%
+    background-color: rgba(0, 0, 0, 0.7)
+    z-index: 1
   .frame
     width: 100%
     aspect-ratio: 4/3
@@ -13,7 +25,7 @@
       height: 100%
       object-fit: cover
   .item-info
-    padding: 20px
+    padding: 20px 20px 30px
     font-family: fw.$noto-sans
     .name
       margin: 0 0 15px
@@ -56,4 +68,4 @@
       column-gap: 10px
       &.display-none
         display: none
-    // .quantity, .quantity-stateはApp.sassで管理。
+    // .toggle-btn, .quantity-stateはApp.sassで管理。

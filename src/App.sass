@@ -1,19 +1,16 @@
 @use "./forwards" as fw
 
 .container
-  display: grid
-  grid-template-columns: 3fr 1fr
-  // 明示しないとposition: stickyが効かないよ。
-  align-items: start
-  column-gap: 30px
-  padding: 0 5%
-  .quantity, .quantity-state
+  position: relative
+  padding: 0 10%
+
+  .quantity-state
     position: absolute
-  .quantity 
+  .toggle-btn 
     bottom: 20px
     right: 20px
     padding: 3px 7px
-    font-size: .95rem
+    font-size: .85rem
     line-height: 1em
     font-weight: 700
     color: #fff
@@ -27,7 +24,7 @@
       box-shadow: 0 1px 2px #999
     &.remove-btn
       background-color: fw.$orange
-  .quantity-state
+  .toggle-btn-state
     display: flex
     align-items: center
     gap: 10px
@@ -60,4 +57,3 @@
   // 12￥00px以上だったらこの設定
   +fw.media(xl)
     grid-template-columns: 4fr 1fr
-

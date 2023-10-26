@@ -1,39 +1,36 @@
-.basket {
-  position: sticky;
-  top: 60px;
+.basket .cart-title-wrapper {
+  position: fixed;
+  top: 0;
   right: 0;
-  overflow-y: scroll;
-  padding: 35px 20px;
+  width: 20%;
+  height: 130px;
+  padding-top: 0px;
   font-family: "Noto Sans JP", sans-serif;
-  font-size: 0.9rem;
-  line-height: 1em;
-  overflow: scroll;
-  background-color: #fff;
-  border-radius: 10px;
-  box-shadow: 0 0 10px #eee;
+  z-index: 100;
 }
-.basket .cart-title {
+.basket .cart-title-wrapper .cart-title {
+  display: block;
   position: relative;
-  width: -moz-fit-content;
-  width: fit-content;
-  margin: 0 auto;
-  padding-left: 18px;
-  line-height: 1em;
+  width: 20px;
+  height: 20px;
+  margin: 70px auto 0;
   font-size: 1.1rem;
+  line-height: 1em;
   font-weight: 700;
+  z-index: 100;
 }
-.basket .cart-title::before {
+.basket .cart-title-wrapper .cart-title::before {
   content: "\f07a";
-  font-size: 0.8rem;
+  font-size: 20px;
   font-family: "Font Awesome 6 Free";
   font-weight: 900;
   position: absolute;
   top: 50%;
   transform: translateY(-40%);
-  left: 0;
+  left: -8px;
   color: #f2a42f;
 }
-.basket .cart-title span {
+.basket .cart-title-wrapper .cart-title span {
   display: grid;
   place-content: center;
   position: absolute;
@@ -47,39 +44,72 @@
   background-color: red;
   border-radius: 50%;
 }
-.basket .default-msg {
+.basket .cart-title-wrapper .ami {
+  position: absolute;
+  top: 60px;
+  left: 0;
+  width: 100%;
+  height: 40px;
+  background-color: #eee;
+  border-radius: 999px 0 0 999px;
+  opacity: 0.6;
+  z-index: 99;
+}
+.basket .cart-wrapper {
+  position: fixed;
+  top: 0;
+  right: -100%;
+  width: 20%;
+  height: 100vh;
+  padding: 100px 20px 20px;
+  font-family: "Noto Sans JP", sans-serif;
+  font-size: 0.9rem;
+  line-height: 1em;
+  overflow: scroll;
+  background-color: #fff;
+  box-shadow: 0 0 10px #eee;
+  transition: 0.7s;
+  visibility: hidden;
+  opacity: 0;
+}
+.basket .cart-wrapper.active {
+  right: 0;
+  visibility: visible;
+  opacity: 0.95;
+}
+.basket .cart-wrapper .default-msg {
   margin-top: 30px;
   text-align: center;
   line-height: 1.2em;
 }
-.basket > ul {
+.basket .cart-wrapper > ul {
   margin-top: 20px;
 }
-.basket .item > li + li, .basket .calc-amount > li + li {
+.basket .cart-wrapper .item > li + li, .basket .cart-wrapper .calc-amount > li + li {
   margin-top: 5px;
 }
-.basket .item .quantity-state, .basket .calc-amount .quantity-state {
+.basket .cart-wrapper .item .quantity-state, .basket .cart-wrapper .calc-amount .quantity-state {
   position: unset;
   bottom: 0;
   right: 0;
   justify-content: space-between;
 }
-.basket .item .quantity-state h3, .basket .calc-amount .quantity-state h3 {
+.basket .cart-wrapper .item .quantity-state h3, .basket .cart-wrapper .calc-amount .quantity-state h3 {
   margin-left: 1rem;
   font-size: 0.95rem;
   font-weight: 500;
 }
-.basket .item .quantity-state .wrapper, .basket .calc-amount .quantity-state .wrapper {
+.basket .cart-wrapper .item .quantity-state .wrapper, .basket .cart-wrapper .calc-amount .quantity-state .wrapper {
   display: flex;
   align-items: center;
   gap: 6.5px;
   width: -moz-fit-content;
   width: fit-content;
 }
-.basket .item .quantity-state .wrapper .quantity-count, .basket .calc-amount .quantity-state .wrapper .quantity-count {
+.basket .cart-wrapper .item .quantity-state .wrapper .quantity-count, .basket .cart-wrapper .calc-amount .quantity-state .wrapper .quantity-count {
   font-size: 1.2rem;
 }
-.basket .item .quantity-state .wrapper .reset, .basket .calc-amount .quantity-state .wrapper .reset {
+.basket .cart-wrapper .item .quantity-state .wrapper .reset, .basket .cart-wrapper .calc-amount .quantity-state .wrapper .reset {
   margin-left: 5px;
   padding-bottom: 1px;
   font-size: 0.95rem;
@@ -87,26 +117,26 @@
   color: #999;
   border-radius: 999px;
 }
-.basket .item .sub-total, .basket .calc-amount .sub-total {
+.basket .cart-wrapper .item .sub-total, .basket .cart-wrapper .calc-amount .sub-total {
   text-align: right;
 }
-.basket .item {
+.basket .cart-wrapper .item {
   margin: 0;
   padding: 20px 0;
   border-bottom: 1px solid #c2bdb8;
 }
-.basket .calc-amount {
+.basket .cart-wrapper .calc-amount {
   text-align: right;
 }
-.basket .calc-amount span {
+.basket .cart-wrapper .calc-amount span {
   margin: 0 3px 0 10px;
   font-size: 1.2rem;
 }
-.basket .calc-amount li:last-of-type {
+.basket .cart-wrapper .calc-amount li:last-of-type {
   margin-top: 20px;
   text-align: center;
 }
-.basket .calc-amount li:last-of-type button {
+.basket .cart-wrapper .calc-amount li:last-of-type button {
   padding: 5px 20px;
   font-size: 1.05rem;
   font-weight: 900;
@@ -117,7 +147,7 @@
   transition: 0.3s;
   transform: translateY(2px);
 }
-.basket .calc-amount li:last-of-type button:hover {
+.basket .cart-wrapper .calc-amount li:last-of-type button:hover {
   opacity: 0.7;
   transform: translateY(0);
   box-shadow: 0 1px 2px #999;

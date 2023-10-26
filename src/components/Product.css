@@ -4,6 +4,19 @@
   background-color: #fff;
   box-shadow: 0 0 10px #eee;
 }
+.card .mask {
+  display: flex;
+  flex-direction: column;
+  gap: 80px;
+  align-items: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 1;
+}
 .card .frame {
   width: 100%;
   aspect-ratio: 4/3;
@@ -16,7 +29,7 @@
      object-fit: cover;
 }
 .card .item-info {
-  padding: 20px;
+  padding: 20px 20px 30px;
   font-family: "Noto Sans JP", sans-serif;
 }
 .card .item-info .name {
