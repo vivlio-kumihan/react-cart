@@ -1,17 +1,17 @@
 import { useState } from "react";
-import ItemCounter from "./itemCounter";
+import ItemCounter from "./ItemCounter";
 import "./Basket.css"
 
 const Basket = (props) => {
   const { cartItems } = props;
   const [counter, setCounter] = useState(0);
-  const toggleAction = () => {
-    setToggle(present => !present)
-  }
   const itemsPrice = cartItems.reduce((sum, item) => sum + counter * item.price, 0);
   const taxPrice = itemsPrice * 0.1;
   const totalPrice = itemsPrice + taxPrice;
   const [toggle, setToggle] = useState(false);
+  const toggleAction = () => {
+    setToggle(present => !present)
+  }
     
   return (
     <>
@@ -54,7 +54,7 @@ const Basket = (props) => {
                   : <li className="display-none"></li>
               }
               <li className="sub-total">
-                {Math.round(cartItem.price)}円&nbsp;×&nbsp;{counter.quantity}
+                {Math.round(cartItem.price)}円&nbsp;×&nbsp;{counter}
               </li>
             </ul>
           ))}

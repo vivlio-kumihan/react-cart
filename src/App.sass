@@ -4,47 +4,6 @@
   position: relative
   padding: 0 10%
 
-  .quantity-state
-    position: absolute
-  .toggle-btn 
-    bottom: 20px
-    right: 20px
-    padding: 3px 7px
-    font-size: .85rem
-    line-height: 1em
-    font-weight: 700
-    color: #fff
-    background-color: green
-    border-radius: 9999px
-    transform: translateY(2px)
-    transition: .3s
-    &:hover
-      transform: translateY(0)
-      opacity: .7
-      box-shadow: 0 1px 2px #999
-    &.remove-btn
-      background-color: fw.$orange
-  .toggle-btn-state
-    display: flex
-    align-items: center
-    gap: 10px
-    font-size: 1.1rem
-    line-height: 1em
-    color: fw.$black
-    background-color: unset
-    .add
-      color: green
-    .remove
-      color: fw.$orange
-  .name
-    position: relative
-    .quantity-state.name
-      position: absolute
-      top: 0
-      right: 0
-      font-size: 1.1rem
-      border-bottom: unset
-
 .container
   // 500px以上だったらこの設定
   +fw.media(md)

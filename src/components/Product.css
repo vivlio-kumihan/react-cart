@@ -7,15 +7,44 @@
 .card .mask {
   display: flex;
   flex-direction: column;
-  gap: 80px;
   align-items: center;
+  justify-content: center;
+  gap: 30px;
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.7);
+  background-color: rgba(0, 0, 0, 0.6);
   z-index: 1;
+  transition: 0.7s;
+  visibility: hidden;
+  opacity: 0;
+}
+.card .mask.appear {
+  visibility: visible;
+  opacity: 0.95;
+}
+.card .mask .mask-btn {
+  padding: 10px 20px;
+  font-family: "Noto Sans JP", sans-serif;
+  font-size: 0.85rem;
+  line-height: 1em;
+  font-weight: 700;
+  color: #fff;
+  background-color: #337a25;
+  border-radius: 9999px;
+  transform: translateY(2px);
+  transition: 0.3s;
+  opacity: 0.95;
+}
+.card .mask .mask-btn:hover {
+  transform: translateY(0);
+  opacity: 0.5;
+  box-shadow: 0 1px 2px #999;
+}
+.card .mask .mask-btn.remove-btn {
+  background-color: #b27822;
 }
 .card .frame {
   width: 100%;

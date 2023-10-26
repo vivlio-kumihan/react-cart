@@ -80,21 +80,30 @@
       > li + li
         margin-top: 5px
       .quantity-state
+        display: flex
+        justify-content: space-between
         position: unset
         bottom: 0
         right: 0
-        justify-content: space-between
+        &.name
+          margin-bottom: 10px
+          font-size: 1rem
+          font-weight: 500
         h3
           margin-left: 1rem
-          font-size: .95rem
-          font-weight: 500
+          font-size: .9rem
+          font-weight: 400
         .wrapper
           display: flex
           align-items: center
           gap: 6.5px
           width: fit-content
+          .add
+            color: fw.$green
           .quantity-count
             font-size: 1.2rem
+          .remove
+            color: fw.$orange
           .reset
             margin-left: 5px
             padding-bottom: 1px

@@ -89,15 +89,21 @@
   margin-top: 5px;
 }
 .basket .cart-wrapper .item .quantity-state, .basket .cart-wrapper .calc-amount .quantity-state {
+  display: flex;
+  justify-content: space-between;
   position: unset;
   bottom: 0;
   right: 0;
-  justify-content: space-between;
+}
+.basket .cart-wrapper .item .quantity-state.name, .basket .cart-wrapper .calc-amount .quantity-state.name {
+  margin-bottom: 10px;
+  font-size: 1rem;
+  font-weight: 500;
 }
 .basket .cart-wrapper .item .quantity-state h3, .basket .cart-wrapper .calc-amount .quantity-state h3 {
   margin-left: 1rem;
-  font-size: 0.95rem;
-  font-weight: 500;
+  font-size: 0.9rem;
+  font-weight: 400;
 }
 .basket .cart-wrapper .item .quantity-state .wrapper, .basket .cart-wrapper .calc-amount .quantity-state .wrapper {
   display: flex;
@@ -106,8 +112,14 @@
   width: -moz-fit-content;
   width: fit-content;
 }
+.basket .cart-wrapper .item .quantity-state .wrapper .add, .basket .cart-wrapper .calc-amount .quantity-state .wrapper .add {
+  color: #328525;
+}
 .basket .cart-wrapper .item .quantity-state .wrapper .quantity-count, .basket .cart-wrapper .calc-amount .quantity-state .wrapper .quantity-count {
   font-size: 1.2rem;
+}
+.basket .cart-wrapper .item .quantity-state .wrapper .remove, .basket .cart-wrapper .calc-amount .quantity-state .wrapper .remove {
+  color: #f2a42f;
 }
 .basket .cart-wrapper .item .quantity-state .wrapper .reset, .basket .cart-wrapper .calc-amount .quantity-state .wrapper .reset {
   margin-left: 5px;
