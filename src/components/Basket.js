@@ -3,10 +3,6 @@ import "./Basket.css"
 
 const Basket = (props) => {
   const { cartItems } = props;
-  const [counter, setCounter] = useState(0);
-  const itemsPrice = cartItems.reduce((sum, item) => sum + counter * item.price, 0);
-  const taxPrice = itemsPrice * 0.1;
-  const totalPrice = itemsPrice + taxPrice;
   const [toggle, setToggle] = useState(false);
   const toggleAction = () => {
     setToggle(present => !present)
@@ -29,7 +25,7 @@ const Basket = (props) => {
                 ? <li className="quantity-state name">{cartItem.name}</li>
                 : <li className="quantity-state name">
                     {cartItem.name}
-                    <ItemCounter key={0} orderedItem={cartItem.name} counter={counter} setCounter={setCounter} /> 
+                    <ItemCounter key={0} orderedItem={cartItem.name} /> 
                   </li>
             } 
             {
@@ -37,7 +33,7 @@ const Basket = (props) => {
                 ? cartItem.type.map((ins, idx) => (
                   <li className="quantity-state" key={idx}>
                     <h3>{ins}</h3> 
-                    <ItemCounter key={ins} orderedItem={ins} counter={counter} setCounter={setCounter} /> 
+                    <ItemCounter key={ins} orderedItem={ins} /> 
                   </li>))
                 : <li className="display-none"></li>
             }
@@ -46,16 +42,16 @@ const Basket = (props) => {
                 ? cartItem.color.map((ins, idx) => (
                   <li className="quantity-state" key={idx}>
                     <h3>{ins}</h3>
-                      <ItemCounter key={ins} orderedItem={ins} counter={counter} setCounter={setCounter} /> 
+                      <ItemCounter key={ins} orderedItem={ins} /> 
                   </li>))
                 : <li className="display-none"></li>
             }
-            <li className="sub-total">
+            {/* <li className="sub-total">
               {Math.round(cartItem.price)}円&nbsp;×&nbsp;{counter}
-            </li>
+            </li> */}
           </ul>
         ))}
-        {cartItems.length !== 0 && (
+        {/* {cartItems.length !== 0 && (
           <ul className="calc-amount">
             <li>商品小計<span>{Math.round(itemsPrice)}</span>円</li>
             <li>消費税 <span>{Math.round(taxPrice)}</span>円</li>
@@ -64,32 +60,38 @@ const Basket = (props) => {
               <button onClick={() => alert("Implement Checkout")}>用紙出力</button>
             </li>
           </ul>
-        )}
+        )} */}
       </div>
     </div>
   );
 };
 
-const ItemCounter = ({ orderedItem, counter, setCounter }) => {
+const ItemCounter = ({ orderedItem }) => {
   const orderHash = { order: orderedItem, count: 0 };
   const [order, setOrder] = useState(orderHash);
+  const count = order.count;
+  // const itemsPrice = cartItems.reduce((sum, item) => sum + order.count * item.price, 0);
+  // const taxPrice = itemsPrice * 0.1;
+  // const totalPrice = itemsPrice + taxPrice;
   
   const countUp = () => {
-    setOrder(order => ({ ...order, count: orderHash.count + 1 }))
+    setOrder(order => ({ ...order, count: count + 1 }))
   };
   const countDown = () => {
-    setOrder(order => ({ ...order, count: orderHash.count - 1 }))
+    if (order.count > 0) {
+      setOrder(order => ({ ...order, count: count - 1 }))
+    }
   };
   const resetCount = () => {
-    setCounter({ ...order, count: 0 })
+    setOrder({ ...order, count: 0 })
   };
 
   return (
     <div className="wrapper">
-      <button onClick={countUp} className="add">
+      <button onClick={countUp} count={count} className="add">
         <div className="fa-solid fa-square-plus"></div>
       </button>
-      <div className="quantity-count">{counter}</div>
+      <div className="quantity-count">{count}</div>
       <button onClick={countDown} className="remove">
         <div className="fa-solid fa-square-minus"></div>
       </button>
