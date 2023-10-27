@@ -103,3 +103,5 @@ const ItemCounter = ({ orderedItem, counter, setCounter }) => {
 };
 
 export default Basket;
+
+// 
