@@ -56,11 +56,11 @@ const Product = (props) => {
             }
             {product.color.length !== 0 
               ? 
-              <ul className="color">
+              {/* <ul className="color">
                 {product.color.map((ins, idx) => (
                   <li key={idx}>{ins}</li>
                 ))}
-              </ul>
+              </ul> */}
               : 
               <ul className="display-none"></ul>
             }
