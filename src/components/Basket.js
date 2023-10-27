@@ -3,54 +3,23 @@ import "./Basket.css"
 
 const Basket = (props) => {
   const { cartItems } = props;
-
-  const [cartItemCounters, setCartItemCounters] = useState(
-    cartItems.map((cartItem) => ({
-      pid: cartItem.pid,
-      counter: 0
-    }))
-  );
-
-  const handleCountUp = (productId) => {
-    setCartItemCounters((prevCounters) => (
-      prevCounters.map((counterItem) => (
-        counterItem.pid === productId
-          ? { ...counterItem, counter: counterItem.counter + 1 }
-          : counterItem
-      ))
-    ));
-  };
   
-  const handleCountDown = (productId) => {
-    setCartItemCounters((prevCounters) => (
-      prevCounters.map((counterItem) => (
-        counterItem.pid === productId && counterItem.counter > 0
-          ? { ...counterItem, counter: counterItem.counter - 1 }
-          : counterItem
-      ))
-    ));
-  };
-
-  const handleResetCount = (productId) => {
-    setCartItemCounters((prevCounters) => (
-      prevCounters.map((counterItem) => (
-        counterItem.pid === productId
-          ? { ...counterItem, counter: 0 }
-          : counterItem
-      ))
-    ));
-  };
-
-  const getCounter = (productId) => {
-    const counterItem = cartItemCounters.find((counter) => counter.pid === productId);
-    return counterItem ? counterItem.counter : 0;
-  }
+  // org
+  // const itemsPrice = cartItems.reduce((sum, cartItem) => {
+  //   // this!
+  //   const counter = {count};
+  //   return sum + counter * cartItem.price;
+  // },0);
   
+  // const taxPrice = itemsPrice * 0.1;
+  
+  // const totalPrice = itemsPrice + taxPrice;
+
   const itemsPrice = cartItems.reduce((sum, cartItem) => {
-    const counter = getCounter(cartItem.pid);
+    // this とりあえず0を代入
+    const counter = 0;
     return sum + counter * cartItem.price;
   },0);
-  
   
   const taxPrice = itemsPrice * 0.1;
   
@@ -75,18 +44,20 @@ const Basket = (props) => {
           <ul className="item" key={cartItem.pid}>
             {
               cartItem.type.length || cartItem.color.length
-                ? <li className="quantity-state name">{cartItem.name}</li>
-                : <li className="quantity-state name">
+                ? <li className="name quantity-state">{cartItem.name}</li>
+                : <li className="name quantity-state">
                     {cartItem.name}
                     <div className="wrapper">
-                      <button onClick={()=>handleCountUp(cartItem.productId)} className="add">
+                      {/* <button onClick={()=>countUp(cartItem.pid)} className="add"> */}
+                      <button onClick="" className="add">
                         <div className="fa-solid fa-square-plus"></div>
                       </button>
-                      <div className="quantity-count">{getCounter(cartItem.productId)}</div>
-                      <button onClick={()=>handleCountDown(cartItem.productId)} className="remove">
+                      {/* <button onClick={()=>countDown(cartItem.pid)} className="remove"> */}
+                      <button onClick="" className="remove">
                         <div className="fa-solid fa-square-minus"></div>
                       </button>
-                      <button onClick={()=>handleResetCount(cartItem.productId)} className="reset">
+                      {/* <button onClick={()=>countReset(cartItem.pid)} className="reset"> */}
+                      <button onClick="" className="reset">
                         <div className="fa-solid fa-trash-can"></div>
                       </button>
                     </div>
@@ -98,43 +69,33 @@ const Basket = (props) => {
                   <li className="quantity-state" key={idx}>
                     <h3>{ins}</h3> 
                     <div className="wrapper">
-                      <button onClick={()=>handleCountUp(cartItem.productId)} className="add">
+                      {/* <button onClick={()=>countUp(cartItem.pid)} className="add"> */}
+                      <button onClick="" className="add">
                         <div className="fa-solid fa-square-plus"></div>
                       </button>
-                      <div className="quantity-count">{getCounter(cartItem.productId)}</div>
-                      <button onClick={()=>handleCountDown(cartItem.productId)} className="remove">
+                      <div className="quantity-count">変数必須</div>
+                      {/* <button onClick={()=>countDown(cartItem.pid)} className="remove"> */}
+                      <button onClick="" className="remove">
                         <div className="fa-solid fa-square-minus"></div>
                       </button>
-                      <button onClick={()=>handleResetCount(cartItem.productId)} className="reset">
+                      {/* <button onClick={()=>countReset(cartItem.pid)} className="reset"> */}
+                      <button onClick="" className="reset">
                         <div className="fa-solid fa-trash-can"></div>
                       </button>
                     </div>
                   </li>))
                 : <li className="display-none"></li>
             }
-            {
-              cartItem.color 
-                ? cartItem.color.map((ins, idx) => (
-                  <li className="quantity-state" key={idx}>
-                    <h3>{ins}</h3>
-                    <div className="wrapper">
-                      <button onClick={()=>handleCountUp(cartItem.productId)} className="add">
-                        <div className="fa-solid fa-square-plus"></div>
-                      </button>
-                      <div className="quantity-count">{getCounter(cartItem.productId)}</div>
-                      <button onClick={()=>handleCountDown(cartItem.productId)} className="remove">
-                        <div className="fa-solid fa-square-minus"></div>
-                      </button>
-                      <button onClick={()=>handleResetCount(cartItem.productId)} className="reset">
-                        <div className="fa-solid fa-trash-can"></div>
-                      </button>
-                    </div>
-                  </li>
-                  ))
-                : <li className="display-none"></li>
-            }
+            {/* <Count cartItem={cartItem} /> */}
+            {/* { */}
+              {/* cartItem.color  */}
+                {/* ? cartItem.color.map((ins, idx) => ( */}
+                  {/* <Count title={ins.name} key={idx} count={ins.count} setCount={ins.setCount} /> */}
+                {/* )) */}
+                {/* : <li className="display-none"></li> */}
+            {/* } */}
             <li className="sub-total">
-              {Math.round(cartItem.price)}円&nbsp;×&nbsp;{getCounter(cartItem.productId)}
+              {Math.round(cartItem.price)}円&nbsp;×&nbsp;変数必須
             </li>
           </ul>
         ))}
@@ -152,5 +113,43 @@ const Basket = (props) => {
     </div>
   );
 };
+
+// const Count = ({ cartItem, count, setCount }) => {
+//   const countUp = () => {
+//     setCount((count) => count + 1);
+//   };
+//   const countDown = () => {
+//     if (count === 0) setCount(count - 1);
+//   };
+//   const countReset = () => {
+//     setCount(count = 0);
+//   }
+
+//   return (
+//     <></>
+//   );
+//   // return cartItem.color (
+//   //   <>
+//   //     ? cartItem.color.map((ins, idx) => (
+//   //       <li className="quantity-state" key={idx}>
+//   //             <h3>{ins}</h3>
+//   //             <div className="wrapper">
+//   //               <button onClick={countUp} className="add">
+//   //                 <div className="fa-solid fa-square-plus"></div>
+//   //               </button>
+//   //               <div className="quantity-count">{count}</div>
+//   //               <button onClick={countDown} className="remove">
+//   //                 <div className="fa-solid fa-square-minus"></div>
+//   //               </button>
+//   //               <button onClick={countReset} className="reset">
+//   //                 <div className="fa-solid fa-trash-can"></div>
+//   //               </button>
+//   //             </div>
+//   //           </li>
+//   //         ))
+//   //         : <li className="display-none"></li>
+//   //   </>
+//   // );
+// };
 
 export default Basket;
