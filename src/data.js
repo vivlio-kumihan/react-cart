@@ -37,11 +37,8 @@ const data = {
       image: image.dummy,
       category: "御守",
       name: "闘魂尽す守（マグネット式）",
-      type: [],  
-      color: {
-        1: { name: "赤", count: "count1", setCount: "setCount1" },
-        2: { name: "黒", count: "count2", setCount: "setCount2" },
-      },
+      type: [],    
+      color: ["赤", "黒"],
       price: 800
     },
     {
@@ -50,11 +47,7 @@ const data = {
       category: "御守",
       name: "球技闘魂守（角）",
       type: [],    
-      color: {
-        1: { name: "青", count: "count1", setCount: "setCount1" },
-        2: { name: "赤", count: "count2", setCount: "setCount2" },
-        3: { name: "白", count: "count3", setCount: "setCount3" },
-      },
+      color: ["青", "赤", "白"],
       price: 700
     },
     {
@@ -63,11 +56,7 @@ const data = {
       category: "御守",
       name: "闘魂守（角）",
       type: [],    
-      color: {
-        1: { name: "青", count: "count1", setCount: "setCount1" },
-        2: { name: "赤", count: "count2", setCount: "setCount2" },
-        3: { name: "白", count: "count3", setCount: "setCount3" },
-      },
+      color: ["青", "赤", "白"],
       price: 700
     },
     {
@@ -75,12 +64,8 @@ const data = {
       image: image.dummy,
       category: "御守",
       name: "闘魂守（角）",
-      type: [],
-      color: {
-        1: { name: "黒地・青文字", count: "count1", setCount: "setCount1" },
-        2: { name: "黒地・赤文字", count: "count2", setCount: "setCount2" },
-        3: { name: "黒地・金文字", count: "count3", setCount: "setCount3" },
-      },
+      type: [],    
+      color: ["黒地・青文字", "黒地・赤文字", "黒地・金文字"],
       price: 700
     },
     {
@@ -88,12 +73,8 @@ const data = {
       image: image.dummy,
       category: "御守",
       name: "闘魂守（丸）",
-      type: [],
-      color: {
-        1: { name: "青", count: "count1", setCount: "setCount1" },
-        2: { name: "赤", count: "count2", setCount: "setCount2" },
-        3: { name: "白", count: "count3", setCount: "setCount3" },
-      },
+      type: [],    
+      color: ["青", "赤", "白"],
       price: 700
     },
     {
@@ -101,16 +82,8 @@ const data = {
       image: image.dummy,
       category: "御守",
       name: "祈星守",
-      type: [],
-      color: {
-        1: { name: "青地・紐白", count: "count1", setCount: "setCount1" },
-        2: { name: "青地・紐橙", count: "count2", setCount: "setCount2" },
-        3: { name: "白地・紐白", count: "count3", setCount: "setCount3" },
-        4: { name: "白地・紐橙", count: "count4", setCount: "setCount4" },
-        5: { name: "白地・紐青", count: "count5", setCount: "setCount5" },
-        6: { name: "黒地・紐青", count: "count6", setCount: "setCount6" },
-        7: { name: "黒地・紐橙", count: "count7", setCount: "setCount7" },
-      },
+      type: [],    
+      color: ["青地・紐白", "青地・紐橙", "白地・紐白", "白地・紐橙", "白地・紐青", "黒地・紐青", "黒地・紐橙"],
       price: 800
     },
     {
@@ -172,13 +145,8 @@ const data = {
       image: image.dummy,
       category: "授与品",
       name: "叶う輪",
-      type: [],   
-      color: {
-        1: { name: "赤", count: "count1", setCount: "setCount1" },
-        2: { name: "青", count: "count2", setCount: "setCount2" },
-        3: { name: "黄", count: "count3", setCount: "setCount3" },
-        4: { name: "緑", count: "count4", setCount: "setCount4" },
-      },
+      type: [],    
+      color: ["赤", "青", "黄", "緑"],
       price: 800
     },
     {
@@ -186,13 +154,8 @@ const data = {
       image: image.dummy,
       category: "授与品",
       name: "叶う輪―サッカー、フットサル",
-      type: [],   
-      color: {
-        1: { name: "赤", count: "count1", setCount: "setCount1" },
-        2: { name: "青", count: "count2", setCount: "setCount2" },
-        3: { name: "黄", count: "count3", setCount: "setCount3" },
-        4: { name: "緑", count: "count4", setCount: "setCount4" },
-      },
+      type: [],    
+      color: ["赤", "青", "黄", "緑"],
       price: 800
     },
     {
@@ -200,13 +163,8 @@ const data = {
       image: image.dummy,
       category: "授与品",
       name: "叶う輪―野球、ソフトボール",
-      type: [], 
-      color: {
-        1: { name: "赤", count: "count1", setCount: "setCount1" },
-        2: { name: "青", count: "count2", setCount: "setCount2" },
-        3: { name: "黄", count: "count3", setCount: "setCount3" },
-        4: { name: "緑", count: "count4", setCount: "setCount4" },
-      },
+      type: [],    
+      color: ["赤", "青", "黄", "緑"],
       price: 800
     },
     {
@@ -215,12 +173,7 @@ const data = {
       category: "授与品―バレー、ビーチバレー",
       name: "叶う輪",
       type: [],    
-      color: {
-        1: { name: "赤", count: "count1", setCount: "setCount1" },
-        2: { name: "青", count: "count2", setCount: "setCount2" },
-        3: { name: "黄", count: "count3", setCount: "setCount3" },
-        4: { name: "緑", count: "count4", setCount: "setCount4" },
-      },
+      color: ["赤", "青", "黄", "緑"],
       price: 800
     },
     {
@@ -229,12 +182,7 @@ const data = {
       category: "授与品",
       name: "叶う輪―バスケットボール",
       type: [],    
-      color: {
-        1: { name: "赤", count: "count1", setCount: "setCount1" },
-        2: { name: "青", count: "count2", setCount: "setCount2" },
-        3: { name: "黄", count: "count3", setCount: "setCount3" },
-        4: { name: "緑", count: "count4", setCount: "setCount4" },
-      },
+      color: ["赤", "青", "黄", "緑"],
       price: 800
     },
     {
@@ -243,12 +191,7 @@ const data = {
       category: "授与品",
       name: "叶う輪―テニス、スカッシュ",
       type: [],    
-      color: {
-        1: { name: "赤", count: "count1", setCount: "setCount1" },
-        2: { name: "青", count: "count2", setCount: "setCount2" },
-        3: { name: "黄", count: "count3", setCount: "setCount3" },
-        4: { name: "緑", count: "count4", setCount: "setCount4" },
-      },
+      color: ["赤", "青", "黄", "緑"],
       price: 800
     },
     {
@@ -257,12 +200,7 @@ const data = {
       category: "授与品",
       name: "叶う輪―バドミントン",
       type: [],    
-      color: {
-        1: { name: "赤", count: "count1", setCount: "setCount1" },
-        2: { name: "青", count: "count2", setCount: "setCount2" },
-        3: { name: "黄", count: "count3", setCount: "setCount3" },
-        4: { name: "緑", count: "count4", setCount: "setCount4" },
-      },
+      color: ["赤", "青", "黄", "緑"],
       price: 800
     },
     {
@@ -271,12 +209,7 @@ const data = {
       category: "授与品",
       name: "叶う輪―卓球",
       type: [],    
-      color: {
-        1: { name: "赤", count: "count1", setCount: "setCount1" },
-        2: { name: "青", count: "count2", setCount: "setCount2" },
-        3: { name: "黄", count: "count3", setCount: "setCount3" },
-        4: { name: "緑", count: "count4", setCount: "setCount4" },
-      },
+      color: ["赤", "青", "黄", "緑"],
       price: 800
     },
     {
@@ -284,21 +217,8 @@ const data = {
       image: image.dummy,
       category: "授与品",
       name: "ヘアバンド",
-      type: [],  
-      color: {
-        1: { name: "白", count: "count1", setCount: "setCount1" },
-        2: { name: "赤", count: "count2", setCount: "setCount2" },
-        3: { name: "黄", count: "count3", setCount: "setCount3" },
-        4: { name: "紫", count: "count4", setCount: "setCount4" },
-        5: { name: "黒", count: "count5", setCount: "setCount5" },
-        6: { name: "せいじ", count: "count6", setCount: "setCount6" },
-        7: { name: "ピンク", count: "count7", setCount: "setCount7" },
-        8: { name: "青", count: "count8", setCount: "setCount8" },
-        9: { name: "橙", count: "count9", setCount: "setCount9" },
-        10: { name:"グリーン", count: "count10", setCount: "setCount10" },
-        11: { name:"濃紺", count: "count11", setCount: "setCount11" },
-        12: { name:"緑", count: "count12", setCount: "setCount12" },
-      },
+      type: [],    
+      color: ["白", "赤", "黄", "紫", "黒", "せいじ", "ピンク", "青", "橙", "グリーン", "濃紺", "緑"],
       price: 800
     },
     {
@@ -306,14 +226,8 @@ const data = {
       image: image.dummy,
       category: "授与品",
       name: "リストバンド",
-      type: [],  
-      color: {
-        1: { name: "青", count: "count1", setCount: "setCount1" },
-        2: { name: "赤", count: "count2", setCount: "setCount2" },
-        3: { name: "黒", count: "count3", setCount: "setCount3" },
-        4: { name: "白", count: "count4", setCount: "setCount4" },
-        5: { name: "黄", count: "count5", setCount: "setCount5" },
-      },
+      type: [],    
+      color: ["青", "赤", "黒", "白", "黄"],
       price: 800
     },
     {
@@ -385,10 +299,7 @@ const data = {
       category: "授与品",
       name: "馬蹄",
       type: [],    
-      color: {
-        1: { name: "金", count: "count1", setCount: "setCount1" },
-        2: { name: "銀", count: "count2", setCount: "setCount2" },
-      },
+      color: ["金", "銀"],
       price: 700
     },
     {
