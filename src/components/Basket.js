@@ -29,7 +29,7 @@ const Basket = (props) => {
                 ? <li className="quantity-state name">{cartItem.name}</li>
                 : <li className="quantity-state name">
                     {cartItem.name}
-                    <ItemCounter title={cartItem.name} key={0} counter={counter} setCounter={setCounter} /> 
+                    <ItemCounter key={0} orderedItem={cartItem.name} counter={counter} setCounter={setCounter} /> 
                   </li>
             } 
             {
@@ -37,7 +37,7 @@ const Basket = (props) => {
                 ? cartItem.type.map((ins, idx) => (
                   <li className="quantity-state" key={idx}>
                     <h3>{ins}</h3> 
-                    <ItemCounter title={ins} key={idx} counter={counter} setCounter={setCounter} /> 
+                    <ItemCounter key={ins} orderedItem={ins} counter={counter} setCounter={setCounter} /> 
                   </li>))
                 : <li className="display-none"></li>
             }
@@ -46,9 +46,8 @@ const Basket = (props) => {
                 ? cartItem.color.map((ins, idx) => (
                   <li className="quantity-state" key={idx}>
                     <h3>{ins}</h3>
-                      <ItemCounter title={ins} key={idx} counter={counter} setCounter={setCounter} /> 
-                  </li>
-                  ))
+                      <ItemCounter key={ins} orderedItem={ins} counter={counter} setCounter={setCounter} /> 
+                  </li>))
                 : <li className="display-none"></li>
             }
             <li className="sub-total">
@@ -71,15 +70,20 @@ const Basket = (props) => {
   );
 };
 
-const ItemCounter = ({ counter, setCounter }) => {
+const ItemCounter = ({ orderedItem, counter, setCounter }) => {
+  const orderHash = { order: orderedItem, count: 0 };
+  const [order, setOrder] = useState(orderHash);
+  
   const countUp = () => {
-    setCounter(counter + 1)
+    setOrder(order => ({ ...order, count: orderHash.count + 1 }))
+    // console.log(order.count);
   };
   const countDown = () => {
-    counter && setCounter(counter - 1)
+    setOrder(order => ({ ...order, count: orderHash.count - 1 }))
+    // console.log(order.count);
   };
   const resetCount = () => {
-    setCounter(0)
+    setCounter({ ...order, count: 0 })
   };
 
   return (

@@ -1,5 +1,6 @@
 import Product from "./Product";
 import "./Main.css"
+import Example from "./Example";
 
 const Main = (props) => {
   const { products, cartItems, onAddCart, onRemoveCart } = props;
