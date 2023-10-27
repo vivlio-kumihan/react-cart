@@ -26,8 +26,8 @@ const Basket = (props) => {
           <ul className="item" key={cartItem.pid}>
             {
               cartItem.type.length || cartItem.color.length
-                ? <li className="name quantity-state">{cartItem.name}</li>
-                : <li className="name quantity-state">
+                ? <li className="quantity-state name">{cartItem.name}</li>
+                : <li className="quantity-state name">
                     {cartItem.name}
                     <ItemCounter key={0} orderedItem={cartItem.name} counter={counter} setCounter={setCounter} /> 
                   </li>
