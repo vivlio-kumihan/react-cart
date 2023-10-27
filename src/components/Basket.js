@@ -76,11 +76,9 @@ const ItemCounter = ({ orderedItem, counter, setCounter }) => {
   
   const countUp = () => {
     setOrder(order => ({ ...order, count: orderHash.count + 1 }))
-    // console.log(order.count);
   };
   const countDown = () => {
     setOrder(order => ({ ...order, count: orderHash.count - 1 }))
-    // console.log(order.count);
   };
   const resetCount = () => {
     setCounter({ ...order, count: 0 })
@@ -103,5 +101,3 @@ const ItemCounter = ({ orderedItem, counter, setCounter }) => {
 };
 
 export default Basket;
-
-// 
