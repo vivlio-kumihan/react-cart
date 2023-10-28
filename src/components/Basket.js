@@ -9,12 +9,6 @@ const Basket = (props) => {
     setToggle(present => !present)
   }
 
-  const [order, setOrder] = useState({ name: "", count: 0 });
-  const count = order.count;
-  // const itemsPrice = cartItems.reduce((sum, item) => sum + order.count * item.price, 0);
-  // const taxPrice = itemsPrice * 0.1;
-  // const totalPrice = itemsPrice + taxPrice;
-
   return (
     <div className="basket">
       <div className="cart-title-wrapper">
@@ -26,15 +20,25 @@ const Basket = (props) => {
       <OrderResult 
         toggle={toggle}
         cartItems={cartItems}
-        order={order}
-        setOrder={setOrder}
-        count={count}
       />
     </div>
   );
 };
 
-const OrderResult = ({ toggle, cartItems, order, setOrder, count}) => {
+const OrderResult = ({ toggle, cartItems }) => {
+  const [order, setOrder] = useState({ name: "hogehoge", count: 0 });
+  
+  const setName = (ins) => {
+    setOrder(order => ({ ...order, name: ins }));
+  };
+  // console.log(setName("baka"))
+  
+  const count = order.count;
+
+  // const itemsPrice = cartItems.reduce((sum, item) => sum + order.count * item.price, 0);
+  // const taxPrice = itemsPrice * 0.1;
+  // const totalPrice = itemsPrice + taxPrice;
+
   return (
     <div className={`cart-wrapper ${toggle ? "active" : ""}`}>
       {cartItems.length === 0 && <div className="default-msg">登録された商品はありません。</div>}
@@ -46,8 +50,11 @@ const OrderResult = ({ toggle, cartItems, order, setOrder, count}) => {
               : <li className="quantity-state name">
                   {cartItem.name}
                   <ItemCounter
-                    order={cartItem.name}
+                    key={cartItem.name}
+                    order={()=>setName(cartItem.name)}
                     setOrder={setOrder}
+                    // order={order}
+                    // setOrder={()=>setName(cartItem.name)}
                     count={count}
                   /> 
                 </li>
@@ -58,8 +65,11 @@ const OrderResult = ({ toggle, cartItems, order, setOrder, count}) => {
                 <li className="quantity-state" key={idx}>
                   <h3>{ins}</h3> 
                   <ItemCounter
-                    order={ins}
+                    key={ins}
+                    order={()=>setName(ins)}
                     setOrder={setOrder}
+                    // order={order}
+                    // setOrder={()=>setName(cartItem.name)}
                     count={count}
                   /> 
                 </li>))
@@ -71,15 +81,19 @@ const OrderResult = ({ toggle, cartItems, order, setOrder, count}) => {
                 <li className="quantity-state" key={idx}>
                   <h3>{ins}</h3>
                   <ItemCounter
-                    order={ins}
+                    key={ins}
+                    order={()=>setName("hello")}
+                    // order={()=>setName(ins)}
                     setOrder={setOrder}
+                    // order={order}
+                    // setOrder={()=>setName(cartItem.name)}
                     count={count}
                   /> 
                 </li>))
               : <li className="display-none"></li>
           }
           {/* <li className="sub-total">
-            {Math.round(cartItem.price)}円&nbsp;×&nbsp;{counter}
+            {Math.round(cartItem.price)}円&nbsp;×&nbsp;{count}
           </li> */}
         </ul>
       ))}
@@ -98,14 +112,20 @@ const OrderResult = ({ toggle, cartItems, order, setOrder, count}) => {
 }
 
 const ItemCounter = ({ order, setOrder, count }) => {
+  console.log(order.name);
+  console.log(setOrder);
+  console.log(count);
   const countUp = () => {
     setOrder(order => ({ ...order, count: count + 1 }))
+    console.log(order.name)
   };
+
   const countDown = () => {
     if (order.count > 0) {
       setOrder(order => ({ ...order, count: count - 1 }))
     }
   };
+
   const resetCount = () => {
     setOrder({ ...order, count: 0 })
   };
