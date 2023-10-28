@@ -76,6 +76,7 @@ const App = () => {
             onAddCart={onAddCart}
             onRemoveCart={onRemoveCart}
             cartItems={cartItems}
+            setCartItems={setCartItems}
           />
         </div>
       </>

@@ -2,12 +2,11 @@ import { useState } from "react";
 import "./Basket.css"
 
 const Basket = (props) => {
-  const { cartItems } = props;
+  const { cartItems, setCartItems } = props;
   const [toggle, setToggle] = useState(false);
   const toggleAction = () => {
     setToggle(present => !present)
   }
-  console.log(cartItems);
 
   return (
     <div className="basket">
@@ -26,7 +25,7 @@ const Basket = (props) => {
                 ? <li className="quantity-state name">{cartItem.name}</li>
                 : <li className="quantity-state name">
                     {cartItem.name}
-                    <ItemCounter orderedItem={cartItem.name} /> 
+                    <ItemCounter cartItems={cartItems} setCartItems={setCartItems} cartItem={cartItem} orderedItem={cartItem.name} /> 
                   </li>
             } 
             {
@@ -34,7 +33,7 @@ const Basket = (props) => {
                 ? cartItem.type.map((ins, idx) => (
                   <li className="quantity-state" key={idx}>
                     <h3>{ins}</h3> 
-                    <ItemCounter orderedItem={ins} /> 
+                    <ItemCounter cartItem={cartItem} setCartItems={setCartItems} orderedItem={ins} /> 
                   </li>))
                 : <li className="display-none"></li>
             }
@@ -43,7 +42,7 @@ const Basket = (props) => {
                 ? cartItem.color.map((ins, idx) => (
                   <li className="quantity-state" key={idx}>
                     <h3>{ins}</h3>
-                      <ItemCounter orderedItem={ins} /> 
+                      <ItemCounter cartItems={cartItems} setCartItems={setCartItems} cartItem={cartItem} orderedItem={ins}  /> 
                   </li>))
                 : <li className="display-none"></li>
             }
@@ -67,9 +66,8 @@ const Basket = (props) => {
   );
 };
 
-const ItemCounter = ({ orderedItem }) => {
-  const orderHash = { order: orderedItem, count: 0 };
-  const [order, setOrder] = useState(orderHash);
+const ItemCounter = ({ cartItems, setCartItems, cartItem, orderedItem }) => {
+  const [order, setOrder] = useState({ order: orderedItem, count: 0 });
   const count = order.count;
   // const itemsPrice = cartItems.reduce((sum, item) => sum + order.count * item.price, 0);
   // const taxPrice = itemsPrice * 0.1;
@@ -89,7 +87,7 @@ const ItemCounter = ({ orderedItem }) => {
 
   return (
     <div className="wrapper">
-      <button onClick={countUp} count={count} className="add">
+      <button onClick={countUp} className="add">
         <div className="fa-solid fa-square-plus"></div>
       </button>
       <div className="quantity-count">{count}</div>
