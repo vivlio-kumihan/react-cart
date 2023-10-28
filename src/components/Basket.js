@@ -16,62 +16,69 @@ const Basket = (props) => {
         </button>
         <div className="ami"></div>
       </div>
-      <OrderResult />
-      <div className={`cart-wrapper ${toggle ? "active" : ""}`}>
-        {cartItems.length === 0 && <div className="default-msg">登録された商品はありません。</div>}
-        {cartItems.map((cartItem) => (
-          <ul className="item" key={cartItem.pid}>
-            {
-              cartItem.type.length || cartItem.color.length
-                ? <li className="quantity-state name">{cartItem.name}</li>
-                : <li className="quantity-state name">
-                    {cartItem.name}
-                    <ItemCounter cartItems={cartItems} setCartItems={setCartItems} cartItem={cartItem} orderedItem={cartItem.name} /> 
-                  </li>
-            } 
-            {
-              cartItem.type 
-                ? cartItem.type.map((ins, idx) => (
-                  <li className="quantity-state" key={idx}>
-                    <h3>{ins}</h3> 
-                    <ItemCounter cartItem={cartItem} setCartItems={setCartItems} orderedItem={ins} /> 
-                  </li>))
-                : <li className="display-none"></li>
-            }
-            {
-              cartItem.color 
-                ? cartItem.color.map((ins, idx) => (
-                  <li className="quantity-state" key={idx}>
-                    <h3>{ins}</h3>
-                      <ItemCounter cartItems={cartItems} setCartItems={setCartItems} cartItem={cartItem} orderedItem={ins}  /> 
-                  </li>))
-                : <li className="display-none"></li>
-            }
-            {/* <li className="sub-total">
-              {Math.round(cartItem.price)}円&nbsp;×&nbsp;{counter}
-            </li> */}
-          </ul>
-        ))}
-        {/* {cartItems.length !== 0 && (
-          <ul className="calc-amount">
-            <li>商品小計<span>{Math.round(itemsPrice)}</span>円</li>
-            <li>消費税 <span>{Math.round(taxPrice)}</span>円</li>
-            <li>合計<span>{Math.round(totalPrice)}</span>円</li>
-            <li>
-              <button onClick={() => alert("Implement Checkout")}>用紙出力</button>
-            </li>
-          </ul>
-        )} */}
-      </div>
+      <OrderResult 
+        toggle={toggle}
+        cartItems={cartItems}
+        setCartItems={setCartItems}
+      />
+
     </div>
   );
 };
 
-const OrderResult = () => {
-  
+const OrderResult = ({ toggle, cartItems, setCartItems}) => {
+  return (
+    <div className={`cart-wrapper ${toggle ? "active" : ""}`}>
+      {cartItems.length === 0 && <div className="default-msg">登録された商品はありません。</div>}
+      {cartItems.map((cartItem) => (
+        <ul className="item" key={cartItem.pid}>
+          {
+            cartItem.type.length || cartItem.color.length
+              ? <li className="quantity-state name">{cartItem.name}</li>
+              : <li className="quantity-state name">
+                  {cartItem.name}
+                  <ItemCounter cartItems={cartItems} setCartItems={setCartItems} cartItem={cartItem} orderedItem={cartItem.name} /> 
+                </li>
+          } 
+          {
+            cartItem.type 
+              ? cartItem.type.map((ins, idx) => (
+                <li className="quantity-state" key={idx}>
+                  <h3>{ins}</h3> 
+                  <ItemCounter cartItem={cartItem} setCartItems={setCartItems} orderedItem={ins} /> 
+                </li>))
+              : <li className="display-none"></li>
+          }
+          {
+            cartItem.color 
+              ? cartItem.color.map((ins, idx) => (
+                <li className="quantity-state" key={idx}>
+                  <h3>{ins}</h3>
+                    <ItemCounter cartItems={cartItems} setCartItems={setCartItems} cartItem={cartItem} orderedItem={ins}  /> 
+                </li>))
+              : <li className="display-none"></li>
+          }
+          {/* <li className="sub-total">
+            {Math.round(cartItem.price)}円&nbsp;×&nbsp;{counter}
+          </li> */}
+        </ul>
+      ))}
+      {/* {cartItems.length !== 0 && (
+        <ul className="calc-amount">
+          <li>商品小計<span>{Math.round(itemsPrice)}</span>円</li>
+          <li>消費税 <span>{Math.round(taxPrice)}</span>円</li>
+          <li>合計<span>{Math.round(totalPrice)}</span>円</li>
+          <li>
+            <button onClick={() => alert("Implement Checkout")}>用紙出力</button>
+          </li>
+        </ul>
+      )} */}
+    </div>
+  );
+
 }
-const ItemCounter = ({ cartItems, setCartItems, cartItem, orderedItem }) => {
-  const [order, setOrder] = useState({ order: orderedItem, count: 0 });
+const ItemCounter = ({ orderedItem }) => {
+  const [order, setOrder] = useState({ name: orderedItem, count: 0 });
   const count = order.count;
   // const itemsPrice = cartItems.reduce((sum, item) => sum + order.count * item.price, 0);
   // const taxPrice = itemsPrice * 0.1;
