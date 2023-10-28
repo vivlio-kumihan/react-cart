@@ -16,6 +16,7 @@ const Basket = (props) => {
         </button>
         <div className="ami"></div>
       </div>
+      <OrderResult />
       <div className={`cart-wrapper ${toggle ? "active" : ""}`}>
         {cartItems.length === 0 && <div className="default-msg">登録された商品はありません。</div>}
         {cartItems.map((cartItem) => (
@@ -66,6 +67,9 @@ const Basket = (props) => {
   );
 };
 
+const OrderResult = () => {
+  
+}
 const ItemCounter = ({ cartItems, setCartItems, cartItem, orderedItem }) => {
   const [order, setOrder] = useState({ order: orderedItem, count: 0 });
   const count = order.count;
