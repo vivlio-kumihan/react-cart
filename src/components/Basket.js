@@ -7,6 +7,7 @@ const Basket = (props) => {
   const toggleAction = () => {
     setToggle(present => !present)
   }
+  console.log(cartItems);
 
   return (
     <div className="basket">
@@ -25,7 +26,7 @@ const Basket = (props) => {
                 ? <li className="quantity-state name">{cartItem.name}</li>
                 : <li className="quantity-state name">
                     {cartItem.name}
-                    <ItemCounter key={0} orderedItem={cartItem.name} /> 
+                    <ItemCounter orderedItem={cartItem.name} /> 
                   </li>
             } 
             {
@@ -33,7 +34,7 @@ const Basket = (props) => {
                 ? cartItem.type.map((ins, idx) => (
                   <li className="quantity-state" key={idx}>
                     <h3>{ins}</h3> 
-                    <ItemCounter key={ins} orderedItem={ins} /> 
+                    <ItemCounter orderedItem={ins} /> 
                   </li>))
                 : <li className="display-none"></li>
             }
@@ -42,7 +43,7 @@ const Basket = (props) => {
                 ? cartItem.color.map((ins, idx) => (
                   <li className="quantity-state" key={idx}>
                     <h3>{ins}</h3>
-                      <ItemCounter key={ins} orderedItem={ins} /> 
+                      <ItemCounter orderedItem={ins} /> 
                   </li>))
                 : <li className="display-none"></li>
             }
