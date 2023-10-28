@@ -2,11 +2,18 @@ import { useState } from "react";
 import "./Basket.css"
 
 const Basket = (props) => {
-  const { cartItems, setCartItems } = props;
+  const { cartItems } = props;
+
   const [toggle, setToggle] = useState(false);
   const toggleAction = () => {
     setToggle(present => !present)
   }
+
+  const [order, setOrder] = useState({ name: "", count: 0 });
+  const count = order.count;
+  // const itemsPrice = cartItems.reduce((sum, item) => sum + order.count * item.price, 0);
+  // const taxPrice = itemsPrice * 0.1;
+  // const totalPrice = itemsPrice + taxPrice;
 
   return (
     <div className="basket">
@@ -19,14 +26,15 @@ const Basket = (props) => {
       <OrderResult 
         toggle={toggle}
         cartItems={cartItems}
-        setCartItems={setCartItems}
+        order={order}
+        setOrder={setOrder}
+        count={count}
       />
-
     </div>
   );
 };
 
-const OrderResult = ({ toggle, cartItems, setCartItems}) => {
+const OrderResult = ({ toggle, cartItems, order, setOrder, count}) => {
   return (
     <div className={`cart-wrapper ${toggle ? "active" : ""}`}>
       {cartItems.length === 0 && <div className="default-msg">登録された商品はありません。</div>}
@@ -37,7 +45,11 @@ const OrderResult = ({ toggle, cartItems, setCartItems}) => {
               ? <li className="quantity-state name">{cartItem.name}</li>
               : <li className="quantity-state name">
                   {cartItem.name}
-                  <ItemCounter cartItems={cartItems} setCartItems={setCartItems} cartItem={cartItem} orderedItem={cartItem.name} /> 
+                  <ItemCounter
+                    order={cartItem.name}
+                    setOrder={setOrder}
+                    count={count}
+                  /> 
                 </li>
           } 
           {
@@ -45,7 +57,11 @@ const OrderResult = ({ toggle, cartItems, setCartItems}) => {
               ? cartItem.type.map((ins, idx) => (
                 <li className="quantity-state" key={idx}>
                   <h3>{ins}</h3> 
-                  <ItemCounter cartItem={cartItem} setCartItems={setCartItems} orderedItem={ins} /> 
+                  <ItemCounter
+                    order={ins}
+                    setOrder={setOrder}
+                    count={count}
+                  /> 
                 </li>))
               : <li className="display-none"></li>
           }
@@ -54,7 +70,11 @@ const OrderResult = ({ toggle, cartItems, setCartItems}) => {
               ? cartItem.color.map((ins, idx) => (
                 <li className="quantity-state" key={idx}>
                   <h3>{ins}</h3>
-                    <ItemCounter cartItems={cartItems} setCartItems={setCartItems} cartItem={cartItem} orderedItem={ins}  /> 
+                  <ItemCounter
+                    order={ins}
+                    setOrder={setOrder}
+                    count={count}
+                  /> 
                 </li>))
               : <li className="display-none"></li>
           }
@@ -75,15 +95,9 @@ const OrderResult = ({ toggle, cartItems, setCartItems}) => {
       )} */}
     </div>
   );
-
 }
-const ItemCounter = ({ orderedItem }) => {
-  const [order, setOrder] = useState({ name: orderedItem, count: 0 });
-  const count = order.count;
-  // const itemsPrice = cartItems.reduce((sum, item) => sum + order.count * item.price, 0);
-  // const taxPrice = itemsPrice * 0.1;
-  // const totalPrice = itemsPrice + taxPrice;
-  
+
+const ItemCounter = ({ order, setOrder, count }) => {
   const countUp = () => {
     setOrder(order => ({ ...order, count: count + 1 }))
   };
