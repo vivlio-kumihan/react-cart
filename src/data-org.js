@@ -1,8 +1,4 @@
 // import image from "./img/image";
-
-// // 画像についてimg/image.jsで定義している。
-// // pidを属性（メソッド）にして管理する方針
-
 // const data = {
 //   products: [
 //     {

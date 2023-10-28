@@ -26,14 +26,13 @@ const Basket = (props) => {
 };
 
 const OrderResult = ({ toggle, cartItems }) => {
-  const [order, setOrder] = useState({ name: "hogehoge", count: 0 });
-  
-  const setName = (ins) => {
-    setOrder(order => ({ ...order, name: ins }));
-  };
-  // console.log(setName("baka"))
-  
+  const [order, setOrder] = useState({ name: "", count: 0 });
   const count = order.count;
+  
+  // const setNameInOrder = (ins) => {
+  //   setOrder(order => ({ ...order, name: ins }));
+  // };
+  
 
   // const itemsPrice = cartItems.reduce((sum, item) => sum + order.count * item.price, 0);
   // const taxPrice = itemsPrice * 0.1;
@@ -50,12 +49,13 @@ const OrderResult = ({ toggle, cartItems }) => {
               : <li className="quantity-state name">
                   {cartItem.name}
                   <ItemCounter
-                    key={cartItem.name}
-                    order={()=>setName(cartItem.name)}
+                    insName={cartItem.name}
+                    order={order}
                     setOrder={setOrder}
-                    // order={order}
-                    // setOrder={()=>setName(cartItem.name)}
+                    // setOrder={()=>setNameInOrder(cartItem.name)}
                     count={count}
+                    // setOrder={(count)=>setItemCount(cartItem.name, count)}
+                    // count={itemCounts[cartItem.name] || 0}                    
                   /> 
                 </li>
           } 
@@ -65,12 +65,13 @@ const OrderResult = ({ toggle, cartItems }) => {
                 <li className="quantity-state" key={idx}>
                   <h3>{ins}</h3> 
                   <ItemCounter
-                    key={ins}
-                    order={()=>setName(ins)}
+                    insName={ins}
+                    order={order}
                     setOrder={setOrder}
-                    // order={order}
-                    // setOrder={()=>setName(cartItem.name)}
+                    // setOrder={()=>setNameInOrder(ins)}
                     count={count}
+                    // setOrder={(count)=>setItemCount(ins, count)}
+                    // count={itemCounts[ins] || 0}                    
                   /> 
                 </li>))
               : <li className="display-none"></li>
@@ -81,13 +82,13 @@ const OrderResult = ({ toggle, cartItems }) => {
                 <li className="quantity-state" key={idx}>
                   <h3>{ins}</h3>
                   <ItemCounter
-                    key={ins}
-                    order={()=>setName("hello")}
-                    // order={()=>setName(ins)}
+                    insName={ins}
+                    order={order}
                     setOrder={setOrder}
-                    // order={order}
-                    // setOrder={()=>setName(cartItem.name)}
+                    // setOrder={()=>setNameInOrder(ins)}
                     count={count}
+                    // setOrder={(count)=>setItemCount(ins, count)}
+                    // count={itemCounts[ins] || 0}
                   /> 
                 </li>))
               : <li className="display-none"></li>
@@ -111,13 +112,15 @@ const OrderResult = ({ toggle, cartItems }) => {
   );
 }
 
-const ItemCounter = ({ order, setOrder, count }) => {
-  console.log(order.name);
-  console.log(setOrder);
-  console.log(count);
+const ItemCounter = ({ insName, order, setOrder, count }) => {
+  // console.log(order, setOrder, count)
+  // console.log(typeof insName)
+  setOrder(order => ({...order, name: insName}))
+
   const countUp = () => {
     setOrder(order => ({ ...order, count: count + 1 }))
-    console.log(order.name)
+    console.log(order);
+    console.log(count);
   };
 
   const countDown = () => {
