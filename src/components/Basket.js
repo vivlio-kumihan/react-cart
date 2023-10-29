@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./Basket.css"
 
 const Basket = (props) => {
@@ -120,8 +120,9 @@ const OrderResult = ({ toggle, cartItems }) => {
 }
 
 const ItemCounter = ({ setName, count, order, setOrder }) => {
-
-  // setOrder(order => ({order, name: setName}));
+  useEffect(() => {
+    setOrder(order => ({order, name: setName}));
+  });
 
   // react-dom.development.js:86 Warning: 
   // Cannot update a component (`OrderResult`) while rendering a different component (`ItemCounter`). 
@@ -136,8 +137,6 @@ const ItemCounter = ({ setName, count, order, setOrder }) => {
   //   at Basket (http://localhost:3000/main.66ae1621d7f77cc7ca5d.hot-update.js:30:5)
   //   at div
   //   at App (http://localhost:3000/static/js/bundle.js:39:84)
-
-  setOrder(order => ({order, name: setName}));
 
   const countUp = () => {
     setOrder(order => ({ ...order, count: count + 1 }));
