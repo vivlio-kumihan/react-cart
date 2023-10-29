@@ -1,6 +1,7 @@
-import { useState, useEffect, useTransition, useDeferredValue } from "react";
+import { useState, useTransition, useDeferredValue } from "react";
 import Main from "./components/Main";
-import Basket from "./components/Basket";
+import Basket from "./components/Basket"; 
+import Test from "./components/Test"; 
 import data from "./data";
 import "./App.css"
 
@@ -65,6 +66,7 @@ const App = () => {
     ) : (
       <>
         <div className="container">
+          <Test />
           <Main 
             products={products} 
             onAddCart={onAddCart}

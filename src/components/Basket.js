@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import "./Basket.css"
 
 const Basket = (props) => {
@@ -27,6 +27,10 @@ const Basket = (props) => {
 
 const OrderResult = ({ toggle, cartItems }) => {
   const [order, setOrder] = useState({ name: "", count: 0 });
+
+  const handleNameChange = (newVal) => {
+    setOrder(order => ({order, name: newVal}));
+  };
 
   // 問題点2、3については手を付けられていない。
   // 問題点 2
@@ -91,6 +95,7 @@ const OrderResult = ({ toggle, cartItems }) => {
                   <h3>{ins}</h3>
                   <ItemCounter
                     setName={ins}
+                    handleNameChange={handleNameChange}
                     count={order.count}
                     order={order}
                     setOrder={setOrder}
@@ -119,11 +124,17 @@ const OrderResult = ({ toggle, cartItems }) => {
   );
 }
 
-const ItemCounter = ({ setName, count, order, setOrder }) => {
-  useEffect(() => {
-    setOrder(order => ({order, name: setName}));
-  });
+const ItemCounter = ({ 
+  setName,
+  handleNameChange,
+  order,
+  setOrder
+  }) => {
 
+  // try01
+  // 子コンポーネントからstateの状態を変更しようとしてエラー
+  // setOrder(order => ({order, name: setName}));
+  
   // react-dom.development.js:86 Warning: 
   // Cannot update a component (`OrderResult`) while rendering a different component (`ItemCounter`). 
   // To locate the bad setState() call inside `ItemCounter`, follow the stack trace as described in 
@@ -138,13 +149,82 @@ const ItemCounter = ({ setName, count, order, setOrder }) => {
   //   at div
   //   at App (http://localhost:3000/static/js/bundle.js:39:84)
 
+  // try02
+  // 何もわからずuseEffectを使ってみるがカウント数字が出てこない。
+  // コードは動いている模様。
+  // useEffect(() => {
+  //   setOrder(order => ({order, name: setName}));
+  // });
+
+  // try03
+  // const handleChange = (newVal) => {
+  //   handleNameChange(newVal);
+  // };
+
+  // const countUp = () => {
+  //   setOrder(order => ({ ...order, count: order.count + 1 }));
+  // };
+
+  // const countDown = () => {
+  //   if (order.count > 0) {
+  //     setOrder(order => ({ ...order, count: order.count - 1 }));
+  //   }
+  // };
+
+  // const resetCount = () => {
+  //   setOrder({ ...order, count: 0 })
+  // };
+
+  // return (
+  //   <div className="wrapper">
+  //     <button 
+  //       onClick={()=>{
+  //         countUp(order.count);
+  //         handleChange(setName);
+  //       }} 
+  //       className="add"
+  //     >
+  //       <div className="fa-solid fa-square-plus"></div>
+  //     </button>
+
+  //     <div className="quantity-count">{order.count}</div>
+
+  //     <button 
+  //       onClick={()=>{
+  //         countDown(order.count);
+  //         handleChange(setName);
+  //       }}          
+  //       className="remove"
+  //     >
+  //       <div className="fa-solid fa-square-minus"></div>
+  //     </button>
+
+  //     <button
+  //       onClick={()=>{
+  //         resetCount(order.count);
+  //         handleChange(setName);
+  //       }}          
+  //     >
+  //       <div className="fa-solid fa-trash-can"></div>
+  //     </button>
+  //   </div>
+  // );
+
+  // try00
+  // 親コンポーネントからとってきたsetNameを
+  // setOrderに仕込んで個別のstateを作りたいだけなのでできない。
+  
+  // const handleChange = (newVal) => {
+  //   handleNameChange(newVal);
+  // };
+
   const countUp = () => {
-    setOrder(order => ({ ...order, count: count + 1 }));
+    setOrder(order => ({ ...order, count: order.count + 1 }));
   };
 
   const countDown = () => {
     if (order.count > 0) {
-      setOrder(order => ({ ...order, count: count - 1 }));
+      setOrder(order => ({ ...order, count: order.count - 1 }));
     }
   };
 
@@ -154,14 +234,31 @@ const ItemCounter = ({ setName, count, order, setOrder }) => {
 
   return (
     <div className="wrapper">
-      <button onClick={countUp} className="add">
+      <button 
+        onClick={()=>{
+          countUp();
+        }} 
+        className="add"
+      >
         <div className="fa-solid fa-square-plus"></div>
       </button>
-      <div className="quantity-count">{count}</div>
-      <button onClick={countDown} className="remove">
+
+      <div className="quantity-count">{order.count}</div>
+
+      <button 
+        onClick={()=>{
+          countDown();
+        }}          
+        className="remove"
+      >
         <div className="fa-solid fa-square-minus"></div>
       </button>
-      <button onClick={resetCount} className="reset">
+
+      <button
+        onClick={()=>{
+          resetCount();
+        }}          
+      >
         <div className="fa-solid fa-trash-can"></div>
       </button>
     </div>
