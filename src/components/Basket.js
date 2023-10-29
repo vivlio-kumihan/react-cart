@@ -27,13 +27,23 @@ const Basket = (props) => {
 
 const OrderResult = ({ toggle, cartItems }) => {
   const [order, setOrder] = useState({ name: "", count: 0 });
-  const count = order.count;
-  
-  // const setNameInOrder = (ins) => {
-  //   setOrder(order => ({ ...order, name: ins }));
-  // };
-  
 
+  // 問題点 1
+  // それぞれのstateでカウントを取れるようになる。
+  // formで全国の都道府県のリスト作成。
+  // 合計金額や『送料』を表示させる。
+  // 要件
+  //   商品名
+  //     料金
+  //       種類 × 数量
+  //       色 × 数量
+  //     送料
+  //       種類 重量 × 数量
+  //       色 重量 × 数量
+  // 都道府県ごとに係数をかけるとか？
+  // const shippingTable = {
+  //   100: {"京都": 1, "大阪": 1, "兵庫": 1, "奈良": 1, ...}, 
+  // };
   // const itemsPrice = cartItems.reduce((sum, item) => sum + order.count * item.price, 0);
   // const taxPrice = itemsPrice * 0.1;
   // const totalPrice = itemsPrice + taxPrice;
@@ -47,17 +57,14 @@ const OrderResult = ({ toggle, cartItems }) => {
             cartItem.type.length || cartItem.color.length
               ? <li className="quantity-state name">{cartItem.name}</li>
               : <li className="quantity-state name">
-                  {cartItem.name}
-                  <ItemCounter
-                    insName={cartItem.name}
-                    order={order}
-                    setOrder={setOrder}
-                    // setOrder={()=>setNameInOrder(cartItem.name)}
-                    count={count}
-                    // setOrder={(count)=>setItemCount(cartItem.name, count)}
-                    // count={itemCounts[cartItem.name] || 0}                    
-                  /> 
-                </li>
+                {cartItem.name}
+                <ItemCounter
+                  setName={cartItem.name}
+                  count={order.count}
+                  order={order}
+                  setOrder={setOrder}
+                /> 
+              </li>
           } 
           {
             cartItem.type 
@@ -65,13 +72,10 @@ const OrderResult = ({ toggle, cartItems }) => {
                 <li className="quantity-state" key={idx}>
                   <h3>{ins}</h3> 
                   <ItemCounter
-                    insName={ins}
+                    setName={ins}
+                    count={order.count}
                     order={order}
                     setOrder={setOrder}
-                    // setOrder={()=>setNameInOrder(ins)}
-                    count={count}
-                    // setOrder={(count)=>setItemCount(ins, count)}
-                    // count={itemCounts[ins] || 0}                    
                   /> 
                 </li>))
               : <li className="display-none"></li>
@@ -82,22 +86,21 @@ const OrderResult = ({ toggle, cartItems }) => {
                 <li className="quantity-state" key={idx}>
                   <h3>{ins}</h3>
                   <ItemCounter
-                    insName={ins}
+                    setName={ins}
+                    count={order.count}
                     order={order}
                     setOrder={setOrder}
-                    // setOrder={()=>setNameInOrder(ins)}
-                    count={count}
-                    // setOrder={(count)=>setItemCount(ins, count)}
-                    // count={itemCounts[ins] || 0}
                   /> 
                 </li>))
               : <li className="display-none"></li>
           }
+          {/* 問題点 1 の関係箇所 */}
           {/* <li className="sub-total">
             {Math.round(cartItem.price)}円&nbsp;×&nbsp;{count}
           </li> */}
         </ul>
       ))}
+      {/* 問題点 1 の関係箇所 */}
       {/* {cartItems.length !== 0 && (
         <ul className="calc-amount">
           <li>商品小計<span>{Math.round(itemsPrice)}</span>円</li>
@@ -112,20 +115,17 @@ const OrderResult = ({ toggle, cartItems }) => {
   );
 }
 
-const ItemCounter = ({ insName, order, setOrder, count }) => {
-  // console.log(order, setOrder, count)
-  // console.log(typeof insName)
-  setOrder(order => ({...order, name: insName}))
+const ItemCounter = ({ setName, count, order, setOrder }) => {
+  
+  // setOrder(order => ({order, name: setName}));
 
   const countUp = () => {
-    setOrder(order => ({ ...order, count: count + 1 }))
-    console.log(order);
-    console.log(count);
+    setOrder(order => ({ ...order, count: count + 1 }));
   };
 
   const countDown = () => {
     if (order.count > 0) {
-      setOrder(order => ({ ...order, count: count - 1 }))
+      setOrder(order => ({ ...order, count: count - 1 }));
     }
   };
 
