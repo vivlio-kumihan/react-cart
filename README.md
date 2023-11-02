@@ -1,26 +1,35 @@
+# React + Vite
+
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+
+Currently, two official plugins are available:
+
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+
 ### 質問いたします。
 
 お世話になります。高広です。
 
-12月中の制作となります案件の準備をしております。
-新規WordPressのサイトにカートのような機能をつける必要があります。（サイト上で金銭のやり取りをする機能は必要ありません。）
+12 月中の制作となります案件の準備をしております。
+新規 WordPress のサイトにカートのような機能をつける必要があります。（サイト上で金銭のやり取りをする機能は必要ありません。）
 
-この機会にと、Reactでカート機能を作成し、buildしてWPに載せようと考えました。（buildしたReactのコンポーネントをWPに載せるのは確認済みです。）
+この機会にと、React でカート機能を作成し、build して WP に載せようと考えました。（build した React のコンポーネントを WP に載せるのは確認済みです。）
 
 肝心の商品の個数の入力が上手くできません。
 
-* 商品の一覧から一点選び`カートに追加`をします。
-* 画面右上のカートのアイコンをクリックしてカートを表示させます。
-* 商品名の右にあるプラスとマイナスのボタンのカウントアップ・ダウンで数量を入力し、合計を下段に記載するというものです。
+- 商品の一覧から一点選び`カートに追加`をします。
+- 画面右上のカートのアイコンをクリックしてカートを表示させます。
+- 商品名の右にあるプラスとマイナスのボタンのカウントアップ・ダウンで数量を入力し、合計を下段に記載するというものです。
 
 カウントアップ・ダウンで数量を入力は、
 `/src/components/Basket.js`で機能を作っております。
 
-* 親コンポーネント => OrderResult
-  * カウントする品名・種類・色いずれかにカウント数を紐づける連想配列をorderという名称でstateを作成。
-  * 入力・計算結果を出す。
-* 子コンポーネント => ItemCounter
-  * 入力担当。
+- 親コンポーネント => OrderResult
+  - カウントする品名・種類・色いずれかにカウント数を紐づける連想配列を order という名称で state を作成。
+  - 入力・計算結果を出す。
+- 子コンポーネント => ItemCounter
+  - 入力担当。
 
 問題の箇所は、主に`/src/components/Basket.js`の`L161`と思われます。
 
@@ -36,7 +45,8 @@
   ...
   ...
 ```
-それぞれのカウンターを個別に動かす必要がありますので、上記のようなStateを生成させたいのですが、どうしても解けません。
+
+それぞれのカウンターを個別に動かす必要がありますので、上記のような State を生成させたいのですが、どうしても解けません。
 
 個別にカウンターが動かせるよう、ご教示いただきませんでしょうか？
 よろしくお願いいたします。

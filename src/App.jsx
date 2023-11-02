@@ -1,17 +1,18 @@
-import { useState, useTransition, useDeferredValue } from "react";
-import Main from "./components/Main";
-import Basket from "./components/Basket"; 
-import Test from "./components/Test"; 
+import { useState } from "react";
+// import { useState, useTransition, useDeferredValue } from "react";
+import Main from "./containers/Main";
+import Basket from "./containers/Basket";
+import Test from "./containers/Test";
 import data from "./data";
-import "./App.css"
+import "./styles/App.sass";
 
 const App = () => {
-  const { products } = data
+  const { products } = data;
   const [cartItems, setCartItems] = useState([]);
   const onAddCart = (product) => {
     const exist = cartItems.find((cartItem) => cartItem.pid === product.pid);
     if (!exist) {
-      const newCartItems = [...cartItems, { ...product, quantity: 1}]
+      const newCartItems = [...cartItems, { ...product, quantity: 1 }];
       setCartItems(newCartItems);
       // 注意
       // localStorage.setItem("cartItems", JSON.stringify(newCartItems));
@@ -19,7 +20,9 @@ const App = () => {
   };
   // 商品をカートから取る関数の定義
   const onRemoveCart = (product) => {
-    const newCartItems = cartItems.filter((cartItem) => cartItem.pid !== product.pid);
+    const newCartItems = cartItems.filter(
+      (cartItem) => cartItem.pid !== product.pid
+    );
     setCartItems(newCartItems);
     // 注意
     // localStorage.setItem("cartItems", JSON.stringify(newCartItems));
@@ -56,33 +59,31 @@ const App = () => {
   // // レンダリング完了まで画面表示を遅延させてくれる。
   // const cartItemsCount = useDeferredValue(cartItems.length);
 
-  // 問題　useTransitionを戻したらここも戻す
-  return false
-  // 質問　言われたとおりにしているだけ、
-  // 実際にローディングさせる方法がわかったない。
-  // return isPending
-    ? (
-      <div>Loading...</div>
-    ) : (
-      <>
-        <div className="container">
-          <Test />
-          <Main 
-            products={products} 
-            onAddCart={onAddCart}
-            onRemoveCart={onRemoveCart}
-            cartItems={cartItems}
-
-          />
-          <Basket 
-            onAddCart={onAddCart}
-            onRemoveCart={onRemoveCart}
-            cartItems={cartItems}
-            setCartItems={setCartItems}
-          />
-        </div>
-      </>
-    );
-}
+  // 問題 useTransitionを戻したらここも戻す
+  // return false ? (
+  //   // 質問 言われたとおりにしているだけ、
+  //   // 実際にローディングさせる方法がわかったない。
+  //   // return isPending
+  //   <div>Loading...</div>
+  // ) : (
+  return (
+    <div className="container">
+      <Test />
+      <Main
+        products={products}
+        onAddCart={onAddCart}
+        onRemoveCart={onRemoveCart}
+        cartItems={cartItems}
+      />
+      <Basket
+        onAddCart={onAddCart}
+        onRemoveCart={onRemoveCart}
+        cartItems={cartItems}
+        setCartItems={setCartItems}
+      />
+    </div>
+  );
+  // );
+};
 
 export default App;
