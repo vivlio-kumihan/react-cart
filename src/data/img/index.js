@@ -72,10 +72,9 @@
 //   yui_sy: yui_syo
 // };
 
-
 import dummy from "./dummy.jpg";
 const image = {
-  dummy: dummy
+  dummy: dummy,
 };
 
 export default image;
