@@ -6,7 +6,6 @@ const ItemCounter = ({ count, setCount }) => {
   const resetCount = () => {
     setCount(count - state);
     setState(0);
-    // setOrder({ ...order, count: state });
   };
 
   // 引数の値によって増減を決める

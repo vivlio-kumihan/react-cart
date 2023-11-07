@@ -1,31 +1,24 @@
 import { useState } from "react";
 import ItemCounter from "./ItemCounter";
 // 新規で作ったコンポーネント名は適当なので適切な名称に変更してください
-const CartItem = ({ cartItem: { pid, types, colors, name, price } }) => {
+const CartItem = ({ cartItem: { pid, name, types, colors, price } }) => {
   const [count, setCount] = useState(0);
 
-  // 対象が空配列じゃないか検証
+  // 対象が空配列かを検証
   const hasItems = (arr) => arr.length > 0;
+
+  // false または、false => false このfalseに
+  // false または、 true => trueの式を実行させる。
+
+  // true かつ、 true => 右辺の式を実行させる。
 
   return (
     <ul className="item" key={pid}>
       <div className="quantity-state name" key={name}>
         {name}
-        {/* {count}
-        {console.log(hasItems(types))}
-        {console.log(hasItems(colors))} */}
-        <>
-          {/* {
-            {/* 問題点　訂正中 */}
-            if (hasItems(types) && hasItems(colors)) {
-            {/* if (hasItems(types) && hasItems(colors)) { */}
-              {count}
-            } else {
-              <ItemCounter count={count} setCount={setCount} />
-            }
-          } */}
-
-        </>
+        {(hasItems(types) || hasItems(colors)) ||
+          <ItemCounter count={count} setCount={setCount} />
+        }
       </div>
       {hasItems(types) &&
         types.map((type, idx) => (
