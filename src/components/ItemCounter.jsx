@@ -1,6 +1,57 @@
 import { useState } from "react";
+
 const ItemCounter = ({ count, setCount }) => {
   const [state, setState] = useState(0);
+
+  const resetCount = () => {
+    setCount(count - state);
+    setState(0);
+    // setOrder({ ...order, count: state });
+  };
+
+  // 引数の値によって増減を決める
+  const handleCounter = (num) => {
+    setState(state + num);
+    setCount(count + num);
+  };
+
+  return (
+    <div className="wrapper">
+      <button
+        onClick={() => {
+          handleCounter(1);
+        }}
+        className="add"
+      >
+        <div className="fa-solid fa-square-plus"></div>
+      </button>
+
+      <div className="quantity-count">{state}</div>
+
+      <button
+        onClick={() => {
+          handleCounter(-1);
+        }}
+        disabled={state === 0}
+        className="remove"
+      >
+        <div className="fa-solid fa-square-minus"></div>
+      </button>
+
+      <button 
+        onClick={resetCount} 
+        className="reset"
+      >
+        <div className="fa-solid fa-trash-can"></div>
+      </button>
+    </div>
+  );
+};
+
+export default ItemCounter;
+
+
+// 注意
   // try01
   // 子コンポーネントからstateの状態を変更しようとしてエラー
   // setOrder(order => ({order, name: setName}));
@@ -40,45 +91,3 @@ const ItemCounter = ({ count, setCount }) => {
   //     setOrder({ ...order, count: order.count - 1 });
   //   }
   // };
-
-  const resetCount = () => {
-    setCount(count - state);
-    setState(0);
-    // setOrder({ ...order, count: state });
-  };
-
-  // 引数の値によって増減を決める
-  const handleCounter = (num) => {
-    setState(state + num);
-    setCount(count + num);
-    // setOrder({ ...order, count: state });
-  };
-  return (
-    <div className="wrapper">
-      <button
-        onClick={() => {
-          handleCounter(1);
-        }}
-        className="add"
-      >
-        <div className="fa-solid fa-square-plus"></div>
-      </button>
-
-      <div className="quantity-count">{state}</div>
-
-      <button
-        onClick={() => handleCounter(-1)}
-        disabled={state === 0}
-        className="remove"
-      >
-        <div className="fa-solid fa-square-minus"></div>
-      </button>
-
-      <button onClick={resetCount} className="reset">
-        <div className="fa-solid fa-trash-can"></div>
-      </button>
-    </div>
-  );
-};
-
-export default ItemCounter;

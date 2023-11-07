@@ -1,4 +1,5 @@
 import { useState } from "react";
+// // 注意
 // import { useState, useTransition, useDeferredValue } from "react";
 import Main from "./containers/Main";
 import Basket from "./containers/Basket";
@@ -68,7 +69,8 @@ const App = () => {
   // ) : (
   return (
     <div className="container">
-      <Test />
+      {/* 注意 */}
+      {/* <Test /> */}
       <Main
         products={products}
         onAddCart={onAddCart}
