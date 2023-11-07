@@ -1,7 +1,8 @@
 import { useState } from "react";
 import ItemCounter from "./ItemCounter";
 // 新規で作ったコンポーネント名は適当なので適切な名称に変更してください
-const CartItem = ({ cartItem: { pid, name, types, colors, price } }) => {
+const CartItem = ({ cartItem: { pid, name, types, colors, price, weight } }) => {
+
   const [count, setCount] = useState(0);
 
   // 対象が空配列かを検証
@@ -17,21 +18,30 @@ const CartItem = ({ cartItem: { pid, name, types, colors, price } }) => {
       <div className="quantity-state name" key={name}>
         {name}
         {(hasItems(types) || hasItems(colors)) ||
-          <ItemCounter count={count} setCount={setCount} />
+          <ItemCounter 
+          count={count} 
+          setCount={setCount}
+          />
         }
       </div>
       {hasItems(types) &&
         types.map((type, idx) => (
           <li className="quantity-state" key={idx}>
             <h3>{type}</h3>
-            <ItemCounter count={count} setCount={setCount} />
+            <ItemCounter 
+              count={count} 
+              setCount={setCount}
+            />              
           </li>
         ))}
       {hasItems(colors) &&
         colors.map((color, idx) => (
           <li className="quantity-state" key={idx}>
             <h3>{color}</h3>
-            <ItemCounter count={count} setCount={setCount} />
+            <ItemCounter 
+              count={count} 
+              setCount={setCount}
+            />            
           </li>
         ))}
       <li className="sub-total">

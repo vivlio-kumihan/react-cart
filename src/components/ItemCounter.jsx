@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const ItemCounter = ({ count, setCount }) => {
+const ItemCounter = ({ count, setCount}) => {
   const [state, setState] = useState(0);
 
   const resetCount = () => {
