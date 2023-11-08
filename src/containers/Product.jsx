@@ -40,18 +40,18 @@ const Product = ({ products, cartItems, onAddCart, onRemoveCart }) => {
           </div>
           <div className="item-info">
             <div className="name">{product.name}</div>
-            {product.types.length !== 0 ? (
+            {Object.keys(product.types).length !== 0 ? (
               <ul className="type">
-                {product.types.map((ins, idx) => (
+                {Object.keys(product.types).map((ins, idx) => (
                   <li key={idx}>{ins}</li>
                 ))}
               </ul>
             ) : (
               <ul className="display-none"></ul>
             )}
-            {product.colors.length !== 0 ? (
+            {Object.keys(product.colors).length !== 0 ? (
               <ul className="color">
-                {product.colors.map((ins, idx) => (
+                {Object.keys(product.colors).map((ins, idx) => (
                   <li key={idx}>{ins}</li>
                 ))}
               </ul>
