@@ -2,22 +2,24 @@
 // const data = {
 //   products: [
 //     {
-//       pid: "thokon_tukusu_mamori",
+//       pid: "deau_wa",
 //       image: image.dummy,
-//       category: "御守",
-//       name: "闘魂尽す守（マグネット式）",
+//       category: "授与品",
+//       name: "出逢う輪",
 //       types: [],
-//       colors: ["赤", "黒"],
-//       price: 800
+//       colors: [],
+//       price: 800,
+//       weight: 9,
 //     },
 //     {
-//       pid: "kyugi_thokon_mamori",
+//       pid: "mori_ya",
 //       image: image.dummy,
-//       category: "御守",
-//       name: "球技闘魂守（角）",
-//       types: [],
-//       colors: ["青", "赤", "白"],
-//       price: 700
+//       category: "授与品",
+//       name: "守り矢",
+//       types: ["スポーツ上達", "必勝祈願", "開運厄除", "社運隆昌", "心願成就"],
+//       colors: [],
+//       price: 1500,
+//       weight: 260,
 //     },
 //     {
 //       pid: "thokon_mamori_kado",
@@ -26,14 +28,15 @@
 //       name: "闘魂守（角）",
 //       types: [],
 //       colors: ["青", "赤", "白"],
-//       price: 700
+//       price: 700,
+//       weight: 100,
 //     },
 //   ]
 // };
 
 // export default data;
 
-import image from "/img/image";
+import image from "./img";
 
 // 画像についてimg/image.jsで定義している。
 // pidを属性（メソッド）にして管理する方針
@@ -41,12 +44,14 @@ import image from "/img/image";
 const data = {
   products: [
     {
+      pid: "o-fuda_family_safety",
       image: image.dummy,
       category: "御神札",
       name: "御神札",
       types: ["家内安全"],
       colors: [],
       price: 800,
+      weight: 23,
     },
     {
       pid: "o_fuda_yaku_yoke",
@@ -56,6 +61,7 @@ const data = {
       types: ["方除・魔除・赤札"],
       colors: [],
       price: 500,
+      weight: 23,
     },
     {
       pid: "o_fuda_sen_ryu",
@@ -65,6 +71,7 @@ const data = {
       types: ["潜龍大神"],
       colors: [],
       price: 800,
+      weight: 23,
     },
     {
       pid: "thokon_tukusu_mamori",
@@ -74,6 +81,7 @@ const data = {
       types: [],
       colors: ["赤", "黒"],
       price: 800,
+      weight: 7,
     },
     {
       pid: "kyugi_thokon_mamori",
@@ -83,6 +91,7 @@ const data = {
       types: [],
       colors: ["青", "赤", "白"],
       price: 700,
+      weight: 7,
     },
     {
       pid: "thokon_mamori_kado",
@@ -90,17 +99,9 @@ const data = {
       category: "御守",
       name: "闘魂守（角）",
       types: [],
-      colors: ["青", "赤", "白"],
+      colors: ["青", "赤", "白", "黒地・青文字", "黒地・赤文字", "黒地・金文字"],
       price: 700,
-    },
-    {
-      pid: "thokon_mamori_kuroji",
-      image: image.dummy,
-      category: "御守",
-      name: "闘魂守（角）",
-      types: [],
-      colors: ["黒地・青文字", "黒地・赤文字", "黒地・金文字"],
-      price: 700,
+      weight: 7,
     },
     {
       pid: "thokon_mamori_maru",
@@ -108,8 +109,9 @@ const data = {
       category: "御守",
       name: "闘魂守（丸）",
       types: [],
-      colors: ["青", "赤", "白"],
+      colors: ["青", "赤", "白", "黒地・金文字"],
       price: 700,
+      weight: 7,
     },
     {
       pid: "kisei_mamori",
@@ -127,6 +129,7 @@ const data = {
         "黒地・紐橙",
       ],
       price: 800,
+      weight: 6,
     },
     {
       pid: "deau_wa",
@@ -136,15 +139,17 @@ const data = {
       types: [],
       colors: [],
       price: 800,
+      weight: 9,
     },
     {
       pid: "mori_ya",
       image: image.dummy,
       category: "授与品",
       name: "守り矢",
-      types: ["必勝祈願", "開運厄除", "社運隆昌", "心願成就"],
+      types: ["スポーツ上達", "必勝祈願", "開運厄除", "社運隆昌", "心願成就"],
       colors: [],
       price: 1500,
+      weight: 260,
     },
     {
       pid: "hama_ya",
@@ -154,6 +159,7 @@ const data = {
       types: [],
       colors: [],
       price: 700,
+      weight: 21,
     },
     {
       pid: "traffic_safety_sticker",
@@ -163,6 +169,7 @@ const data = {
       types: [],
       colors: [],
       price: 700,
+      weight: 5,
     },
     {
       pid: "traffic_safety_car_mamori",
@@ -172,6 +179,7 @@ const data = {
       types: [],
       colors: [],
       price: 700,
+      weight: 11,
     },
     {
       pid: "kanau_wa_gosyoku",
@@ -181,16 +189,18 @@ const data = {
       types: ["台紙：白黒", "台紙：緑"],
       colors: [],
       price: 800,
+      weight: 10,
     },
-    {
-      pid: "kanau_wa",
-      image: image.dummy,
-      category: "授与品",
-      name: "叶う輪",
-      types: [],
-      colors: ["赤", "青", "黄", "緑"],
-      price: 800,
-    },
+    // {
+    //   pid: "kanau_wa",
+    //   image: image.dummy,
+    //   category: "授与品",
+    //   name: "叶う輪",
+    //   types: [],
+    //   colors: ["赤", "青", "黄", "緑"],
+    //   price: 800,
+    //   weight: 11,
+    // },
     {
       pid: "kanau_wa_soccer",
       image: image.dummy,
@@ -199,6 +209,7 @@ const data = {
       types: [],
       colors: ["赤", "青", "黄", "緑"],
       price: 800,
+      weight: 10,
     },
     {
       pid: "kanau_wa_baseball",
@@ -208,6 +219,7 @@ const data = {
       types: [],
       colors: ["赤", "青", "黄", "緑"],
       price: 800,
+      weight: 10,
     },
     {
       pid: "kanau_wa_volley",
@@ -217,6 +229,7 @@ const data = {
       types: [],
       colors: ["赤", "青", "黄", "緑"],
       price: 800,
+      weight: 10,
     },
     {
       pid: "kanau_wa_basket",
@@ -226,6 +239,7 @@ const data = {
       types: [],
       colors: ["赤", "青", "黄", "緑"],
       price: 800,
+      weight: 10,
     },
     {
       pid: "kanau_wa_tennis",
@@ -235,6 +249,7 @@ const data = {
       types: [],
       colors: ["赤", "青", "黄", "緑"],
       price: 800,
+      weight: 10,
     },
     {
       pid: "kanau_wa_badminton",
@@ -244,6 +259,7 @@ const data = {
       types: [],
       colors: ["赤", "青", "黄", "緑"],
       price: 800,
+      weight: 10,
     },
     {
       pid: "kanau_wa_table_tennis",
@@ -253,6 +269,17 @@ const data = {
       types: [],
       colors: ["赤", "青", "黄", "緑"],
       price: 800,
+      weight: 10,
+    },
+    {
+      pid: "kanau_wa_table_tennis",
+      image: image.dummy,
+      category: "授与品",
+      name: "叶う輪―全般",
+      types: [],
+      colors: ["赤", "青", "黄", "緑"],
+      price: 800,
+      weight: 10,
     },
     {
       pid: "hair_band",
@@ -266,15 +293,14 @@ const data = {
         "黄",
         "紫",
         "黒",
-        "せいじ",
         "ピンク",
         "青",
         "橙",
         "グリーン",
         "濃紺",
-        "緑",
       ],
       price: 800,
+      weight: 10,
     },
     {
       pid: "wrist_band",
@@ -284,6 +310,7 @@ const data = {
       types: [],
       colors: ["青", "赤", "黒", "白", "黄"],
       price: 800,
+      weight: 24,
     },
     {
       pid: "towel",
@@ -293,6 +320,7 @@ const data = {
       types: ["サイズ：タテ約30cm×ヨコ約40cm"],
       colors: [],
       price: 500,
+      weight: 75,
     },
     {
       pid: "towel_long",
@@ -302,6 +330,7 @@ const data = {
       types: ["サイズ：タテ約36cm×ヨコ約84cm"],
       colors: [],
       price: 500,
+      weight: 80,
     },
     {
       pid: "e_ma_sky",
@@ -311,6 +340,7 @@ const data = {
       types: ["銀河・黒", "宵の明星・青", "明の明星・茜"],
       colors: [],
       price: 800,
+      weight: 50,
     },
     {
       pid: "e_ma",
@@ -320,6 +350,7 @@ const data = {
       types: ["スポーツ系", "恋愛成就", "文化系"],
       colors: [],
       price: 800,
+      weight: 40,
     },
     {
       pid: "kanau_wa_hashi",
@@ -329,6 +360,7 @@ const data = {
       types: ["心願成就・黄", "除災招福・赤"],
       colors: [],
       price: 800,
+      weight: 8,
     },
     {
       pid: "syuin_tyou",
@@ -338,6 +370,7 @@ const data = {
       types: ["御朱印帳", "限定御朱印帳"],
       colors: [],
       price: 2000,
+      weight: 180,
     },
     {
       pid: "mari_dorei",
@@ -347,6 +380,7 @@ const data = {
       types: [],
       colors: [],
       price: 1500,
+      weight: 260,
     },
     {
       pid: "ba_tei",
@@ -356,6 +390,7 @@ const data = {
       types: [],
       colors: ["金", "銀"],
       price: 700,
+      weight: 13,
     },
     {
       pid: "yui_syo",
@@ -365,6 +400,7 @@ const data = {
       types: [],
       colors: [],
       price: 300,
+      weight: 27,
     },
   ],
 };

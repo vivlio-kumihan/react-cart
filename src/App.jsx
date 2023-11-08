@@ -3,7 +3,6 @@ import { useState } from "react";
 // import { useState, useTransition, useDeferredValue } from "react";
 import Main from "./containers/Main";
 import Basket from "./containers/Basket";
-import Test from "./containers/Test";
 import data from "./data";
 import "./styles/App.sass";
 
