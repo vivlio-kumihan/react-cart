@@ -48,9 +48,9 @@ const OrderResult = ({ toggle, cartItems }) => {
       ))}
 
       <ul className="calc-amount">
-        {/* <li>商品小計<span>{}</span>円</li> */}
-        {/* <li>消費税<span>{}</span>円</li> */}
-        <li>合計<span>{totalFee}</span>円</li>
+        <li>商品小計<span>{totalFee}</span>円</li>
+        <li>消費税<span>{Math.round(totalFee * 1.1)}</span>円</li>
+        {/* <li>合計<span>{}</span>円</li> */}
         <li>カートの重量合計<span>{totalWeight}</span>g</li>
         <li>
           <button onClick={() => alert("Implement Checkout")}>用紙出力</button>
