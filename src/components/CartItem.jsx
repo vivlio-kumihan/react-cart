@@ -1,21 +1,64 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import ItemCounter from "./ItemCounter";
+import OrderResult from "./OrderResult";
 
-// 新規で作ったコンポーネント名は適当なので適切な名称に変更してください
-// const CartItem = ({ cartItem: { pid, name, types, colors, price, weight }, totalWeight, setTotalWeight }) => {
-const CartItem = ({ cartItem: { pid, name, types, colors, price, weight } }) => {
-
+const CartItem = ({ 
+  cartItem: { pid, name, types, colors, price, weight },
+              // => from OrderResult.js 
+              // # 04
+              // 親コンポーネントからpropsを受け取る。
+              totalFeeHash,
+              setTotalFeeHash,
+              setTotalFee,
+              totalWeightHash,
+              setTotalWeightHash,
+              setTotalWeight
+            }) => {
+  
   // アイテム毎のカウント数小計
   const [count, setCount] = useState(0);
-  // アイテムの重量合計
+
+  // # 05
+  // カート内合計金額を出すための
+  // オブジェクトを生成する関数を設定。
+  // 無限ループするのでuseEffect()関数で対応。
+  useEffect(() => {
+    setTotalFeeHash({ ...totalFeeHash, [pid]: 0});
+    setTotalWeightHash({ ...totalWeightHash, [pid]: 0});
+  }, []);
+
+  // # 06
+  // <Main>にある商品の一覧から『カートに追加』する。
+  // 選択した順番にkey『商品ID』と値『初期値の0』の
+  // オブジェクトが生成されることを確認。
+  // 3つともカートに入れる。意図通りのオブジェクトを生成。
+  // console.log(totalFeeHash, "CartItem");
+  // => {deau_wa: 0, mori_ya: 0, thokon_mamori_kado: 0}
+  // <= to OrderResult.js 
+
+  // # 07
+  // 単価に個数をかける。
+  // それぞれのアイテムの合計重量を算出。
+  totalFeeHash[pid] = price * count;
+  const totalFeeResult = Object.values(totalFeeHash).reduce((acc, fee) => acc + fee, 0);   
+  
+  // アイテム毎の重量合計
   const [itemSubTotalWeight, setItemSubTotalWeight] = useState([]);
-  // カートの重量合計
-  // setTotalWeight(totalWeight + itemSubTotalWeight);
-  // const totalWeight = price * count + totalWeight;
+  
+  // カートの総重量合計
+  totalWeightHash[pid] = itemSubTotalWeight;
+  const totalWeightResult = Object.values(totalWeightHash).reduce((acc, weight) => acc + weight, 0);
+  
+  // OrderResult.jsxへ渡す。
+  useEffect(() => {
+    setTotalFee(totalFeeResult);
+    setTotalWeight(totalWeightResult);
+  });   
+
   // mapで展開できるように下準備
   const typesObj = Object.keys(types);
   const colorsObj = Object.keys(colors);
-
+  
   // 対象が空配列かを検証
   const hasItems = (arr) => arr.length > 0;
   // false または、false => false このfalseに
@@ -31,7 +74,7 @@ const CartItem = ({ cartItem: { pid, name, types, colors, price, weight } }) => 
             count={count} 
             setCount={setCount}
             weight={weight}
-            setItemSubTotalWeight={setItemSubTotalWeight}              
+            setItemSubTotalWeight={setItemSubTotalWeight} 
           />
         }
       </div>
@@ -44,7 +87,7 @@ const CartItem = ({ cartItem: { pid, name, types, colors, price, weight } }) => 
               count={count} 
               setCount={setCount}
               weight={weight}
-              setItemSubTotalWeight={setItemSubTotalWeight}              
+              setItemSubTotalWeight={setItemSubTotalWeight}  
             />              
           </li>
         ))}
@@ -57,7 +100,7 @@ const CartItem = ({ cartItem: { pid, name, types, colors, price, weight } }) => 
               count={count} 
               setCount={setCount}
               weight={weight}
-              setItemSubTotalWeight={setItemSubTotalWeight}               
+              setItemSubTotalWeight={setItemSubTotalWeight} 
             />            
           </li>
         ))}
