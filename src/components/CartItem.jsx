@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import ItemCounter from "./ItemCounter";
-import OrderResult from "./OrderResult";
 
 const CartItem = ({ 
   cartItem: { pid, name, types, colors, price, weight },
@@ -43,13 +42,13 @@ const CartItem = ({
   const totalFeeResult = Object.values(totalFeeHash).reduce((acc, fee) => acc + fee, 0);   
   
   // アイテム毎の重量合計
-  const [itemSubTotalWeight, setItemSubTotalWeight] = useState([]);
+  const [itemSubTotalWeight, setItemSubTotalWeight] = useState(0);
   
   // カートの総重量合計
   totalWeightHash[pid] = itemSubTotalWeight;
   const totalWeightResult = Object.values(totalWeightHash).reduce((acc, weight) => acc + weight, 0);
   
-  // OrderResult.jsxへ渡す。
+  // 総合計をOrderResult.jsxへ渡す。
   useEffect(() => {
     setTotalFee(totalFeeResult);
     setTotalWeight(totalWeightResult);
