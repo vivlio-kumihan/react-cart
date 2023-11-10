@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import CartItem from "./CartItem";
-import SendFee from "./SendFee";
+import SendFee from "../containers/SendFee";
 
 const OrderResult = ({ toggle, cartItems }) => {
 

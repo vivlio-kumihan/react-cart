@@ -1,7 +1,7 @@
 import { useState } from "react";
-import "../styles/containers/Basket.sass";
+import "../styles/components/Basket.sass";
 
-import OrderResult from "../components/OrderResult";
+import OrderResult from "./OrderResult";
 
 const Basket = ({ cartItems }) => {
   const [toggle, setToggle] = useState(false);

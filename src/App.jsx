@@ -1,8 +1,8 @@
 import { useState } from "react";
 // // 注意
 // import { useState, useTransition, useDeferredValue } from "react";
-import Main from "./containers/Main";
-import Basket from "./containers/Basket";
+import Main from "./components/Main";
+import Basket from "./components/Basket";
 import data from "./data";
 import "./styles/App.sass";
 

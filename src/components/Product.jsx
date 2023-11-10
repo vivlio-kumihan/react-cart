@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-import "../styles/containers/Product.sass";
+import "../styles/components/Product.sass";
 
 const Product = ({ products, cartItems, onAddCart, onRemoveCart }) => {
   const [hoveredCard, setHoveredCard] = useState(null);

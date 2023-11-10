@@ -1,4 +1,4 @@
-import "../styles/containers/Main.sass";
+import "../styles/components/Main.sass";
 
 import Product from "./Product";
 const Main = ({ products, cartItems, onAddCart, onRemoveCart }) => {
