@@ -1,11 +1,11 @@
+import ProductsIndex from "./ProductsIndex";
 import "../styles/components/Main.sass";
 
-import Product from "./Product";
 const Main = ({ products, cartItems, onAddCart, onRemoveCart }) => {
   return (
     <div className="wrapper">
       <h2>お守り・ご祈祷</h2>
-      <Product
+      <ProductsIndex
         products={products}
         cartItems={cartItems}
         onAddCart={onAddCart}
