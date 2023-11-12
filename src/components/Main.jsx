@@ -1,4 +1,5 @@
 import ProductsIndex from "./ProductsIndex";
+import Test from "./Test";
 import "../styles/components/Main.sass";
 
 const Main = ({ products, cartItems, onAddCart, onRemoveCart }) => {

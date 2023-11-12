@@ -16,7 +16,7 @@ const SelectNumber = ({ types, selectedNumber, setSelectedNumber }) => {
           setSelectedNumber(e.target.value)
           types.type = selectedNumber
         }}
-      /> = {types.type}
+      />
     </>
   );
 };

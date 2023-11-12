@@ -4,26 +4,11 @@ import SelectNumber from "../containers/SelectNumber";
 import "../styles/components/Product.sass";
 
 const ProductsIndex = ({ products, cartItems, onAddCart, onRemoveCart }) => {
-  const [item, setItem] = useState({});
-
-  // products.map((item) => {
-  //   setItem(() => {
-  //   });
-  //   console.log(item.pid);
-  //   console.log(item.name);
-  //   console.log(item.types);
-  //   console.log(item.colors);
-  //   console.log(item.price);
-  //   console.log(item.weight);
-  // });
   
 
-  const [selectedNumber, setSelectedNumber] = useState(0);
-  const [nameCount, setNameCount] = useState(0);
   const [typesCountHash, setTypesCountHash] = useState({});
-  const [colorsCountHash, colorsTypeCountHash] = useState({});
 
-  // console.log(products);
+
   return (
     <div className="products-wrapper">
       {products.map((product) => (
@@ -39,17 +24,11 @@ const ProductsIndex = ({ products, cartItems, onAddCart, onRemoveCart }) => {
             {Object.keys(product.types).length !== 0 &&
               <ul className="type" key={product.pid}>
                 {Object.keys(product.types).map((type, idx) => (
-                  <div key={idx}>
-                  <li>
+                  <li key={idx}>
                     <label htmlFor={type} type={type}>{type}</label>
                     <SelectNumber
-                      types={product.types}
-                      typesCountHash={typesCountHash}
-                      selectNumber={selectedNumber}
-                      setSelectNumber={setSelectedNumber}
                     />
                   </li>
-                  </div>
                 ))}
               </ul>
             }
@@ -58,7 +37,12 @@ const ProductsIndex = ({ products, cartItems, onAddCart, onRemoveCart }) => {
                 {Object.keys(product.colors).map((color, idx) => (
                   <li key={idx}>
                     <label htmlFor={color} type={color}>{color}</label>
-                      <input className="select-number" type="number" id={color} name={color} />
+                    <SelectNumber
+                      // types={product.colors}
+                      // typesCountHash={colorsCountHash}
+                      // selectNumber={selectedNumber}
+                      // setSelectNumber={setSelectedNumber}
+                    />
                   </li>                  
                 ))}
               </ul>
@@ -95,3 +79,29 @@ export default ProductsIndex;
 //     </button>
 //   )}
 // </div>
+
+  // products.map((item) => {
+  //   const itemHash = item.types;
+  //   Object.keys(item.types).length !== 0 &&
+  //     setTypesCountHash({ ...typesCountHash, itemHash });
+  //   Object.keys(item.colors).length !== 0 &&
+  //     colorsTypeCountHash(item.colors);
+  // });
+
+  // console.log(item.pid);
+  // console.log(item.name);
+  // console.log(item.types);
+  // console.log(item.colors);
+  // console.log(item.price);
+  // console.log(item.weight);
+
+                        // types={product.types}
+                      // typesCountHash={typesCountHash}
+                      // selectNumber={selectedNumber}
+                      // setSelectNumber={setSelectedNumber}
+
+
+  // const [selectedNumber, setSelectedNumber] = useState(0);
+  // const [nameCount, setNameCount] = useState(0);
+  // const [typesCountHash, setTypesCountHash] = useState({});
+  // const [colorsCountHash, colorsTypeCountHash] = useState({});
