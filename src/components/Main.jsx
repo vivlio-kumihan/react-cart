@@ -1,6 +1,6 @@
 import "../styles/containers/Main.sass";
 
-import Product from "./Product";
+import Product from "../containers/Product";
 const Main = ({ data, cartItems, onAddCart, onRemoveCart }) => {
   return (
     <div className="wrapper">

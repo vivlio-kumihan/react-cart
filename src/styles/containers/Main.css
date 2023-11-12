@@ -6,7 +6,7 @@
   text-align: center;
   font-size: 2rem;
 }
-.wrapper .products-wrapper {
+.wrapper .data-wrapper {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 30px;

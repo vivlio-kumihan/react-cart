@@ -7,7 +7,7 @@ import data from "./data";
 import "./styles/App.sass";
 
 const App = () => {
-  const { products } = data;
+  // const { data } = data;
   const [cartItems, setCartItems] = useState([]);
   const onAddCart = (product) => {
     const exist = cartItems.find((cartItem) => cartItem.pid === product.pid);
@@ -71,7 +71,7 @@ const App = () => {
       {/* 注意 */}
       {/* <Test /> */}
       <Main
-        products={products}
+        data={data}
         onAddCart={onAddCart}
         onRemoveCart={onRemoveCart}
         cartItems={cartItems}

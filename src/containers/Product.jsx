@@ -2,7 +2,7 @@ import { useState } from "react";
 
 import "../styles/containers/Product.sass";
 
-const Product = ({ products, cartItems, onAddCart, onRemoveCart }) => {
+const Product = ({ data, cartItems, onAddCart, onRemoveCart }) => {
   const [hoveredCard, setHoveredCard] = useState(null);
   const handleMouseEnter = (product) => {
     setHoveredCard(product.pid);
@@ -12,8 +12,8 @@ const Product = ({ products, cartItems, onAddCart, onRemoveCart }) => {
   };
 
   return (
-    <div className="products-wrapper">
-      {products.map((product) => (
+    <div className="data-wrapper">
+      {data.map((product) => (
         <div
           className="card"
           key={product.pid}
