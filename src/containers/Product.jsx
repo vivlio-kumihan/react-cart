@@ -2,7 +2,7 @@ import { useState } from "react";
 
 import "../styles/containers/Product.sass";
 
-const Product = ({ data, cartItems, onAddCart, onRemoveCart }) => {
+const Product = ({ data, cartItems, onAddCart, onRemoveCart, toggleRemoveCartFromMain }) => {
   const [hoveredCard, setHoveredCard] = useState(null);
   const handleMouseEnter = (product) => {
     setHoveredCard(product.pid);
@@ -25,7 +25,10 @@ const Product = ({ data, cartItems, onAddCart, onRemoveCart }) => {
             {cartItems.find((cartItem) => cartItem.pid === product.pid) ? (
               <button
                 className="mask-btn remove-btn"
-                onClick={() => onRemoveCart(product)}
+                onClick={() => {
+                  onRemoveCart(product)
+                  toggleRemoveCartFromMain()
+                }}
               >
                 カートから削除
               </button>

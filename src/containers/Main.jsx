@@ -1,7 +1,12 @@
 import "../styles/containers/Main.sass";
 
 import Product from "./Product";
-const Main = ({ data, cartItems, onAddCart, onRemoveCart }) => {
+const Main = ({ data, cartItems, onAddCart, onRemoveCart, removeCartFromMain, setRemoveCartFromMain }) => {
+  const toggleRemoveCartFromMain = () => {
+    setRemoveCartFromMain(present => !present)
+  }
+  console.log(removeCartFromMain);
+
   return (
     <div className="wrapper">
       <h2>お守り・ご祈祷</h2>
@@ -10,6 +15,7 @@ const Main = ({ data, cartItems, onAddCart, onRemoveCart }) => {
         cartItems={cartItems}
         onAddCart={onAddCart}
         onRemoveCart={onRemoveCart}
+        toggleRemoveCartFromMain={toggleRemoveCartFromMain}
       />
     </div>
   );

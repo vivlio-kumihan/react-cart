@@ -7,8 +7,10 @@ import data from "./data";
 import "./styles/App.sass";
 
 const App = () => {
-  // const { data } = data;
   const [cartItems, setCartItems] = useState([]);
+
+  const [removeCartFromMain, setRemoveCartFromMain] = useState(false);
+
   const onAddCart = (product) => {
     const exist = cartItems.find((cartItem) => cartItem.pid === product.pid);
     if (!exist) {
@@ -75,16 +77,19 @@ const App = () => {
         onAddCart={onAddCart}
         onRemoveCart={onRemoveCart}
         cartItems={cartItems}
+        removeCartFromMain={removeCartFromMain}
+        setRemoveCartFromMain={setRemoveCartFromMain}
       />
       <Basket
         onAddCart={onAddCart}
         onRemoveCart={onRemoveCart}
         cartItems={cartItems}
         setCartItems={setCartItems}
+        removeCartFromMain={removeCartFromMain}
+        setRemoveCartFromMain={setRemoveCartFromMain}
       />
     </div>
   );
-  // );
 };
 
 export default App;
