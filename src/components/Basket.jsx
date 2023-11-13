@@ -1,7 +1,7 @@
 import { useState } from "react";
+import OrderResult from "./OrderResult";
 import "../styles/components/Basket.sass";
 
-import OrderResult from "./OrderResult";
 const Basket = ({ cartItems, totalFeeHash, setTotalFeeHash, removeCartPid }) => {
   const [toggle, setToggle] = useState(false);
   const toggleAction = () => {

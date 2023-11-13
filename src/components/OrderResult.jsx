@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import CartItem from "../containers/CartItem";
+import CartItem from "../components/CartItem";
 import SendFee from "../containers/SendFee";
 
 const OrderResult = ({ toggle, cartItems, removeCartPid }) => {
