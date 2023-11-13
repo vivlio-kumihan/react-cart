@@ -1,13 +1,13 @@
-import ProductsIndex from "./ProductsIndex";
-import Test from "./Test";
 import "../styles/components/Main.sass";
+import Product from "./Product";
 
-const Main = ({ products, cartItems, onAddCart, onRemoveCart }) => {
+const Main = ({ data, cartItems, onAddCart, onRemoveCart }) => {
+  
   return (
     <div className="wrapper">
       <h2>お守り・ご祈祷</h2>
-      <ProductsIndex
-        products={products}
+      <Product
+        data={data}
         cartItems={cartItems}
         onAddCart={onAddCart}
         onRemoveCart={onRemoveCart}

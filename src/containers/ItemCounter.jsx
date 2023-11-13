@@ -1,12 +1,15 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const ItemCounter = ({ 
   count, setCount, 
   weight, 
   setItemSubTotalWeight,
+  pid,
+  removeCartPid
 }) => {
   const [state, setState] = useState(0);
 
+  // カウント・リセットの関数
   const resetCount = () => {
     setCount(count - state);
     setState(0);
@@ -19,6 +22,16 @@ const ItemCounter = ({
     setState(state + num);
     setItemSubTotalWeight(weight * (count + num));
   };
+
+  // カートを削除した時点で処理が終了してここまで来ない。
+  useEffect(() => {
+    // pid と removeCartPid が等しい場合に resetCount 関数を呼び出す
+    if (pid === removeCartPid) {
+      // カートを削除すると途中で処理は中断してここまで来ない。
+      console.log(removeCartPid, "is removeCartPid");
+      resetCount();
+    }
+  }, [pid, removeCartPid]);  
   
   return (
     <div className="wrapper">
@@ -39,7 +52,6 @@ const ItemCounter = ({
           handleCounter(-1);
         }}
         disabled={state === 0}
-        
         className="remove"
       >
         {/* マイナスの記号 */}
@@ -52,6 +64,7 @@ const ItemCounter = ({
       >
         <div className="fa-solid fa-trash-can"></div>
       </button>
+
     </div>
   );
 };

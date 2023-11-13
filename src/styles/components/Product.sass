@@ -4,43 +4,43 @@
   position: relative
   background-color: #fff
   box-shadow: 0 0 10px #eee
-  // .mask
-  //   display: flex
-  //   flex-direction: column
-  //   align-items: center
-  //   justify-content: center
-  //   gap: 30px
-  //   position: absolute
-  //   top: 0
-  //   left: 0
-  //   width: 100%
-  //   height: 100%
-  //   background-color: rgba(0, 0, 0, 0.6)
-  //   z-index: 1
-  //   transition: .7s
-  //   visibility: hidden
-  //   opacity: 0
-  //   &.appear
-  //     visibility: visible
-  //     opacity: .95
-  //   .mask-btn
-  //     padding: 10px 20px
-  //     font-family: fw.$noto-sans
-  //     font-size: .85rem
-  //     line-height: 1em
-  //     font-weight: 700
-  //     color: #fff
-  //     background-color: fw.$green-dark
-  //     border-radius: 9999px
-  //     transform: translateY(2px)
-  //     transition: .3s
-  //     opacity: .95
-  //     &:hover
-  //       transform: translateY(0)
-  //       opacity: .5
-  //       box-shadow: 0 1px 2px #999
-  //     &.remove-btn
-  //       background-color: fw.$orange-dark
+  .mask
+    display: flex
+    flex-direction: column
+    align-items: center
+    justify-content: center
+    gap: 30px
+    position: absolute
+    top: 0
+    left: 0
+    width: 100%
+    height: 100%
+    background-color: rgba(0, 0, 0, 0.6)
+    z-index: 1
+    transition: .7s
+    visibility: hidden
+    opacity: 0
+    &.appear
+      visibility: visible
+      opacity: .95
+    .mask-btn
+      padding: 10px 20px
+      font-family: fw.$noto-sans
+      font-size: .85rem
+      line-height: 1em
+      font-weight: 700
+      color: #fff
+      background-color: fw.$green-dark
+      border-radius: 9999px
+      transform: translateY(2px)
+      transition: .3s
+      opacity: .95
+      &:hover
+        transform: translateY(0)
+        opacity: .5
+        box-shadow: 0 1px 2px #999
+      &.remove-btn
+        background-color: fw.$orange-dark
   .frame
     width: 100%
     aspect-ratio: 4/3
@@ -59,13 +59,9 @@
       font-weight: 500
       border-bottom: 1px solid fw.$black-light
     .type, .color
-      display: flex
-      align-items: center
-      flex-wrap: wrap
-      column-gap: 15px
-      row-gap: 7px
       position: relative
       width: 100%
+      flex-wrap: wrap
       padding-left: 25px
       font-size: .95rem
       line-height: 1.2em
@@ -83,19 +79,8 @@
       content: "種類"
     .color::before
       content: "色"
-    .type, .color
+    .type
       padding-left: 35px
-      li
-        display: flex
-        align-items: center
-        column-gap: 5px
-        row-gap: 10px
-        input
-          text-align: right
-          width: 2.5rem
-          overflow: auto
-          background-color: rgba(0, 0, 0, .075)
-          border-radius: 5px
     .price
       font-size: 1.1rem
       font-weight: 700
@@ -106,3 +91,5 @@
     > ul
       display: flex
       column-gap: 10px
+      &.display-none
+        display: none

@@ -1,6 +1,6 @@
 // import image from "./img/image";
 // const data = {
-//   products: [
+//   data: [
 //     {
 //       pid: "deau_wa",
 //       image: image.dummy,
@@ -42,7 +42,7 @@ import image from "./img";
 // pidを属性（メソッド）にして管理する方針
 
 const data = {
-  products: [
+  data: [
     {
       pid: "o-fuda_family_safety",
       image: image.dummy,

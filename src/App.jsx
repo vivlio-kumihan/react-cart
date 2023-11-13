@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 // // 注意
 // import { useState, useTransition, useDeferredValue } from "react";
 import Main from "./components/Main";
@@ -7,8 +7,10 @@ import data from "./data";
 import "./styles/App.sass";
 
 const App = () => {
-  const { products } = data;
+  // カートに入れる商品の状態
   const [cartItems, setCartItems] = useState([]);
+  const [removeCartPid, setRemoveCartPid] = useState("");
+  // 商品をカートに追加する関数の定義
   const onAddCart = (product) => {
     const exist = cartItems.find((cartItem) => cartItem.pid === product.pid);
     if (!exist) {
@@ -23,8 +25,9 @@ const App = () => {
     const newCartItems = cartItems.filter(
       (cartItem) => cartItem.pid !== product.pid
     );
+    setRemoveCartPid(product.pid);
     setCartItems(newCartItems);
-    // 注意
+    // // 注意
     // localStorage.setItem("cartItems", JSON.stringify(newCartItems));
   };
 
@@ -71,7 +74,7 @@ const App = () => {
       {/* 注意 */}
       {/* <Test /> */}
       <Main
-        products={products}
+        data={data}
         onAddCart={onAddCart}
         onRemoveCart={onRemoveCart}
         cartItems={cartItems}
@@ -81,10 +84,10 @@ const App = () => {
         onRemoveCart={onRemoveCart}
         cartItems={cartItems}
         setCartItems={setCartItems}
+        removeCartPid={removeCartPid}
       />
     </div>
   );
-  // );
 };
 
 export default App;
