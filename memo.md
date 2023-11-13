@@ -1,3 +1,60 @@
+# 質問です
+
+お世話になります。
+高広です。
+先日、個別にカウンターを動かすことを教わってからやりましたことは、
+
+* カート内で商品の注文数の増減。
+* そのカウントに合わせた料金の割り出し。
+* 商品名だけ、種類だけ、色だけの3つのカート構成でそれぞれ計算できるようにしたこと。
+* 送料の設定
+* 合計金額の割り出し。
+  
+以上ですが、ここで問題が発生しています。
+
+* 商品数を全て0にしても送料が0にならない問題。
+* useEffectを使いまくっているがもっと良いやり方があるのか。
+* __Main内の商品の一覧から、カートを削除ボタンを押してもカート内のカウンターに反映されない。__
+
+今回質問させていただきますのは3番目の問題です。
+以下のように対応しようとしましたが解決できませんでした。
+
+```
+構成はこのようになっております。
+
+App.js ⎯⎯ Main ⎯ Product
+⎿ Basket ⎯ OrderResult ⎯ CartItem ⎯ CartItem ⎯ ItemCounter
+```
+
+`App.js`にて、カートが削除されるたびに（`onRemoveCart`関数が発火するたびに）
+```
+App.js L12:
+  const [removeCartPid, setRemoveCartPid] = useState("");
+```
+
+`removeCartPid`ステートに『`pid`（プロダクトID）』を設定して、
+
+```
+App.js L28:
+setRemoveCartPid(product.pid);
+```
+
+それを`ItemCounter`までpropsで持ってきて以下の処理でカート削除に対応した欄のカウンターがリセットされるのではないかとやりましたが、カートを削除した時点で処理が終了してしまっている。
+
+```
+ItemCounter L26:
+  useEffect(() => {
+    // pid と removeCartPid が等しい場合に resetCount 関数を呼び出す
+    if (pid === removeCartPid) {
+      resetCount();
+    }
+  }, [pid, removeCartPid]); 
+```
+
+お忙しいところ恐れいますがご教示願います。
+
+---
+以前の質問
 # 質問
 
 お世話になります。高広です。

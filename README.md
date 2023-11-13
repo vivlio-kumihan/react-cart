@@ -1,8 +1,3 @@
-# Second Version
-
-カート内での計算は完成している。
-ただし、Mainでカートを削除すると計算が狂う。
-
 # React + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
