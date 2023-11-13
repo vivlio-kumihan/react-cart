@@ -5,7 +5,7 @@ import image from "./img";
 
 const data = [
   {
-    pid: "o-fuda_family_safety",
+    pid: "o_fuda_family_safety",
     image: image.dummy,
     category: "御神札",
     name: "御神札",

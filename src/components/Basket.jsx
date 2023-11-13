@@ -2,15 +2,14 @@ import { useState } from "react";
 import "../styles/components/Basket.sass";
 
 import OrderResult from "./OrderResult";
-
-const Basket = ({ cartItems, totalFeeHash, setTotalFeeHash, removeCartFromMain }) => {
+const Basket = ({ cartItems, totalFeeHash, setTotalFeeHash, removeCartPid }) => {
   const [toggle, setToggle] = useState(false);
   const toggleAction = () => {
     setToggle(!toggle);
   };
-  console.log(removeCartFromMain);
+  // カートを削除したら出てくるログ
+  console.log(removeCartPid)
   
-
   return (
     <div className="basket">
       <div className="cart-title-wrapper">
@@ -24,7 +23,7 @@ const Basket = ({ cartItems, totalFeeHash, setTotalFeeHash, removeCartFromMain }
         cartItems={cartItems} 
         totalFeeHash={totalFeeHash}
         setTotalFeeHash={setTotalFeeHash}
-        removeCartFromMain={removeCartFromMain}
+        removeCartPid={removeCartPid}
       />
     </div>
   );

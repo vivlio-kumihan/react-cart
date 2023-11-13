@@ -4,7 +4,6 @@ import ItemCounter from "./ItemCounter";
 const CartItem = ({ 
   cartItem: { pid, name, types, colors, price, weight },
               // => from OrderResult.js 
-              // # 04
               // 親コンポーネントからpropsを受け取る。
               totalFeeHash,
               setTotalFeeHash,
@@ -12,13 +11,12 @@ const CartItem = ({
               totalWeightHash,
               setTotalWeightHash,
               setTotalWeight,
-              removeCartFromMain
+              removeCartPid
             }) => {
 
   // アイテム毎のカウント数小計
   const [count, setCount] = useState(0);
 
-  // # 05
   // カート内合計金額を出すための
   // オブジェクトを生成する関数を設定。
   // 無限ループするのでuseEffect()関数で対応。
@@ -27,16 +25,13 @@ const CartItem = ({
     setTotalWeightHash({ ...totalWeightHash, [pid]: 0});
   }, []);
 
-  // # 06
   // <Main>にある商品の一覧から『カートに追加』する。
   // 選択した順番にkey『商品ID』と値『初期値の0』の
   // オブジェクトが生成されることを確認。
   // 3つともカートに入れる。意図通りのオブジェクトを生成。
-  // console.log(totalFeeHash, "CartItem");
   // => {deau_wa: 0, mori_ya: 0, thokon_mamori_kado: 0}
   // <= to OrderResult.js 
 
-  // # 07
   // 単価に個数をかける。
   // それぞれのアイテムの合計重量を算出。
   totalFeeHash[pid] = price * count;
@@ -75,7 +70,8 @@ const CartItem = ({
             setCount={setCount}
             weight={weight}
             setItemSubTotalWeight={setItemSubTotalWeight} 
-            removeCartFromMain={removeCartFromMain}
+            pid={pid}
+            removeCartPid={removeCartPid}
           />
         }
       </div>
@@ -89,7 +85,8 @@ const CartItem = ({
               setCount={setCount}
               weight={weight}
               setItemSubTotalWeight={setItemSubTotalWeight} 
-              removeCartFromMain={removeCartFromMain} 
+              pid={pid}
+              removeCartPid={removeCartPid}
             />              
           </li>
         ))}
@@ -103,7 +100,8 @@ const CartItem = ({
               setCount={setCount}
               weight={weight}
               setItemSubTotalWeight={setItemSubTotalWeight} 
-              removeCartFromMain={removeCartFromMain}
+              pid={pid}
+              removeCartPid={removeCartPid}
             />            
           </li>
         ))}

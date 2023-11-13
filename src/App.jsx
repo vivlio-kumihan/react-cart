@@ -9,6 +9,7 @@ import "./styles/App.sass";
 const App = () => {
   // カートに入れる商品の状態
   const [cartItems, setCartItems] = useState([]);
+  const [removeCartPid, setRemoveCartPid] = useState("");
   // 商品をカートに追加する関数の定義
   const onAddCart = (product) => {
     const exist = cartItems.find((cartItem) => cartItem.pid === product.pid);
@@ -24,13 +25,11 @@ const App = () => {
     const newCartItems = cartItems.filter(
       (cartItem) => cartItem.pid !== product.pid
     );
+    setRemoveCartPid(product.pid);
     setCartItems(newCartItems);
     // // 注意
     // localStorage.setItem("cartItems", JSON.stringify(newCartItems));
   };
-  // カートから商品を取った時の合図
-  const [removeCartFromMain, setRemoveCartFromMain] = useState(true);
-  
 
   // // 注意
   // // ローカル・ストレージにキャッシュを保存できる。
@@ -79,14 +78,13 @@ const App = () => {
         onAddCart={onAddCart}
         onRemoveCart={onRemoveCart}
         cartItems={cartItems}
-        setRemoveCartFromMain={setRemoveCartFromMain}
       />
       <Basket
         onAddCart={onAddCart}
         onRemoveCart={onRemoveCart}
         cartItems={cartItems}
         setCartItems={setCartItems}
-        removeCartFromMain={removeCartFromMain}
+        removeCartPid={removeCartPid}
       />
     </div>
   );
