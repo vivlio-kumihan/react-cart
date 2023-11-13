@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
-import CartItem from "./CartItem";
-import SendFee from "./SendFee";
+import CartItem from "../containers/CartItem";
+import SendFee from "../containers/SendFee";
 
-const OrderResult = ({ toggle, cartItems }) => {
+const OrderResult = ({ toggle, cartItems, removeCartFromMain }) => {
 
   const isEmpty = (arr) => arr.length < 1;
   // # 01
@@ -53,6 +53,7 @@ const OrderResult = ({ toggle, cartItems }) => {
           setTotalWeightHash={setTotalWeightHash}
           totalWeight={totalWeight}
           setTotalWeight={setTotalWeight}
+          removeCartFromMain={removeCartFromMain}
         />
       ))}
 

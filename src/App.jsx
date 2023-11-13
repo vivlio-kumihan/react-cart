@@ -1,16 +1,15 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 // // 注意
 // import { useState, useTransition, useDeferredValue } from "react";
-import Main from "./containers/Main";
-import Basket from "./containers/Basket";
+import Main from "./components/Main";
+import Basket from "./components/Basket";
 import data from "./data";
 import "./styles/App.sass";
 
 const App = () => {
+  // カートに入れる商品の状態
   const [cartItems, setCartItems] = useState([]);
-
-  const [removeCartFromMain, setRemoveCartFromMain] = useState(false);
-
+  // 商品をカートに追加する関数の定義
   const onAddCart = (product) => {
     const exist = cartItems.find((cartItem) => cartItem.pid === product.pid);
     if (!exist) {
@@ -26,9 +25,12 @@ const App = () => {
       (cartItem) => cartItem.pid !== product.pid
     );
     setCartItems(newCartItems);
-    // 注意
+    // // 注意
     // localStorage.setItem("cartItems", JSON.stringify(newCartItems));
   };
+  // カートから商品を取った時の合図
+  const [removeCartFromMain, setRemoveCartFromMain] = useState(true);
+  
 
   // // 注意
   // // ローカル・ストレージにキャッシュを保存できる。
@@ -77,7 +79,6 @@ const App = () => {
         onAddCart={onAddCart}
         onRemoveCart={onRemoveCart}
         cartItems={cartItems}
-        removeCartFromMain={removeCartFromMain}
         setRemoveCartFromMain={setRemoveCartFromMain}
       />
       <Basket
@@ -86,7 +87,6 @@ const App = () => {
         cartItems={cartItems}
         setCartItems={setCartItems}
         removeCartFromMain={removeCartFromMain}
-        setRemoveCartFromMain={setRemoveCartFromMain}
       />
     </div>
   );

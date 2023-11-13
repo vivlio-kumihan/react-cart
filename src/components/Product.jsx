@@ -1,14 +1,18 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
-import "../styles/containers/Product.sass";
+import "../styles/components/Product.sass";
 
-const Product = ({ data, cartItems, onAddCart, onRemoveCart, toggleRemoveCartFromMain }) => {
+const Product = ({ data, cartItems, onAddCart, onRemoveCart, setRemoveCartFromMain }) => {
   const [hoveredCard, setHoveredCard] = useState(null);
   const handleMouseEnter = (product) => {
     setHoveredCard(product.pid);
   };
   const handleMouseLeave = () => {
     setHoveredCard(null);
+  };
+  
+  const toggleCartFromMain = () => {
+    setRemoveCartFromMain(present => !present);
   };
 
   return (
@@ -27,13 +31,17 @@ const Product = ({ data, cartItems, onAddCart, onRemoveCart, toggleRemoveCartFro
                 className="mask-btn remove-btn"
                 onClick={() => {
                   onRemoveCart(product)
-                  toggleRemoveCartFromMain()
+                  toggleCartFromMain()
                 }}
               >
                 カートから削除
               </button>
             ) : (
-              <button className="mask-btn" onClick={() => onAddCart(product)}>
+              <button className="mask-btn" onClick={() => {
+                onAddCart(product)
+                toggleCartFromMain()
+              }}
+              >
                 カートに追加
               </button>
             )}

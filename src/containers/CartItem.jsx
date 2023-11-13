@@ -11,9 +11,10 @@ const CartItem = ({
               setTotalFee,
               totalWeightHash,
               setTotalWeightHash,
-              setTotalWeight
+              setTotalWeight,
+              removeCartFromMain
             }) => {
-  
+
   // アイテム毎のカウント数小計
   const [count, setCount] = useState(0);
 
@@ -74,6 +75,7 @@ const CartItem = ({
             setCount={setCount}
             weight={weight}
             setItemSubTotalWeight={setItemSubTotalWeight} 
+            removeCartFromMain={removeCartFromMain}
           />
         }
       </div>
@@ -86,7 +88,8 @@ const CartItem = ({
               count={count} 
               setCount={setCount}
               weight={weight}
-              setItemSubTotalWeight={setItemSubTotalWeight}  
+              setItemSubTotalWeight={setItemSubTotalWeight} 
+              removeCartFromMain={removeCartFromMain} 
             />              
           </li>
         ))}
@@ -100,6 +103,7 @@ const CartItem = ({
               setCount={setCount}
               weight={weight}
               setItemSubTotalWeight={setItemSubTotalWeight} 
+              removeCartFromMain={removeCartFromMain}
             />            
           </li>
         ))}

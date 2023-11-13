@@ -1,13 +1,15 @@
 import { useState } from "react";
-import "../styles/containers/Basket.sass";
+import "../styles/components/Basket.sass";
 
 import OrderResult from "./OrderResult";
 
-const Basket = ({ cartItems, totalFeeHash, setTotalFeeHash }) => {
+const Basket = ({ cartItems, totalFeeHash, setTotalFeeHash, removeCartFromMain }) => {
   const [toggle, setToggle] = useState(false);
   const toggleAction = () => {
     setToggle(!toggle);
   };
+  console.log(removeCartFromMain);
+  
 
   return (
     <div className="basket">
@@ -22,6 +24,7 @@ const Basket = ({ cartItems, totalFeeHash, setTotalFeeHash }) => {
         cartItems={cartItems} 
         totalFeeHash={totalFeeHash}
         setTotalFeeHash={setTotalFeeHash}
+        removeCartFromMain={removeCartFromMain}
       />
     </div>
   );

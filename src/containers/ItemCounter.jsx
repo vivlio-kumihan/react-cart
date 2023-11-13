@@ -4,6 +4,7 @@ const ItemCounter = ({
   count, setCount, 
   weight, 
   setItemSubTotalWeight,
+  removeCartFromMain
 }) => {
   const [state, setState] = useState(0);
 
@@ -19,6 +20,7 @@ const ItemCounter = ({
     setState(state + num);
     setItemSubTotalWeight(weight * (count + num));
   };
+
   
   return (
     <div className="wrapper">
@@ -52,6 +54,17 @@ const ItemCounter = ({
       >
         <div className="fa-solid fa-trash-can"></div>
       </button>
+
+      {
+        removeCartFromMain &&
+          <button 
+            onClick={resetCount} 
+            // className="reset"
+            // disabled="none"
+
+          >
+          </button>
+      }
     </div>
   );
 };

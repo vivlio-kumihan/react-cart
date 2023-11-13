@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import "../styles/components/SendFee.sass";
+import "../styles/containers/SendFee.sass";
 
 const SendFee = ({ totalWeight, totalSendFee, setTotalSendFee }) => {
   const [selected, setSelected] = useState("");

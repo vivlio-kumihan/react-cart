@@ -1,7 +1,9 @@
-import "../styles/containers/Main.sass";
+import "../styles/components/Main.sass";
 
-import Product from "../containers/Product";
-const Main = ({ data, cartItems, onAddCart, onRemoveCart }) => {
+import Product from "./Product";
+
+const Main = ({ data, cartItems, onAddCart, onRemoveCart, setRemoveCartFromMain }) => {
+
   return (
     <div className="wrapper">
       <h2>お守り・ご祈祷</h2>
@@ -10,6 +12,7 @@ const Main = ({ data, cartItems, onAddCart, onRemoveCart }) => {
         cartItems={cartItems}
         onAddCart={onAddCart}
         onRemoveCart={onRemoveCart}
+        setRemoveCartFromMain={setRemoveCartFromMain}
       />
     </div>
   );
