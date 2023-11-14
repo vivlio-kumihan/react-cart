@@ -5,7 +5,6 @@ import Product from "./Product";
 const Main = ({ dataList, cartItems, onAddCart, onRemoveCart }) => {
   const [eachCount, setEachCount] = useState(0);
 
-  
   return (
     <div className="wrapper">
       <h2>お守り・ご祈祷</h2>

@@ -1,80 +1,74 @@
-  const TypesColors = ({types, colors, setEachCount, sumCount }) => {
-    const items = [types, colors];
+import { useEffect } from "react";
 
-    return (
-      <>
-        {Object.keys(types).length !== 0 ? (
-          <ul className="types">
-            {Object.keys(types).map((key, idx) => (
-              <li key={idx}>
-                <span>{key}</span>
-                <input 
-                  id="type"
-                  type="number" 
-                  min="0"
-                  onChange={(e) => {
-                    setEachCount(e.target.value)
-                    types[key] = e.target.value
-                  }}
-                  placeholder="0"
-                  // value属性を無しにするとそれぞれカウントできる。
-                  // value={typesCount}
-                />
-              </li>
-            ))}
-            {sumCount(types)}
-          </ul>
-        ) : (
-          <ul className="display-none"></ul>
-        )}
+const TypesColors = ({ types, colors, setEachCount, whichSumCount }) => {
+  // const items = [types, colors];
 
-        {Object.keys(colors).length !== 0 ? (
-          <ul className="colors">
-            {Object.keys(colors).map((key, idx) => (
-              <li key={idx}>
-                <span>{key}</span>
-                <input 
-                  id="type"
-                  type="number"
-                  min="0" 
-                  onChange={(e) => {
-                    setEachCount(e.target.value)
-                    colors[key] = e.target.value
-                  }}
-                  placeholder="0"
-                  // value属性を無しにするとそれぞれカウントできる。
-                  // value={typesCount}
-                />
-              </li>
-            ))}
-            {sumCount(colors)}
-          </ul>
-        ) : (
-          <ul className="display-none"></ul>
-        )}
-      </>
-    );
-  };
+  return (
+    <>
+      {
+        Object.keys(types).length !== 0 ? (
+        <ul className="types">
+          {Object.keys(types).map((key, idx) => (
+            <li key={idx}>
+              <span>{key}</span>
+              <input 
+                id="type"
+                type="number" 
+                min="0"
+                onChange={(e) => {
+                  setEachCount(e.target.value)
+                  types[key] = e.target.value
+                }}
+                placeholder="0"
+                // value属性を無しにするとそれぞれカウントできる。
+                // value={typesCount}
+              />
+            </li>
+          ))}
+          {
+            useEffect(() => {
+              whichSumCount(types);
+            }, [types, whichSumCount])
+          }          
+          {/* {whichSumCount(types)} */}
+        </ul>
+      ) : (
+        <ul className="display-none"></ul>
+      )}
 
-  export default TypesColors;
+      {Object.keys(colors).length !== 0 ? (
+        <ul className="colors">
+          {
+            Object.keys(colors).map((key, idx) => (
+            <li key={idx}>
+              <span>{key}</span>
+              <input 
+                id="type"
+                type="number"
+                min="0" 
+                onChange={(e) => {
+                  setEachCount(e.target.value)
+                  colors[key] = e.target.value
+                }}
+                placeholder="0"
+                // きっかけは、『たまたま』
+                // value属性を無しにするとそれぞれカウント
+                // できることを見つけたことだった。ラッキーだった。
+                // value={typesCount}
+              />
+            </li>
+          ))}
+          {
+            useEffect(() => {
+              whichSumCount(colors);
+            }, [colors, whichSumCount])
+          }
+        </ul>
+      ) : (
+        <ul className="display-none"></ul>
+      )}
+    </>
+  );
+};
 
-// items.forEach((item) => {
-//   <ul className={item.length !== 0 ? `${item}` : "display-none"}>
-//     <li>{item}</li>
-//     {/* {Object.keys(item).map((key, idx) => (
-//       <li key={idx}>
-//         <span>{key}</span>
-//         <input
-//           id={item}
-//           type="number"
-//           onChange={(e) => {
-//             setEachCount(e.target.value);
-//             item[key] = e.target.value;
-//           }}
-//           placeholder="0"
-//         />
-//       </li>
-//     ))}
-//     {sumCount(item)} */}
-//   </ul>
-// })
+export default TypesColors;

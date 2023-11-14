@@ -5,7 +5,7 @@ import "../styles/components/Product.sass";
 const Product = ({ pid, image, name, types, colors, price, weight, data, setEachCount, cartItems, onAddCart, onRemoveCart }) => {
   const [itemCount, setItemCount] = useState(0);
 
-  const sumCount = (hash) => {
+  const whichSumCount = (hash) => {
     const sumCalcCount = Object.values(hash).reduce((acc, current) => acc + parseInt(current), 0)
     setItemCount(parseInt(sumCalcCount));
   };
@@ -24,15 +24,20 @@ const Product = ({ pid, image, name, types, colors, price, weight, data, setEach
             types={types}
             colors={colors} 
             setEachCount={setEachCount}
-            sumCount={sumCount}
+            whichSumCount={whichSumCount}
           />
 
           <div className="price">
             {price}
             <span>円</span>
             &nbsp;|&nbsp;
+            <span>小計</span>
             {price * itemCount}
             <span>円</span>
+            &nbsp;|&nbsp;
+            <span>小計</span>
+            {weight * itemCount}
+            <span>g</span>
           </div>
         </div>
       </div>
@@ -60,29 +65,3 @@ const Product = ({ pid, image, name, types, colors, price, weight, data, setEach
 };
 
 export default Product;
-
-// --------------------------------------------
-// import { useState } from "react";
-// import "../styles/components/Product.sass";
-
-// const Product = ({ item, cartItems, onAddCart, onRemoveCart }) => {
-//   console.log(item);
-//   console.log("hello");
-//   // const [hoveredCard, setHoveredCard] = useState(null);
-//   // const handleMouseEnter = (product) => {
-//   //   setHoveredCard(item.pid);
-//   // };
-//   // const handleMouseLeave = () => {
-//   //   setHoveredCard(null);
-//   // };
-
-//   return (
-//     <>
-//     <p>hello</p>
-
-
-//     </>
-//   );
-// };
-
-// export default Product;
