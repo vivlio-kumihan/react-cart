@@ -28,7 +28,6 @@ const ItemCounter = ({
     // pid と removeCartPid が等しい場合に resetCount 関数を呼び出す
     if (pid === removeCartPid) {
       // カートを削除すると途中で処理は中断してここまで来ない。
-      console.log(removeCartPid, "is removeCartPid");
       resetCount();
     }
   }, [pid, removeCartPid]);  

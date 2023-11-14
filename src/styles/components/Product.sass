@@ -1,32 +1,89 @@
 @use "../parts/forwards" as fw
 
 .card
+  display: flex
+  flex-direction: column
+  justify-content: space-between
   position: relative
+  height: 100%
   background-color: #fff
   box-shadow: 0 0 10px #eee
-  .mask
-    display: flex
-    flex-direction: column
-    align-items: center
-    justify-content: center
-    gap: 30px
-    position: absolute
-    top: 0
-    left: 0
-    width: 100%
-    height: 100%
-    background-color: rgba(0, 0, 0, 0.6)
-    z-index: 1
-    transition: .7s
-    visibility: hidden
-    opacity: 0
-    &.appear
-      visibility: visible
-      opacity: .95
-    .mask-btn
-      padding: 10px 20px
+  .image_frame-info
+    .image-frame
+      width: 100%
+      aspect-ratio: 4/3
+      background-color: #eee
+      img
+        width: 100%
+        height: 100%
+        object-fit: cover
+    .item-info
+      padding: 20px 20px 5px
       font-family: fw.$noto-sans
-      font-size: .85rem
+      .name
+        margin: 0 0 15px
+        padding-bottom: 10px
+        font-size: 1rem
+        font-weight: 500
+        border-bottom: 1px solid fw.$black-light
+      .types, .colors
+        position: relative
+        width: 100%
+        flex-wrap: wrap
+        padding-left: 25px
+        font-size: .95rem
+        line-height: 1.2em
+        &::before
+          position: absolute
+          top: 2px
+          left: 0
+          font-size: .75rem
+          line-height: 1em
+          font-weight: 500p
+          padding: 1.5px 2px
+          color: #fff
+          background-color: #777
+        li
+          display: flex
+          align-items: center
+          gap: 5px
+          input
+            width: 3rem
+            text-align: right
+            color: #999
+            background-color: #eee
+            border-radius: 5px
+            &::placeholder
+              color: #999
+      .types::before
+        content: "種類"
+      .colors::before
+        content: "色"
+      .types
+        padding-left: 35px
+      .price
+        font-size: 1.1rem
+        font-weight: 700
+        > span
+          font-size: .7rem
+      > div, > ul
+        margin-top: 10px
+      > ul
+        display: flex
+        column-gap: 10px
+        row-gap: 7.5px
+        &.display-none
+          display: none
+
+  .btn-wrapper
+    display: flex
+    justify-content: flex-end
+    gap: 10px
+    padding: 0 20px 25px
+    .mask-btn
+      padding: 5px 15px
+      font-family: fw.$noto-sans
+      font-size: .8rem
       line-height: 1em
       font-weight: 700
       color: #fff
@@ -40,56 +97,4 @@
         opacity: .5
         box-shadow: 0 1px 2px #999
       &.remove-btn
-        background-color: fw.$orange-dark
-  .frame
-    width: 100%
-    aspect-ratio: 4/3
-    background-color: #eee
-    img
-      width: 100%
-      height: 100%
-      object-fit: cover
-  .item-info
-    padding: 20px 20px 30px
-    font-family: fw.$noto-sans
-    .name
-      margin: 0 0 15px
-      padding-bottom: 10px
-      font-size: 1rem
-      font-weight: 500
-      border-bottom: 1px solid fw.$black-light
-    .type, .color
-      position: relative
-      width: 100%
-      flex-wrap: wrap
-      padding-left: 25px
-      font-size: .95rem
-      line-height: 1.2em
-      &::before
-        position: absolute
-        top: 2px
-        left: 0
-        font-size: .75rem
-        line-height: 1em
-        font-weight: 500p
-        padding: 1.5px 2px
-        color: #fff
-        background-color: #777
-    .type::before
-      content: "種類"
-    .color::before
-      content: "色"
-    .type
-      padding-left: 35px
-    .price
-      font-size: 1.1rem
-      font-weight: 700
-      span
-        font-size: .7rem
-    > div, > ul
-      margin-top: 10px
-    > ul
-      display: flex
-      column-gap: 10px
-      &.display-none
-        display: none
+        background-color: fw.$orange-dark  

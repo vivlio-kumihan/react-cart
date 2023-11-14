@@ -7,8 +7,6 @@ const Basket = ({ cartItems, totalFeeHash, setTotalFeeHash, removeCartPid }) => 
   const toggleAction = () => {
     setToggle(!toggle);
   };
-  // カートを削除したら出てくるログ
-  console.log(removeCartPid)
   
   return (
     <div className="basket">
