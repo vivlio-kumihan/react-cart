@@ -2,12 +2,25 @@ import { useState } from "react";
 import TypesColors from "../containers/TypesColors";
 import "../styles/components/Product.sass";
 
-const Product = ({ pid, image, name, types, colors, price, weight, data, setEachCount, cartItems, onAddCart, onRemoveCart }) => {
+const Product = ({ 
+        pid, image, name, types, colors, price, weight, 
+        data,
+        itemsTotalFee, setItemsTotalFee, 
+        itemsTotalWeight, setItemsTotalWeight,
+        cartItems, 
+        onAddCart, 
+        onRemoveCart 
+  }) => {
+  const [eachCount, setEachCount] = useState(0);
   const [itemCount, setItemCount] = useState(0);
 
   const whichSumCount = (hash) => {
     const sumCalcCount = Object.values(hash).reduce((acc, current) => acc + parseInt(current), 0)
     setItemCount(parseInt(sumCalcCount));
+  };
+  
+  const handleItemTotalFee = (fee) => {
+    // setItemsTotalFee(Object.values(hash).reduce((acc, current) => acc + parseInt(current), 0));
   };
 
   return (
@@ -33,10 +46,12 @@ const Product = ({ pid, image, name, types, colors, price, weight, data, setEach
             &nbsp;|&nbsp;
             <span>小計</span>
             {price * itemCount}
+            {handleItemTotalFee(price * itemCount)}
             <span>円</span>
             &nbsp;|&nbsp;
             <span>小計</span>
             {weight * itemCount}
+            {/* {setTotalItemWeight(weight * itemCount)} */}
             <span>g</span>
           </div>
         </div>

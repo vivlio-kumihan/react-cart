@@ -3,7 +3,8 @@ import "../styles/components/Main.sass";
 import Product from "./Product";
 
 const Main = ({ dataList, cartItems, onAddCart, onRemoveCart }) => {
-  const [eachCount, setEachCount] = useState(0);
+  const [itemsTotalFee, setItemsTotalFee] = useState(0);
+  const [itemsTotalWeight, setItemsTotalWeight] = useState(0);
 
   return (
     <div className="wrapper">
@@ -14,7 +15,10 @@ const Main = ({ dataList, cartItems, onAddCart, onRemoveCart }) => {
             <li key={data.pid}>
               <Product {...data}
                 data={data}
-                setEachCount={setEachCount}
+                itemsTotalFee={itemsTotalFee}
+                setItemsTotalFee={setItemsTotalFee}
+                itemsTotalWeight={itemsTotalWeight}
+                setItemsTotalWeight={setItemsTotalWeight}
                 cartItems={cartItems}
                 onAddCart={onAddCart}
                 onRemoveCart={onRemoveCart}                    
