@@ -5,8 +5,8 @@ import "../styles/components/Product.sass";
 const Product = ({ 
         pid, image, name, types, colors, price, weight, 
         data,
-        itemsTotalFee, setItemsTotalFee, 
-        itemsTotalWeight, setItemsTotalWeight,
+        itemsTotalFeeHash, setItemsTotalFeeHash,
+        itemsTotalWeightHash, setItemsTotalWeightHash,
         cartItems, 
         onAddCart, 
         onRemoveCart 
@@ -18,6 +18,11 @@ const Product = ({
     const sumCalcCount = Object.values(hash).reduce((acc, current) => acc + parseInt(current), 0)
     setItemCount(parseInt(sumCalcCount));
   };
+
+  // setItemsTotalFeeHash({ ...itemsTotalFeeHash, [pid]: 0});
+  // setTotalWeightHash({ ...totalWeightHash, [pid]: 0});
+  // useEffect(() => {
+  // }, []);
   
   const handleItemTotalFee = (fee) => {
     // setItemsTotalFee(Object.values(hash).reduce((acc, current) => acc + parseInt(current), 0));
@@ -46,12 +51,11 @@ const Product = ({
             &nbsp;|&nbsp;
             <span>小計</span>
             {price * itemCount}
-            {handleItemTotalFee(price * itemCount)}
+            {setItemsTotalFeeHash({...itemsTotalFeeHash, pid: price * itemCount})}
             <span>円</span>
             &nbsp;|&nbsp;
             <span>小計</span>
             {weight * itemCount}
-            {/* {setTotalItemWeight(weight * itemCount)} */}
             <span>g</span>
           </div>
         </div>

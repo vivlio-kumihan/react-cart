@@ -3,8 +3,9 @@ import "../styles/components/Main.sass";
 import Product from "./Product";
 
 const Main = ({ dataList, cartItems, onAddCart, onRemoveCart }) => {
-  const [itemsTotalFee, setItemsTotalFee] = useState(0);
-  const [itemsTotalWeight, setItemsTotalWeight] = useState(0);
+  const [itemsTotalFeeHash, setItemsTotalFeeHash] = useState({ id: 0 });
+  console.log(itemsTotalFeeHash);
+  const [itemsTotalWeightHash, setItemsTotalWeightHash] = useState({ id: 0 });
 
   return (
     <div className="wrapper">
@@ -15,10 +16,10 @@ const Main = ({ dataList, cartItems, onAddCart, onRemoveCart }) => {
             <li key={data.pid}>
               <Product {...data}
                 data={data}
-                itemsTotalFee={itemsTotalFee}
-                setItemsTotalFee={setItemsTotalFee}
-                itemsTotalWeight={itemsTotalWeight}
-                setItemsTotalWeight={setItemsTotalWeight}
+                itemsTotalFee={itemsTotalFeeHash}
+                setItemsTotalFee={setItemsTotalFeeHash}
+                itemsTotalWeight={itemsTotalWeightHash}
+                setItemsTotalWeight={setItemsTotalWeightHash}
                 cartItems={cartItems}
                 onAddCart={onAddCart}
                 onRemoveCart={onRemoveCart}                    
