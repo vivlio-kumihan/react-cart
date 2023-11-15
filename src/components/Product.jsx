@@ -5,29 +5,19 @@ import "../styles/components/Product.sass";
 const Product = ({ 
         pid, image, name, types, colors, price, weight, 
         data,
-        itemsTotalFeeHash, setItemsTotalFeeHash,
-        itemsTotalWeightHash, setItemsTotalWeightHash,
         cartItems, 
         onAddCart, 
         onRemoveCart 
   }) => {
-  const [eachCount, setEachCount] = useState(0);
-  const [itemCount, setItemCount] = useState(0);
 
+  const [eachCount, setEachCount] = useState(0);
+
+  const [itemCount, setItemCount] = useState(0);
   const whichSumCount = (hash) => {
     const sumCalcCount = Object.values(hash).reduce((acc, current) => acc + parseInt(current), 0)
     setItemCount(parseInt(sumCalcCount));
   };
-
-  // setItemsTotalFeeHash({ ...itemsTotalFeeHash, [pid]: 0});
-  // setTotalWeightHash({ ...totalWeightHash, [pid]: 0});
-  // useEffect(() => {
-  // }, []);
-  
-  const handleItemTotalFee = (fee) => {
-    // setItemsTotalFee(Object.values(hash).reduce((acc, current) => acc + parseInt(current), 0));
-  };
-
+    
   return (
     <div className="card" key={pid}>
       <div className="image_frame-info">
@@ -51,7 +41,6 @@ const Product = ({
             &nbsp;|&nbsp;
             <span>小計</span>
             {price * itemCount}
-            {setItemsTotalFeeHash({...itemsTotalFeeHash, pid: price * itemCount})}
             <span>円</span>
             &nbsp;|&nbsp;
             <span>小計</span>

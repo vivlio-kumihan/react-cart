@@ -1,15 +1,15 @@
 import { useState } from "react";
 import OrderResult from "./OrderResult";
-import "../styles/components/Basket.sass";
+import "../styles/components/OrderList.sass";
 
-const Basket = ({ cartItems, totalFeeHash, setTotalFeeHash, removeCartPid }) => {
+const OrderList = ({ dataList, cartItems, totalFeeHash, setTotalFeeHash }) => {
   const [toggle, setToggle] = useState(false);
   const toggleAction = () => {
     setToggle(!toggle);
   };
-  
+
   return (
-    <div className="basket">
+    <div className="order-list">
       <div className="cart-title-wrapper">
         <button className="cart-title" onClick={toggleAction}>
           <span>{cartItems.length}</span>
@@ -18,13 +18,13 @@ const Basket = ({ cartItems, totalFeeHash, setTotalFeeHash, removeCartPid }) => 
       </div>
       <OrderResult
         toggle={toggle}
+        dataList={dataList}
         cartItems={cartItems} 
         totalFeeHash={totalFeeHash}
         setTotalFeeHash={setTotalFeeHash}
-        removeCartPid={removeCartPid}
       />
     </div>
   );
 };
 
-export default Basket;
+export default OrderList;

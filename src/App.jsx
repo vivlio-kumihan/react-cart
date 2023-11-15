@@ -1,12 +1,15 @@
 import { useState } from "react";
 import Main from "./components/Main";
-import Basket from "./components/Basket";
+import OrderList from "./components/OrderList";
 import dataList from "./dataList";
 import "./styles/App.sass";
 
 const App = () => {
   // カートに入れる商品の状態
   const [cartItems, setCartItems] = useState([]);
+  console.log(cartItems);
+  // console.log(dataList);
+
   // 商品をカートに追加する関数の定義
   const onAddCart = (product) => {
     const exist = cartItems.find((cartItem) => cartItem.pid === product.pid);
@@ -24,14 +27,15 @@ const App = () => {
   };
 
   return (
-    <div className="container">
+    <div className="container">   
       <Main
         dataList={dataList}
         onAddCart={onAddCart}
         onRemoveCart={onRemoveCart}
         cartItems={cartItems}
       />
-      <Basket
+      <OrderList
+        dataList={dataList}
         onAddCart={onAddCart}
         onRemoveCart={onRemoveCart}
         cartItems={cartItems}
@@ -48,14 +52,13 @@ export default App;
 // // // 注意
 // // import { useState, useTransition, useDeferredValue } from "react";
 // import Main from "./components/Main";
-// import Basket from "./components/Basket";
+// import OrderList from "./components/OrderList";
 // import data from "./data";
 // import "./styles/App.sass";
 
 // const App = () => {
 //   // カートに入れる商品の状態
 //   const [cartItems, setCartItems] = useState([]);
-//   const [removeCartPid, setRemoveCartPid] = useState("");
 //   // 商品をカートに追加する関数の定義
 //   const onAddCart = (product) => {
 //     const exist = cartItems.find((cartItem) => cartItem.pid === product.pid);
@@ -71,7 +74,6 @@ export default App;
 //     const newCartItems = cartItems.filter(
 //       (cartItem) => cartItem.pid !== product.pid
 //     );
-//     setRemoveCartPid(product.pid);
 //     setCartItems(newCartItems);
 //     // // 注意
 //     // localStorage.setItem("cartItems", JSON.stringify(newCartItems));
@@ -125,12 +127,11 @@ export default App;
 //         onRemoveCart={onRemoveCart}
 //         cartItems={cartItems}
 //       />
-//       <Basket
+//       <OrderList
 //         onAddCart={onAddCart}
 //         onRemoveCart={onRemoveCart}
 //         cartItems={cartItems}
 //         setCartItems={setCartItems}
-//         removeCartPid={removeCartPid}
 //       />
 //     </div>
 //   );

@@ -25,12 +25,12 @@ const TypesColors = ({ types, colors, setEachCount, whichSumCount }) => {
               />
             </li>
           ))}
+          {/* 質問　渡らないとするとここかも？ */}
           {
             useEffect(() => {
               whichSumCount(types);
             }, [types, whichSumCount])
           }          
-          {/* {whichSumCount(types)} */}
         </ul>
       ) : (
         <ul className="display-none"></ul>
@@ -58,6 +58,7 @@ const TypesColors = ({ types, colors, setEachCount, whichSumCount }) => {
               />
             </li>
           ))}
+          {/* 質問　渡らないとするとここかも？ */}
           {
             useEffect(() => {
               whichSumCount(colors);

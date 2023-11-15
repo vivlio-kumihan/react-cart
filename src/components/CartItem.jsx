@@ -3,17 +3,16 @@ import ItemCounter from "../containers/ItemCounter";
 
 const CartItem = ({ 
   cartItem: { pid, name, types, colors, price, weight },
-              // => from OrderResult.js 
-              // 親コンポーネントからpropsを受け取る。
-              totalFeeHash,
-              setTotalFeeHash,
-              setTotalFee,
-              totalWeightHash,
-              setTotalWeightHash,
-              setTotalWeight,
-              removeCartPid
-            }) => {
-
+  // => from OrderResult.js 
+  // 親コンポーネントからpropsを受け取る。
+  dataList,
+  totalFeeHash,
+  setTotalFeeHash,
+  setTotalFee,
+  totalWeightHash,
+  setTotalWeightHash,
+  setTotalWeight,
+  }) => {
   // アイテム毎のカウント数小計
   const [count, setCount] = useState(0);
 
@@ -55,7 +54,7 @@ const CartItem = ({
   const colorsObj = Object.keys(colors);
   
   // 対象が空配列かを検証
-  const hasItems = (arr) => arr.length > 0;
+  const hasItems = (hash) => Object.keys(hash).length > 0;
   // false または、false => false このfalseに
   // false または、 true => trueの式を実行させる。
   // true かつ、 true => 右辺の式を実行させる。
@@ -71,40 +70,29 @@ const CartItem = ({
             weight={weight}
             setItemSubTotalWeight={setItemSubTotalWeight} 
             pid={pid}
-            removeCartPid={removeCartPid}
           />
         }
       </div>
-
-      {hasItems(typesObj) &&
-        typesObj.map((type, idx) => (
+      {
+        hasItems(types) &&
+        Object.keys(types).map((key, idx) => (
           <li className="quantity-state" key={idx}>
-            <h3>{type}</h3>
-            <ItemCounter 
-              count={count} 
-              setCount={setCount}
-              weight={weight}
-              setItemSubTotalWeight={setItemSubTotalWeight} 
-              pid={pid}
-              removeCartPid={removeCartPid}
-            />              
+            <h3>{key}</h3>
+            <div className="quantity-count">{types[key]}</div>
           </li>
-        ))}
+        ))        
+      }
 
-      {hasItems(colorsObj) &&
-        colorsObj.map((color, idx) => (
+      {
+        hasItems(colors) &&
+        Object.keys(colors).map((key, idx) => (
           <li className="quantity-state" key={idx}>
-            <h3>{color}</h3>
-            <ItemCounter 
-              count={count} 
-              setCount={setCount}
-              weight={weight}
-              setItemSubTotalWeight={setItemSubTotalWeight} 
-              pid={pid}
-              removeCartPid={removeCartPid}
-            />            
+            <h3>{key}</h3>
+            <div className="quantity-count">{colors[key]}</div>
           </li>
-        ))}
+        ))
+      }
+
       <li className="sub-total">
         <span>{price}円&nbsp;×&nbsp;{count}</span>
         <span>&nbsp;小計:&nbsp;{price*count}円</span>
@@ -115,3 +103,31 @@ const CartItem = ({
 };
 
 export default CartItem;
+
+// {hasItems(typesObj) &&
+//   typesObj.map((type, idx) => (
+//     <li className="quantity-state" key={idx}>
+//       <h3>{type}</h3>
+//       <ItemCounter 
+//         count={count} 
+//         setCount={setCount}
+//         weight={weight}
+//         setItemSubTotalWeight={setItemSubTotalWeight} 
+//         pid={pid}
+//       />
+//     </li>
+//   ))}
+
+// {hasItems(colorsObj) &&
+//   colorsObj.map((color, idx) => (
+//     <li className="quantity-state" key={idx}>
+//       <h3>{color}</h3>
+//       <ItemCounter 
+//         count={count} 
+//         setCount={setCount}
+//         weight={weight}
+//         setItemSubTotalWeight={setItemSubTotalWeight} 
+//         pid={pid}
+//       />            
+//     </li>
+//   ))}

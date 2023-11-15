@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import CartItem from "../components/CartItem";
 import SendFee from "../containers/SendFee";
 
-const OrderResult = ({ toggle, cartItems, removeCartPid }) => {
+const OrderResult = ({ toggle, dataList, cartItems }) => {
   // カートに商品が入っているか否か条件分岐で使う。
   const isEmpty = (arr) => arr.length < 1;
   // カート内で注文する商品の合計金額を出すためのstateを設定する。
@@ -29,21 +29,23 @@ const OrderResult = ({ toggle, cartItems, removeCartPid }) => {
       )}
 
       {cartItems.map((cartItem, idx) => (
-        <CartItem
-          key={idx} 
-          cartItem={cartItem} 
-          // propsで子コンポーネントに渡す。
-          // to CartItem.js => 
-          totalFeeHash={totalFeeHash}
-          setTotalFeeHash={setTotalFeeHash}
-          totalWeightHash={totalWeightHash}
-          totalFee={totalFee}
-          setTotalFee={setTotalFee}
-          setTotalWeightHash={setTotalWeightHash}
-          totalWeight={totalWeight}
-          setTotalWeight={setTotalWeight}
-          removeCartPid={removeCartPid}
-        />
+        <div className={idx} key={idx}>
+          <CartItem
+            key={idx} 
+            dataList={dataList} 
+            cartItem={cartItem} 
+            // propsで子コンポーネントに渡す。
+            // to CartItem.js => 
+            totalFeeHash={totalFeeHash}
+            setTotalFeeHash={setTotalFeeHash}
+            totalWeightHash={totalWeightHash}
+            totalFee={totalFee}
+            setTotalFee={setTotalFee}
+            setTotalWeightHash={setTotalWeightHash}
+            totalWeight={totalWeight}
+            setTotalWeight={setTotalWeight}
+          />
+        </div>
       ))}
 
       <ul className="calc-amount">
