@@ -11,12 +11,13 @@ const Product = ({
         onRemoveCart 
   }) => {
 
+  // nameのitemごとのカウント
   const [eachCount, setEachCount] = useState(0);
-
+  // typesとcolorsのitemごとのカウント
   const [itemCount, setItemCount] = useState(0);
   const whichSumCount = (hash) => {
-    const sumCalcCount = Object.values(hash).reduce((acc, current) => acc + parseInt(current), 0)
-    setItemCount(parseInt(sumCalcCount));
+    const sumCalcCount = Object.keys(hash).reduce((acc, key) => acc + parseInt(hash[key]), 0)
+    return setItemCount(parseInt(sumCalcCount));
   };
     
   return (
@@ -30,6 +31,8 @@ const Product = ({
           
           <NameAndSetCount 
             name={name}
+            types={types}
+            colors={colors} 
             setEachCount={setEachCount}
           />
 
@@ -45,7 +48,11 @@ const Product = ({
             <span>円</span>
             &nbsp;|&nbsp;
             <span>小計</span>
-            {price * itemCount}
+            {
+              Object.keys(types).length || Object.keys(colors).length > 0
+                ? price * itemCount
+                : price * eachCount
+            }            
             <span>円</span>
           </div>
         </div>

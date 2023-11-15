@@ -2,25 +2,19 @@ import { useEffect, useState } from "react";
 import CartItem from "../components/CartItem";
 import SendFee from "../containers/SendFee";
 
-const OrderResult = ({ toggle, dataList, cartItems }) => {
+const OrderResult = ({ toggle, cartItems }) => {
   // カートに商品が入っているか否か条件分岐で使う。
   const isEmpty = (arr) => arr.length < 1;
-  // カート内で注文する商品の合計金額を出すためのstateを設定する。
+
+  // // アイテム毎の金額合計
   const [totalFeeHash, setTotalFeeHash] = useState({});
-  // カート内で注文する商品の合計金額
-  const [totalFee, setTotalFee] = useState(0);
-  // カートの総重量合計のstateを生成させる。
-  const [totalWeightHash, setTotalWeightHash] = useState({});
-  // カート内で注文する商品の合計重量
-  const [totalWeight, setTotalWeight] = useState(0);
-  // 送料
-  const [totalSendFee, setTotalSendFee] = useState(0);
-  // 総合計　
-  const [grandTotalFee, setGrandTotalFee] = useState(0);
-  // stateを設定しようとすると無限ループになったのでuseEffectで対応。多数出てくる。意味分かってない。
-  useEffect(() => {
-    setGrandTotalFee(totalFee * 1.1 + totalSendFee);
-  });
+  console.log(totalFeeHash);
+
+  // // アイテム毎の重量合計
+  // const [totalWeightHash, setTotalWeightHash] = useState(0);
+  const itemTotalCount = (hash) => {
+    return Object.keys(hash).reduce((acc, key) => acc + parseInt(hash[key]), 0);
+  };  
 
   return (
     <div className={`cart-wrapper ${toggle && "active"}`}>
@@ -32,34 +26,28 @@ const OrderResult = ({ toggle, dataList, cartItems }) => {
         <div className={idx} key={idx}>
           <CartItem
             key={idx} 
-            dataList={dataList} 
             cartItem={cartItem} 
-            // propsで子コンポーネントに渡す。
-            // to CartItem.js => 
-            totalFeeHash={totalFeeHash}
-            setTotalFeeHash={setTotalFeeHash}
-            totalWeightHash={totalWeightHash}
-            totalFee={totalFee}
-            setTotalFee={setTotalFee}
-            setTotalWeightHash={setTotalWeightHash}
-            totalWeight={totalWeight}
-            setTotalWeight={setTotalWeight}
+            // totalFeeHash={totalFeeHash}
+            // setTotalFeeHash={setTotalFeeHash}
+            // totalWeightHash={totalWeightHash}
+            // setTotalWeightHash={setTotalWeightHash}
           />
+          {/* {
+            useEffect(() => {
+              setTotalFeeHash({ ...totalFeeHash, [cartItem.pid]: itemTotalCount(cartItem.types) })
+            })
+          } */}
         </div>
       ))}
 
       <ul className="calc-amount">
-        <li>商品小計<span>{totalFee}</span>円</li>
-        <li>消費税<span>{Math.round(totalFee * 0.1)}</span>円</li>
+        <li>商品小計<span>{}</span>円</li>
+        <li>消費税<span>{Math.round(10 * 0.1)}</span>円</li>
         <li>
-          <SendFee 
-            totalWeight={totalWeight} 
-            totalSendFee={totalSendFee}
-            setTotalSendFee={setTotalSendFee}
-          />
+          <SendFee />
         </li>
-        <li>カートの重量合計<span>{totalWeight}</span>g</li>
-        <li className="total-fee">合計<span>{isNaN(grandTotalFee) ? 0 : Math.round(grandTotalFee)}</span>円</li>
+        <li>カートの重量合計<span>{}</span>g</li>
+        <li className="total-fee">合計<span>{isNaN(100) ? 0 : Math.round(100)}</span>円</li>
         <li>
           <button onClick={() => alert("Implement Checkout")}>用紙出力</button>
         </li>

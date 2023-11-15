@@ -7,8 +7,6 @@ import "./styles/App.sass";
 const App = () => {
   // カートに入れる商品の状態
   const [cartItems, setCartItems] = useState([]);
-  console.log(cartItems);
-  // console.log(dataList);
 
   // 商品をカートに追加する関数の定義
   const onAddCart = (product) => {

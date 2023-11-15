@@ -83,9 +83,9 @@ const SendFee = ({ totalWeight, totalSendFee, setTotalSendFee }) => {
       break;
   }
 
-  useEffect(() => {
-    setTotalSendFee(sendFee);
-  });
+  // useEffect(() => {
+  //   setTotalSendFee(sendFee);
+  // });
 
   return (
     <>

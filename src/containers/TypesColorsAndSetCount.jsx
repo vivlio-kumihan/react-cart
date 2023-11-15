@@ -15,8 +15,8 @@ const TypesColorsAndSetCount = ({ types, colors, setEachCount, whichSumCount }) 
                 type="number" 
                 min="0"
                 onChange={(e) => {
-                  setEachCount(e.target.value)
                   types[key] = e.target.value
+                  setEachCount({...types, [key]: e.target.value})
                 }}
                 placeholder="0"
                 // value属性を無しにするとそれぞれカウントできる。
@@ -46,8 +46,8 @@ const TypesColorsAndSetCount = ({ types, colors, setEachCount, whichSumCount }) 
                 type="number"
                 min="0" 
                 onChange={(e) => {
-                  setEachCount(e.target.value)
                   colors[key] = e.target.value
+                  setEachCount({...colors, [key]: e.target.value})                  
                 }}
                 placeholder="0"
                 // きっかけは、『たまたま』
