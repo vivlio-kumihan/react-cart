@@ -112,7 +112,7 @@ export default App;
 
 //   // 問題 useTransitionを戻したらここも戻す
 //   // return false ? (
-//   //   // 質問 言われたとおりにしているだけ、
+//   //   // 問題 言われたとおりにしているだけ、
 //   //   // 実際にローディングさせる方法がわかったない。
 //   //   // return isPending
 //   //   <div>Loading...</div>

@@ -1,7 +1,6 @@
 import { useEffect } from "react";
 
-const TypesColors = ({ types, colors, setEachCount, whichSumCount }) => {
-  // const items = [types, colors];
+const TypesColorsAndSetCount = ({ types, colors, setEachCount, whichSumCount }) => {
 
   return (
     <>
@@ -12,7 +11,7 @@ const TypesColors = ({ types, colors, setEachCount, whichSumCount }) => {
             <li key={idx}>
               <span>{key}</span>
               <input 
-                id="type"
+                id="types"
                 type="number" 
                 min="0"
                 onChange={(e) => {
@@ -25,7 +24,7 @@ const TypesColors = ({ types, colors, setEachCount, whichSumCount }) => {
               />
             </li>
           ))}
-          {/* 質問　渡らないとするとここかも？ */}
+          {/* 問題　渡らないとするとここかも？ */}
           {
             useEffect(() => {
               whichSumCount(types);
@@ -43,7 +42,7 @@ const TypesColors = ({ types, colors, setEachCount, whichSumCount }) => {
             <li key={idx}>
               <span>{key}</span>
               <input 
-                id="type"
+                id="colors"
                 type="number"
                 min="0" 
                 onChange={(e) => {
@@ -58,7 +57,7 @@ const TypesColors = ({ types, colors, setEachCount, whichSumCount }) => {
               />
             </li>
           ))}
-          {/* 質問　渡らないとするとここかも？ */}
+          {/* 問題　渡らないとするとここかも？ */}
           {
             useEffect(() => {
               whichSumCount(colors);
@@ -72,4 +71,4 @@ const TypesColors = ({ types, colors, setEachCount, whichSumCount }) => {
   );
 };
 
-export default TypesColors;
+export default TypesColorsAndSetCount;

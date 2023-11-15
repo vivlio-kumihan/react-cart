@@ -1,4 +1,4 @@
-// 質問：画像管理の仕方はこのような形でいいのか？
+// 問題：画像管理の仕方はこのような形でいいのか？
 
 // import o_fuda_family_safety from "./oFuda_family_safety.jpg";
 // import o_fuda_yaku_yoke from "./o_fuda_yaku_yoke.jpg";

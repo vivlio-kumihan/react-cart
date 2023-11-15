@@ -27,7 +27,7 @@ const Main = ({ dataList, cartItems, onAddCart, onRemoveCart }) => {
 
 export default Main;
 
-  // 質問　なんでuseEffectにしないとダメなのか？
+  // 問題　なんでuseEffectにしないとダメなのか？
   // Uncaught Error: Too many re-renders. React limits the number of renders to prevent an infinite loop.
   // Uncaught Error： 再レンダリングの回数が多すぎます。Reactは無限ループを防ぐためにレンダリング回数を制限しています。
   // const handleItemsTotalFeeHash = (id, fee) => {

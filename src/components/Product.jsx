@@ -1,5 +1,6 @@
 import { useState } from "react";
-import TypesColors from "../containers/TypesColors";
+import NameAndSetCount from "../containers/NameAndSetCount";
+import TypesColorsAndSetCount from "../containers/TypesColorsAndSetCount";
 import "../styles/components/Product.sass";
 
 const Product = ({ 
@@ -26,9 +27,13 @@ const Product = ({
         </div>
 
         <div className="item-info">
-          <div className="name">{name}</div>
+          
+          <NameAndSetCount 
+            name={name}
+            setEachCount={setEachCount}
+          />
 
-          <TypesColors 
+          <TypesColorsAndSetCount 
             types={types}
             colors={colors} 
             setEachCount={setEachCount}
@@ -42,10 +47,6 @@ const Product = ({
             <span>小計</span>
             {price * itemCount}
             <span>円</span>
-            &nbsp;|&nbsp;
-            <span>小計</span>
-            {weight * itemCount}
-            <span>g</span>
           </div>
         </div>
       </div>

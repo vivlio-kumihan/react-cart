@@ -49,9 +49,9 @@ const CartItem = ({
     setTotalWeight(totalWeightResult);
   });   
 
-  // mapで展開できるように下準備
-  const typesObj = Object.keys(types);
-  const colorsObj = Object.keys(colors);
+  // // mapで展開できるように下準備
+  // const typesObj = Object.keys(types);
+  // const colorsObj = Object.keys(colors);
   
   // 対象が空配列かを検証
   const hasItems = (hash) => Object.keys(hash).length > 0;
@@ -62,16 +62,24 @@ const CartItem = ({
   return (
     <ul className="item" key={pid}>
       <div className="quantity-state name" key={name}>
-        {name}
-        {(hasItems(typesObj) || hasItems(colorsObj)) ||
-          <ItemCounter 
-            count={count} 
-            setCount={setCount}
-            weight={weight}
-            setItemSubTotalWeight={setItemSubTotalWeight} 
-            pid={pid}
-          />
-        }
+      {
+        hasItems(name) &&
+        Object.keys(name).map((key, idx) => (
+          <li className="quantity-state" key={idx}>
+            <h3>{key}</h3>
+            <div className="quantity-count">{name[key]}</div>
+          </li>
+        ))        
+      }      
+      {/* {(hasItems(types) || hasItems(colors)) ||
+        <ItemCounter 
+          count={count} 
+          setCount={setCount}
+          weight={weight}
+          setItemSubTotalWeight={setItemSubTotalWeight} 
+          pid={pid}
+        />
+      } */}
       </div>
       {
         hasItems(types) &&
@@ -82,6 +90,7 @@ const CartItem = ({
           </li>
         ))        
       }
+
 
       {
         hasItems(colors) &&
