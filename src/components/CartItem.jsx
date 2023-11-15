@@ -4,10 +4,38 @@ import ItemCounter from "../containers/ItemCounter";
 const CartItem = ({ 
   cartItem: { pid, name, types, colors, price, weight },
   // totalFeeHash, setTotalFeeHash,
+  // setTotalFee
   // totalWeightHash, setTotalWeightHash
   }) => {
 
+  // 対象が空配列かを検証
+  const hasItem = (hash) => Object.keys(hash).length > 0;
+  // nameの値が0であれば真を返す。
+  const nameValueZero = Object.keys(name).map((key) => name[key]).shift() === 0;
+  // 現在がtypesかcolorsかで扱うhashを切り替える。
+  const packTypesColors = () => {
+    if (hasItem(types) && nameValueZero) {
+      return types;
+    } else if (hasItem(colors) && nameValueZero) {
+      return colors;
+    }
+  }; 
+  const itemHash = packTypesColors();
 
+  const calcCountHashVal = (...arr) => {
+    // console.log(arr);
+    // if (hasItem(types) && hasItem(colors)) {
+    //   return (Object.keys(hash).map((key) => hash[key])).shift();
+    // } else if ((hasItem(types) || hasItem(colors)) && nameValueZero) {
+    //   return Object.keys(hash).reduce((acc, key) => acc + parseInt(hash[key]), 0);
+    // }
+  };
+  
+  calcCountHashVal(name, types, colors);
+
+  // const count = calcCountHashVal(name, types, colors);
+  // console.log(count);
+  
   const nameTotalCount = (hash) => {
     return Object.keys(hash).map((key) => hash[key])
   };
@@ -17,51 +45,27 @@ const CartItem = ({
   };
 
   // useEffect(() => {
-  //   if (nameTotalCount(name) > 0) {
-  //     setTotalFeeHash((prevTotalFeeHash) => ({
-  //       ...prevTotalFeeHash,
-  //       [pid]: nameTotalCount(name) * price,
-  //     }));
-  //   }
+  //   setTotalFeeHash({ ...totalFeeHash, [pid]: 0});
+  //   // setTotalWeightHash({ ...totalWeightHash, [pid]: 0});
+  // }, []);
 
-  //   if (itemTotalCount(types) > 0) {
-  //     setTotalFeeHash((prevTotalFeeHash) => ({
-  //       ...prevTotalFeeHash,
-  //       [pid]: itemTotalCount(types) * price,
-  //     }));
-  //   }
-
-  //   if (itemTotalCount(colors) > 0) {
-  //     setTotalFeeHash((prevTotalFeeHash) => ({
-  //       ...prevTotalFeeHash,
-  //       [pid]: itemTotalCount(colors) * price,
-  //     }));
-  //   }
-  // }, [name, types, colors, pid, price]);
-
+  // totalFeeHash[pid] = price * count;
+  // const totalFeeResult = Object.values(totalFeeHash).reduce((acc, fee) => acc + fee, 0);
   // useEffect(() => {
-  //   nameTotalCount(name) && 
-  //     setTotalFeeHash({ ...totalFeeHash, [pid]: nameTotalCount(name) * price })
-
-  //   itemTotalCount(types) &&
-  //     setTotalFeeHash({ ...totalFeeHash, [pid]: itemTotalCount(types) * price })
-      
-  //   itemTotalCount(colors) && 
-  //     setTotalFeeHash({ ...totalFeeHash, [pid]: itemTotalCount(types) * price })
-  // });
-    
-
+  //   setTotalFee(totalFeeResult);
+  // })
   
-  
-  // 対象が空配列かを検証
-  const hasItems = (hash) => Object.keys(hash).length > 0;
+
+  // console.log(hasItem(types));
+  // const hasItem = (hash) => Object.keys(hash).length > 0;
+  // console.log(hasItem(types));
 
   return (
     <ul className="item" key={pid}>
       {/* 商品名 */}
       {
         Object.keys(name).map((key, idx) => (
-          (hasItems(types) || hasItems(colors)) ?
+          (hasItem(types) || hasItem(colors)) ?
             <li className="quantity-state name" key={idx}>
               <h3>{key}</h3>
             </li>
@@ -72,25 +76,15 @@ const CartItem = ({
             </li>
         ))        
       }
-      {/* 種類 */}
+      {/* 種類・色 */}
       {
-        hasItems(types) &&
-        Object.keys(types).map((key, idx) => (
-          <li className="quantity-state" key={idx}>
-            <h3>{key}</h3>
-            <div className="quantity-count">{types[key]}</div>
-          </li>
-        ))        
-      }
-      {/* 色 */}
-      {
-        hasItems(colors) &&
-        Object.keys(colors).map((key, idx) => (
-          <li className="quantity-state" key={idx}>
-            <h3>{key}</h3>
-            <div className="quantity-count">{colors[key]}</div>
-          </li>
-        ))
+        (hasItem(types) || hasItem(colors)) && nameValueZero &&
+          Object.keys(itemHash).map((key, idx) => (
+            <li className="quantity-state" key={idx}>
+              <h3>{key}</h3>
+              <div className="quantity-count">{itemHash[key]}</div>
+            </li>
+          ))        
       }
 
       <li className="sub-total">

@@ -8,10 +8,13 @@ const OrderResult = ({ toggle, cartItems }) => {
 
   // // アイテム毎の金額合計
   const [totalFeeHash, setTotalFeeHash] = useState({});
-  console.log(totalFeeHash);
+
+  // カート内で注文する商品の合計金額
+  const [totalFee, setTotalFee] = useState(0);  
 
   // // アイテム毎の重量合計
   // const [totalWeightHash, setTotalWeightHash] = useState(0);
+
   const itemTotalCount = (hash) => {
     return Object.keys(hash).reduce((acc, key) => acc + parseInt(hash[key]), 0);
   };  
@@ -27,8 +30,9 @@ const OrderResult = ({ toggle, cartItems }) => {
           <CartItem
             key={idx} 
             cartItem={cartItem} 
-            // totalFeeHash={totalFeeHash}
-            // setTotalFeeHash={setTotalFeeHash}
+            totalFeeHash={totalFeeHash}
+            setTotalFeeHash={setTotalFeeHash}
+            setTotalFee={setTotalFee}
             // totalWeightHash={totalWeightHash}
             // setTotalWeightHash={setTotalWeightHash}
           />
