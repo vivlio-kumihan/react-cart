@@ -1,6 +1,7 @@
 import { useState } from "react";
 import OrderResult from "./OrderResult";
 import "../styles/components/OrderList.sass";
+import OrderForm from "./OrderForm";
 
 const OrderList = ({ dataList, cartItems, totalFeeHash, setTotalFeeHash }) => {
   const [toggle, setToggle] = useState(false);
@@ -23,6 +24,7 @@ const OrderList = ({ dataList, cartItems, totalFeeHash, setTotalFeeHash }) => {
         totalFeeHash={totalFeeHash}
         setTotalFeeHash={setTotalFeeHash}
       />
+      <OrderForm />
     </div>
   );
 };

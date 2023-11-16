@@ -17,13 +17,17 @@ const OrderResult = ({ toggle, cartItems }) => {
   // カート内で注文する商品の重量
   const [totalWeight, setTotalWeight] = useState(0);
 
+  const [totalSendFee, setTotalSendFee] = useState(0);
+
   return (
     <div className={`cart-wrapper ${toggle && "active"}`}>
       {isEmpty(cartItems) && (
         <div className="default-msg">登録された商品はありません。</div>
       )}
 
-      {cartItems.map((cartItem, idx) => (
+      <div className="wrapper">
+        <h2>賜物一覧</h2>
+        {cartItems.map((cartItem, idx) => (
         <div className={idx} key={idx}>
           <CartItem
             key={idx} 
@@ -38,22 +42,72 @@ const OrderResult = ({ toggle, cartItems }) => {
             setTotalWeight={setTotalWeight}
           />
         </div>
-      ))}
+        ))}
 
-      <ul className="calc-amount">
-        <li>商品小計<span>{totalFee}</span>円</li>
-        <li>消費税<span>{Math.round(totalFee * 0.1)}</span>円</li>
-        <li>
-          <SendFee />
-        </li>
-        <li>カートの重量合計<span>{totalWeight}</span>g</li>
-        <li className="total-fee">合計<span>{Math.round(totalFee * 1.1)}</span>円</li>
-        <li>
-          <button onClick={() => alert("Implement Checkout")}>用紙出力</button>
-        </li>
-      </ul>
+        <ul className="calc-amount">
+          <li>授与料小計<span>{totalFee}</span>円</li>
+          <li>消費税<span>{Math.round(totalFee * 0.1)}</span>円</li>
+          <li>
+            <SendFee 
+              totalWeight={totalWeight} 
+              setTotalSendFee={setTotalSendFee}
+            />
+          </li>
+          {/* <li>カートの重量合計<span>{totalWeight}</span>g</li> */}
+          {
+            totalSendFee 
+              ? <li className="total-fee">授与料合計<span>{Math.round(totalFee * 1.1)+totalSendFee}</span>円</li>
+              : <li className="total-fee">授与料合計 発送先を選択してください。</li>
+          }
+          <li>
+            <button onClick={() => alert("Implement Checkout")}>用紙出力</button>
+          </li>
+        </ul>
+      </div>      
+
+      <div className="wrapper">
+        <h2>お申し込みフォーム</h2>
+        <form className="order-form" action="">
+          
+        </form>
+      </div>
     </div>
   );
 };
 
 export default OrderResult;
+
+// 商品名
+// 価格
+// 数量
+// 小計
+// 授与料小計
+// 0,000円
+// 郵送料（口座徴収通知料を含む）
+// 0,000円
+// 授与料合計
+// 0,000円
+// いずれかの下記口座までご送金（振込）してください。
+// 銀行名　ゆうちょ銀行
+// 金融機関コード　9900
+// &nbsp;　 
+// 店番　109
+// 預金種目
+// 当座
+// 店名
+// 一〇九店（イチゼロキュウ店）
+// 口座番号
+// 0001231
+// 金融機関名
+// 郵便局
+// 口座番号
+// 01070-8-1231
+// 　 加入者名
+// （宗）白峯神宮
+// 申込者情報
+// お名前
+// 郵便番号
+// ご住所
+// 電話番号
+// 備考
+// ここに郵便振込用紙の控えを貼付けてください。

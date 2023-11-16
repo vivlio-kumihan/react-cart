@@ -77,7 +77,7 @@ const CartItem = ({
       <li className="sub-total">
         <span>{price}円&nbsp;×&nbsp;{calcCountHashVal()}</span>
         <span>&nbsp;小計:&nbsp;{price*calcCountHashVal()}円</span>
-        <span>&nbsp;重量:&nbsp;{weight*calcCountHashVal()}g</span>
+        {/* <span>&nbsp;重量:&nbsp;{weight*calcCountHashVal()}g</span> */}
       </li>
     </ul>
   );

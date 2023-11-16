@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import "../styles/containers/SendFee.sass";
 
-const SendFee = ({ totalWeight, totalSendFee, setTotalSendFee }) => {
+const SendFee = ({ totalWeight, setTotalSendFee }) => {
   const [selected, setSelected] = useState("");
 
 	// 都道府県
@@ -83,9 +83,9 @@ const SendFee = ({ totalWeight, totalSendFee, setTotalSendFee }) => {
       break;
   }
 
-  // useEffect(() => {
-  //   setTotalSendFee(sendFee);
-  // });
+  useEffect(() => {
+    setTotalSendFee(sendFee);
+  });
 
   return (
     <>
@@ -110,7 +110,11 @@ const SendFee = ({ totalWeight, totalSendFee, setTotalSendFee }) => {
           }
           </select>
         </div>
-        <div className="send-fee">送料: <span>{sendFee}</span>円</div>
+        {
+          sendFee
+            ? <div className="send-fee">送料: <span>{sendFee}</span>円</div>
+            : <div className="send-fee">送料: <span>0</span>円</div>
+        }
       </div>
     </>
   );
