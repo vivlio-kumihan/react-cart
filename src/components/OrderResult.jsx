@@ -3,21 +3,19 @@ import CartItem from "../components/CartItem";
 import SendFee from "../containers/SendFee";
 
 const OrderResult = ({ toggle, cartItems }) => {
+
   // カートに商品が入っているか否か条件分岐で使う。
   const isEmpty = (arr) => arr.length < 1;
 
-  // // アイテム毎の金額合計
+  // アイテム毎の金額
   const [totalFeeHash, setTotalFeeHash] = useState({});
-
-  // カート内で注文する商品の合計金額
+  // カート内で注文する商品の小計
   const [totalFee, setTotalFee] = useState(0);  
 
-  // // アイテム毎の重量合計
-  // const [totalWeightHash, setTotalWeightHash] = useState(0);
-
-  const itemTotalCount = (hash) => {
-    return Object.keys(hash).reduce((acc, key) => acc + parseInt(hash[key]), 0);
-  };  
+  // アイテム毎の重量
+  const [totalWeightHash, setTotalWeightHash] = useState({});
+  // カート内で注文する商品の重量
+  const [totalWeight, setTotalWeight] = useState(0);
 
   return (
     <div className={`cart-wrapper ${toggle && "active"}`}>
@@ -32,26 +30,24 @@ const OrderResult = ({ toggle, cartItems }) => {
             cartItem={cartItem} 
             totalFeeHash={totalFeeHash}
             setTotalFeeHash={setTotalFeeHash}
+            totalFee={totalFee}
             setTotalFee={setTotalFee}
-            // totalWeightHash={totalWeightHash}
-            // setTotalWeightHash={setTotalWeightHash}
+            totalWeightHash={totalWeightHash}
+            setTotalWeightHash={setTotalWeightHash}
+            totalWeight={totalWeight}
+            setTotalWeight={setTotalWeight}
           />
-          {/* {
-            useEffect(() => {
-              setTotalFeeHash({ ...totalFeeHash, [cartItem.pid]: itemTotalCount(cartItem.types) })
-            })
-          } */}
         </div>
       ))}
 
       <ul className="calc-amount">
-        <li>商品小計<span>{}</span>円</li>
-        <li>消費税<span>{Math.round(10 * 0.1)}</span>円</li>
+        <li>商品小計<span>{totalFee}</span>円</li>
+        <li>消費税<span>{Math.round(totalFee * 0.1)}</span>円</li>
         <li>
           <SendFee />
         </li>
-        <li>カートの重量合計<span>{}</span>g</li>
-        <li className="total-fee">合計<span>{isNaN(100) ? 0 : Math.round(100)}</span>円</li>
+        <li>カートの重量合計<span>{totalWeight}</span>g</li>
+        <li className="total-fee">合計<span>{Math.round(totalFee * 1.1)}</span>円</li>
         <li>
           <button onClick={() => alert("Implement Checkout")}>用紙出力</button>
         </li>

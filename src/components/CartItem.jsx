@@ -3,15 +3,21 @@ import ItemCounter from "../containers/ItemCounter";
 
 const CartItem = ({ 
   cartItem: { pid, name, types, colors, price, weight },
-  // totalFeeHash, setTotalFeeHash,
-  // setTotalFee
-  // totalWeightHash, setTotalWeightHash
+  totalFeeHash, setTotalFeeHash,
+  totalFee, setTotalFee,
+  totalWeightHash, setTotalWeightHash,
+  totalWeight, setTotalWeight
   }) => {
+
+  // nameのhashの値
+  const nameCount = (Object.keys(name).map((key) => name[key]).shift());
+
+  // nameの値が0であれば真を返す。
+  const nameValueZero = Object.keys(name).map((key) => name[key]).shift() === 0;
 
   // 対象が空配列かを検証
   const hasItem = (hash) => Object.keys(hash).length > 0;
-  // nameの値が0であれば真を返す。
-  const nameValueZero = Object.keys(name).map((key) => name[key]).shift() === 0;
+
   // 現在がtypesかcolorsかで扱うhashを切り替える。
   const packTypesColors = () => {
     if (hasItem(types) && nameValueZero) {
@@ -22,43 +28,24 @@ const CartItem = ({
   }; 
   const itemHash = packTypesColors();
 
-  const calcCountHashVal = (...arr) => {
-    // console.log(arr);
-    // if (hasItem(types) && hasItem(colors)) {
-    //   return (Object.keys(hash).map((key) => hash[key])).shift();
-    // } else if ((hasItem(types) || hasItem(colors)) && nameValueZero) {
-    //   return Object.keys(hash).reduce((acc, key) => acc + parseInt(hash[key]), 0);
-    // }
+  // name, types, colorsのそれぞれカウント合計
+  const calcCountHashVal = () => {
+    if (nameCount > 0) {
+      return nameCount;
+    } else if ((hasItem(types) || hasItem(colors)) && nameValueZero){
+      const hash = hasItem(types) ? types : colors
+      return Object.keys(hash).reduce((acc, key) => acc + parseInt(hash[key]), 0);
+    }
   };
   
-  calcCountHashVal(name, types, colors);
+  // 商品ごとの小計、重量小計
+  totalFeeHash[pid] = price * calcCountHashVal();
+  totalWeightHash[pid] = weight * calcCountHashVal();
 
-  // const count = calcCountHashVal(name, types, colors);
-  // console.log(count);
-  
-  const nameTotalCount = (hash) => {
-    return Object.keys(hash).map((key) => hash[key])
-  };
-
-  const itemTotalCount = (hash) => {
-    return Object.keys(hash).reduce((acc, key) => acc + parseInt(hash[key]), 0);
-  };
-
-  // useEffect(() => {
-  //   setTotalFeeHash({ ...totalFeeHash, [pid]: 0});
-  //   // setTotalWeightHash({ ...totalWeightHash, [pid]: 0});
-  // }, []);
-
-  // totalFeeHash[pid] = price * count;
-  // const totalFeeResult = Object.values(totalFeeHash).reduce((acc, fee) => acc + fee, 0);
-  // useEffect(() => {
-  //   setTotalFee(totalFeeResult);
-  // })
-  
-
-  // console.log(hasItem(types));
-  // const hasItem = (hash) => Object.keys(hash).length > 0;
-  // console.log(hasItem(types));
+  useEffect(() => {
+    setTotalFee(Object.values(totalFeeHash).reduce((acc, fee) => acc + fee, 0));
+    setTotalWeight(Object.values(totalWeightHash).reduce((acc, wgt) => acc + wgt, 0));
+  });
 
   return (
     <ul className="item" key={pid}>
@@ -88,26 +75,9 @@ const CartItem = ({
       }
 
       <li className="sub-total">
-        { nameTotalCount(name) > 0 && 
-          <span>{price}円&nbsp;×&nbsp;{nameTotalCount(name)}</span> }
-        { nameTotalCount(name) > 0 && 
-          <span>&nbsp;小計:&nbsp;{price*nameTotalCount(name)}円</span> }
-        { nameTotalCount(name) > 0 && 
-          <span>&nbsp;重量:&nbsp;{weight*nameTotalCount(name)}g</span> }
-
-        { itemTotalCount(types) > 0 && 
-          <span>{price}円&nbsp;×&nbsp;{itemTotalCount(types)}</span> }
-        { itemTotalCount(types) > 0 && 
-          <span>&nbsp;小計:&nbsp;{price*itemTotalCount(types)}円</span> }
-        { itemTotalCount(types) > 0 && 
-          <span>&nbsp;重量:&nbsp;{weight*itemTotalCount(types)}g</span> }
-
-        { itemTotalCount(colors) > 0 && 
-          <span>{price}円&nbsp;×&nbsp;{itemTotalCount(colors)}</span> }
-        { itemTotalCount(colors) > 0 && 
-          <span>&nbsp;小計:&nbsp;{price*itemTotalCount(colors)}円</span> }
-        { itemTotalCount(colors) > 0 && 
-          <span>&nbsp;重量:&nbsp;{weight*itemTotalCount(colors)}g</span> }
+        <span>{price}円&nbsp;×&nbsp;{calcCountHashVal()}</span>
+        <span>&nbsp;小計:&nbsp;{price*calcCountHashVal()}円</span>
+        <span>&nbsp;重量:&nbsp;{weight*calcCountHashVal()}g</span>
       </li>
     </ul>
   );
