@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
+import OrderForm from "./OrderForm";
 import CartItem from "../components/CartItem";
 import SendFee from "../containers/SendFee";
+import "../styles/components/OrderResult.sass";
 
 const OrderResult = ({ toggle, cartItems }) => {
 
@@ -24,25 +26,32 @@ const OrderResult = ({ toggle, cartItems }) => {
       {isEmpty(cartItems) && (
         <div className="default-msg">登録された商品はありません。</div>
       )}
-
+      
       <div className="wrapper">
+        <h2>お申し込みフォーム</h2>
+        <OrderForm />
+      </div>
+
+      <div className="wrapper cart-index">
         <h2>賜物一覧</h2>
-        {cartItems.map((cartItem, idx) => (
-        <div className={idx} key={idx}>
-          <CartItem
-            key={idx} 
-            cartItem={cartItem} 
-            totalFeeHash={totalFeeHash}
-            setTotalFeeHash={setTotalFeeHash}
-            totalFee={totalFee}
-            setTotalFee={setTotalFee}
-            totalWeightHash={totalWeightHash}
-            setTotalWeightHash={setTotalWeightHash}
-            totalWeight={totalWeight}
-            setTotalWeight={setTotalWeight}
-          />
+        <div className="result-wrapper">
+          {cartItems.map((cartItem, idx) => (
+          <div className={idx} key={idx}>
+            <CartItem
+              key={idx} 
+              cartItem={cartItem} 
+              totalFeeHash={totalFeeHash}
+              setTotalFeeHash={setTotalFeeHash}
+              totalFee={totalFee}
+              setTotalFee={setTotalFee}
+              totalWeightHash={totalWeightHash}
+              setTotalWeightHash={setTotalWeightHash}
+              totalWeight={totalWeight}
+              setTotalWeight={setTotalWeight}
+            />
+          </div>
+          ))}
         </div>
-        ))}
 
         <ul className="calc-amount">
           <li>授与料小計<span>{totalFee}</span>円</li>
@@ -57,25 +66,21 @@ const OrderResult = ({ toggle, cartItems }) => {
           {
             totalSendFee 
               ? <li className="total-fee">授与料合計<span>{Math.round(totalFee * 1.1)+totalSendFee}</span>円</li>
-              : <li className="total-fee">授与料合計 発送先を選択してください。</li>
+              : <li className="total-fee">授与料合計を出すには<br />発送先を選択してください。</li>
           }
-          <li>
-            <button onClick={() => alert("Implement Checkout")}>用紙出力</button>
-          </li>
         </ul>
       </div>      
-
-      <div className="wrapper">
-        <h2>お申し込みフォーム</h2>
-        <form className="order-form" action="">
-          
-        </form>
-      </div>
     </div>
   );
 };
 
 export default OrderResult;
+
+
+// <li>
+//   <button onClick={() => alert("Implement Checkout")}>用紙出力</button>
+// </li>
+
 
 // 商品名
 // 価格

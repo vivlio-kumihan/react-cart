@@ -13,7 +13,7 @@ const OrderList = ({ dataList, cartItems, totalFeeHash, setTotalFeeHash }) => {
     <div className="order-list">
       <div className="cart-title-wrapper">
         <button className="cart-title" onClick={toggleAction}>
-          <span>{cartItems.length}</span>
+          <span></span>
         </button>
         <div className="ami"></div>
       </div>
@@ -24,7 +24,6 @@ const OrderList = ({ dataList, cartItems, totalFeeHash, setTotalFeeHash }) => {
         totalFeeHash={totalFeeHash}
         setTotalFeeHash={setTotalFeeHash}
       />
-      <OrderForm />
     </div>
   );
 };

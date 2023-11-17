@@ -79,9 +79,6 @@ const OrderResult = ({ toggle, dataList, cartItems }) => {
         </li>
         <li>カートの重量合計<span>{totalWeight}</span>g</li>
         <li className="total-fee">合計<span>{isNaN(grandTotalFee) ? 0 : Math.round(grandTotalFee)}</span>円</li>
-        <li>
-          <button onClick={() => alert("Implement Checkout")}>用紙出力</button>
-        </li>
       </ul>
     </div>
   );
@@ -93,7 +90,9 @@ export default OrderResult;
 
 
 
-
+<li>
+  <button onClick={() => alert("Implement Checkout")}>用紙出力</button>
+</li>
 
 
 import { useState, useEffect } from "react";

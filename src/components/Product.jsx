@@ -66,14 +66,28 @@ const Product = ({
           <button
             className="mask-btn remove-btn"
             onClick={() => {
+              // {
+              //   Object.keys(types).map((key) => {
+              //     types[key] = 0
+              //     setEachCount({...types, [key]: 0})
+              //     })
+              // }
+              // {console.log(
+              //   )}
+              // {console.log(types)}
+              const resetTypes = {}
+              Object.keys(types).forEach((key) => {
+                resetTypes[key] = 0
+              })
+              setEachCount(resetTypes)             
               onRemoveCart(data)
             }}
-          >リストから削除</button>
+          >一覧から削除</button>
         ) : (
           <button className="mask-btn" onClick={() => {
             onAddCart(data)
           }}
-          >購入リストに追加</button>
+          >一覧に追加</button>
         )}
       </div>
     </div>
