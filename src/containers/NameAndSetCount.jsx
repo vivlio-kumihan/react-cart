@@ -1,13 +1,18 @@
 import { useEffect } from "react";
 
-const NameAndSetCount = ({ name, types, colors, setEachCount }) => {
-  const hasItems = (hash) => Object.keys(hash).length > 0;
+const NameAndSetCount = ({ 
+  name, 
+  types, 
+  colors, 
+  hasItem,
+  whichItemSumCalcCount
+  }) => {
 
   return (
     <ul className="name">
     {
       Object.keys(name).map((key, idx) => (
-        (hasItems(types) || hasItems(colors)) ?
+        (hasItem(types) || hasItem(colors)) ?
         <li key={idx}>
           <div className="item-name">{key}</div>
         </li>
@@ -19,7 +24,7 @@ const NameAndSetCount = ({ name, types, colors, setEachCount }) => {
             type="number" 
             min="0"
             onChange={(e) => {
-              setEachCount(e.target.value)
+              whichItemSumCalcCount(e.target.value)
               name[key] = e.target.value
             }}
             placeholder="0"

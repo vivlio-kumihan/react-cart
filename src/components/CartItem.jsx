@@ -19,14 +19,14 @@ const CartItem = ({
   const hasItem = (hash) => Object.keys(hash).length > 0;
 
   // 現在がtypesかcolorsかで扱うhashを切り替える。
-  const packTypesColors = () => {
+  const pickHash = () => {
     if (hasItem(types) && nameValueZero) {
       return types;
     } else if (hasItem(colors) && nameValueZero) {
       return colors;
     }
   }; 
-  const itemHash = packTypesColors();
+  const switchHash = pickHash();
 
   // name, types, colorsのそれぞれカウント合計
   const calcCountHashVal = () => {
@@ -66,10 +66,10 @@ const CartItem = ({
       {/* 種類・色 */}
       {
         (hasItem(types) || hasItem(colors)) && nameValueZero &&
-          Object.keys(itemHash).map((key, idx) => (
+          Object.keys(switchHash).map((key, idx) => (
             <li className="quantity-state" key={idx}>
               <h3>{key}</h3>
-              <div className="quantity-count">{itemHash[key]}</div>
+              <div className="quantity-count">{switchHash[key]}</div>
             </li>
           ))        
       }

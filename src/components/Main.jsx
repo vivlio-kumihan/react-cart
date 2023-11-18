@@ -3,7 +3,7 @@ import "../styles/components/Main.sass";
 import Product from "./Product";
 
 const Main = ({ dataList, cartItems, setCartItems, onAddCart, onRemoveCart }) => {
-  console.log(dataList);
+
   return (
     <div className="wrapper">
       <h2>お守り・ご祈祷</h2>
@@ -12,8 +12,8 @@ const Main = ({ dataList, cartItems, setCartItems, onAddCart, onRemoveCart }) =>
           dataList.map((data) => (
             <li key={data.pid}>
               <Product 
-                {...data}
                 data={data}
+                {...data}
                 cartItems={cartItems}
                 setCartItems={setCartItems}
                 onAddCart={onAddCart}

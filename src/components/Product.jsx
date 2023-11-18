@@ -4,22 +4,59 @@ import TypesColorsAndSetCount from "../containers/TypesColorsAndSetCount";
 import "../styles/components/Product.sass";
 
 const Product = ({ 
-        pid, image, name, types, colors, price, weight, 
-        data,
-        cartItems, 
-        setCartItems,
-        onAddCart, 
-        onRemoveCart 
+  data,
+  pid, image, name, types, colors, price, weight, 
+  cartItems, 
+  setCartItems,
+  onAddCart, 
+  onRemoveCart 
   }) => {
 
-  // nameのitemごとのカウント
+  // nameのhashの値 = namenのカウント数
+  const nameCount = (Object.keys(name).map((key) => name[key]).shift());
+
+  // nameの値が0であれば真を返す。
+  const nameValueZero = Object.keys(name).map((key) => name[key]).shift() === 0;
+
+  // 対象が空配列かを検証
+  const hasItem = (hash) => Object.keys(hash).length > 0;
+
+  // 現在がtypesかcolorsかで扱うhashを切り替える。
+  const pickHash = () => {
+    if (hasItem(types) && nameValueZero) {
+      return types;
+    } else if (hasItem(colors) && nameValueZero) {
+      return colors;
+    }
+  }; 
+  // そのための関数の実行を変数に格納
+  const switchHash = pickHash();
+
+  // -------- これは削除予定 -------- 
+    // nameのitemごとのカウント
   const [eachCount, setEachCount] = useState(0);
   // typesとcolorsのitemごとのカウント
   const [itemCount, setItemCount] = useState(0);
+  // -------- これは削除予定 -------- 
+
+  const [itemTotalCount, setItemTotalCount] = useState(0);
+  
+  // name, types, colorsのそれぞれカウント合計
+  const whichItemSumCalcCount = (hash) => {
+    if (nameCount > 0) {
+      return nameCount;
+    } else if ((hasItem(types) || hasItem(colors)) && nameValueZero) {
+      const hash = hasItem(types) ? types : colors
+      return Object.keys(hash).reduce((acc, key) => acc + parseInt(hash[key]), 0);
+    }
+  };
+
+  // -------- これは削除予定 -------- 
   const whichSumCount = (hash) => {
     const sumCalcCount = Object.keys(hash).reduce((acc, key) => acc + parseInt(hash[key]), 0)
     return setItemCount(parseInt(sumCalcCount));
   };
+  // -------- これは削除予定 -------- 
     
   return (
     <div className="card" key={pid}>
@@ -34,14 +71,25 @@ const Product = ({
             name={name}
             types={types}
             colors={colors} 
-            setEachCount={setEachCount}
+            hasItem={hasItem}
+            whichItemSumCalcCount={whichItemSumCalcCount}
           />
 
           <TypesColorsAndSetCount 
             types={types}
             colors={colors} 
             setEachCount={setEachCount}
+
+            // 削除予定---
             whichSumCount={whichSumCount}
+            // 削除予定---
+
+            nameCount={nameCount}
+            nameValueZero={nameValueZero}
+            hasItem={hasItem}
+            pickHash={pickHash}
+            switchHash={switchHash}
+            whichItemSumCalcCount={whichItemSumCalcCount}            
           />
 
           <div className="price">
@@ -71,9 +119,6 @@ const Product = ({
                 types[key] = 0
                 setEachCount({...types, [key]: 0})
                 })
-              console.log(types)
-              console.log(data)
-              onRemoveCart(data)
             }}
           >リストから削除</button>
         ) : (
