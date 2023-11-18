@@ -13,12 +13,11 @@ const OrderResult = ({ toggle, cartItems }) => {
   const [totalFeeHash, setTotalFeeHash] = useState({});
   // カート内で注文する商品の小計
   const [totalFee, setTotalFee] = useState(0);  
-
   // アイテム毎の重量
   const [totalWeightHash, setTotalWeightHash] = useState({});
   // カート内で注文する商品の重量
   const [totalWeight, setTotalWeight] = useState(0);
-
+  // カート内で注文する商品の送料
   const [totalSendFee, setTotalSendFee] = useState(0);
 
   return (
@@ -37,6 +36,7 @@ const OrderResult = ({ toggle, cartItems }) => {
         <div className="result-wrapper">
           {cartItems.map((cartItem, idx) => (
           <div className={idx} key={idx}>
+          {/* {console.log(cartItem)} */}
             <CartItem
               key={idx} 
               cartItem={cartItem} 

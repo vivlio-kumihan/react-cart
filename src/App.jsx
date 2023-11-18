@@ -7,17 +7,30 @@ import "./styles/App.sass";
 const App = () => {
   // カートに入れる商品の状態
   const [cartItems, setCartItems] = useState([]);
+  // console.log(cartItems);
 
   // 商品をカートに追加する関数の定義
   const onAddCart = (product) => {
     const exist = cartItems.find((cartItem) => cartItem.pid === product.pid);
     if (!exist) {
+      // console.log(product);
+
       const newCartItems = [...cartItems, { ...product, quantity: 1 }];
       setCartItems(newCartItems);
     }
   };
   // 商品をカートから取る関数の定義
   const onRemoveCart = (product) => {
+    // const renewCartItem = 
+    cartItems.map((cartItem) => {
+      cartItem.pid === product.pid &&
+        console.log(cartItem.name);
+        Object.keys(cartItem.types).map((key) => { cartItem.types[key] = 0 });
+        console.log(cartItem.types);
+        console.log(cartItem.colors);
+    }); 
+
+
     const newCartItems = cartItems.filter(
       (cartItem) => cartItem.pid !== product.pid
     );
@@ -28,9 +41,10 @@ const App = () => {
     <div className="container">   
       <Main
         dataList={dataList}
+        cartItems={cartItems}
+        setCartItems={setCartItems}
         onAddCart={onAddCart}
         onRemoveCart={onRemoveCart}
-        cartItems={cartItems}
       />
       <OrderList
         dataList={dataList}

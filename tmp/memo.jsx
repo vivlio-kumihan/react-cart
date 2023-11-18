@@ -4,14 +4,12 @@ itemTotalCount(colors)
 
 
 
-{/* {console.log(cartItem)} */}
 
 // {
 //   Object.keys(types).length && Object.keys(colors).length === 0
 //     ? price * itemCount : price * eachCount
 // }
-// {console.log(Object.keys(types).length)}
-// {console.log(Object.keys(colors).length)}
+
 
 
 import { useEffect, useState } from "react";

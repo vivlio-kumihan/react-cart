@@ -8,8 +8,8 @@ const CartItem = ({
   totalWeightHash, setTotalWeightHash,
   totalWeight, setTotalWeight
   }) => {
-
-  // nameのhashの値
+  
+  // nameのhashの値 = namenのカウント数
   const nameCount = (Object.keys(name).map((key) => name[key]).shift());
 
   // nameの値が0であれば真を返す。
