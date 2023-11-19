@@ -5,6 +5,7 @@ const NameAndSetCount = ({
   types, 
   colors, 
   hasItem,
+  eachCount,
   setEachCount,
   whichItemSumCalcCount
   }) => {
@@ -21,14 +22,15 @@ const NameAndSetCount = ({
         <li key={idx}>
           <div className="item-name">{key}</div>
           <input 
-            id="name"
+            id={`${name}_${key}`}
+            placeholder="0"
             type="number" 
             min="0"
+            value={eachCount[key] || 0}
             onChange={(e) => {
               setEachCount({...name, [key]: e.target.value})              
               name[key] = e.target.value
             }}
-            placeholder="0"
           />   
         </li>
       ))}

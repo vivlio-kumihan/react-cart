@@ -49,9 +49,7 @@ const Product = ({
         <div className="image-frame">
           <img className="image" src={image} alt={name} />
         </div>
-
-        <div className="item-info">
-          
+        <div className="item-info">         
           <NameAndSetCount 
             name={name}
             types={types}
@@ -66,6 +64,7 @@ const Product = ({
           <TypesColorsAndSetCount 
             types={types}
             colors={colors} 
+            eachCount={eachCount}
             setEachCount={setEachCount}
             hasItem={hasItem}
             switchItem={switchItem}
@@ -93,7 +92,9 @@ const Product = ({
             onClick={() => {
               [name, types, colors].forEach(hash => {
                 Object.keys(hash).map((key) => {
+                  // リスト内の値をリセットする場合に必要
                   hash[key] = 0
+                  // Mainの商品一覧内の値をリセットするのに必要
                   setEachCount({...hash, [key]: 0})
                 })
               })

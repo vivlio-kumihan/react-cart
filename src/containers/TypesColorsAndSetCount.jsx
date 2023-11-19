@@ -3,6 +3,7 @@ import { useEffect } from "react";
 const TypesColorsAndSetCount = ({ 
   types, 
   colors, 
+  eachCount, 
   setEachCount, 
   hasItem,
   switchItem,
@@ -19,16 +20,15 @@ const TypesColorsAndSetCount = ({
             <li key={idx}>
               <span>{key}</span>
               <input 
-                id={switchItem[1]}
+                id={`${switchItem[1]}_${key}`}
+                placeholder="0"
                 type="number" 
                 min="0"
+                value={eachCount[key] || 0}
                 onChange={(e)=>{
                   switchItem[0][key] = e.target.value
                   setEachCount({...switchItem[0], [key]: e.target.value})
                 }}
-                placeholder="0"
-                // value属性を無しにするとそれぞれカウントできる。
-                // value={typeCount}
               />
             </li>
           ))}
