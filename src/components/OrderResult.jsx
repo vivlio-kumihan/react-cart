@@ -4,7 +4,13 @@ import CartItem from "../components/CartItem";
 import SendFee from "../containers/SendFee";
 import "../styles/components/OrderResult.sass";
 
-const OrderResult = ({ toggle, cartItems }) => {
+const OrderResult = ({ 
+  toggle, 
+  cartItems,
+  // nameValueZero, 
+  // nameCount, 
+  // hasItem 
+  }) => {
 
   // カートに商品が入っているか否か条件分岐で使う。
   const isEmpty = (arr) => arr.length < 1;
@@ -36,7 +42,6 @@ const OrderResult = ({ toggle, cartItems }) => {
         <div className="result-wrapper">
           {cartItems.map((cartItem, idx) => (
           <div className={idx} key={idx}>
-          {/* {console.log(cartItem)} */}
             <CartItem
               key={idx} 
               cartItem={cartItem} 
@@ -48,6 +53,9 @@ const OrderResult = ({ toggle, cartItems }) => {
               setTotalWeightHash={setTotalWeightHash}
               totalWeight={totalWeight}
               setTotalWeight={setTotalWeight}
+              // nameValueZero={nameValueZero}
+              // nameCount={nameCount}
+              // hasItem={hasItem}
             />
           </div>
           ))}

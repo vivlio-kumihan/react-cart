@@ -6,7 +6,10 @@ const CartItem = ({
   totalFeeHash, setTotalFeeHash,
   totalFee, setTotalFee,
   totalWeightHash, setTotalWeightHash,
-  totalWeight, setTotalWeight
+  totalWeight, setTotalWeight,
+  // nameValueZero,
+  // nameCount,
+  // hasItem
   }) => {
   
   // nameのhashの値 = namenのカウント数

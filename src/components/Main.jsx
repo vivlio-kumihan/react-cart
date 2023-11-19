@@ -2,7 +2,16 @@ import { useEffect, useState } from "react";
 import "../styles/components/Main.sass";
 import Product from "./Product";
 
-const Main = ({ dataList, cartItems, setCartItems, onAddCart, onRemoveCart }) => {
+const Main = ({ dataList, 
+  cartItems, 
+  setCartItems, 
+  onAddCart, 
+  onRemoveCart, 
+  // nameValueZero,
+  // nameCount,
+  // hasItem,
+  // whichItemSumCalcCount
+  }) => {
 
   return (
     <div className="wrapper">
@@ -17,7 +26,11 @@ const Main = ({ dataList, cartItems, setCartItems, onAddCart, onRemoveCart }) =>
                 cartItems={cartItems}
                 setCartItems={setCartItems}
                 onAddCart={onAddCart}
-                onRemoveCart={onRemoveCart}                    
+                onRemoveCart={onRemoveCart}  
+                // nameValueZero={nameValueZero} 
+                // nameCount={nameCount} 
+                // hasItem={hasItem}  
+                // whichItemSumCalcCount={whichItemSumCalcCount}          
               />
             </li>
           ))

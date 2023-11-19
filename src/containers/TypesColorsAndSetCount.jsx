@@ -4,7 +4,7 @@ const TypesColorsAndSetCount = ({
   types, 
   colors, 
   setEachCount, 
-  whichSumCount 
+  whichItemSumCalcCount
   }) => {
 
   return (
@@ -29,11 +29,10 @@ const TypesColorsAndSetCount = ({
               />
             </li>
           ))}
-          {/* 問題　渡らないとするとここかも？ */}
           {
             useEffect(() => {
-              whichSumCount(types);
-            }, [types, whichSumCount])
+              whichItemSumCalcCount(types);
+            }, [types, whichItemSumCalcCount])
           }          
         </ul>
       ) : (
@@ -62,11 +61,10 @@ const TypesColorsAndSetCount = ({
               />
             </li>
           ))}
-          {/* 問題　渡らないとするとここかも？ */}
           {
             useEffect(() => {
-              whichSumCount(colors);
-            }, [colors, whichSumCount])
+              whichItemSumCalcCount(colors);
+            }, [colors, whichItemSumCalcCount])
           }
         </ul>
       ) : (

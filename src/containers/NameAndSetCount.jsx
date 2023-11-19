@@ -5,6 +5,7 @@ const NameAndSetCount = ({
   types, 
   colors, 
   hasItem,
+  setEachCount,
   whichItemSumCalcCount
   }) => {
 
@@ -24,13 +25,18 @@ const NameAndSetCount = ({
             type="number" 
             min="0"
             onChange={(e) => {
-              whichItemSumCalcCount(e.target.value)
+              setEachCount({...name, [key]: e.target.value})              
               name[key] = e.target.value
             }}
             placeholder="0"
           />   
         </li>
-      ))}   
+      ))}
+      {
+        useEffect(() => {
+          whichItemSumCalcCount(name);
+        }, [name, whichItemSumCalcCount])
+      }         
     </ul>
   );
 };

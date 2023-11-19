@@ -18,13 +18,11 @@ const App = () => {
   };
   // 商品をカートから取る関数の定義
   const onRemoveCart = (product) => {
-    // const renewCartItem = 
     cartItems.map((cartItem) => {
       cartItem.pid === product.pid &&
-        console.log(cartItem.name);
+        Object.keys(cartItem.name).map((key) => { cartItem.name[key] = 0 });
         Object.keys(cartItem.types).map((key) => { cartItem.types[key] = 0 });
-        console.log(cartItem.types);
-        console.log(cartItem.colors);
+        Object.keys(cartItem.colors).map((key) => { cartItem.colors[key] = 0 });
     }); 
 
     const newCartItems = cartItems.filter(
@@ -32,6 +30,44 @@ const App = () => {
     );
     setCartItems(newCartItems);
   };
+
+  // // nameの値が0であれば真を返す。
+  // const nameValueZero = (nameHash) => {
+  //   return Object.keys(nameHash).map((key) => nameHash[key]).shift() === 0;
+  // };
+
+  // // nameのhashの値 = namenのカウント数
+  // const nameCount = (nameHash) => {
+  //   return parseInt((Object.keys(nameHash).map((key) => nameHash[key]).shift()));
+  // };
+
+  // // 対象が空配列かを検証
+  // const hasItem = (hash) => Object.keys(hash).length > 0;
+
+  // App > Main > Product で定義している関数を移動する意味があるか？
+  // // 現在がtypesかcolorsかで扱うhashを切り替える。
+  // const pickHash = () => {
+  //   if (hasItem(types) && nameValueZero) {
+  //     return types;
+  //   } else if (hasItem(colors) && nameValueZero) {
+  //     return colors;
+  //   }
+  // }; 
+  // // そのための関数の実行を変数に格納
+  // const switchHash = pickHash();
+
+  // // itemごとのカウント
+  // const [eachCount, setEachCount] = useState({});
+  
+  // // name, types, colorsのそれぞれカウント合計
+  // const whichItemSumCalcCount = (nameHash, typesHash, colorsHash) => {
+  //   if ((hasItem(typesHash) || hasItem(colorsHash)) && nameValueZero(nameHash)) {
+  //     const hash = hasItem(typesHash) ? typesHash : colorsHash;
+  //     return Object.keys(hash).reduce((acc, key) => acc + parseInt(hash[key]), 0);
+  //   } else if (nameCount(nameHash) >= 0) {
+  //     return Object.keys(nameHash).reduce((acc, key) => acc + parseInt(nameHash[key]), 0);
+  //   }
+  // };  
 
   return (
     <div className="container">   
@@ -41,13 +77,21 @@ const App = () => {
         setCartItems={setCartItems}
         onAddCart={onAddCart}
         onRemoveCart={onRemoveCart}
+        // nameValueZero={nameValueZero}
+        // nameCount={nameCount}
+        // hasItem={hasItem}
+        // whichItemSumCalcCount={whichItemSumCalcCount}
       />
       <OrderList
         dataList={dataList}
-        onAddCart={onAddCart}
-        onRemoveCart={onRemoveCart}
         cartItems={cartItems}
         setCartItems={setCartItems}
+        onAddCart={onAddCart}
+        onRemoveCart={onRemoveCart}
+        // nameValueZero={nameValueZero}
+        // nameCount={nameCount}
+        // hasItem={hasItem}  
+        // whichItemSumCalcCount={whichItemSumCalcCount}      
       />
     </div>
   );

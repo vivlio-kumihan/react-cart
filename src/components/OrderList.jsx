@@ -3,7 +3,17 @@ import OrderResult from "./OrderResult";
 import "../styles/components/OrderList.sass";
 import OrderForm from "./OrderForm";
 
-const OrderList = ({ dataList, cartItems, totalFeeHash, setTotalFeeHash }) => {
+
+
+const OrderList = ({ 
+  dataList, 
+  cartItems, 
+  totalFeeHash, 
+  setTotalFeeHash, 
+  // nameValueZero, 
+  // nameCount, 
+  // hasItem 
+  }) => {
   const [toggle, setToggle] = useState(false);
   const toggleAction = () => {
     setToggle(!toggle);
@@ -23,6 +33,9 @@ const OrderList = ({ dataList, cartItems, totalFeeHash, setTotalFeeHash }) => {
         cartItems={cartItems} 
         totalFeeHash={totalFeeHash}
         setTotalFeeHash={setTotalFeeHash}
+        // nameValueZero={nameValueZero}
+        // nameCount={nameCount}
+        // hasItem={hasItem}        
       />
     </div>
   );

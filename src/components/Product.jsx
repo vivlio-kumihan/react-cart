@@ -9,14 +9,19 @@ const Product = ({
   cartItems, 
   setCartItems,
   onAddCart, 
-  onRemoveCart 
+  onRemoveCart,
+  // nameValueZero,
+  // nameCount,
+  // hasItem
   }) => {
 
-  // nameのhashの値 = namenのカウント数
-  const nameCount = (Object.keys(name).map((key) => name[key]).shift());
 
-  // nameの値が0であれば真を返す。
+
+    // nameの値が0であれば真を返す。
   const nameValueZero = Object.keys(name).map((key) => name[key]).shift() === 0;
+
+  // nameのhashの値 = namenのカウント数
+  const nameCount = parseInt((Object.keys(name).map((key) => name[key]).shift()));
 
   // 対象が空配列かを検証
   const hasItem = (hash) => Object.keys(hash).length > 0;
@@ -32,32 +37,20 @@ const Product = ({
   // そのための関数の実行を変数に格納
   const switchHash = pickHash();
 
-  // -------- これは削除予定 -------- 
-    // nameのitemごとのカウント
-  const [eachCount, setEachCount] = useState(0);
-  // typesとcolorsのitemごとのカウント
-  const [itemCount, setItemCount] = useState(0);
-  // -------- これは削除予定 -------- 
+  // itemごとのカウント
+  const [eachCount, setEachCount] = useState({});
 
-  const [itemTotalCount, setItemTotalCount] = useState(0);
-  
   // name, types, colorsのそれぞれカウント合計
-  const whichItemSumCalcCount = (hash) => {
-    if (nameCount > 0) {
-      return nameCount;
-    } else if ((hasItem(types) || hasItem(colors)) && nameValueZero) {
-      const hash = hasItem(types) ? types : colors
+  const whichItemSumCalcCount = () => {
+    if ((hasItem(types) || hasItem(colors)) && nameValueZero) {
+      const hash = hasItem(types) ? types : colors;
       return Object.keys(hash).reduce((acc, key) => acc + parseInt(hash[key]), 0);
+    } else if (nameCount >= 0) {
+      return Object.keys(name).reduce((acc, key) => acc + parseInt(name[key]), 0);
     }
   };
-
-  // -------- これは削除予定 -------- 
-  const whichSumCount = (hash) => {
-    const sumCalcCount = Object.keys(hash).reduce((acc, key) => acc + parseInt(hash[key]), 0)
-    return setItemCount(parseInt(sumCalcCount));
-  };
-  // -------- これは削除予定 -------- 
-    
+  console.log(whichItemSumCalcCount());
+  
   return (
     <div className="card" key={pid}>
       <div className="image_frame-info">
@@ -72,6 +65,7 @@ const Product = ({
             types={types}
             colors={colors} 
             hasItem={hasItem}
+            setEachCount={setEachCount}
             whichItemSumCalcCount={whichItemSumCalcCount}
           />
 
@@ -79,12 +73,6 @@ const Product = ({
             types={types}
             colors={colors} 
             setEachCount={setEachCount}
-
-            // 削除予定---
-            whichSumCount={whichSumCount}
-            // 削除予定---
-
-            nameCount={nameCount}
             nameValueZero={nameValueZero}
             hasItem={hasItem}
             pickHash={pickHash}
@@ -97,11 +85,7 @@ const Product = ({
             <span>円</span>
             &nbsp;|&nbsp;
             <span>小計</span>
-            {
-              Object.keys(types).length || Object.keys(colors).length > 0
-                ? price * itemCount
-                : price * eachCount
-            }            
+            {price * whichItemSumCalcCount()}
             <span>円</span>
           </div>
         </div>
@@ -115,9 +99,17 @@ const Product = ({
           <button
             className="mask-btn remove-btn"
             onClick={() => {
+              Object.keys(name).map((key) => {
+                name[key] = 0
+                setEachCount({...name, [key]: 0})
+                })
               Object.keys(types).map((key) => {
                 types[key] = 0
                 setEachCount({...types, [key]: 0})
+                })
+              Object.keys(colors).map((key) => {
+                colors[key] = 0
+                setEachCount({...colors, [key]: 0})
                 })
             }}
           >リストから削除</button>
@@ -133,3 +125,4 @@ const Product = ({
 };
 
 export default Product;
+
