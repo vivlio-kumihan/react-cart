@@ -7,11 +7,6 @@ const Main = ({ dataList,
   setCartItems, 
   onAddCart, 
   onRemoveCart, 
-  setEachCount
-  // nameValueZero,
-  // nameCount,
-  // hasItem,
-  // whichItemSumCalcCount
   }) => {
 
   return (
@@ -27,12 +22,7 @@ const Main = ({ dataList,
                 cartItems={cartItems}
                 setCartItems={setCartItems}
                 onAddCart={onAddCart}
-                onRemoveCart={onRemoveCart}
-                setEachCount={setEachCount}  
-                // nameValueZero={nameValueZero} 
-                // nameCount={nameCount} 
-                // hasItem={hasItem}  
-                // whichItemSumCalcCount={whichItemSumCalcCount}          
+                onRemoveCart={onRemoveCart}   
               />
             </li>
           ))
@@ -44,12 +34,24 @@ const Main = ({ dataList,
 
 export default Main;
 
-  // 問題　なんでuseEffectにしないとダメなのか？
-  // Uncaught Error: Too many re-renders. React limits the number of renders to prevent an infinite loop.
-  // Uncaught Error： 再レンダリングの回数が多すぎます。Reactは無限ループを防ぐためにレンダリング回数を制限しています。
-  // const handleItemsTotalFeeHash = (id, fee) => {
-  //   setItemsTotalFeeHash({ ...itemsTotalFeeHash, [id]: fee});
-  //   // useEffect(() => {
-  //   // });
-  // };
-  // const [itemsTotalWeightHash, setItemsTotalWeightHash] = useState({});
+// 問題　なんでuseEffectにしないとダメなのか？
+// Uncaught Error: Too many re-renders. React limits the number of renders to prevent an infinite loop.
+// Uncaught Error： 再レンダリングの回数が多すぎます。Reactは無限ループを防ぐためにレンダリング回数を制限しています。
+// const handleItemsTotalFeeHash = (id, fee) => {
+//   setItemsTotalFeeHash({ ...itemsTotalFeeHash, [id]: fee});
+//   // useEffect(() => {
+//   // });
+// };
+// const [itemsTotalWeightHash, setItemsTotalWeightHash] = useState({});
+
+// setEachCount
+// nameValueZero,
+// nameCount,
+// hasItem,
+// whichItemSumCalcCount
+
+// setEachCount={setEachCount}  
+// nameValueZero={nameValueZero} 
+// nameCount={nameCount} 
+// hasItem={hasItem}  
+// whichItemSumCalcCount={whichItemSumCalcCount}       

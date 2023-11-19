@@ -7,9 +7,6 @@ import "../styles/components/OrderResult.sass";
 const OrderResult = ({ 
   toggle, 
   cartItems,
-  // nameValueZero, 
-  // nameCount, 
-  // hasItem 
   }) => {
 
   // カートに商品が入っているか否か条件分岐で使う。
@@ -17,12 +14,16 @@ const OrderResult = ({
 
   // アイテム毎の金額
   const [totalFeeHash, setTotalFeeHash] = useState({});
+
   // カート内で注文する商品の小計
-  const [totalFee, setTotalFee] = useState(0);  
+  const [totalFee, setTotalFee] = useState(0); 
+
   // アイテム毎の重量
   const [totalWeightHash, setTotalWeightHash] = useState({});
+
   // カート内で注文する商品の重量
   const [totalWeight, setTotalWeight] = useState(0);
+
   // カート内で注文する商品の送料
   const [totalSendFee, setTotalSendFee] = useState(0);
 
@@ -46,16 +47,9 @@ const OrderResult = ({
               key={idx} 
               cartItem={cartItem} 
               totalFeeHash={totalFeeHash}
-              setTotalFeeHash={setTotalFeeHash}
-              totalFee={totalFee}
               setTotalFee={setTotalFee}
               totalWeightHash={totalWeightHash}
-              setTotalWeightHash={setTotalWeightHash}
-              totalWeight={totalWeight}
               setTotalWeight={setTotalWeight}
-              // nameValueZero={nameValueZero}
-              // nameCount={nameCount}
-              // hasItem={hasItem}
             />
           </div>
           ))}

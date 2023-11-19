@@ -4,7 +4,9 @@ const TypesColorsAndSetCount = ({
   types, 
   colors, 
   setEachCount, 
-  whichItemSumCalcCount
+  hasItem,
+  switchItem,
+  whichItemSumCalcCount,
   }) => {
 
   return (
@@ -19,7 +21,7 @@ const TypesColorsAndSetCount = ({
                 id="types"
                 type="number" 
                 min="0"
-                onChange={(e) => {
+                onChange={(e)=>{
                   types[key] = e.target.value
                   setEachCount({...types, [key]: e.target.value})
                 }}
@@ -39,7 +41,7 @@ const TypesColorsAndSetCount = ({
         <ul className="display-none"></ul>
       )}
 
-      {Object.keys(colors).length !== 0 ? (
+      {/* {Object.keys(colors).length !== 0 ? (
         <ul className="colors">
           {
             Object.keys(colors).map((key, idx) => (
@@ -49,7 +51,7 @@ const TypesColorsAndSetCount = ({
                 id="colors"
                 type="number"
                 min="0" 
-                onChange={(e) => {
+                onChange={(e)=>{
                   colors[key] = e.target.value
                   setEachCount({...colors, [key]: e.target.value})                  
                 }}
@@ -69,7 +71,7 @@ const TypesColorsAndSetCount = ({
         </ul>
       ) : (
         <ul className="display-none"></ul>
-      )}
+      )} */}
     </>
   );
 };

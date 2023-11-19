@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import NameAndSetCount from "../containers/NameAndSetCount";
 import TypesColorsAndSetCount from "../containers/TypesColorsAndSetCount";
 import "../styles/components/Product.sass";
@@ -7,13 +7,8 @@ const Product = ({
   data,
   pid, image, name, types, colors, price, weight, 
   cartItems, 
-  setCartItems,
   onAddCart, 
   onRemoveCart,
-  setEachCount
-  // nameValueZero,
-  // nameCount,
-  // hasItem
   }) => {
 
   // nameの値が0であれば真を返す。
@@ -26,18 +21,17 @@ const Product = ({
   const hasItem = (hash) => Object.keys(hash).length > 0;
 
   // 現在がtypesかcolorsかで扱うhashを切り替える。
-  const pickHash = () => {
+  const pickArr = () => {
     if (hasItem(types) && nameValueZero) {
-      return types;
+      return [types, "types"];
     } else if (hasItem(colors) && nameValueZero) {
-      return colors;
+      return [colors, "colors"];
     }
   }; 
-  // そのための関数の実行を変数に格納
-  const switchHash = pickHash();
+  const switchItem = pickArr();
 
-  // itemごとのカウント
-  // const [eachCount, setEachCount] = useState({});
+  // name, types, colorsごとのカウント
+  const [eachCount, setEachCount] = useState({});
 
   // name, types, colorsのそれぞれカウント合計
   const whichItemSumCalcCount = () => {
@@ -63,6 +57,8 @@ const Product = ({
             types={types}
             colors={colors} 
             hasItem={hasItem}
+            switchItem={switchItem}
+            eachCount={eachCount}
             setEachCount={setEachCount}
             whichItemSumCalcCount={whichItemSumCalcCount}
           />
@@ -71,11 +67,9 @@ const Product = ({
             types={types}
             colors={colors} 
             setEachCount={setEachCount}
-            nameValueZero={nameValueZero}
             hasItem={hasItem}
-            pickHash={pickHash}
-            switchHash={switchHash}
-            whichItemSumCalcCount={whichItemSumCalcCount}            
+            switchItem={switchItem}
+            whichItemSumCalcCount={whichItemSumCalcCount}  
           />
 
           <div className="price">
@@ -97,19 +91,13 @@ const Product = ({
           <button
             className="mask-btn remove-btn"
             onClick={() => {
-              onRemoveCart(data)
-              // Object.keys(name).map((key) => {
-              //   name[key] = 0
-              //   setEachCount({...name, [key]: 0})
-              //   })
-              // Object.keys(types).map((key) => {
-              //   types[key] = 0
-              //   setEachCount({...types, [key]: 0})
-              //   })
-              // Object.keys(colors).map((key) => {
-              //   colors[key] = 0
-              //   setEachCount({...colors, [key]: 0})
-              //   })
+              [name, types, colors].forEach(hash => {
+                Object.keys(hash).map((key) => {
+                  hash[key] = 0
+                  setEachCount({...hash, [key]: 0})
+                })
+              })
+              // onRemoveCart(data)
             }}
           >リストから削除</button>
         ) : (
@@ -125,3 +113,7 @@ const Product = ({
 
 export default Product;
 
+// setEachCount
+// nameValueZero,
+// nameCount,
+// hasItem
