@@ -7,6 +7,7 @@ const Main = ({ dataList,
   setCartItems, 
   onAddCart, 
   onRemoveCart, 
+  setEachCount
   // nameValueZero,
   // nameCount,
   // hasItem,
@@ -26,7 +27,8 @@ const Main = ({ dataList,
                 cartItems={cartItems}
                 setCartItems={setCartItems}
                 onAddCart={onAddCart}
-                onRemoveCart={onRemoveCart}  
+                onRemoveCart={onRemoveCart}
+                setEachCount={setEachCount}  
                 // nameValueZero={nameValueZero} 
                 // nameCount={nameCount} 
                 // hasItem={hasItem}  

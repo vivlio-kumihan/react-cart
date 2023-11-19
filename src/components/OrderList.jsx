@@ -10,6 +10,8 @@ const OrderList = ({
   cartItems, 
   totalFeeHash, 
   setTotalFeeHash, 
+  setEachCount
+  
   // nameValueZero, 
   // nameCount, 
   // hasItem 
@@ -33,6 +35,7 @@ const OrderList = ({
         cartItems={cartItems} 
         totalFeeHash={totalFeeHash}
         setTotalFeeHash={setTotalFeeHash}
+        
         // nameValueZero={nameValueZero}
         // nameCount={nameCount}
         // hasItem={hasItem}        

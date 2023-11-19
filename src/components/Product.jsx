@@ -10,14 +10,13 @@ const Product = ({
   setCartItems,
   onAddCart, 
   onRemoveCart,
+  setEachCount
   // nameValueZero,
   // nameCount,
   // hasItem
   }) => {
 
-
-
-    // nameの値が0であれば真を返す。
+  // nameの値が0であれば真を返す。
   const nameValueZero = Object.keys(name).map((key) => name[key]).shift() === 0;
 
   // nameのhashの値 = namenのカウント数
@@ -38,7 +37,7 @@ const Product = ({
   const switchHash = pickHash();
 
   // itemごとのカウント
-  const [eachCount, setEachCount] = useState({});
+  // const [eachCount, setEachCount] = useState({});
 
   // name, types, colorsのそれぞれカウント合計
   const whichItemSumCalcCount = () => {
@@ -49,7 +48,6 @@ const Product = ({
       return Object.keys(name).reduce((acc, key) => acc + parseInt(name[key]), 0);
     }
   };
-  console.log(whichItemSumCalcCount());
   
   return (
     <div className="card" key={pid}>
@@ -99,18 +97,19 @@ const Product = ({
           <button
             className="mask-btn remove-btn"
             onClick={() => {
-              Object.keys(name).map((key) => {
-                name[key] = 0
-                setEachCount({...name, [key]: 0})
-                })
-              Object.keys(types).map((key) => {
-                types[key] = 0
-                setEachCount({...types, [key]: 0})
-                })
-              Object.keys(colors).map((key) => {
-                colors[key] = 0
-                setEachCount({...colors, [key]: 0})
-                })
+              onRemoveCart(data)
+              // Object.keys(name).map((key) => {
+              //   name[key] = 0
+              //   setEachCount({...name, [key]: 0})
+              //   })
+              // Object.keys(types).map((key) => {
+              //   types[key] = 0
+              //   setEachCount({...types, [key]: 0})
+              //   })
+              // Object.keys(colors).map((key) => {
+              //   colors[key] = 0
+              //   setEachCount({...colors, [key]: 0})
+              //   })
             }}
           >リストから削除</button>
         ) : (

@@ -7,13 +7,15 @@ const CartItem = ({
   totalFee, setTotalFee,
   totalWeightHash, setTotalWeightHash,
   totalWeight, setTotalWeight,
+
+
   // nameValueZero,
   // nameCount,
   // hasItem
   }) => {
   
   // nameのhashの値 = namenのカウント数
-  const nameCount = (Object.keys(name).map((key) => name[key]).shift());
+  const nameCount = parseInt((Object.keys(name).map((key) => name[key]).shift()));
 
   // nameの値が0であれば真を返す。
   const nameValueZero = Object.keys(name).map((key) => name[key]).shift() === 0;
@@ -32,18 +34,18 @@ const CartItem = ({
   const switchHash = pickHash();
 
   // name, types, colorsのそれぞれカウント合計
-  const calcCountHashVal = () => {
-    if (nameCount > 0) {
-      return nameCount;
-    } else if ((hasItem(types) || hasItem(colors)) && nameValueZero){
-      const hash = hasItem(types) ? types : colors
+  const whichItemSumCalcCount = () => {
+    if ((hasItem(types) || hasItem(colors)) && nameValueZero) {
+      const hash = hasItem(types) ? types : colors;
       return Object.keys(hash).reduce((acc, key) => acc + parseInt(hash[key]), 0);
+    } else if (nameCount >= 0) {
+      return Object.keys(name).reduce((acc, key) => acc + parseInt(name[key]), 0);
     }
   };
   
   // 商品ごとの小計、重量小計
-  totalFeeHash[pid] = price * calcCountHashVal();
-  totalWeightHash[pid] = weight * calcCountHashVal();
+  totalFeeHash[pid] = price * whichItemSumCalcCount();
+  totalWeightHash[pid] = weight * whichItemSumCalcCount();
 
   useEffect(() => {
     setTotalFee(Object.values(totalFeeHash).reduce((acc, fee) => acc + fee, 0));
@@ -78,9 +80,9 @@ const CartItem = ({
       }
 
       <li className="sub-total">
-        <span>{price}円&nbsp;×&nbsp;{calcCountHashVal()}</span>
-        <span>&nbsp;小計:&nbsp;{price*calcCountHashVal()}円</span>
-        {/* <span>&nbsp;重量:&nbsp;{weight*calcCountHashVal()}g</span> */}
+        <span>{price}円&nbsp;×&nbsp;{whichItemSumCalcCount()}</span>
+        <span>&nbsp;小計:&nbsp;{price*whichItemSumCalcCount()}円</span>
+        {/* <span>&nbsp;重量:&nbsp;{weight*whichItemSumCalcCount()}g</span> */}
       </li>
     </ul>
   );

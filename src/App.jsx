@@ -16,13 +16,28 @@ const App = () => {
       setCartItems(newCartItems);
     }
   };
+
+  const [eachCount, setEachCount] = useState({});
+
   // 商品をカートから取る関数の定義
   const onRemoveCart = (product) => {
     cartItems.map((cartItem) => {
       cartItem.pid === product.pid &&
-        Object.keys(cartItem.name).map((key) => { cartItem.name[key] = 0 });
-        Object.keys(cartItem.types).map((key) => { cartItem.types[key] = 0 });
-        Object.keys(cartItem.colors).map((key) => { cartItem.colors[key] = 0 });
+        Object.keys(cartItem.name).map((key) => {
+          cartItem.name[key] = 0
+          setEachCount({...cartItem.name, [key]: 0})
+          })
+        Object.keys(cartItem.types).map((key) => {
+          cartItem.types[key] = 0
+          setEachCount({...cartItem.types, [key]: 0})
+          })
+        Object.keys(cartItem.colors).map((key) => {
+          cartItem.colors[key] = 0
+          setEachCount({...cartItem.colors, [key]: 0})
+          })      
+        // Object.keys(cartItem.name).map((key) => { cartItem.name[key] = 0 });
+        // Object.keys(cartItem.types).map((key) => { cartItem.types[key] = 0 });
+        // Object.keys(cartItem.colors).map((key) => { cartItem.colors[key] = 0 });
     }); 
 
     const newCartItems = cartItems.filter(
@@ -77,6 +92,7 @@ const App = () => {
         setCartItems={setCartItems}
         onAddCart={onAddCart}
         onRemoveCart={onRemoveCart}
+        setEachCount={setEachCount}
         // nameValueZero={nameValueZero}
         // nameCount={nameCount}
         // hasItem={hasItem}
@@ -88,6 +104,7 @@ const App = () => {
         setCartItems={setCartItems}
         onAddCart={onAddCart}
         onRemoveCart={onRemoveCart}
+        
         // nameValueZero={nameValueZero}
         // nameCount={nameCount}
         // hasItem={hasItem}  
