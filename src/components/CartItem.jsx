@@ -1,5 +1,4 @@
 import { useEffect } from "react";
-import ItemCounter from "../containers/ItemCounter";
 
 const CartItem = ({ 
   cartItem: { pid, name, types, colors, price, weight },
