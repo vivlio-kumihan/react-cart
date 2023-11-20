@@ -117,8 +117,3 @@ const Product = ({
 };
 
 export default Product;
-
-// setEachCount
-// nameValueZero,
-// nameCount,
-// hasItem

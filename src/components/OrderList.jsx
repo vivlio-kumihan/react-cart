@@ -5,8 +5,6 @@ import "../styles/components/OrderList.sass";
 const OrderList = ({ 
   dataList, 
   cartItems, 
-  // totalFeeHash, 
-  // setTotalFeeHash, 
   }) => {
 
   const [toggle, setToggle] = useState(false);
@@ -25,9 +23,7 @@ const OrderList = ({
       <OrderResult
         toggle={toggle}
         dataList={dataList}
-        cartItems={cartItems} 
-        // totalFeeHash={totalFeeHash}
-        // setTotalFeeHash={setTotalFeeHash}       
+        cartItems={cartItems}      
       />
     </div>
   );
