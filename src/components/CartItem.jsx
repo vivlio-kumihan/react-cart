@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import "../styles/components/CartItem.sass";
 
 const CartItem = ({ 
   cartItem: { pid, name, types, colors, price, weight },

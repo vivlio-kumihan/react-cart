@@ -1,0 +1,112 @@
+@use "../parts/forwards" as fw
+
+.item
+  margin: 0
+  padding: 10px 0
+  border-top: 10px solid fw.$black-thin-light
+  li
+    display: flex
+    justify-content: space-between
+    &.quantity-state.name
+      margin-bottom: 5px
+      padding-left: 0
+      font-size: 1.15rem
+      font-weight: 500
+    &.quantity-state
+      padding: 5px 0 0 1rem
+    &.sub-total
+      justify-content: flex-end
+      gap: 10px
+      margin-top: 10px
+    .quantity-count
+      font-size: 1.15rem
+      font-weight: 400
+.item
+  @media print
+    margin: 0
+    padding: 10px 0
+    border-top: 10px solid fw.$black-thin-light
+    li
+      display: flex
+      justify-content: space-between
+      &.quantity-state.name
+        margin-bottom: 5px
+        padding-left: 0
+        font-size: 1rem
+        font-weight: 500
+      &.quantity-state
+        padding: 5px 0 0 1rem
+      &.sub-total
+        justify-content: flex-end
+        gap: 10px
+        margin-top: 10px
+      .quantity-count
+        font-size: 1rem
+        font-weight: 400
+
+
+
+
+
+
+// .name
+//   font-size: 1.1rem
+//   font-weight: 500
+//   li:last-of-type
+//     width: 100%
+//     margin-top: 20px
+//     text-align: center
+//     button
+//       padding: 5px 20px
+//       font-size: 1.05rem
+//       font-weight: 900
+//       letter-spacing: .1em
+//       color: #fff
+//       background-color: fw.$green-dark
+//       border-radius: 999px
+//       transition: .3s
+//       transform: translateY(2px)
+//       &:hover
+//         opacity: .7
+//         transform: translateY(0)
+//         box-shadow: 0 1px 2px #999 
+// .item
+//   > li + li
+//     margin-top: 5px
+//   .quantity-state
+//     display: flex
+//     justify-content: space-between
+//     position: unset
+//     bottom: 0
+//     right: 0
+//     &.name
+//       margin-bottom: 10px
+//       font-size: 1.1rem
+//       font-weight: 500
+//     h3
+//       margin-left: 1rem
+//       font-size: .9rem
+//       font-weight: 400
+//     .wrapper
+//       display: flex
+//       align-items: center
+//       gap: 6.5px
+//       width: fit-content
+//       .add
+//         color: fw.$green
+//       .quantity-count
+//         font-size: 1.2rem
+//       .remove
+//         color: fw.$orange
+//       .reset
+//         margin-left: 5px
+//         padding-bottom: 1px
+//         font-size: .95rem
+//         font-weight: 700
+//         color: #999
+//         border-radius: 999px
+//     .sub-total
+//       display: flex
+//       justify-content: flex-end
+//       gap: 10px
+//       margin-top: 10px

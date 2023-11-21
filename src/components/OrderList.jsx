@@ -21,6 +21,7 @@ const OrderList = ({
         <div className="ami"></div>
       </div>
       <OrderResult
+        className="order-result"
         toggle={toggle}
         dataList={dataList}
         cartItems={cartItems}      

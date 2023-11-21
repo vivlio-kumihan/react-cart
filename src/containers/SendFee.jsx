@@ -112,8 +112,8 @@ const SendFee = ({ totalWeight, setTotalSendFee }) => {
         </div>
         {
           sendFee
-            ? <div className="send-fee">送料: <span>{sendFee}</span>円</div>
-            : <div className="send-fee">送料: <span>0</span>円</div>
+            ? <div className="send-fee">郵送料（口座徴収通知料を含む）: <span>{sendFee}</span>円</div>
+            : <div className="send-fee">郵送料（口座徴収通知料を含む）: <span>0</span>円</div>
         }
       </div>
     </>

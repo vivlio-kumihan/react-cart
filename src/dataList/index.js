@@ -401,6 +401,16 @@ const data = [
     price: 700,
     weight: 100,
   },
+  {
+    pid: "wrist_band",
+    image: image.dummy,
+    category: "授与品",
+    name: { "リストバンド": 0 },
+    types: {},
+    colors: { "青": 0, "赤": 0, "黒": 0, "白": 0, "黄": 0 },
+    price: 800,
+    weight: 24,
+  },
 ];
 
 export default data;

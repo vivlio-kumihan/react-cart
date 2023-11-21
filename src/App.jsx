@@ -26,7 +26,7 @@ const App = () => {
   };
 
   return (
-    <div className="container">   
+    <div className="container">  
       <Main
         dataList={dataList}
         cartItems={cartItems}

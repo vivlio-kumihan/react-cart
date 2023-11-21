@@ -1,4 +1,5 @@
-import { useEffect, useState } from "react";
+import { useState, useRef } from "react";
+import ReactToPrint from "react-to-print";
 import OrderForm from "./OrderForm";
 import CartItem from "../components/CartItem";
 import SendFee from "../containers/SendFee";
@@ -9,8 +10,7 @@ const OrderResult = ({
   cartItems,
   }) => {
 
-  // カートに商品が入っているか否か条件分岐で使う。
-  const isEmpty = (arr) => arr.length < 1;
+  const componentRef = useRef(null);
 
   // アイテム毎の金額
   const [totalFeeHash, setTotalFeeHash] = useState({});
@@ -27,51 +27,164 @@ const OrderResult = ({
   // カート内で注文する商品の送料
   const [totalSendFee, setTotalSendFee] = useState(0);
 
+  // formの入力情報
+  const inputVal = {
+      name: "白峰太郎", 
+      postalCode: "0000000", 
+      prefecture: "", 
+      city: "",
+      town: "",
+      email: "shiramine@taro.com", 
+      tel: "000-000-0000", 
+  };
+  const [inputFormInfo, setInputFormInfo] = useState(inputVal);  
+
+  // カートに商品が入っているか否か条件分岐で使う。
+  const isEmpty = (arr) => arr.length < 1;
+
   return (
     <div className={`cart-wrapper ${toggle && "active"}`}>
-      {isEmpty(cartItems) && (
-        <div className="default-msg">登録された商品はありません。</div>
-      )}
-      
-      <div className="wrapper">
-        <h2>お申し込みフォーム</h2>
-        <OrderForm />
-      </div>
-
-      <div className="wrapper cart-index">
-        <h2>賜物一覧</h2>
-        <div className="result-wrapper">
-          {cartItems.map((cartItem, idx) => (
-          <div className={idx} key={idx}>
-            <CartItem
-              key={idx} 
-              cartItem={cartItem} 
-              totalFeeHash={totalFeeHash}
-              setTotalFee={setTotalFee}
-              totalWeightHash={totalWeightHash}
-              setTotalWeight={setTotalWeight}
-            />
+      {/* プリントアウト共用部 */}
+      <div className="component-ref" ref={componentRef}>
+        <h2 className="toggle-web">授与品のご案内</h2>
+        <h2 className="toggle-print">授与品のご案内&nbsp;FAX申込用紙印刷</h2>
+        {isEmpty(cartItems) && (
+          <div className="default-msg">登録された商品はありません。</div>
+        )}
+        <div className="cart-index">
+          <div className="result-wrapper">
+            {cartItems.map((cartItem, idx) => (
+              <div key={idx}>
+              {/* ↓ これが.item */}
+                <CartItem
+                  key={idx} 
+                  cartItem={cartItem} 
+                  totalFeeHash={totalFeeHash}
+                  setTotalFee={setTotalFee}
+                  totalWeightHash={totalWeightHash}
+                  setTotalWeight={setTotalWeight}
+                />
+            </div>
+            ))}
           </div>
-          ))}
+
+          <ul className="calc-amount">
+            <li>授与料小計<span>{totalFee}</span>円</li>
+            {/* <li>消費税<span>{Math.round(totalFee * 0.1)}</span>円</li> */}
+            <li>
+              <SendFee 
+                totalWeight={totalWeight} 
+                setTotalSendFee={setTotalSendFee}
+              />
+            </li>
+            {/* <li>カートの重量合計<span>{totalWeight}</span>g</li> */}
+            {
+              totalSendFee 
+                ? <li className="total-fee">授与料合計<span>{Math.round(totalFee)+totalSendFee}</span>円</li>
+                : <li className="total-fee direction">授与料合計を出すには発送先を選択してください。</li>
+            }
+          </ul>
         </div>
 
-        <ul className="calc-amount">
-          <li>授与料小計<span>{totalFee}</span>円</li>
-          <li>消費税<span>{Math.round(totalFee * 0.1)}</span>円</li>
-          <li>
-            <SendFee 
-              totalWeight={totalWeight} 
-              setTotalSendFee={setTotalSendFee}
-            />
-          </li>
-          {/* <li>カートの重量合計<span>{totalWeight}</span>g</li> */}
-          {
-            totalSendFee 
-              ? <li className="total-fee">授与料合計<span>{Math.round(totalFee * 1.1)+totalSendFee}</span>円</li>
-              : <li className="total-fee">授与料合計を出すには<br />発送先を選択してください。</li>
-          }
-        </ul>
-      </div>      
+        <OrderForm
+          inputFormInfo={inputFormInfo}
+          setInputFormInfo={setInputFormInfo}
+        />
+
+        <div className="for-only-print">
+          <div className="wrapper">
+            <h3>いずれかの下記口座までご送金（振込）してください。</h3>
+            <dl>
+              <div>
+                <dt>銀行名</dt>
+                <dd>ゆうちょ銀行</dd>
+              </div>
+              <div>
+                <dt>金融機関コード</dt>
+                <dd>9900</dd>
+              </div>
+              <div>
+                <dt>店番</dt>
+                <dd>109</dd>
+              </div>
+              <div>
+                <dt>預金種目</dt>
+                <dd>当座</dd>
+              </div>
+              <div>
+                <dt>店名</dt>
+                <dd>一〇九店（イチゼロキュウ店）</dd>
+              </div>
+              <div>
+                <dt>口座番号</dt>
+                <dd>0001231</dd>
+              </div>
+            </dl>
+            <dl>
+              <div>
+                <dt>金融機関名</dt>
+                <dd>郵便局</dd>
+              </div>
+              <div>
+                <dt>口座番号</dt>
+                <dd>01070-8-1231</dd>
+              </div>
+              <div>
+                <dt>加入者名</dt>
+                <dd>（宗）白峯神宮</dd>
+              </div>
+            </dl>
+
+            <h3>申込者情報</h3>
+            <dl>
+              <div>
+                <dt>お名前</dt>
+                <dd>{inputFormInfo.name}</dd>
+              </div>
+              <div>
+                <dt>郵便番号</dt>
+                <dd>{inputFormInfo.postalCode}</dd>
+              </div>
+              <div>
+                <dt>ご住所</dt>
+                <dd>
+                  {inputFormInfo.prefecture}
+                  {inputFormInfo.city}
+                  {inputFormInfo.town}
+                </dd>
+              </div>
+              <div>
+                <dt>E-mail</dt>
+                <dd>{inputFormInfo.email}</dd>
+              </div>
+              <div>
+                <dt>電話番号</dt>
+                <dd>{inputFormInfo.tel}</dd>
+              </div>
+              <div>
+                <dt>備考</dt>
+                <dd>{inputFormInfo.note}</dd>
+              </div>
+            </dl>
+          </div>
+          <div className="paste-area">
+            ここに郵便振込用紙の<br />控えを貼付けてください。
+          </div>
+        </div>
+
+        <ReactToPrint 
+          trigger={() => (
+            <button className="to-print-btn">
+              印刷する
+            </button>
+          )}
+          pageStyle="@page {
+            size: A4 portrait;
+            margin: 0;
+            }"
+          content={() => componentRef.current}
+        />
+      </div>
     </div>
   );
 };
@@ -82,39 +195,6 @@ export default OrderResult;
 // <li>
 //   <button onClick={() => alert("Implement Checkout")}>用紙出力</button>
 // </li>
+// 
 
-
-// 商品名
-// 価格
-// 数量
-// 小計
-// 授与料小計
-// 0,000円
-// 郵送料（口座徴収通知料を含む）
-// 0,000円
-// 授与料合計
-// 0,000円
-// いずれかの下記口座までご送金（振込）してください。
-// 銀行名　ゆうちょ銀行
-// 金融機関コード　9900
-// &nbsp;　 
-// 店番　109
-// 預金種目
-// 当座
-// 店名
-// 一〇九店（イチゼロキュウ店）
-// 口座番号
-// 0001231
-// 金融機関名
-// 郵便局
-// 口座番号
-// 01070-8-1231
-// 　 加入者名
-// （宗）白峯神宮
-// 申込者情報
-// お名前
-// 郵便番号
-// ご住所
-// 電話番号
-// 備考
-// ここに郵便振込用紙の控えを貼付けてください。
+// FAX申込用紙印刷

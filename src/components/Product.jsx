@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import NameAndSetCount from "../containers/NameAndSetCount";
 import TypesColorsAndSetCount from "../containers/TypesColorsAndSetCount";
 import "../styles/components/Product.sass";
@@ -102,7 +102,7 @@ const Product = ({
               // 該当商品の値をリセットした状態で
               // このデータ以外のカートの中の商品を収集するという命令。
               // この命令をするとリセットした状態を維持できない。
-              // onRemoveCart(data)
+              onRemoveCart(data)
             }}
           >リストから削除</button>
         ) : (
