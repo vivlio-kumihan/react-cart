@@ -8,6 +8,9 @@ const App = () => {
   // カートに入れる商品の状態
   const [cartItems, setCartItems] = useState([]);
 
+  const [minusFee, setMinusFee] = useState(0);
+  console.log(minusFee);
+
   // 商品をカートに追加する関数の定義
   const onAddCart = (product) => {
     const exist = cartItems.find((cartItem) => cartItem.pid === product.pid);
@@ -33,6 +36,8 @@ const App = () => {
         setCartItems={setCartItems}
         onAddCart={onAddCart}
         onRemoveCart={onRemoveCart}
+        minusFee={minusFee}
+        setMinusFee={setMinusFee}
       />
       <OrderList
         dataList={dataList}
@@ -40,6 +45,8 @@ const App = () => {
         setCartItems={setCartItems}
         onAddCart={onAddCart}
         onRemoveCart={onRemoveCart}
+        minusFee={minusFee}
+        setMinusFee={setMinusFee}        
       />
     </div>
   );

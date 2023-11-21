@@ -9,6 +9,8 @@ const Product = ({
   cartItems, 
   onAddCart, 
   onRemoveCart,
+  minusFee,
+  setMinusFee
   }) => {
 
   // nameの値が0であれば真を返す。
@@ -42,6 +44,13 @@ const Product = ({
       return Object.keys(name).reduce((acc, key) => acc + parseInt(name[key]), 0);
     }
   };
+
+  // const [hello, setHello] = useState("hello");
+  // console.log(setHello("bye"));
+
+  // const handleMinusFee = () => {
+  //   setMinusFee(() => price * whichItemSumCalcCount)    
+  // };  
   
   return (
     <div className="card" key={pid}>
@@ -97,6 +106,9 @@ const Product = ({
                   // Mainの商品一覧内の値をリセットするのに必要
                   setEachCount({...hash, [key]: 0})
                 })
+                console.log(price * whichItemSumCalcCount())
+                // handleMinusFee
+                // {setMinusFee(price * whichItemSumCalcCount())}
               })
               // 質問
               // 該当商品の値をリセットした状態で
