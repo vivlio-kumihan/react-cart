@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import NameAndSetCount from "../containers/NameAndSetCount";
 import TypesColorsAndSetCount from "../containers/TypesColorsAndSetCount";
 import "../styles/components/Product.sass";
@@ -12,6 +12,10 @@ const Product = ({
   minusFee,
   setMinusFee
   }) => {
+
+  const handleMinusFee = (fee) => {
+    setMinusFee(fee);
+  };
 
   // nameの値が0であれば真を返す。
   const nameValueZero = Object.keys(name).map((key) => name[key]).shift() === 0;
@@ -44,13 +48,6 @@ const Product = ({
       return Object.keys(name).reduce((acc, key) => acc + parseInt(name[key]), 0);
     }
   };
-
-  // const [hello, setHello] = useState("hello");
-  // console.log(setHello("bye"));
-
-  // const handleMinusFee = () => {
-  //   setMinusFee(() => price * whichItemSumCalcCount)    
-  // };  
   
   return (
     <div className="card" key={pid}>
@@ -99,21 +96,16 @@ const Product = ({
           <button
             className="mask-btn remove-btn"
             onClick={() => {
+              // handleMinusFee(price * whichItemSumCalcCount())
               [name, types, colors].forEach(hash => {
+                console.log(price * whichItemSumCalcCount())
                 Object.keys(hash).map((key) => {
                   // リスト内の値をリセットする場合に必要
                   hash[key] = 0
                   // Mainの商品一覧内の値をリセットするのに必要
                   setEachCount({...hash, [key]: 0})
                 })
-                console.log(price * whichItemSumCalcCount())
-                // handleMinusFee
-                // {setMinusFee(price * whichItemSumCalcCount())}
               })
-              // 質問
-              // 該当商品の値をリセットした状態で
-              // このデータ以外のカートの中の商品を収集するという命令。
-              // この命令をするとリセットした状態を維持できない。
               onRemoveCart(data)
             }}
           >リストから削除</button>

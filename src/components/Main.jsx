@@ -7,6 +7,8 @@ const Main = ({ dataList,
   setCartItems, 
   onAddCart, 
   onRemoveCart, 
+  minusFee,
+  setMinusFee
   }) => {
 
   return (
@@ -22,7 +24,9 @@ const Main = ({ dataList,
                 cartItems={cartItems}
                 setCartItems={setCartItems}
                 onAddCart={onAddCart}
-                onRemoveCart={onRemoveCart}   
+                onRemoveCart={onRemoveCart} 
+                minusFee={minusFee}
+                setMinusFee={setMinusFee}                  
               />
             </li>
           ))

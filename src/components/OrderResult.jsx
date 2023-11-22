@@ -77,7 +77,7 @@ const OrderResult = ({
                 setTotalSendFee={setTotalSendFee}
               />
             </li>
-            {/* <li>カートの重量合計<span>{totalWeight}</span>g</li> */}
+            <li>カートの重量合計<span>{totalWeight}</span>g</li>
             {
               totalSendFee 
                 ? <li className="total-fee">授与料合計<span>{Math.round(totalFee)+totalSendFee}</span>円</li>

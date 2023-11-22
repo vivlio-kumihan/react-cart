@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Main from "./components/Main";
 import OrderList from "./components/OrderList";
 import dataList from "./dataList";
@@ -9,6 +9,11 @@ const App = () => {
   const [cartItems, setCartItems] = useState([]);
 
   const [minusFee, setMinusFee] = useState(0);
+
+  // const handleMinusFee = () => {
+  //   setMinusFee(100);
+  // };
+
   console.log(minusFee);
 
   // 商品をカートに追加する関数の定義
@@ -29,7 +34,7 @@ const App = () => {
   };
 
   return (
-    <div className="container">  
+    <div className="container">
       <Main
         dataList={dataList}
         cartItems={cartItems}
@@ -45,8 +50,8 @@ const App = () => {
         setCartItems={setCartItems}
         onAddCart={onAddCart}
         onRemoveCart={onRemoveCart}
-        minusFee={minusFee}
-        setMinusFee={setMinusFee}        
+        // minusFee={minusFee}
+        // setMinusFee={setMinusFee}        
       />
     </div>
   );
