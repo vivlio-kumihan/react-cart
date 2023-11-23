@@ -106,7 +106,7 @@ const Product = ({
                   setEachCount({...hash, [key]: 0})
                 })
               })
-              onRemoveCart(data)
+              // onRemoveCart(data)
             }}
           >リストから削除</button>
         ) : (
