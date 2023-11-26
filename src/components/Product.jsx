@@ -5,7 +5,7 @@ import "../styles/components/Product.sass";
 
 const Product = ({ 
   data,
-  pid, image, name, types, colors, price, subTotalCount,
+  pid, image, name, types, colors, price,
   cartItems, 
   onAddCart, 
   onRemoveCart,
@@ -48,7 +48,6 @@ const Product = ({
             name={name}
             types={types}
             colors={colors}
-            subTotalCount={subTotalCount}
             hasItem={hasItem}
             eachCount={eachCount}
             setEachCount={setEachCount}
@@ -61,7 +60,6 @@ const Product = ({
             types={types}
             colors={colors} 
             hasItem={hasItem}
-            subTotalCount={subTotalCount}        
             eachCount={eachCount}
             setEachCount={setEachCount}
             whichItemSumCalcCount={whichItemSumCalcCount}  

@@ -29,23 +29,61 @@ const App = () => {
   };  
 
   // 対象が空配列かを検証
-  const hasItem = (hash) => Object.keys(hash).length > 0;  
+  const hasItem = (hash) => Object.keys(hash).length > 0; 
 
   // 商品をカートに追加する関数の定義
   const onAddCart = (product) => {
     const exist = cartItems.find((cartItem) => cartItem.pid === product.pid);
     if (!exist) {
-      const newCartItems = [...cartItems, { ...product, quantity: 1 }];
+      const newCartItems = [...cartItems, product];
       setCartItems(newCartItems);
     }
   };
 
   // 商品をカートから取る関数の定義
   const onRemoveCart = (product) => {
-    const newCartItems = cartItems.filter(
-      (cartItem) => cartItem.pid !== product.pid
-    );
-    setCartItems(newCartItems);
+    const updatedCartItems = cartItems.filter((cartItem) => {
+      return cartItem.pid !== product.pid
+    });
+
+    const calculateTotalFee = (arrArg) => {
+      const tmpTotalFee = arrArg.reduce((acc, item) => {
+        const fee = () => {
+          if ((hasItem(item.types) || hasItem(item.colors)) && nameValueZero(item.name)) {
+            const hash = hasItem(item.types) ? item.types : item.colors;
+            const count = Object.keys(hash).reduce((acc, key) => acc + parseInt(hash[key]), 0);
+            return item.price * count;
+          } else {
+            const count = parseInt(item.name[Object.keys(item.name)[0]]);
+            return item.price * count;
+          }
+        };
+        return acc + parseInt(fee());
+      }, 0);
+      return tmpTotalFee;
+    };    
+    const calculateTotalWeight = (arrArg) => {
+      const tmpTotalWeight = arrArg.reduce((acc, item) => {
+        const weight = () => {
+          if ((hasItem(item.types) || hasItem(item.colors)) && nameValueZero(item.name)) {
+            const hash = hasItem(item.types) ? item.types : item.colors;
+            const count = Object.keys(hash).reduce((acc, key) => acc + parseInt(hash[key]), 0);
+            return item.weight * count;
+          } else {
+            const count = parseInt(item.name[Object.keys(item.name)[0]]);
+            return item.weight * count;
+          }
+        };
+        return acc + parseInt(weight());
+      }, 0);
+      return tmpTotalWeight;
+    };    
+
+    setCartItems(updatedCartItems);
+    setTotalFee(calculateTotalFee(updatedCartItems));
+    setTotalWeight(calculateTotalWeight(updatedCartItems));
+    console.log(calculateTotalFee(updatedCartItems), "<= App");
+    console.log(calculateTotalWeight(updatedCartItems), "<= App");
   };
 
   return (

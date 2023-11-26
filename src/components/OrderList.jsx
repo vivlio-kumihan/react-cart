@@ -43,7 +43,7 @@ const OrderList = ({
         totalSendFee={totalSendFee}
         setTotalSendFee={setTotalSendFee}
         nameValueZero={nameValueZero}  
-        hasItem={hasItem}              
+        hasItem={hasItem}   
       />
     </div>
   );

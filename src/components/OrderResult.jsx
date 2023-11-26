@@ -14,8 +14,11 @@ const OrderResult = ({
   totalWeight, setTotalWeight,
   totalSendFee, setTotalSendFee,
   nameValueZero,
-  hasItem
+  hasItem,
   }) => {
+
+  console.log(totalFee, "<= Orderresult");
+  console.log(totalWeight, "<= Orderresult");
 
   const componentRef = useRef(null); 
 
@@ -60,6 +63,7 @@ const OrderResult = ({
                 <CartItem
                   key={idx} 
                   cartItem={cartItem} 
+                  {...cartItem}
                   totalFeeHash={totalFeeHash}
                   setTotalFee={setTotalFee}
                   totalWeightHash={totalWeightHash}
