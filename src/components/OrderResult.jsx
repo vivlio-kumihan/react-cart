@@ -53,8 +53,10 @@ const OrderResult = ({
                   cartItem={cartItem} 
                   {...cartItem}
                   totalFeeHash={totalFeeHash}
+                  setTotalFeeHash={setTotalFeeHash}
                   setTotalFee={setTotalFee}
                   totalWeightHash={totalWeightHash}
+                  setTotalWeightHash={setTotalWeightHash}
                   setTotalWeight={setTotalWeight}
                   nameValueZero={nameValueZero}
                   hasItem={hasItem}

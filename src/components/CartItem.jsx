@@ -1,12 +1,14 @@
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
 import "../styles/components/CartItem.sass";
 
 const CartItem = ({ 
   cartItem,
   pid, name, types, colors, price, weight,
   totalFeeHash,
+  setTotalFeeHash,
   setTotalFee,
   totalWeightHash, 
+  setTotalWeightHash,
   setTotalWeight,
   nameValueZero,
   hasItem,
@@ -37,8 +39,9 @@ const CartItem = ({
   
   // 商品ごとの小計、重量小計
   totalFeeHash[pid] = price * whichItemSumCalcCount();
+  
   totalWeightHash[pid] = weight * whichItemSumCalcCount();
-
+  
   useEffect(() => {
     setTotalFee(Object.values(totalFeeHash).reduce((acc, fee) => acc + fee, 0));
     setTotalWeight(Object.values(totalWeightHash).reduce((acc, wgt) => acc + wgt, 0));

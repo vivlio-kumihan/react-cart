@@ -46,6 +46,7 @@ const App = () => {
       return cartItem.pid !== product.pid
     });
 
+    // 合計金額を計算する
     const calculateTotalFee = (arrArg) => {
       const tmpTotalFee = arrArg.reduce((acc, item) => {
         const fee = () => {
@@ -62,6 +63,8 @@ const App = () => {
       }, 0);
       return tmpTotalFee;
     };    
+
+    // 総重量を計算する。
     const calculateTotalWeight = (arrArg) => {
       const tmpTotalWeight = arrArg.reduce((acc, item) => {
         const weight = () => {
@@ -79,9 +82,32 @@ const App = () => {
       return tmpTotalWeight;
     };    
 
+    // 削除した商品を除いた商品でリストを構成させる。
     setCartItems(updatedCartItems);
+
+    // 合計金額をstateに渡す。
     setTotalFee(calculateTotalFee(updatedCartItems));
+
+    // 総重量をstateに渡す。
     setTotalWeight(calculateTotalWeight(updatedCartItems));
+
+    // ここ
+    // setTotalFee((prevTotalFee) => {
+    //   return calculateTotalFee(updatedCartItems);
+    // });  
+    // setTotalWeight((prevTotalWeight) => {
+    //   return calculateTotalWeight(updatedCartItems);
+    // }); 
+    // setTotalFee((prevTotalFee) => {
+    //   prevTotalFee = calculateTotalFee(updatedCartItems);
+    //   const newTotalFee = [...prevTotalFee];
+    //   return newTotalFee;
+    // });
+    //   setTotalWeight((prevTotalWeight) => {
+    //     prevTotalWeight = calculateTotalWeight(updatedCartItems);
+    //     const newTotalWeight = [...prevTotalWeight];
+    //     return newTotalWeight;
+    // });
   };
 
   return (
