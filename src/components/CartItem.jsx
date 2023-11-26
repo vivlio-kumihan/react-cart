@@ -2,23 +2,18 @@ import { useEffect } from "react";
 import "../styles/components/CartItem.sass";
 
 const CartItem = ({ 
-  cartItem: { pid, name, types, colors, price, weight, subTotalCount },
+  cartItem,
+  pid, name, types, colors, price, weight,
   totalFeeHash,
   setTotalFee,
   totalWeightHash, 
   setTotalWeight,
   nameValueZero,
-  hasItem
+  hasItem,
   }) => {
   
   // nameのhashの値 = namenのカウント数
   const nameCount = parseInt((Object.keys(name).map((key) => name[key]).shift()));
-
-  // // nameの値が0であれば真を返す。
-  // const nameValueZero = Object.keys(name).map((key) => name[key]).shift() === 0;
-
-  // // 対象が空配列かを検証
-  // const hasItem = (hash) => Object.keys(hash).length > 0;
 
   // 現在がtypesかcolorsかで扱うhashを切り替える。
   const pickArr = () => {
@@ -47,7 +42,7 @@ const CartItem = ({
   useEffect(() => {
     setTotalFee(Object.values(totalFeeHash).reduce((acc, fee) => acc + fee, 0));
     setTotalWeight(Object.values(totalWeightHash).reduce((acc, wgt) => acc + wgt, 0));
-  });
+  }, [totalFeeHash, totalWeightHash]); // 依存リストを追加
 
   return (
     <ul id={pid} className="item" key={pid}>

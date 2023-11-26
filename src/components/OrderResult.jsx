@@ -14,19 +14,10 @@ const OrderResult = ({
   totalWeight, setTotalWeight,
   totalSendFee, setTotalSendFee,
   nameValueZero,
-  hasItem
+  hasItem,
   }) => {
 
   const componentRef = useRef(null); 
-
-  // // アイテム毎の重量
-  // const [totalWeightHash, setTotalWeightHash] = useState({});
-
-  // // カート内で注文する商品の重量
-  // const [totalWeight, setTotalWeight] = useState(0);
-
-  // // カート内で注文する商品の送料
-  // const [totalSendFee, setTotalSendFee] = useState(0);
 
   // formの入力情報
   const inputVal = {
@@ -60,6 +51,7 @@ const OrderResult = ({
                 <CartItem
                   key={idx} 
                   cartItem={cartItem} 
+                  {...cartItem}
                   totalFeeHash={totalFeeHash}
                   setTotalFee={setTotalFee}
                   totalWeightHash={totalWeightHash}

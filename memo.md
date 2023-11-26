@@ -6,6 +6,11 @@
     setCartItems(newCartItems);
   };
 
+    // const newCartItems = cartItems.filter(
+    //   (cartItem) => cartItem.pid !== product.pid
+    // );
+    // setCartItems(newCartItems);
+
 
 
 

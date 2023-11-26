@@ -5,7 +5,7 @@ import "../styles/components/Product.sass";
 
 const Product = ({ 
   data,
-  pid, image, name, types, colors, price, subTotalCount,
+  pid, image, name, types, colors, price,
   cartItems, 
   onAddCart, 
   onRemoveCart,
@@ -15,14 +15,6 @@ const Product = ({
 
   // nameのhashの値 = namenのカウント数
   const nameCount = parseInt((Object.keys(name).map((key) => name[key]).shift()));
-
-  // // nameの値が0であれば真を返す。
-  // const nameValueZero = () => {
-  //   return Object.keys(name).map((key) => name[key]).shift() === 0 
-  // };
-
-  // // 対象が空配列かを検証
-  // const hasItem = (hash) => Object.keys(hash).length > 0;
 
   // name, types, colorsごとのカウント
   const [eachCount, setEachCount] = useState({});
@@ -48,7 +40,6 @@ const Product = ({
             name={name}
             types={types}
             colors={colors}
-            subTotalCount={subTotalCount}
             hasItem={hasItem}
             eachCount={eachCount}
             setEachCount={setEachCount}
@@ -61,7 +52,6 @@ const Product = ({
             types={types}
             colors={colors} 
             hasItem={hasItem}
-            subTotalCount={subTotalCount}        
             eachCount={eachCount}
             setEachCount={setEachCount}
             whichItemSumCalcCount={whichItemSumCalcCount}  
