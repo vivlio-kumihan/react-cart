@@ -49,7 +49,7 @@ const App = () => {
     const calculateTotalFee = (arrArg) => {
       const tmpTotalFee = arrArg.reduce((acc, item) => {
         const fee = () => {
-          if ((hasItem(item.types) || hasItem(item.colors)) && nameValueZero(item.name)) {
+          if ((hasItem(item.types) || hasItem(item.colors)) && (item.name === 0)) {
             const hash = hasItem(item.types) ? item.types : item.colors;
             const count = Object.keys(hash).reduce((acc, key) => acc + parseInt(hash[key]), 0);
             return item.price * count;
@@ -65,7 +65,7 @@ const App = () => {
     const calculateTotalWeight = (arrArg) => {
       const tmpTotalWeight = arrArg.reduce((acc, item) => {
         const weight = () => {
-          if ((hasItem(item.types) || hasItem(item.colors)) && nameValueZero(item.name)) {
+          if ((hasItem(item.types) || hasItem(item.colors)) && (item.name === 0)) {
             const hash = hasItem(item.types) ? item.types : item.colors;
             const count = Object.keys(hash).reduce((acc, key) => acc + parseInt(hash[key]), 0);
             return item.weight * count;

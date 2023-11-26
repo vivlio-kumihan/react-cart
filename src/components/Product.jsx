@@ -29,7 +29,7 @@ const Product = ({
 
   // name, types, colorsのそれぞれカウント合計
   const whichItemSumCalcCount = () => {
-    if ((hasItem(types) || hasItem(colors)) && nameValueZero) {
+    if ((hasItem(types) || hasItem(colors)) && (name === 0)) {
       const hash = hasItem(types) ? types : colors;
       return Object.keys(hash).reduce((acc, key) => acc + parseInt(hash[key]), 0);
     } else if (nameCount >= 0) {

@@ -8,7 +8,6 @@ const CartItem = ({
   setTotalFee,
   totalWeightHash, 
   setTotalWeight,
-  nameValueZero,
   hasItem,
   }) => {
 
@@ -25,9 +24,9 @@ const CartItem = ({
 
   // 現在がtypesかcolorsかで扱うhashを切り替える。
   const pickArr = () => {
-    if (hasItem(types) && nameValueZero) {
+    if (hasItem(types) && (name === 0)) {
       return [types, "types"];
-    } else if (hasItem(colors) && nameValueZero) {
+    } else if (hasItem(colors) && (name === 0)) {
       return [colors, "colors"];
     }
   }; 
@@ -35,7 +34,8 @@ const CartItem = ({
 
   // name, types, colorsのそれぞれカウント合計
   const whichItemSumCalcCount = () => {
-    if ((hasItem(types) || hasItem(colors)) && nameValueZero) {
+    if ((hasItem(types) || hasItem(colors)) && (name === 0)) {
+      console.log(types)
       const hash = hasItem(types) ? types : colors;
       return Object.keys(hash).reduce((acc, key) => acc + parseInt(hash[key]), 0);
     } else {
@@ -70,11 +70,11 @@ const CartItem = ({
       }
       {/* 種類・色 */}
       {
-        (hasItem(types) || hasItem(colors)) && nameValueZero &&
+        (hasItem(types) || hasItem(colors)) && (name === 0) &&
           Object.keys(switchItem[0]).map((key, idx) => (
             <li className="quantity-state" key={idx}>
               <h3>{key}</h3>
-              <div className="quantity-count">{switchItem[0][key]}</div>
+              <div className="quantity-count">{switchItem[0][key]}1234567</div>
             </li>
           ))        
       }
