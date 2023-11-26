@@ -38,14 +38,14 @@ const CartItem = ({
     if ((hasItem(types) || hasItem(colors)) && nameValueZero) {
       const hash = hasItem(types) ? types : colors;
       return Object.keys(hash).reduce((acc, key) => acc + parseInt(hash[key]), 0);
-    } else if (nameCount >= 0) {
+    } else {
       return Object.keys(name).reduce((acc, key) => acc + parseInt(name[key]), 0);
     }
   };
   
-  // 商品ごとの小計、重量小計
-  totalFeeHash[pid] = price * whichItemSumCalcCount();
-  totalWeightHash[pid] = weight * whichItemSumCalcCount();
+  // // 商品ごとの小計、重量小計
+  // totalFeeHash[pid] = price * whichItemSumCalcCount();
+  // totalWeightHash[pid] = weight * whichItemSumCalcCount();
 
   useEffect(() => {
     setTotalFee(Object.values(totalFeeHash).reduce((acc, fee) => acc + fee, 0));
