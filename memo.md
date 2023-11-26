@@ -1,3 +1,14 @@
+  // 商品をカートから取る関数の定義
+  const onRemoveCart = (product) => {
+    const newCartItems = cartItems.filter(
+      (cartItem) => cartItem.pid !== product.pid
+    );
+    setCartItems(newCartItems);
+  };
+
+
+
+
     <>
     {/* {console.log(switchItem[1])} */}
     {

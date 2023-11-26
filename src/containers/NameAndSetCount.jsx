@@ -4,8 +4,6 @@ const NameAndSetCount = ({
   name, 
   types, 
   colors,
-  subTotalCount,
-  setCalcSubTotalCount,
   hasItem,
   eachCount,
   setEachCount,

@@ -4,7 +4,14 @@ import "../styles/components/OrderList.sass";
 
 const OrderList = ({ 
   dataList, 
-  cartItems, 
+  cartItems,
+  totalFeeHash, setTotalFeeHash,
+  totalFee, setTotalFee,
+  totalWeightHash, setTotalWeightHash, 
+  totalWeight, setTotalWeight,
+  totalSendFee, setTotalSendFee,
+  nameValueZero,
+  hasItem,
   }) => {
 
   const [toggle, setToggle] = useState(false);
@@ -24,7 +31,19 @@ const OrderList = ({
         className="order-result"
         toggle={toggle}
         dataList={dataList}
-        cartItems={cartItems}      
+        cartItems={cartItems} 
+        totalFeeHash={totalFeeHash}
+        setTotalFeeHash={setTotalFeeHash}
+        totalFee={totalFee}
+        setTotalFee={setTotalFee}
+        totalWeightHash={totalWeightHash}
+        setTotalWeightHash={setTotalWeightHash}
+        totalWeight={totalWeight}
+        setTotalWeight={setTotalWeight}
+        totalSendFee={totalSendFee}
+        setTotalSendFee={setTotalSendFee}
+        nameValueZero={nameValueZero}  
+        hasItem={hasItem}              
       />
     </div>
   );

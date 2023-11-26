@@ -8,24 +8,25 @@ import "../styles/components/OrderResult.sass";
 const OrderResult = ({ 
   toggle, 
   cartItems,
+  totalFeeHash, setTotalFeeHash,
+  totalFee, setTotalFee,
+  totalWeightHash, setTotalWeightHash, 
+  totalWeight, setTotalWeight,
+  totalSendFee, setTotalSendFee,
+  nameValueZero,
+  hasItem
   }) => {
 
-  const componentRef = useRef(null);
+  const componentRef = useRef(null); 
 
-  // アイテム毎の金額
-  const [totalFeeHash, setTotalFeeHash] = useState({});
+  // // アイテム毎の重量
+  // const [totalWeightHash, setTotalWeightHash] = useState({});
 
-  // カート内で注文する商品の小計
-  const [totalFee, setTotalFee] = useState(0); 
+  // // カート内で注文する商品の重量
+  // const [totalWeight, setTotalWeight] = useState(0);
 
-  // アイテム毎の重量
-  const [totalWeightHash, setTotalWeightHash] = useState({});
-
-  // カート内で注文する商品の重量
-  const [totalWeight, setTotalWeight] = useState(0);
-
-  // カート内で注文する商品の送料
-  const [totalSendFee, setTotalSendFee] = useState(0);
+  // // カート内で注文する商品の送料
+  // const [totalSendFee, setTotalSendFee] = useState(0);
 
   // formの入力情報
   const inputVal = {
@@ -63,6 +64,8 @@ const OrderResult = ({
                   setTotalFee={setTotalFee}
                   totalWeightHash={totalWeightHash}
                   setTotalWeight={setTotalWeight}
+                  nameValueZero={nameValueZero}
+                  hasItem={hasItem}
                 />
             </div>
             ))}
@@ -190,11 +193,3 @@ const OrderResult = ({
 };
 
 export default OrderResult;
-
-
-// <li>
-//   <button onClick={() => alert("Implement Checkout")}>用紙出力</button>
-// </li>
-// 
-
-// FAX申込用紙印刷

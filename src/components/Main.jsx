@@ -5,11 +5,10 @@ import Product from "./Product";
 const Main = ({ dataList, 
   cartItems, 
   setCartItems, 
-  calcSubTotalCount,
-  setCalcSubTotalCount,
-  handleCalcSubTotalCount,
   onAddCart, 
-  onRemoveCart, 
+  onRemoveCart,
+  nameValueZero, 
+  hasItem,
   }) => {
 
   return (
@@ -24,11 +23,10 @@ const Main = ({ dataList,
                 {...data}
                 cartItems={cartItems}
                 setCartItems={setCartItems}
-                calcSubTotalCount={calcSubTotalCount}
-                setCalcSubTotalCount={setCalcSubTotalCount}
-                handleCalcSubTotalCount={handleCalcSubTotalCount}
                 onAddCart={onAddCart}
-                onRemoveCart={onRemoveCart}  
+                onRemoveCart={onRemoveCart}
+                nameValueZero={nameValueZero}
+                hasItem={hasItem}
               />
             </li>
           ))

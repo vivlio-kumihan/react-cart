@@ -1,16 +1,11 @@
 import { useEffect } from "react";
 
 const TypesColorsAndSetCount = ({ 
-  name,
   types, 
   colors, 
-  subTotalCount,
-  calcSubTotalCount,
-  setCalcSubTotalCount,
-  handleCalcSubTotalCount,
+  hasItem,
   eachCount, 
   setEachCount, 
-  hasItem,
   whichItemSumCalcCount,
   }) => {
 
@@ -40,7 +35,7 @@ const TypesColorsAndSetCount = ({
                 onChange={(e)=>{
                   setEachCount({...switchItem()[0], [key]: e.target.value})
                   switchItem()[0][key] = e.target.value
-                  setCalcSubTotalCount(switchItem()[0])
+                  // setCalcSubTotalCount(switchItem()[0])
                 }}
               />
             </li>

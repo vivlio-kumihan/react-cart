@@ -5,31 +5,24 @@ import "../styles/components/Product.sass";
 
 const Product = ({ 
   data,
-  pid, image, name, types, colors, price, weight, subTotalCount,
+  pid, image, name, types, colors, price, subTotalCount,
   cartItems, 
-  calcSubTotalCount,
-  setCalcSubTotalCount,
-  handleCalcSubTotalCount,
   onAddCart, 
   onRemoveCart,
-  nameValueZero
+  nameValueZero,
+  hasItem,
   }) => {
 
   // nameのhashの値 = namenのカウント数
   const nameCount = parseInt((Object.keys(name).map((key) => name[key]).shift()));
 
-  // 対象が空配列かを検証
-  const hasItem = (hash) => Object.keys(hash).length > 0;
+  // // nameの値が0であれば真を返す。
+  // const nameValueZero = () => {
+  //   return Object.keys(name).map((key) => name[key]).shift() === 0 
+  // };
 
-  // 現在がtypesかcolorsかで扱うhashを切り替える。
-  // const pickArr = () => {
-  //   if (hasItem(types) && nameValueZero) {
-  //     return [types, "types"];
-  //   } else if (hasItem(colors) && nameValueZero) {
-  //     return [colors, "colors"];
-  //   }
-  // }; 
-  // const switchItem = pickArr();
+  // // 対象が空配列かを検証
+  // const hasItem = (hash) => Object.keys(hash).length > 0;
 
   // name, types, colorsごとのカウント
   const [eachCount, setEachCount] = useState({});
@@ -43,7 +36,7 @@ const Product = ({
       return Object.keys(name).reduce((acc, key) => acc + parseInt(name[key]), 0);
     }
   };
-  
+
   return (
     <div className="card" key={pid}>
       <div className="image_frame-info">
@@ -54,13 +47,9 @@ const Product = ({
           <NameAndSetCount 
             name={name}
             types={types}
-            colors={colors} 
+            colors={colors}
             subTotalCount={subTotalCount}
-            calcSubTotalCount={calcSubTotalCount}
-            setCalcSubTotalCount={setCalcSubTotalCount}
-            handleCalcSubTotalCount={handleCalcSubTotalCount}            
             hasItem={hasItem}
-            // switchItem={switchItem}
             eachCount={eachCount}
             setEachCount={setEachCount}
             whichItemSumCalcCount={whichItemSumCalcCount}
@@ -71,14 +60,10 @@ const Product = ({
             name={name}
             types={types}
             colors={colors} 
-            subTotalCount={subTotalCount}
-            calcSubTotalCount={calcSubTotalCount}
-            setCalcSubTotalCount={setCalcSubTotalCount}
-            handleCalcSubTotalCount={handleCalcSubTotalCount}            
+            hasItem={hasItem}
+            subTotalCount={subTotalCount}        
             eachCount={eachCount}
             setEachCount={setEachCount}
-            hasItem={hasItem}
-            // switchItem={switchItem}
             whichItemSumCalcCount={whichItemSumCalcCount}  
             nameValueZero={nameValueZero}
           />
@@ -110,7 +95,7 @@ const Product = ({
                   setEachCount({...hash, [key]: 0})
                 })
               })
-              // onRemoveCart(data)
+              onRemoveCart(data)
             }}
           >リストから削除</button>
         ) : (

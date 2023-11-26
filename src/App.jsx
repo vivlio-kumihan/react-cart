@@ -8,34 +8,28 @@ const App = () => {
   // カートに入れる商品の状態
   const [cartItems, setCartItems] = useState([]);
 
+  // アイテム毎の金額
+  const [totalFeeHash, setTotalFeeHash] = useState({});
+
+  // カート内で注文する商品の小計
+  const [totalFee, setTotalFee] = useState(0);
+  
+  // アイテム毎の重量
+  const [totalWeightHash, setTotalWeightHash] = useState({});
+
+  // カート内で注文する商品の重量
+  const [totalWeight, setTotalWeight] = useState(0);  
+
+  // カート内で注文する商品の送料
+  const [totalSendFee, setTotalSendFee] = useState(0);  
+
   // nameの値が0であれば真を返す。
-  const nameValueZero = (hash) => {
-    return Object.keys(hash.name).map((key) => hash.name[key]).shift() === 0 
-  };
+  const nameValueZero = (nameHash) => {
+    return Object.keys(nameHash).map((key) => nameHash[key]).shift() === 0 
+  };  
 
   // 対象が空配列かを検証
-  const hasItem = (hash) => Object.keys(hash).length > 0;
-
-  // name, types, colorsのカウント数　key名はsubTotal
-  const [calcSubTotalCount, setCalcSubTotalCount] = useState(0);
-  // カウント数を割り出すための関数
-  const handleCalcSubTotalCount = (hash) => {
-    if ((hasItem(hash.types) || hasItem(hash.colors)) && nameValueZero(hash.name)) {
-      const thisHash = hasItem(hash.types) ? hash.types : hash.colors;
-      const tmpCount = Object.keys(thisHash).reduce((acc, key) => acc + parseInt(thisHash[key]), 0);
-      return setCalcSubTotalCount(tmpCount);
-    } else {
-      Object.keys(hash.name).map((key) => {
-        return setCalcSubTotalCount(parseInt(hash.name[key]));
-      });
-    }
-  };    
-  
-  console.log(calcSubTotalCount, "hello");
-  
-  // return setCalcSubTotalCount(hash.subTotalCount = tmpCount);
-  // setEachCount({...switchItem()[0], [key]: e.target.value})
-  // return setCalcSubTotalCount(hash.subTotalCount = parseInt(hash.name[key]));
+  const hasItem = (hash) => Object.keys(hash).length > 0;  
 
   // 商品をカートに追加する関数の定義
   const onAddCart = (product) => {
@@ -59,19 +53,29 @@ const App = () => {
       <Main
         dataList={dataList}
         cartItems={cartItems}
-        setCartItems={setCartItems}
-        setCalcSubTotalCount={setCalcSubTotalCount}
-        calcSubTotalCount={calcSubTotalCount}
-        handleCalcSubTotalCount={handleCalcSubTotalCount}
         onAddCart={onAddCart}
         onRemoveCart={onRemoveCart}
+        nameValueZero={nameValueZero}
+        hasItem={hasItem}
       />
       <OrderList
         dataList={dataList}
         cartItems={cartItems}
         setCartItems={setCartItems}
         onAddCart={onAddCart}
-        onRemoveCart={onRemoveCart}      
+        onRemoveCart={onRemoveCart} 
+        totalFeeHash={totalFeeHash}
+        setTotalFeeHash={setTotalFeeHash}
+        totalFee={totalFee}
+        setTotalFee={setTotalFee}
+        totalWeightHash={totalWeightHash}
+        setTotalWeightHash={setTotalWeightHash}
+        totalWeight={totalWeight}
+        setTotalWeight={setTotalWeight}
+        totalSendFee={totalSendFee}
+        setTotalSendFee={setTotalSendFee}
+        nameValueZero={nameValueZero}
+        hasItem={hasItem}
       />
     </div>
   );
