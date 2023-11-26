@@ -380,6 +380,7 @@ const data = [
     colors: {},
     price: 800,
     weight: 9,
+    subTotalCount: 0
   },
   {
     pid: "mori_ya",
@@ -390,6 +391,7 @@ const data = [
     colors: {},
     price: 1500,
     weight: 260,
+    subTotalCount: 0
   },
   {
     pid: "thokon_mamori_kado",
@@ -400,6 +402,7 @@ const data = [
     colors: { "青": 0, "赤": 0, "白": 0 },
     price: 700,
     weight: 100,
+    subTotalCount: 0
   },
   {
     pid: "wrist_band",
@@ -410,6 +413,7 @@ const data = [
     colors: { "青": 0, "赤": 0, "黒": 0, "白": 0, "黄": 0 },
     price: 800,
     weight: 24,
+    subTotalCount: 0
   },
 ];
 

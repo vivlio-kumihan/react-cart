@@ -5,20 +5,15 @@ import "../styles/components/Product.sass";
 
 const Product = ({ 
   data,
-  pid, image, name, types, colors, price, weight, 
+  pid, image, name, types, colors, price, weight, subTotalCount,
   cartItems, 
+  calcSubTotalCount,
+  setCalcSubTotalCount,
+  handleCalcSubTotalCount,
   onAddCart, 
   onRemoveCart,
-  minusFee,
-  setMinusFee
+  nameValueZero
   }) => {
-
-  const handleMinusFee = (fee) => {
-    setMinusFee(fee);
-  };
-
-  // nameの値が0であれば真を返す。
-  const nameValueZero = Object.keys(name).map((key) => name[key]).shift() === 0;
 
   // nameのhashの値 = namenのカウント数
   const nameCount = parseInt((Object.keys(name).map((key) => name[key]).shift()));
@@ -27,14 +22,14 @@ const Product = ({
   const hasItem = (hash) => Object.keys(hash).length > 0;
 
   // 現在がtypesかcolorsかで扱うhashを切り替える。
-  const pickArr = () => {
-    if (hasItem(types) && nameValueZero) {
-      return [types, "types"];
-    } else if (hasItem(colors) && nameValueZero) {
-      return [colors, "colors"];
-    }
-  }; 
-  const switchItem = pickArr();
+  // const pickArr = () => {
+  //   if (hasItem(types) && nameValueZero) {
+  //     return [types, "types"];
+  //   } else if (hasItem(colors) && nameValueZero) {
+  //     return [colors, "colors"];
+  //   }
+  // }; 
+  // const switchItem = pickArr();
 
   // name, types, colorsごとのカウント
   const [eachCount, setEachCount] = useState({});
@@ -60,21 +55,32 @@ const Product = ({
             name={name}
             types={types}
             colors={colors} 
+            subTotalCount={subTotalCount}
+            calcSubTotalCount={calcSubTotalCount}
+            setCalcSubTotalCount={setCalcSubTotalCount}
+            handleCalcSubTotalCount={handleCalcSubTotalCount}            
             hasItem={hasItem}
-            switchItem={switchItem}
+            // switchItem={switchItem}
             eachCount={eachCount}
             setEachCount={setEachCount}
             whichItemSumCalcCount={whichItemSumCalcCount}
+            nameValueZero={nameValueZero}
           />
 
           <TypesColorsAndSetCount 
+            name={name}
             types={types}
             colors={colors} 
+            subTotalCount={subTotalCount}
+            calcSubTotalCount={calcSubTotalCount}
+            setCalcSubTotalCount={setCalcSubTotalCount}
+            handleCalcSubTotalCount={handleCalcSubTotalCount}            
             eachCount={eachCount}
             setEachCount={setEachCount}
             hasItem={hasItem}
-            switchItem={switchItem}
+            // switchItem={switchItem}
             whichItemSumCalcCount={whichItemSumCalcCount}  
+            nameValueZero={nameValueZero}
           />
 
           <div className="price">
@@ -96,9 +102,7 @@ const Product = ({
           <button
             className="mask-btn remove-btn"
             onClick={() => {
-              // handleMinusFee(price * whichItemSumCalcCount())
               [name, types, colors].forEach(hash => {
-                console.log(price * whichItemSumCalcCount())
                 Object.keys(hash).map((key) => {
                   // リスト内の値をリセットする場合に必要
                   hash[key] = 0

@@ -3,11 +3,13 @@ import { useEffect } from "react";
 const NameAndSetCount = ({ 
   name, 
   types, 
-  colors, 
+  colors,
+  subTotalCount,
+  setCalcSubTotalCount,
   hasItem,
   eachCount,
   setEachCount,
-  whichItemSumCalcCount
+  whichItemSumCalcCount,
   }) => {
 
   return (

@@ -1,3 +1,66 @@
+    <>
+    {/* {console.log(switchItem[1])} */}
+    {
+      hasItem(types) || hasItem(colors)
+        ? (
+          <ul className={switchItem[1]}>
+          {Object.keys(switchItem[0]).map((key, idx) => (
+            <li key={idx}>
+              <span>{key}</span>
+              <input 
+                id={`${switchItem[1]}_${key}`}
+                placeholder="0"
+                type="number" 
+                min="0"
+                value={eachCount[key] || 0}
+                onChange={(e)=>{
+                  switchItem[0][key] = e.target.value
+                  setEachCount({...switchItem[0], [key]: e.target.value})
+                }}
+              />
+            </li>
+          ))}
+          {
+            useEffect(() => {
+              whichItemSumCalcCount(switchItem[0]);
+            }, [switchItem[0], whichItemSumCalcCount])
+          }          
+          </ul>
+        )
+        : (<ul className="display-none"></ul>)
+    }
+    </>
+
+
+
+
+ && nameValueZero(name)
+
+
+  const switchItem = () => {
+    if (hasItem(types) && nameValueZero(name)) {
+      return [types, "types"];
+    } else if (hasItem(colors) && nameValueZero) {
+      return [colors, "colors"];
+    }
+  }; 
+
+
+setEachCount({...switchItem()[0], [key]: e.target.value})
+
+setEachCount({...switchItem()[0], [key]: e.target.value})
+                  handleCalcSubTotalCount(switchItem()[0])
+
+
+
+
+
+
+
+
+
+
+
 ## ユーザーが授与品ページに訪れてから商品代金を入金するまでの流れ
 1. 商品一覧ページで購入したい商品の個数入力し選択する。
     * 『詳細を見る』ボタンを押してリンクされた商品紹介ページを確認することができる。

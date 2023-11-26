@@ -8,13 +8,34 @@ const App = () => {
   // カートに入れる商品の状態
   const [cartItems, setCartItems] = useState([]);
 
-  const [minusFee, setMinusFee] = useState(0);
+  // nameの値が0であれば真を返す。
+  const nameValueZero = (hash) => {
+    return Object.keys(hash.name).map((key) => hash.name[key]).shift() === 0 
+  };
 
-  // const handleMinusFee = () => {
-  //   setMinusFee(100);
-  // };
+  // 対象が空配列かを検証
+  const hasItem = (hash) => Object.keys(hash).length > 0;
 
-  console.log(minusFee);
+  // name, types, colorsのカウント数　key名はsubTotal
+  const [calcSubTotalCount, setCalcSubTotalCount] = useState(0);
+  // カウント数を割り出すための関数
+  const handleCalcSubTotalCount = (hash) => {
+    if ((hasItem(hash.types) || hasItem(hash.colors)) && nameValueZero(hash.name)) {
+      const thisHash = hasItem(hash.types) ? hash.types : hash.colors;
+      const tmpCount = Object.keys(thisHash).reduce((acc, key) => acc + parseInt(thisHash[key]), 0);
+      return setCalcSubTotalCount(tmpCount);
+    } else {
+      Object.keys(hash.name).map((key) => {
+        return setCalcSubTotalCount(parseInt(hash.name[key]));
+      });
+    }
+  };    
+  
+  console.log(calcSubTotalCount, "hello");
+  
+  // return setCalcSubTotalCount(hash.subTotalCount = tmpCount);
+  // setEachCount({...switchItem()[0], [key]: e.target.value})
+  // return setCalcSubTotalCount(hash.subTotalCount = parseInt(hash.name[key]));
 
   // 商品をカートに追加する関数の定義
   const onAddCart = (product) => {
@@ -39,19 +60,18 @@ const App = () => {
         dataList={dataList}
         cartItems={cartItems}
         setCartItems={setCartItems}
+        setCalcSubTotalCount={setCalcSubTotalCount}
+        calcSubTotalCount={calcSubTotalCount}
+        handleCalcSubTotalCount={handleCalcSubTotalCount}
         onAddCart={onAddCart}
         onRemoveCart={onRemoveCart}
-        minusFee={minusFee}
-        setMinusFee={setMinusFee}
       />
       <OrderList
         dataList={dataList}
         cartItems={cartItems}
         setCartItems={setCartItems}
         onAddCart={onAddCart}
-        onRemoveCart={onRemoveCart}
-        // minusFee={minusFee}
-        // setMinusFee={setMinusFee}        
+        onRemoveCart={onRemoveCart}      
       />
     </div>
   );
