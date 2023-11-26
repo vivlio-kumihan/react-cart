@@ -11,6 +11,7 @@ const Product = ({
   onRemoveCart,
   nameValueZero,
   hasItem,
+  updateCartItems,
   }) => {
 
   // nameのhashの値 = namenのカウント数

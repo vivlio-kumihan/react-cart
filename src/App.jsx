@@ -8,6 +8,10 @@ const App = () => {
   // カートに入れる商品の状態
   const [cartItems, setCartItems] = useState([]);
 
+  const updateCartItems = (newCartItems) => {
+    setCartItems(newCartItems);
+  };
+
   // アイテム毎の金額
   const [totalFeeHash, setTotalFeeHash] = useState({});
 
@@ -86,18 +90,18 @@ const App = () => {
     setCartItems(updatedCartItems);
 
     // 合計金額をstateに渡す。
-    setTotalFee(calculateTotalFee(updatedCartItems));
+    // setTotalFee(calculateTotalFee(updatedCartItems));
 
     // 総重量をstateに渡す。
-    setTotalWeight(calculateTotalWeight(updatedCartItems));
+    // setTotalWeight(calculateTotalWeight(updatedCartItems));
 
     // ここ
-    // setTotalFee((prevTotalFee) => {
-    //   return calculateTotalFee(updatedCartItems);
-    // });  
-    // setTotalWeight((prevTotalWeight) => {
-    //   return calculateTotalWeight(updatedCartItems);
-    // }); 
+    setTotalFee((prevTotalFee) => {
+      return calculateTotalFee(updatedCartItems);
+    });  
+    setTotalWeight((prevTotalWeight) => {
+      return calculateTotalWeight(updatedCartItems);
+    }); 
     // setTotalFee((prevTotalFee) => {
     //   prevTotalFee = calculateTotalFee(updatedCartItems);
     //   const newTotalFee = [...prevTotalFee];
@@ -110,6 +114,14 @@ const App = () => {
     // });
   };
 
+  // console.log(totalFee);
+  // console.log(totalWeight);
+  // console.log(cartItems);
+  // console.log(totalFeeHash);
+  // console.log(totalFee);
+  // console.log(totalWeightHash);
+  // console.log(totalWeight);
+
   return (
     <div className="container">
       <Main
@@ -119,6 +131,7 @@ const App = () => {
         onRemoveCart={onRemoveCart}
         nameValueZero={nameValueZero}
         hasItem={hasItem}
+        updateCartItems={updateCartItems}
       />
       <OrderList
         dataList={dataList}
