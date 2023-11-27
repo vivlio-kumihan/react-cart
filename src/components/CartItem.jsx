@@ -1,32 +1,27 @@
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
 import "../styles/components/CartItem.sass";
 
 const CartItem = ({ 
   cartItem,
   pid, name, types, colors, price, weight,
   totalFeeHash,
+  setTotalFeeHash,
   setTotalFee,
   totalWeightHash, 
+  setTotalWeightHash,
   setTotalWeight,
+  nameValueZero,
   hasItem,
   }) => {
-
-  // console.log(cartItem);
   
   // nameのhashの値 = namenのカウント数
   const nameCount = parseInt((Object.keys(name).map((key) => name[key]).shift()));
 
-  // // nameの値が0であれば真を返す。
-  // const nameValueZero = Object.keys(name).map((key) => name[key]).shift() === 0;
-
-  // // 対象が空配列かを検証
-  // const hasItem = (hash) => Object.keys(hash).length > 0;
-
   // 現在がtypesかcolorsかで扱うhashを切り替える。
   const pickArr = () => {
-    if (hasItem(types) && (name === 0)) {
+    if (hasItem(types) && nameValueZero) {
       return [types, "types"];
-    } else if (hasItem(colors) && (name === 0)) {
+    } else if (hasItem(colors) && nameValueZero) {
       return [colors, "colors"];
     }
   }; 
@@ -34,19 +29,19 @@ const CartItem = ({
 
   // name, types, colorsのそれぞれカウント合計
   const whichItemSumCalcCount = () => {
-    if ((hasItem(types) || hasItem(colors)) && (name === 0)) {
-      console.log(types)
+    if ((hasItem(types) || hasItem(colors)) && nameValueZero) {
       const hash = hasItem(types) ? types : colors;
       return Object.keys(hash).reduce((acc, key) => acc + parseInt(hash[key]), 0);
-    } else {
+    } else if (nameCount >= 0) {
       return Object.keys(name).reduce((acc, key) => acc + parseInt(name[key]), 0);
     }
   };
   
-  // // 商品ごとの小計、重量小計
-  // totalFeeHash[pid] = price * whichItemSumCalcCount();
-  // totalWeightHash[pid] = weight * whichItemSumCalcCount();
-
+  // 商品ごとの小計、重量小計
+  totalFeeHash[pid] = price * whichItemSumCalcCount();
+  
+  totalWeightHash[pid] = weight * whichItemSumCalcCount();
+  
   useEffect(() => {
     setTotalFee(Object.values(totalFeeHash).reduce((acc, fee) => acc + fee, 0));
     setTotalWeight(Object.values(totalWeightHash).reduce((acc, wgt) => acc + wgt, 0));
@@ -70,11 +65,11 @@ const CartItem = ({
       }
       {/* 種類・色 */}
       {
-        (hasItem(types) || hasItem(colors)) && (name === 0) &&
+        (hasItem(types) || hasItem(colors)) && nameValueZero &&
           Object.keys(switchItem[0]).map((key, idx) => (
             <li className="quantity-state" key={idx}>
               <h3>{key}</h3>
-              <div className="quantity-count">{switchItem[0][key]}1234567</div>
+              <div className="quantity-count">{switchItem[0][key]}</div>
             </li>
           ))        
       }

@@ -8,6 +8,10 @@ const App = () => {
   // カートに入れる商品の状態
   const [cartItems, setCartItems] = useState([]);
 
+  const updateCartItems = (newCartItems) => {
+    setCartItems(newCartItems);
+  };
+
   // アイテム毎の金額
   const [totalFeeHash, setTotalFeeHash] = useState({});
 
@@ -46,10 +50,11 @@ const App = () => {
       return cartItem.pid !== product.pid
     });
 
+    // 合計金額を計算する
     const calculateTotalFee = (arrArg) => {
       const tmpTotalFee = arrArg.reduce((acc, item) => {
         const fee = () => {
-          if ((hasItem(item.types) || hasItem(item.colors)) && (item.name === 0)) {
+          if ((hasItem(item.types) || hasItem(item.colors)) && nameValueZero(item.name)) {
             const hash = hasItem(item.types) ? item.types : item.colors;
             const count = Object.keys(hash).reduce((acc, key) => acc + parseInt(hash[key]), 0);
             return item.price * count;
@@ -62,10 +67,12 @@ const App = () => {
       }, 0);
       return tmpTotalFee;
     };    
+
+    // 総重量を計算する。
     const calculateTotalWeight = (arrArg) => {
       const tmpTotalWeight = arrArg.reduce((acc, item) => {
         const weight = () => {
-          if ((hasItem(item.types) || hasItem(item.colors)) && (item.name === 0)) {
+          if ((hasItem(item.types) || hasItem(item.colors)) && nameValueZero(item.name)) {
             const hash = hasItem(item.types) ? item.types : item.colors;
             const count = Object.keys(hash).reduce((acc, key) => acc + parseInt(hash[key]), 0);
             return item.weight * count;
@@ -79,12 +86,41 @@ const App = () => {
       return tmpTotalWeight;
     };    
 
+    // 削除した商品を除いた商品でリストを構成させる。
     setCartItems(updatedCartItems);
-    setTotalFee(calculateTotalFee(updatedCartItems));
-    setTotalWeight(calculateTotalWeight(updatedCartItems));
-    console.log(calculateTotalFee(updatedCartItems), "<= App");
-    console.log(calculateTotalWeight(updatedCartItems), "<= App");
+
+    // 合計金額をstateに渡す。
+    // setTotalFee(calculateTotalFee(updatedCartItems));
+
+    // 総重量をstateに渡す。
+    // setTotalWeight(calculateTotalWeight(updatedCartItems));
+
+    // ここ
+    setTotalFee((prevTotalFee) => {
+      return calculateTotalFee(updatedCartItems);
+    });  
+    setTotalWeight((prevTotalWeight) => {
+      return calculateTotalWeight(updatedCartItems);
+    }); 
+    // setTotalFee((prevTotalFee) => {
+    //   prevTotalFee = calculateTotalFee(updatedCartItems);
+    //   const newTotalFee = [...prevTotalFee];
+    //   return newTotalFee;
+    // });
+    //   setTotalWeight((prevTotalWeight) => {
+    //     prevTotalWeight = calculateTotalWeight(updatedCartItems);
+    //     const newTotalWeight = [...prevTotalWeight];
+    //     return newTotalWeight;
+    // });
   };
+
+  // console.log(totalFee);
+  // console.log(totalWeight);
+  // console.log(cartItems);
+  // console.log(totalFeeHash);
+  // console.log(totalFee);
+  // console.log(totalWeightHash);
+  // console.log(totalWeight);
 
   return (
     <div className="container">
@@ -95,6 +131,7 @@ const App = () => {
         onRemoveCart={onRemoveCart}
         nameValueZero={nameValueZero}
         hasItem={hasItem}
+        updateCartItems={updateCartItems}
       />
       <OrderList
         dataList={dataList}

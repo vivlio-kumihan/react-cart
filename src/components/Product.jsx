@@ -11,25 +11,18 @@ const Product = ({
   onRemoveCart,
   nameValueZero,
   hasItem,
+  updateCartItems,
   }) => {
 
   // nameのhashの値 = namenのカウント数
   const nameCount = parseInt((Object.keys(name).map((key) => name[key]).shift()));
-
-  // // nameの値が0であれば真を返す。
-  // const nameValueZero = () => {
-  //   return Object.keys(name).map((key) => name[key]).shift() === 0 
-  // };
-
-  // // 対象が空配列かを検証
-  // const hasItem = (hash) => Object.keys(hash).length > 0;
 
   // name, types, colorsごとのカウント
   const [eachCount, setEachCount] = useState({});
 
   // name, types, colorsのそれぞれカウント合計
   const whichItemSumCalcCount = () => {
-    if ((hasItem(types) || hasItem(colors)) && (name === 0)) {
+    if ((hasItem(types) || hasItem(colors)) && nameValueZero) {
       const hash = hasItem(types) ? types : colors;
       return Object.keys(hash).reduce((acc, key) => acc + parseInt(hash[key]), 0);
     } else if (nameCount >= 0) {

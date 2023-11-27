@@ -10,6 +10,14 @@ const NameAndSetCount = ({
   whichItemSumCalcCount,
   }) => {
 
+    // 入力の状態の変化を親に伝いようとしている？
+    // useEffect(() => {
+    //   whichItemSumCalcCount(name);
+    // }, [name, whichItemSumCalcCount]);    
+    // const handleInputChange = (key, value) => {
+    //   setEachCount((prevCounts) => ({ ...prevCounts, [key]: value }));
+    // };    
+
   return (
     <ul className="name">
     {
@@ -28,7 +36,9 @@ const NameAndSetCount = ({
             min="0"
             value={eachCount[key] || 0}
             onChange={(e) => {
-              setEachCount({...name, [key]: e.target.value})              
+              setEachCount({...name, [key]: e.target.value})  
+              // ここ            
+              // handleInputChange(key, e.target.value)
               name[key] = e.target.value
             }}
           />   

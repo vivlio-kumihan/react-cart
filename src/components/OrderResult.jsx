@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef } from "react";
 import ReactToPrint from "react-to-print";
 import OrderForm from "./OrderForm";
 import CartItem from "../components/CartItem";
@@ -18,47 +18,6 @@ const OrderResult = ({
   }) => {
 
   const componentRef = useRef(null); 
-
-  const calcTotalFeeAndWeight = () => {
-    const tmpTotalFee = cartItems.reduce((acc, cartItem) => {
-      const { pid, price } = cartItem;
-      return acc + price * calcCartItemSum(cartItem);
-    }, 0);
-    console.log(tmpTotalFee, "<= OrderResult Fee!");
-    
-    const tmpTotalWeight = cartItems.reduce((acc, cartItem) => {
-      const { pid, weight } = cartItem;
-      return acc + weight * calcCartItemSum(cartItem);
-    }, 0);
-    console.log(tmpTotalWeight, "<= OrderResult Weight!");
-
-    return { tmpTotalFee, tmpTotalWeight };
-  };
-
-  const calcCartItemSum = (item) => {
-    if ((hasItem(item.types) || hasItem(item.colors)) && (item.name === 0)) {
-      const hash = hasItem(item.types) ? item.types : item.colors;
-      return Object.keys(hash).reduce((acc, key) => acc + parseInt(hash[key]), 0);
-    } else {
-      return Object.keys(item.name).reduce((acc, key) => acc + parseInt(item.name[key]), 0);
-    }
-  };
-
-  // useEffect 内で新しく計算した値をセット
-  useEffect(() => {
-    const { totalFee, totalWeight } = calcTotalFeeAndWeight();
-    setTotalFee(totalFee);
-    setTotalWeight(totalWeight);
-  }, [cartItems]);  
-
-  // // アイテム毎の重量
-  // const [totalWeightHash, setTotalWeightHash] = useState({});
-
-  // // カート内で注文する商品の重量
-  // const [totalWeight, setTotalWeight] = useState(0);
-
-  // // カート内で注文する商品の送料
-  // const [totalSendFee, setTotalSendFee] = useState(0);
 
   // formの入力情報
   const inputVal = {
@@ -94,8 +53,10 @@ const OrderResult = ({
                   cartItem={cartItem} 
                   {...cartItem}
                   totalFeeHash={totalFeeHash}
+                  setTotalFeeHash={setTotalFeeHash}
                   setTotalFee={setTotalFee}
                   totalWeightHash={totalWeightHash}
+                  setTotalWeightHash={setTotalWeightHash}
                   setTotalWeight={setTotalWeight}
                   nameValueZero={nameValueZero}
                   hasItem={hasItem}
