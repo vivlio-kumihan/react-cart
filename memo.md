@@ -1,3 +1,8 @@
+viteから戻る方法  
+  
+  
+  
+  
   // 商品をカートから取る関数の定義
   const onRemoveCart = (product) => {
     const newCartItems = cartItems.filter(
