@@ -85,7 +85,6 @@ const OrderForm = ({ inputFormInfo, setInputFormInfo }) => {
   );
 };
 
-
 export default OrderForm;
 
 // // textarea用
