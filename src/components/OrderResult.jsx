@@ -15,8 +15,10 @@ const OrderResult = ({
   totalSendFee, setTotalSendFee,
   nameValueZero,
   hasItem,
+  reloadCartItems,
   }) => {
 
+  console.log(reloadCartItems())
   const componentRef = useRef(null); 
 
   // formの入力情報
@@ -66,15 +68,15 @@ const OrderResult = ({
           </div>
 
           <ul className="calc-amount">
-            <li>授与料小計<span>{totalFee}</span>円</li>
+            <li>授与料小計<span>{reloadCartItems()[0]}</span>円</li>
             {/* <li>消費税<span>{Math.round(totalFee * 0.1)}</span>円</li> */}
             <li>
               <SendFee 
-                totalWeight={totalWeight} 
+                totalWeight={reloadCartItems()[1]} 
                 setTotalSendFee={setTotalSendFee}
               />
             </li>
-            <li>カートの重量合計<span>{totalWeight}</span>g</li>
+            <li>カートの重量合計<span>{reloadCartItems()[1]}</span>g</li>
             {
               totalSendFee 
                 ? <li className="total-fee">授与料合計<span>{Math.round(totalFee)+totalSendFee}</span>円</li>

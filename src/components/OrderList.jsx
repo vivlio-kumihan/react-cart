@@ -12,17 +12,23 @@ const OrderList = ({
   totalSendFee, setTotalSendFee,
   nameValueZero,
   hasItem,
+  toggle,
+  setToggle,
+  toggleAction,
+  reloadCartItems,
+  handleClick,
   }) => {
-
-  const [toggle, setToggle] = useState(false);
-  const toggleAction = () => {
-    setToggle(!toggle);
-  };
 
   return (
     <div className="order-list">
       <div className="cart-title-wrapper">
-        <button className="cart-title" onClick={toggleAction}>
+        <button 
+          className="cart-title" 
+          onClick={() => {
+              reloadCartItems()
+              toggleAction()
+            }}
+        >
           <span></span>
         </button>
         <div className="ami"></div>
@@ -43,7 +49,8 @@ const OrderList = ({
         totalSendFee={totalSendFee}
         setTotalSendFee={setTotalSendFee}
         nameValueZero={nameValueZero}  
-        hasItem={hasItem}   
+        hasItem={hasItem} 
+        reloadCartItems={reloadCartItems}  
       />
     </div>
   );

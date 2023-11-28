@@ -44,12 +44,6 @@ const App = () => {
     }
   };
 
-  // 商品をカートから取る関数の定義
-  const onRemoveCart = (product) => {
-    const updatedCartItems = cartItems.filter((cartItem) => {
-      return cartItem.pid !== product.pid
-    });
-
     // 合計金額を計算する
     const calculateTotalFee = (arrArg) => {
       const tmpTotalFee = arrArg.reduce((acc, item) => {
@@ -66,8 +60,8 @@ const App = () => {
         return acc + parseInt(fee());
       }, 0);
       return tmpTotalFee;
-    };    
-
+    };   
+    
     // 総重量を計算する。
     const calculateTotalWeight = (arrArg) => {
       const tmpTotalWeight = arrArg.reduce((acc, item) => {
@@ -84,7 +78,50 @@ const App = () => {
         return acc + parseInt(weight());
       }, 0);
       return tmpTotalWeight;
-    };    
+    };   
+
+  // 商品をカートから取る関数の定義
+  const onRemoveCart = (product) => {
+    // 削除したカート以外で構成を作り直す
+    const updatedCartItems = cartItems.filter((cartItem) => {
+      return cartItem.pid !== product.pid
+    });
+
+    // // 合計金額を計算する
+    // const calculateTotalFee = (arrArg) => {
+    //   const tmpTotalFee = arrArg.reduce((acc, item) => {
+    //     const fee = () => {
+    //       if ((hasItem(item.types) || hasItem(item.colors)) && nameValueZero(item.name)) {
+    //         const hash = hasItem(item.types) ? item.types : item.colors;
+    //         const count = Object.keys(hash).reduce((acc, key) => acc + parseInt(hash[key]), 0);
+    //         return item.price * count;
+    //       } else {
+    //         const count = parseInt(item.name[Object.keys(item.name)[0]]);
+    //         return item.price * count;
+    //       }
+    //     };
+    //     return acc + parseInt(fee());
+    //   }, 0);
+    //   return tmpTotalFee;
+    // };    
+
+    // // 総重量を計算する。
+    // const calculateTotalWeight = (arrArg) => {
+    //   const tmpTotalWeight = arrArg.reduce((acc, item) => {
+    //     const weight = () => {
+    //       if ((hasItem(item.types) || hasItem(item.colors)) && nameValueZero(item.name)) {
+    //         const hash = hasItem(item.types) ? item.types : item.colors;
+    //         const count = Object.keys(hash).reduce((acc, key) => acc + parseInt(hash[key]), 0);
+    //         return item.weight * count;
+    //       } else {
+    //         const count = parseInt(item.name[Object.keys(item.name)[0]]);
+    //         return item.weight * count;
+    //       }
+    //     };
+    //     return acc + parseInt(weight());
+    //   }, 0);
+    //   return tmpTotalWeight;
+    // };    
 
     // 削除した商品を除いた商品でリストを構成させる。
     setCartItems(updatedCartItems);
@@ -122,6 +159,22 @@ const App = () => {
   // console.log(totalWeightHash);
   // console.log(totalWeight);
 
+  const [toggle, setToggle] = useState(false);
+  const toggleAction = () => {
+    setToggle(!toggle);
+  };  
+
+  const reloadCartItems = () => {
+    return [calculateTotalFee(cartItems), calculateTotalWeight(cartItems)];
+    console.log(calculateTotalFee(cartItems));
+    console.log(calculateTotalWeight(cartItems));
+  };
+
+  const handleClick = () => {
+    reloadCartItems();
+    toggleAction();
+  };
+
   return (
     <div className="container">
       <Main
@@ -151,6 +204,11 @@ const App = () => {
         setTotalSendFee={setTotalSendFee}
         nameValueZero={nameValueZero}
         hasItem={hasItem}
+        toggleAction={toggleAction }
+        reloadCartItems={reloadCartItems}
+        handleClick={handleClick}
+        toggle={toggle}
+        setToggle={setToggle}
       />
     </div>
   );
