@@ -67,6 +67,7 @@ const OrderResult = ({
           </div>
 
           <ul className="calc-amount">
+            {console.log(reloadCartItems()[0])}
             <li>授与料小計<span>{reloadCartItems()[0]}</span>円</li>
             {/* <li>消費税<span>{Math.round(totalFee * 0.1)}</span>円</li> */}
             <li>
@@ -78,7 +79,7 @@ const OrderResult = ({
             <li>カートの重量合計<span>{reloadCartItems()[1]}</span>g</li>
             {
               totalSendFee 
-                ? <li className="total-fee">授与料合計<span>{Math.round(totalFee)+totalSendFee}</span>円</li>
+                ? <li className="total-fee">授与料合計<span>{reloadCartItems()[0]+totalSendFee}</span>円</li>
                 : <li className="total-fee direction">授与料合計を出すには発送先を選択してください。</li>
             }
           </ul>
