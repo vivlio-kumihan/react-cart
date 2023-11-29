@@ -1,7 +1,8 @@
 import { useState, useRef } from "react";
 import ReactToPrint from "react-to-print";
 import OrderForm from "./OrderForm";
-import CartItem from "../components/CartItem";
+import CartItem from "./CartItem";
+import ContactForm from "../containers/ContactForm";
 import SendFee from "../containers/SendFee";
 import "../styles/components/OrderResult.sass";
 
@@ -18,7 +19,6 @@ const OrderResult = ({
   reloadCartItems,
   }) => {
 
-  console.log(reloadCartItems())
   const componentRef = useRef(null); 
 
   // formの入力情報
@@ -49,7 +49,6 @@ const OrderResult = ({
           <div className="result-wrapper">
             {cartItems.map((cartItem, idx) => (
               <div key={idx}>
-              {/* ↓ これが.item */}
                 <CartItem
                   key={idx} 
                   cartItem={cartItem} 
@@ -85,10 +84,25 @@ const OrderResult = ({
           </ul>
         </div>
 
+        <ContactForm
+          cartItems={cartItems}
+          totalFee={totalFee}
+          totalFeeHash={totalFeeHash}
+          setTotalFeeHash={setTotalFeeHash}
+          totalSendFee={setTotalFee}
+          totalWeightHash={totalWeightHash}
+          setTotalWeightHash={setTotalWeightHash}
+          setTotalWeight={setTotalWeight}
+          reloadCartItems={reloadCartItems}
+          nameValueZero={nameValueZero}
+          hasItem={hasItem} 
+      />
+
         <OrderForm
           inputFormInfo={inputFormInfo}
           setInputFormInfo={setInputFormInfo}
         />
+
 
         <div className="for-only-print">
           <div className="wrapper">

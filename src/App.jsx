@@ -29,7 +29,7 @@ const App = () => {
 
   // nameの値が0であれば真を返す。
   const nameValueZero = (nameHash) => {
-    return Object.keys(nameHash).map((key) => nameHash[key]).shift() === 0 
+    return Object.keys(nameHash).map((key) => parseInt(nameHash[key])).shift() === 0 
   };  
 
   // 対象が空配列かを検証
