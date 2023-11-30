@@ -46,18 +46,15 @@ const Product = ({
             eachCount={eachCount}
             setEachCount={setEachCount}
             whichItemSumCalcCount={whichItemSumCalcCount}
-            nameValueZero={nameValueZero}
           />
 
           <TypesColorsAndSetCount 
-            name={name}
             types={types}
             colors={colors} 
             hasItem={hasItem}
             eachCount={eachCount}
             setEachCount={setEachCount}
             whichItemSumCalcCount={whichItemSumCalcCount}  
-            nameValueZero={nameValueZero}
           />
 
           <div className="price">

@@ -15,19 +15,7 @@ const TypesColorsAndSetCount = ({
     } else if (hasItem(colors)) {
       return [colors, "colors"];
     }
-  }; 
-
-  // 入力の状態の変化を親に伝いようとしている？
-  // useEffect(() => {
-  //   const item = switchItem();
-  //   if (item) {
-  //     whichItemSumCalcCount(item[0]);
-  //   }
-  // }, [switchItem, whichItemSumCalcCount]);
-
-  // const handleInputChange = (key, value) => {
-  //   setEachCount((prevCounts) => ({ ...prevCounts, [key]: value }));
-  // };  
+  };  
 
   return (
     <>
@@ -45,10 +33,8 @@ const TypesColorsAndSetCount = ({
                 min="0"
                 value={eachCount[key] || 0}
                 onChange={(e)=>{
-                  setEachCount({...switchItem()[0], [key]: e.target.value})
-                  // ここ
-                  // handleInputChange(key, e.target.value)
                   switchItem()[0][key] = e.target.value
+                  setEachCount({...switchItem()[0], [key]: e.target.value})
                 }}
               />
             </li>
