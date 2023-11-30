@@ -119,9 +119,6 @@ const App = () => {
       <OrderList
         dataList={dataList}
         cartItems={cartItems}
-        setCartItems={setCartItems}
-        onAddCart={onAddCart}
-        onRemoveCart={onRemoveCart} 
         totalFeeHash={totalFeeHash}
         setTotalFeeHash={setTotalFeeHash}
         totalFee={totalFee}
@@ -134,11 +131,9 @@ const App = () => {
         setTotalSendFee={setTotalSendFee}
         nameValueZero={nameValueZero}
         hasItem={hasItem}
+        toggle={toggle}
         toggleAction={toggleAction }
         reloadCartItems={reloadCartItems}
-        handleClick={handleClick}
-        toggle={toggle}
-        setToggle={setToggle}
       />
     </div>
   );

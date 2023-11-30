@@ -2,13 +2,10 @@ import { useState, useEffect } from "react";
 import "../styles/components/CartItem.sass";
 
 const CartItem = ({ 
-  cartItem,
   pid, name, types, colors, price, weight,
   totalFeeHash,
-  setTotalFeeHash,
   setTotalFee,
   totalWeightHash, 
-  setTotalWeightHash,
   setTotalWeight,
   nameValueZero,
   hasItem,
@@ -16,17 +13,16 @@ const CartItem = ({
   
   // nameのhashの値 = namenのカウント数
   const nameCount = parseInt((Object.keys(name).map((key) => name[key]).shift()));
-
   // 現在がtypesかcolorsかで扱うhashを切り替える。
-  const pickArr = () => {
+  const switchItem = () => {
     if (hasItem(types) && nameValueZero) {
       return [types, "types"];
     } else if (hasItem(colors) && nameValueZero) {
       return [colors, "colors"];
     }
-  }; 
-  const switchItem = pickArr();
-
+  };
+  // ___リファクタリング___
+  // 引数を持っている場合とない場合だけの違い　オプションの有無で統一する
   // name, types, colorsのそれぞれカウント合計
   const whichItemSumCalcCount = () => {
     if ((hasItem(types) || hasItem(colors)) && nameValueZero) {
@@ -36,6 +32,7 @@ const CartItem = ({
       return Object.keys(name).reduce((acc, key) => acc + parseInt(name[key]), 0);
     }
   };
+  // ___リファクタリング___
   
   // 商品ごとの小計、重量小計
   totalFeeHash[pid] = price * whichItemSumCalcCount();
@@ -66,10 +63,10 @@ const CartItem = ({
       {/* 種類・色 */}
       {
         (hasItem(types) || hasItem(colors)) && nameValueZero &&
-          Object.keys(switchItem[0]).map((key, idx) => (
+          Object.keys(switchItem()[0]).map((key, idx) => (
             <li className="quantity-state" key={idx}>
               <h3>{key}</h3>
-              <div className="quantity-count">{switchItem[0][key]}</div>
+              <div className="quantity-count">{switchItem()[0][key]}</div>
             </li>
           ))        
       }

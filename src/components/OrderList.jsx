@@ -1,4 +1,3 @@
-import { useState } from "react";
 import OrderResult from "./OrderResult";
 import "../styles/components/OrderList.sass";
 
@@ -13,10 +12,8 @@ const OrderList = ({
   nameValueZero,
   hasItem,
   toggle,
-  setToggle,
   toggleAction,
   reloadCartItems,
-  handleClick,
   }) => {
 
   return (
@@ -36,15 +33,12 @@ const OrderList = ({
       <OrderResult
         className="order-result"
         toggle={toggle}
-        dataList={dataList}
         cartItems={cartItems} 
         totalFeeHash={totalFeeHash}
         setTotalFeeHash={setTotalFeeHash}
-        totalFee={totalFee}
         setTotalFee={setTotalFee}
         totalWeightHash={totalWeightHash}
         setTotalWeightHash={setTotalWeightHash}
-        totalWeight={totalWeight}
         setTotalWeight={setTotalWeight}
         totalSendFee={totalSendFee}
         setTotalSendFee={setTotalSendFee}

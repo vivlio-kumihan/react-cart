@@ -1,7 +1,6 @@
 import { useState, useRef } from "react";
 import ReactToPrint from "react-to-print";
 import CartItem from "./CartItem";
-import SavePDF from "./SavePDF";
 import FaxForm from "../containers/FaxForm";
 import MailForm from "../containers/MailForm";
 import SendFee from "../containers/SendFee";
@@ -11,9 +10,9 @@ const OrderResult = ({
   toggle, 
   cartItems,
   totalFeeHash, setTotalFeeHash,
-  totalFee, setTotalFee,
+  setTotalFee,
   totalWeightHash, setTotalWeightHash, 
-  totalWeight, setTotalWeight,
+  setTotalWeight,
   totalSendFee, setTotalSendFee,
   nameValueZero,
   hasItem,
@@ -33,8 +32,8 @@ const OrderResult = ({
       tel: "000-000-0000", 
       note: "", 
   };
+  // Formのinput値のstate  
   const [inputFormInfo, setInputFormInfo] = useState(inputVal);  
-
   // カートに商品が入っているか否か条件分岐で使う。
   const isEmpty = (arr) => arr.length < 1;
 
@@ -53,13 +52,10 @@ const OrderResult = ({
               <div key={idx}>
                 <CartItem
                   key={idx} 
-                  cartItem={cartItem} 
                   {...cartItem}
                   totalFeeHash={totalFeeHash}
-                  setTotalFeeHash={setTotalFeeHash}
                   setTotalFee={setTotalFee}
                   totalWeightHash={totalWeightHash}
-                  setTotalWeightHash={setTotalWeightHash}
                   setTotalWeight={setTotalWeight}
                   nameValueZero={nameValueZero}
                   hasItem={hasItem}
@@ -91,6 +87,7 @@ const OrderResult = ({
           setInputFormInfo={setInputFormInfo}
         />   
 
+        {/* ___リファクタリング___ */}
         <div className="for-only-print">
           <div className="wrapper">
             <h3>いずれかの下記口座までご送金（振込）してください。</h3>
@@ -171,6 +168,7 @@ const OrderResult = ({
             ここに郵便振込用紙の<br />控えを貼付けてください。
           </div>
         </div>
+        {/* ___リファクタリング___ */}
 
         <div className="send-buttons">
           <ReactToPrint 
