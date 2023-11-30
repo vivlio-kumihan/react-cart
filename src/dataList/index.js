@@ -13,6 +13,7 @@
 //     colors: {},
 //     price: 800,
 //     weight: 23,
+
 //   },
 //   {
 //     pid: "o_fuda_yaku_yoke",

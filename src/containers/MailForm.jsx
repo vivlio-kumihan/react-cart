@@ -1,7 +1,7 @@
 import React, { useRef } from 'react';
 import emailjs from '@emailjs/browser';
 import "../styles/components/CartItem.sass";
-import parse from 'html-react-parser';
+import "../styles/containers/MailForm.sass";
 
 const MailForm = ({ 
   cartItems,
@@ -38,31 +38,31 @@ const MailForm = ({
     // 商品名
     const itemName = Object.keys(item.name)[0];
     // 種類
-    const itemTypes = item.types;
-    // const tmpItemTypes = Object.keys(item.types).map((key) => {
-    //   return `<dl><dt>${key}</dt><dd>${item.types[key]}</dd></dl>`
-    // });
-    // const itemTypes = tmpItemTypes.reduce((acc, itemText) => acc + itemText, "");
+    const tmpItemTypes = Object.keys(item.types).map((key) => {
+      return `${key}: ${item.types[key]}`
+    });
+    const itemTypes = tmpItemTypes.reduce((acc, itemText) => acc + "\n" + itemText, "");
     // 色
-    const itemColors =item.colors;
-    // const tmpItemColors = Object.keys(item.colors).map((key) => {
-    //   return `<dl><dt>${key}</dt><dd>${item.colors[key]}</dd></dl>`
-    // });
-    // const itemColors = tmpItemColors.reduce((acc, itemText) => acc + itemText, "");
+    const tmpItemColors = Object.keys(item.colors).map((key) => {
+      return `${key}: ${item.colors[key]}`
+    });
+    const itemColors = tmpItemColors.reduce((acc, itemText) => acc + "\n" + itemText, "");
     // 単価
-    const itemPrice = item.price;
+    const itemPrice = `${item.price}円`;
     // 注文数
     const itemCount = whichItemSumCalcCount();
     // 商品小計
-    const itemSubTotalFee = item.price * whichItemSumCalcCount();
-
-    return [itemName, itemTypes, itemColors, itemPrice, itemCount, itemSubTotalFee];
-    // return (
-    //   const itemContents = [itemName, itemTypes, itemColors, itemPrice, itemCount, itemSubTotalFee];
-    //   // `<ul><li>${itemName}</li><li>${itemTypes}</li><li>${itemColors}</li><li>${itemPrice}×${itemCount}</li><li>${itemSubTotalFee}</li></ul>`
-    // );
+    const itemSubTotalFee = `小計: ${item.price * whichItemSumCalcCount()}円`;
+    return (
+      hasItem(item.types)
+        ? `${itemName}${itemTypes}\n${itemPrice}×${itemCount}\n${itemSubTotalFee}`
+        : hasItem(item.colors)
+          ? `${itemName}${itemColors}\n${itemPrice}×${itemCount}\n${itemSubTotalFee}`
+          : `${itemName}\n${itemPrice}×${itemCount}\n${itemSubTotalFee}`
+    );
   });
-  // const itemContents = tmpItemContents.reduce((acc, itemText) => acc + itemText, "");
+
+  const totalItemContents = itemContents.join("\n\n");
   const cartTotalFee = reloadCartItems()[0];
   const grandTotalFee = cartTotalFee + totalSendFee;
   const userName = inputFormInfo.name;
@@ -70,35 +70,12 @@ const MailForm = ({
   const postalCode = inputFormInfo.postalCode;
   const address = inputFormInfo.prefecture + inputFormInfo.city + inputFormInfo.town;
   const tel =inputFormInfo.tel;
-  const note = inputFormInfo.note && "";
+  const note = inputFormInfo.note;
 
   return (
     <>
     <form ref={form} onSubmit={sendEmail}>
-      {itemContents.map((item, idx) => (
-      <div key={idx}>
-        <input type='text' name="itemName" readOnly value={`${item[0]}`} />
-
-        {Object.keys(item[1]).map((key, idx) => (
-          item[1][key]
-          {/* <div key={idx}>
-            <input type='text' name="itemTypeKey" readOnly value={`${key}`} />
-            <input type='text' name="itemTypeValue" readOnly value={`${item[1][key]}`} />
-          </div> */}
-        ))}
-        {Object.keys(item[2]).map((key, idx) => (
-          <div key={idx}>
-            <input type='text' name="itemColorKey" readOnly value={`${key}`} />
-            <input type='text' name="itemColorValue" readOnly value={`${item[2][key]}`} />
-          </div>
-        ))}
-
-        <input type='text' name="itemPrice" readOnly value={`${item[3]}`} />
-        <input type='text' name="itemCount" readOnly value={`${item[4]}`} />
-        <input type='text' name="itemSubTotalFee" readOnly value={`${item[5]}`} />
-      </div>
-      ))} 
-
+      <textarea name="totalItemContents" readOnly value={`${totalItemContents}`} />
       <input type="text" name="subTotalFee" readOnly value={`${reloadCartItems()[0]}円`} />
       <input type="text" name="totalSendFee" readOnly value={`${totalSendFee}円`} />
       <input type="text" name="grandTotalFee" readOnly value={`${grandTotalFee}円`} />
@@ -114,21 +91,10 @@ const MailForm = ({
       <input type="tel" name="tel" readOnly value={`${tel}`} />
       <label>【備考】</label>
       <textarea name="note" readOnly value={`${note}`} />
-
-      <input type="submit" value="Send" />
+      <button className='to-send-form' type="submit" value="メールで送信">メールで送信</button>
     </form>
     </>
   );
 };
 
 export default MailForm;
-
-// {parse(`${itemContents}`)}
-
-          // {/* {<input type="text" name="itemName" readOnly value={`${item[0]}`} />} */}
-          // {/* {<input type="text" name="itemName" readOnly value={`${item[0]}`} />}
-          // {<input type="text" name="itemTypes" readOnly value={`${item[1]}円`} />}
-          // {<input type="text" name="itemColors" readOnly value={`${item[2]}円`} />}
-          // {<input type="text" name="itemPrice" readOnly value={`${item[3]}円`} />}
-          // {<input type="text" name="itemCount" readOnly value={`${item[4]}円`} />}
-          // {<input type="text" name="itemSubTotalFee" readOnly value={`${item[5]}円`} />} */}

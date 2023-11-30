@@ -86,19 +86,10 @@ const OrderResult = ({
           </ul>
         </div>
 
-        <MailForm
-          cartItems={cartItems}
-          reloadCartItems={reloadCartItems}
-          totalSendFee={totalSendFee}
-          nameValueZero={nameValueZero}
-          hasItem={hasItem}
-          inputFormInfo={inputFormInfo}
-      />
-
         <FaxForm
           inputFormInfo={inputFormInfo}
           setInputFormInfo={setInputFormInfo}
-        />
+        />   
 
         <div className="for-only-print">
           <div className="wrapper">
@@ -181,18 +172,30 @@ const OrderResult = ({
           </div>
         </div>
 
-        <ReactToPrint 
-          trigger={() => (
-            <button className="to-print-btn">
-              印刷する
-            </button>
-          )}
-          pageStyle="@page {
-            size: A4 portrait;
-            margin: 0;
-            }"
-          content={() => componentRef.current}
-        />
+        <div className="send-buttons">
+          <ReactToPrint 
+            trigger={() => (
+              <button className="to-print-btn">
+                印刷する
+              </button>
+            )}
+            pageStyle="@page {
+              size: A4 portrait;
+              margin: 0;
+              }"
+            content={() => componentRef.current}
+          />
+
+          <MailForm
+            cartItems={cartItems}
+            reloadCartItems={reloadCartItems}
+            totalSendFee={totalSendFee}
+            nameValueZero={nameValueZero}
+            hasItem={hasItem}
+            inputFormInfo={inputFormInfo}
+          />             
+        </div>
+
       </div>
     </div>
   );
