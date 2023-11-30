@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Main from "./components/Main";
 import OrderList from "./components/OrderList";
 import dataList from "./dataList";

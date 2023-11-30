@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import NameAndSetCount from "../containers/NameAndSetCount";
 import TypesColorsAndSetCount from "../containers/TypesColorsAndSetCount";
 import "../styles/components/Product.sass";
@@ -13,12 +13,13 @@ const Product = ({
   hasItem,
   }) => {
 
-  // nameのhashの値 = namenのカウント数
+  // nameのhashの値 = nameのカウント数
   const nameCount = parseInt((Object.keys(name).map((key) => name[key]).shift()));
-
-  // name, types, colorsごとのカウント
+  // name, types, colorsごとのカウントのstate
   const [eachCount, setEachCount] = useState({});
-
+  
+  // ___リファクタリング___
+  // 他にもある。Appコンポーネントで統合するべき。
   // name, types, colorsのそれぞれカウント合計
   const whichItemSumCalcCount = () => {
     if ((hasItem(types) || hasItem(colors)) && nameValueZero) {
@@ -28,6 +29,7 @@ const Product = ({
       return Object.keys(name).reduce((acc, key) => acc + parseInt(name[key]), 0);
     }
   };
+  // ___リファクタリング___
 
   return (
     <div className="card" key={pid}>
@@ -80,7 +82,7 @@ const Product = ({
               [name, types, colors].forEach(hash => {
                 Object.keys(hash).map((key) => {
                   // リスト内の値をリセットする場合に必要
-                  hash[key] = 0
+                  // hash[key] = 0
                   // Mainの商品一覧内の値をリセットするのに必要
                   setEachCount({...hash, [key]: 0})
                 })

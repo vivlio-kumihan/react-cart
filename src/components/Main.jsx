@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import "../styles/components/Main.sass";
 import Product from "./Product";
 
