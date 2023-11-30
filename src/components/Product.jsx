@@ -81,10 +81,11 @@ const Product = ({
             onClick={() => {
               [name, types, colors].forEach(hash => {
                 Object.keys(hash).map((key) => {
-                  // リスト内の値をリセットする場合に必要
-                  // hash[key] = 0
-                  // Mainの商品一覧内の値をリセットするのに必要
+                  // ___リファクタリング___
+                  // 値をリセットする時に必要だが、よく理解できていない。
+                  hash[key] = 0
                   setEachCount({...hash, [key]: 0})
+                  // ___リファクタリング___
                 })
               })
               onRemoveCart(data)
