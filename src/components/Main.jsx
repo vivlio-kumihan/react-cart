@@ -9,7 +9,6 @@ const Main = ({ dataList,
   onRemoveCart,
   nameValueZero, 
   hasItem,
-  updateCartItems,
   }) => {
 
   return (
@@ -28,7 +27,6 @@ const Main = ({ dataList,
                 onRemoveCart={onRemoveCart}
                 nameValueZero={nameValueZero}
                 hasItem={hasItem}
-                updateCartItems={updateCartItems}
               />
             </li>
           ))
