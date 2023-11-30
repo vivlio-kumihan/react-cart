@@ -1,8 +1,8 @@
 import { useState } from 'react';
-import "../styles/components/OrderForm.sass";
+import "../styles/components/FaxForm.sass";
 
 // 最終的には、郵便番号の入力で住所を自動補完される機能を付ける。
-const OrderForm = ({ inputFormInfo, setInputFormInfo }) => {
+const FaxForm = ({ inputFormInfo, setInputFormInfo }) => {
 
   const inputName = (e) => {
     setInputFormInfo(inputFormInfo => ({ ...inputFormInfo, name: e.target.value }))
@@ -85,7 +85,7 @@ const OrderForm = ({ inputFormInfo, setInputFormInfo }) => {
   );
 };
 
-export default OrderForm;
+export default FaxForm;
 
 // // textarea用
 // const inputContents = (e) => {

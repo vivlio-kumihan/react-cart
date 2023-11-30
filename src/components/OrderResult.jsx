@@ -1,8 +1,9 @@
 import { useState, useRef } from "react";
 import ReactToPrint from "react-to-print";
-import OrderForm from "./OrderForm";
 import CartItem from "./CartItem";
-import ContactForm from "../containers/ContactForm";
+import SavePDF from "./SavePDF";
+import FaxForm from "../containers/FaxForm";
+import MailForm from "../containers/MailForm";
 import SendFee from "../containers/SendFee";
 import "../styles/components/OrderResult.sass";
 
@@ -23,13 +24,14 @@ const OrderResult = ({
 
   // formの入力情報
   const inputVal = {
-      name: "白峰太郎", 
+      name: "白峯太郎", 
       postalCode: "0000000", 
       prefecture: "", 
       city: "",
       town: "",
       email: "shiramine@taro.com", 
       tel: "000-000-0000", 
+      note: "", 
   };
   const [inputFormInfo, setInputFormInfo] = useState(inputVal);  
 
@@ -67,7 +69,6 @@ const OrderResult = ({
           </div>
 
           <ul className="calc-amount">
-            {console.log(reloadCartItems()[0])}
             <li>授与料小計<span>{reloadCartItems()[0]}</span>円</li>
             {/* <li>消費税<span>{Math.round(totalFee * 0.1)}</span>円</li> */}
             <li>
@@ -85,25 +86,19 @@ const OrderResult = ({
           </ul>
         </div>
 
-        <ContactForm
+        <MailForm
           cartItems={cartItems}
-          totalFee={totalFee}
-          totalFeeHash={totalFeeHash}
-          setTotalFeeHash={setTotalFeeHash}
-          totalSendFee={setTotalFee}
-          totalWeightHash={totalWeightHash}
-          setTotalWeightHash={setTotalWeightHash}
-          setTotalWeight={setTotalWeight}
           reloadCartItems={reloadCartItems}
+          totalSendFee={totalSendFee}
           nameValueZero={nameValueZero}
-          hasItem={hasItem} 
+          hasItem={hasItem}
+          inputFormInfo={inputFormInfo}
       />
 
-        <OrderForm
+        <FaxForm
           inputFormInfo={inputFormInfo}
           setInputFormInfo={setInputFormInfo}
         />
-
 
         <div className="for-only-print">
           <div className="wrapper">
