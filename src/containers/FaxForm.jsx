@@ -1,5 +1,4 @@
-import { useState } from 'react';
-import "../styles/components/FaxForm.sass";
+import "../styles/containers/FaxForm.sass";
 
 // 最終的には、郵便番号の入力で住所を自動補完される機能を付ける。
 const FaxForm = ({ inputFormInfo, setInputFormInfo }) => {
