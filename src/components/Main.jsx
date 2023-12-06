@@ -1,5 +1,9 @@
 import "../styles/components/Main.sass";
 import Product from "./Product";
+import DeauWa from "../containers/details/DeauWa"
+import MoriYa from "../containers/details/MoriYa"
+import ThokonMamoriKado from "../containers/details/ThokonMamoriKado"
+import WristBand from "../containers/details/WristBand"
 
 const Main = ({ dataList, 
   cartItems, 
@@ -30,7 +34,11 @@ const Main = ({ dataList,
             </li>
           ))
         }
-      </ul>  
+      </ul>
+      <DeauWa />
+      <MoriYa />
+      <ThokonMamoriKado />
+      <WristBand />
     </div>
   );
 };

@@ -117,15 +117,15 @@ const App = () => {
         updateCartItems={updateCartItems}
       />
       <OrderList
-        dataList={dataList}
+        // dataList={dataList}
         cartItems={cartItems}
         totalFeeHash={totalFeeHash}
         setTotalFeeHash={setTotalFeeHash}
-        totalFee={totalFee}
+        // totalFee={totalFee}
         setTotalFee={setTotalFee}
         totalWeightHash={totalWeightHash}
         setTotalWeightHash={setTotalWeightHash}
-        totalWeight={totalWeight}
+        // totalWeight={totalWeight}
         setTotalWeight={setTotalWeight}
         totalSendFee={totalSendFee}
         setTotalSendFee={setTotalSendFee}

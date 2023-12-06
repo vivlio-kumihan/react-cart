@@ -70,7 +70,12 @@ const Product = ({
       
       <div className="btn-wrapper">
         {/* 詳細へのボタン */}
-        <button className="mask-btn details">詳細を見る</button>
+        <button 
+          className="mask-btn details"
+        >
+          詳細を見る
+        </button>
+        
         {/* 追加と削除のボタン */}
         {cartItems.find((cartItem) => cartItem.pid === pid) ? (
           <button

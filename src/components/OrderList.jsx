@@ -2,12 +2,14 @@ import OrderResult from "./OrderResult";
 import "../styles/components/OrderList.sass";
 
 const OrderList = ({ 
-  dataList, 
+  // dataList, 
   cartItems,
   totalFeeHash, setTotalFeeHash,
-  totalFee, setTotalFee,
+  // totalFee, 
+  setTotalFee,
   totalWeightHash, setTotalWeightHash, 
-  totalWeight, setTotalWeight,
+  // totalWeight, 
+  setTotalWeight,
   totalSendFee, setTotalSendFee,
   nameValueZero,
   hasItem,
