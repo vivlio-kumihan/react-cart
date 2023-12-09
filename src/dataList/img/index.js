@@ -1,12 +1,9 @@
-// 問題：画像管理の仕方はこのような形でいいのか？
-
-// import o_fuda_family_safety from "./oFuda_family_safety.jpg";
-// import o_fuda_yaku_yoke from "./o_fuda_yaku_yoke.jpg";
-// import o_fuda_sen_ryu from "./o_fuda_sen_ryu.jpg";
-// import thokon_tukusu_mamori from "./thokon_tukusu_mamori.jpg";
+// import ofuda_family_safety from "./ofuda_family_safety.jpg";
+// import ofuda_yaku_yoke from "./ofuda_yaku_yoke.jpg";
+// import ofuda_sen_ryu from "./ofuda_sen_ryu.jpg";
+// import thokon_tukusu_mamori from "./thokon_tukusu_mamori.png";
 // import kyugi_thokon_mamori from "./kyugi_thokon_mamori.jpg";
 // import thokon_mamori_kado from "./thokon_mamori_kado.jpg";
-// import thokon_mamori_kuroji from "./thokon_mamori_kuroji.jpg";
 // import thokon_mamori_maru from "./thokon_mamori_maru.jpg";
 // import kisei_mamori from "./kisei_mamori.jpg";
 // import deau_wa from "./deau_wa.jpg";
@@ -15,7 +12,6 @@
 // import traffic_safety_sticker from "./traffic_safety_sticker.jpg";
 // import traffic_safety_car_mamori from "./traffic_safety_car_mamori.jpg";
 // import kanau_wa_gosyoku from "./kanau_wa_gosyoku.jpg";
-// import kanau_wa from "./kanau_wa.jpg";
 // import kanau_wa_soccer from "./kanau_wa_soccer.jpg";
 // import kanau_wa_baseball from "./kanau_wa_baseball.jpg";
 // import kanau_wa_volley from "./kanau_wa_volley.jpg";
@@ -23,26 +19,26 @@
 // import kanau_wa_tennis from "./kanau_wa_tennis.jpg";
 // import kanau_wa_badminton from "./kanau_wa_badminton.jpg";
 // import kanau_wa_table_tennis from "./kanau_wa_table_tennis.jpg";
+// import kanau_wa_table_all from "./kanau_wa_table_all.jpg";
 // import hair_band from "./hair_band.jpg";
 // import wrist_band from "./wrist_band.jpg";
 // import towel from "./towel.jpg";
 // import towel_long from "./towel_long.jpg";
-// import e_ma_sky from "./e_ma_sky.jpg";
-// import e_ma from "./e_ma.jpg";
+// import ema_sky from "./ema_sky.jpg";
+// import ema from "./ema.jpg";
 // import kanau_wa_hashi from "./kanau_wa_hashi.jpg";
-// import syuin_tyou from "./syuin_tyou.jpg";
+// import syuin_chou from "./syuin_chou.jpg";
 // import mari_dorei from "./mari_dorei.jpg";
 // import ba_tei from "./ba_tei.jpg";
 // import yui_syo from "./yui_syo.jpg";
 
 // export const photoList = {
-//   o_fuda_family_safety: o_fuda_family_safety,
-//   o_fuda_yaku_yoke: o_fuda_yaku_yoke,
-//   o_fuda_sen_ryu: o_fuda_sen_ryu,
+//   ofuda_family_safety: ofuda_family_safety,
+//   ofuda_yaku_yoke: ofuda_yaku_yoke,
+//   ofuda_sen_ryu: ofuda_sen_ryu,
 //   thokon_tukusu_mamori: thokon_tukusu_mamori,
 //   kyugi_thokon_mamori: kyugi_thokon_mamori,
 //   thokon_mamori_kado: thokon_mamori_kado,
-//   thokon_mamori_kuroji: thokon_mamori_kuroji,
 //   thokon_mamori_maru: thokon_mamori_maru,
 //   kisei_mamori: kisei_mamori,
 //   deau_wa: deau_wa,
@@ -59,14 +55,15 @@
 //   kanau_wa_tennis: kanau_wa_tennis,
 //   kanau_wa_badminton: kanau_wa_badminton,
 //   kanau_wa_table_tennis: kanau_wa_table_tennis,
+//   kanau_wa_table_all: kanau_wa_table_all,
 //   hair_band: hair_band,
 //   wrist_band: wrist_band,
 //   towel: towel,
 //   towel_long: towel_long,
-//   e_ma_sky: e_ma_sky,
-//   e_ma: e_ma,
+//   ema_sky: ema_sky,
+//   ema: ema,
 //   kanau_wa_hashi: kanau_wa_hashi,
-//   syuin_tyou: syuin_tyou,
+//   syuin_chou: syuin_chou,
 //   mari_dorei: mari_dorei,
 //   ba_tei: ba_tei,
 //   yui_sy: yui_syo

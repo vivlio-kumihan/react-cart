@@ -11,6 +11,7 @@ const Product = ({
   onRemoveCart,
   nameValueZero,
   hasItem,
+  handleItemId
   }) => {
 
   // nameのhashの値 = nameのカウント数
@@ -72,6 +73,7 @@ const Product = ({
         {/* 詳細へのボタン */}
         <button 
           className="mask-btn details"
+          onClick={() => handleItemId(data.pid)}
         >
           詳細を見る
         </button>
