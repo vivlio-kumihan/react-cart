@@ -1,0 +1,11 @@
+@use '../../variables' as var
+  
+////////////
+// FontAwesomeで書体を指定する
+// Font Awesomeのmixin 引数は、"ユニコード"、"フォントサイズ"、"FreeかBlandsか？"、"ウェイト"
+=fontAwesome($unicode, $fontSize: 1rem, $fontFamily: Free, $fontWeight: 900)
+  content: $unicode
+  font-size: $fontSize
+  font-family: "Font Awesome 6 " + $fontFamily
+  font-weight: $fontWeight
+  @content

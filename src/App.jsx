@@ -1,6 +1,8 @@
 import { useState } from "react";
+import Header from "./components/Header";
 import Main from "./components/Main";
 import OrderList from "./components/OrderList";
+import Footer from "./components/Footer";
 import dataList from "./dataList";
 import "./styles/App.sass";
 
@@ -106,6 +108,8 @@ const App = () => {
   };
 
   return (
+    <>
+    <Header />
     <div className="container">
       <Main
         dataList={dataList}
@@ -136,6 +140,8 @@ const App = () => {
         reloadCartItems={reloadCartItems}
       />
     </div>
+    <Footer />
+    </>
   );
 };
 

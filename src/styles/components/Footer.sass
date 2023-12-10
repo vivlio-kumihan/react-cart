@@ -1,0 +1,242 @@
+@use '../forwards' as fw
+@use '../media-query' as *
+
+footer
+  width: 100%
+  font-size: .875rem
+  .logo-space
+    display: flex
+    align-items: center
+    gap: 10px
+    margin-left: 8%
+    .logo
+      width: calc(60px * 0.85)
+      aspect-ratio: 1
+      object-fit: contain
+    p
+      font-size: .75rem
+      font-weight: 600
+      line-height: 1.5
+      span
+        font-size: 1.85rem
+        line-height: 1em
+
+  .wrapper
+    background-color: #f6f6f6
+    width: min(1680px, 100%)
+    margin: 0 auto
+    padding: 60px 0
+
+    .wrapper-grid
+      display: grid
+      column-gap: 20px
+      padding: 0 7%
+      .footer-left-links
+        padding-left: 70px
+        ul
+          + ul
+            margin-top: 15px
+          .access-tel-fax
+            font-size: 1.75rem
+            line-height: 1.25em
+            letter-spacing: .1em
+            span
+              font-size: 1.65rem
+              &.en-tume01
+                letter-spacing: 0.075em
+          &:nth-of-type(1)
+            line-height: 1.5em
+          &:nth-of-type(2), &:nth-of-type(3)
+            display: flex
+            gap: 10px
+          &:nth-of-type(3)
+            display: flex
+            gap: 30px
+            margin-top: 50px
+            li
+              position: relative
+              width: 2rem
+              height: 2rem
+              a
+                display: block
+                height: 100%
+                &.icon-instagram 
+                  &::before
+                    +fw.positionAbsoluteCTL($top: true, $left: true)
+                    +fw.fontAwesome("\f16d", $fontSize: 2rem, $fontFamily: Brands, $fontWeight: 400)
+                &.icon-twitter
+                  img
+                    width: 100%
+                    height: 100%
+                    object-fit: cover
+                  // &::before
+                  //   +fw.positionAbsoluteCTL($top: true, $left: true)
+                  //   content: ""
+                  //   width: 2rem
+                  //   height: 2rem
+                  //   background: url(./img/x-twitter.svg) no-repeat
+                  //   background-size: 100%
+                  //   opacity: .7
+
+      .footer-center-links
+        display: flex
+        // column-gap: 160px
+        > ul
+          > li
+            + li
+              margin-top: 2rem
+            > h2
+              position: unset
+              margin: 0
+              padding: 0
+              font-size: .875rem
+              font-weight: 500
+              text-align: left
+              &::after
+                display: none
+                
+            div
+              width: 100%
+              position: relative
+              padding: 1em 0 0 2em
+              line-height: 1.2
+              &::before
+                +fw.positionAbsoluteCTL($top: true)
+                top: 22px
+                left: .5rem
+                content: ""
+                width: 0
+                height: 0
+                border-style: solid
+                border-top: 7px solid transparent
+                border-bottom: 7px solid transparent
+                border-left: 9px solid #D9341C
+                border-right: 0
+                transition: .5s
+              &:hover
+                &::before
+                  left: 1rem
+                  opacity: .5
+              a
+                display: block
+                height: 100%
+      .footer-right-links
+        .banner
+          li
+            + li
+              margin-top: 30px
+            a
+              display: block
+              width: 100%
+              img
+                width: 100%
+                object-fit: cover
+
+    .copyright
+      margin-top: 80px
+      text-align: center
+      font-size: .8rem
+
++min(sm)
+  footer
+    .wrapper
+      .logo-space
+        justify-content: center
+        margin: 0 0 10px -70px
+      .wrapper-grid
+        grid-template-columns: repeat(1, 1fr)
+        row-gap: 80px
+        .footer-left-links
+          margin: 0 auto
+          padding-left: 0
+        .footer-center-links
+          justify-content: center
+          column-gap: 10px
+        .footer-right-links
+          .banner
+            display: grid
+            grid-template-columns: 1fr
+            gap: 20px
+            li + li
+              margin-top: 0   
++max(md)
+  footer
+    .wrapper
+      .logo-space
+        flex-direction: column
+        align-items: flex-start
+        gap: 5px
+        width: fit-content
+        margin: 0 auto 10px
+      .wrapper-grid
+        grid-template-columns: repeat(1, 1fr)
+        row-gap: 80px
+        .footer-left-links
+          margin: 0 auto
+          padding-left: 0
+        .footer-center-links
+          justify-content: center
+          column-gap: 10px
+        .footer-right-links
+          .banner
+            display: grid
+            grid-template-columns: 1fr
+            gap: 20px
+            li + li
+              margin-top: 0   
+
++min(md)
+  footer
+    .wrapper
+      .wrapper-grid
+        .footer-center-links
+          column-gap: 20px
+
++min(lg)
+  footer
+    .wrapper
+      .logo-space
+        justify-content: flex-start
+        margin: 0 0 10px 8%
+      .wrapper-grid
+        grid-template-columns: 1.5fr 1.2fr .8fr
+        column-gap: 30px
+        .footer-left-links
+          margin: 0 0 0 75px
+        .footer-center-links
+          column-gap: 30px
+        .footer-right-links
+          .banner
+            display: block
+            // grid-template-columns: unset
+            gap: 20px
+            li + li
+              margin-top: 20px
+
++min(xl)
+  footer
+    .wrapper
+      .wrapper-grid
+        grid-template-columns: 1.5fr 2fr 1fr
+        .footer-center-links
+          column-gap: 100px
+
+// banner
++max(lg)
+  footer
+    .wrapper
+      .wrapper-grid
+        .footer-right-links
+          .banner
+            grid-template-columns: repeat(2, 1fr)
+            padding: 0 60px
++max(md)
+  footer
+    .wrapper
+      .wrapper-grid
+        .footer-right-links
+          .banner
+            grid-template-columns: 1fr
+            width: min(450px, 100%)
+            margin: 0 auto
+            padding: 0

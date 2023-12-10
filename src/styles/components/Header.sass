@@ -1,0 +1,295 @@
+@use '../forwards' as fw
+@use '../media-query' as *
+
+header
+  display: flex
+  justify-content: center
+  position: fixed
+  top: 0
+  left: 0
+  width: 100%
+  height: 185px
+  padding: 0 200px
+  background: linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(255,255,255,0.85) 40%, rgba(255,255,255,0.7) 55%, rgba(255,255,255,0) 100%)
+  opacity: .95
+  z-index: 100
+  // 隠れるヘッダー用
+  // box-shadow: 0 3px 5px #eee
+  // transform: translateY(-100%)
+  // transition: .5s
+  // &.fixed-appear
+  //   transform: translateY(0)
+  .wrapper
+    display: flex
+    justify-content: space-between
+    align-items: center
+    width: min(1680px, 100%)
+    height: 120px
+    padding: 0 50px
+    .logo-space
+      display: flex
+      align-items: center
+      gap: 10px
+      .logo
+        width: calc(60px * 1)
+        aspect-ratio: 1
+        object-fit: contain
+      p
+        font-size: .75rem
+        font-weight: 600
+        line-height: 1.5
+        &.shrine-name
+          font-size: 1.85rem
+          line-height: 1em
+    .global-menu
+      display: flex
+      flex-direction: column
+      row-gap: 20px
+      margin-left: auto
+      .upper, .lower
+        ul
+          display: flex
+          justify-content: space-between
+          gap: 40px
+          font-size: .9rem
+          font-weight: 600
+          li.menu-item
+            position: relative
+            transition: .3s
+            a
+              display: block
+              line-height: 1.25
+            &:hover
+              color: fw.$blue-deep
+              opacity: .9
+
+      .upper ul
+        justify-content: flex-end
+        align-items: center
+        gap: 5px
+        font-size: .9rem
+        li:nth-of-type(3)
+          margin-left: 5px
+        .language
+          position: relative
+          margin-left: 40px
+          background-color: #fff
+          border-radius: 999px
+          box-shadow: 0 2px 5px #aaa
+          &::after
+            +fw.positionAbsoluteCTL($top: true)
+            +fw.fontAwesome("\f078", $fontSize: .6rem)
+            right: 5px
+          a
+            display: flex
+            align-items: center
+            gap: 7px
+            padding: 2px 18px 2px 7px
+            font-size: .75rem
+            line-height: 1em            
+            span
+              img
+                width: 17px
+
+      .lower
+        ul.menu
+          li.menu-item
+            &.active .sub-menu
+              visibility: visible
+              opacity: 1
+            .sub-menu
+              display: flex
+              flex-direction: column
+              row-gap: 8px
+              position: absolute
+              top: 28px
+              left: 50%
+              transform: translateX(-50%)
+              transition: .7s
+              visibility: hidden
+              opacity: 0
+              li
+                left: 0
+                width: 13rem
+                text-align: center
+                background-color: #fff
+                a
+                  height: auto
+                  padding: 8px 16px
+                  overflow: hidden
+                &:hover
+                  opacity: .6  
+                  
+  +min(sm)
+    padding: 0
+    .wrapper
+      padding: 0 20px
+      .logo-space
+        flex-direction: column
+        gap: 5px
+        padding-top: 50px
+        div
+          p
+            text-align:   center
+            font-size: .65rem
+            line-height: 1.3em
+            span
+              display: none
+            &:first-of-type
+              margin-bottom: 5px
+            &.shrine-name
+              font-size: 1.4rem
+              text-shadow: 0 5px 20px rgba(255, 255, 255, .8)
+      .global-menu
+        .lower
+          ul.menu
+            gap: 25px
+  +min(md)
+    .wrapper
+      .global-menu
+        .lower
+          ul.menu
+            font-size: .95rem
+  +min(lg)
+    padding: 0 50px
+    .wrapper
+      // ロゴの組み替え　
+      .logo-space
+        flex-direction: row
+        gap: 10px
+        padding-top: 0
+        div
+          p
+            text-align: left
+            font-size: .75rem
+            line-height: 1em
+            span
+              display: inline
+            br
+              display: none  
+            &:first-of-type
+              margin-bottom: 5px  
+            &.shrine-name
+              font-size: 1.55rem        
+      .global-menu
+        .lower
+          ul.menu
+            gap: 35px
+            font-size: .95rem
+  +min(xl)
+    padding: 0 225px
+    .wrapper
+      // ロゴの組み替え　
+      .logo-space
+        div
+          p
+            &.shrine-name
+              font-size: 1.85rem
+      .global-menu
+        .lower
+          ul.menu
+            gap: 40px
+            font-size: 1rem
+
+
+  // ハンバーガーメニュー
+  +max(md)
+    background: unset
+    .wrapper
+      display: block
+      position: relative
+      .logo-space
+        position: absolute
+        top: 20px
+        left: 20px
+        padding: 0
+      .global-menu
+        display: block
+        position: fixed
+        top: 0
+        right: -100%
+        width: 100vw
+        height: 100vh
+        padding-top: 100px
+        background-color: #fff
+        transition: .7s
+        visibility: hidden
+        opacity: 0
+        z-index: 99
+        &.flag
+          right: 0
+          visibility: visible
+          opacity: .95
+        .upper
+          ul
+            justify-content: center
+            .language
+              margin-left: 10px
+        .lower
+          ul.menu
+            flex-direction: column
+            align-items: center
+            margin-top: 30px
+            li.menu-item
+              margin: 0 auto
+              position: unset
+              width: 60%
+              text-align: center
+              .sub-menu
+                display: block
+                position: unset
+                padding-top: 7px
+                font-weight: 400
+                transform: translateX(0%)
+                visibility: visible
+                opacity: 1
+                li
+                  width: 100%
+                  background-color: rgba(0, 0, 0, .03)
+                  + li
+                    margin-top: 5px
+                  a
+                    height: auto
+                    padding: 4px 0
+                    font-size: .975rem
+                    line-height: 1em
+                    overflow: hidden
+      .menu-toggle-btn 
+        display: flex
+        flex-direction: column
+        justify-content: space-between
+        align-items: center
+        position: fixed
+        top: 25px
+        right: 35px
+        width: 55px
+        aspect-ratio: 1
+        background-color: rgba(35, 80, 130, .7)          
+        border-radius: 50%
+        z-index: 100
+        span
+          +fw.positionAbsoluteCTL($left: true)
+          width: 30px
+          height: 2px
+          background-color: #eee
+          transition: .3s
+          &:first-of-type
+            top: 35%
+          &:nth-of-type(2)
+            top: 50%
+            visibility: visible
+            opacity: 1
+          &:last-of-type
+            bottom: 30%
+      .menu-toggle-btn.flag span
+        &:first-of-type
+          top: 47.5%
+          left: 24%
+          transform: rotate(45deg)
+        &:nth-of-type(2)
+          visibility: hidden
+          opacity: 0
+        &:last-of-type
+          bottom: 47.5%
+          transform: rotate(-45deg)
+          left: 24%              

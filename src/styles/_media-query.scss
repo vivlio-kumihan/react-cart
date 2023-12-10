@@ -1,0 +1,29 @@
+// メディアクエリの設定
+// sm: 375px–767px
+// md: 768px–991px
+// lg: 992px–1199px
+// xl: 1700px–
+
+// 私の設定法
+// 各領域以上は設定が引き継がれる。
+// lgで設定した値は、xlに幅を広げても効果は変化しない。
+// つまり、通常は、lgに書いているつもりでベースで設定を設置する。
+
+$breakpoints: (
+  sm: 375px,
+  md: 768px,
+  lg: 1100px,
+  xl: 1700px
+);
+
+@mixin min($bp) {
+  @media (width >=#{ map-get($breakpoints, $bp)}) {
+    @content;
+  }
+}
+
+@mixin max($bp) {
+  @media (width < #{ map-get($breakpoints, $bp)}) {
+    @content;
+  }
+}
