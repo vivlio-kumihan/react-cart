@@ -1,6 +1,6 @@
-import ofuda_family_safety from "./ofuda_family_safety.jpg";
-import ofuda_yaku_yoke from "./ofuda_yaku_yoke.jpg";
-import ofuda_sen_ryu from "./ofuda_sen_ryu.jpg";
+import ofuda_family_safety from "./ofuda_family_safety.png";
+import ofuda_yaku_yoke from "./ofuda_yaku_yoke.png";
+import ofuda_sen_ryu from "./ofuda_sen_ryu.png";
 import thokon_tukusu_mamori from "./thokon_tukusu_mamori.png";
 import kyugi_thokon_mamori from "./kyugi_thokon_mamori.png";
 import thokon_mamori_kado from "./thokon_mamori_kado.png";
@@ -20,19 +20,19 @@ import kanau_wa_tennis from "./kanau_wa_tennis.jpg";
 import kanau_wa_badminton from "./kanau_wa_badminton.jpg";
 import kanau_wa_table_tennis from "./kanau_wa_table_tennis.jpg";
 import kanau_wa_table_all from "./kanau_wa_table_all.jpg";
-import hair_band from "./hair_band.jpg";
+import hair_band from "./hair_band.png";
 import wrist_band from "./wrist_band.png";
-import towel from "./towel.png";
-import towel_long from "./towel_long.png";
+import towel from "./towel.jpg";
+import towel_long from "./towel_long.jpg";
 import ema_sky from "./ema_sky.png";
-import ema from "./ema.jpg";
+import ema from "./ema.png";
 import kanau_wa_hashi from "./kanau_wa_hashi.jpg";
 import syuin_chou from "./syuin_chou.png";
 import mari_dorei from "./mari_dorei.jpg";
 import ba_tei from "./ba_tei.jpg";
 import yui_syo from "./yui_syo.png";
 
-export const photoList = {
+const image = {
   ofuda_family_safety: ofuda_family_safety,
   ofuda_yaku_yoke: ofuda_yaku_yoke,
   ofuda_sen_ryu: ofuda_sen_ryu,
@@ -65,14 +65,7 @@ export const photoList = {
   syuin_chou: syuin_chou,
   mari_dorei: mari_dorei,
   ba_tei: ba_tei,
-  yui_sy: yui_syo
+  yui_syo: yui_syo
 };
 
-// export default image;
-
-
-// import dummy from "./dummy.jpg";
-// const image = {
-//   dummy: dummy,
-// };
-
+export default image;
