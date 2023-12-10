@@ -6,7 +6,7 @@ import image from "./img";
 const data = [
   {
     pid: "ofuda_family_safety",
-    image: image.dummy,
+    image: image.ofuda_family_safety,
     category: "御神札",
     name: { "御神札": 0 },
     types: { "家内安全": 0 },
@@ -17,7 +17,7 @@ const data = [
   },
   {
     pid: "ofuda_yaku_yoke",
-    image: image.dummy,
+    image: image.ofuda_yaku_yoke,
     category: "御神札",
     name: { "御神札": 0 },
     types: { "方除・魔除・赤札": 0 },
@@ -27,7 +27,7 @@ const data = [
   },
   {
     pid: "ofuda_sen_ryu",
-    image: image.dummy,
+    image: image.ofuda_sen_ryu,
     category: "御神札",
     name: { "御神札": 0 },
     types: { "潜龍大神": 0 },
@@ -37,7 +37,7 @@ const data = [
   },
   {
     pid: "thokon_tukusu_mamori",
-    image: image.dummy,
+    image: image.thokon_tukusu_mamori,
     category: "御守",
     name: { "闘魂尽す守（マグネット式）": 0 },
     types: {},
@@ -47,7 +47,7 @@ const data = [
   },
   {
     pid: "kyugi_thokon_mamori",
-    image: image.dummy,
+    image: image.kyugi_thokon_mamori,
     category: "御守",
     name: { "球技闘魂守（角）": 0 },
     types: {},
@@ -57,7 +57,7 @@ const data = [
   },
   {
     pid: "thokon_mamori_kado",
-    image: image.dummy,
+    image: image.thokon_mamori_kado,
     category: "御守",
     name: { "闘魂守（角）": 0 },
     types: {},
@@ -67,7 +67,7 @@ const data = [
   },
   {
     pid: "thokon_mamori_maru",
-    image: image.dummy,
+    image: image.thokon_mamori_maru,
     category: "御守",
     name: { "闘魂守（丸）": 0 },
     types: {},
@@ -77,7 +77,7 @@ const data = [
   },
   {
     pid: "kisei_mamori",
-    image: image.dummy,
+    image: image.kisei_mamori,
     category: "御守",
     name: { "祈星守": 0 },
     types: {},
@@ -95,7 +95,7 @@ const data = [
   },
   {
     pid: "deau_wa",
-    image: image.dummy,
+    image: image.deau_wa,
     category: "授与品",
     name: { "出逢う輪": 0 },
     types: {},
@@ -105,7 +105,7 @@ const data = [
   },
   {
     pid: "mori_ya",
-    image: image.dummy,
+    image: image.mori_ya,
     category: "授与品",
     name: { "守り矢": 0 },
     types: { "スポーツ上達": 0, "必勝祈願": 0, "開運厄除": 0, "社運隆昌": 0, "心願成就": 0 },
@@ -115,7 +115,7 @@ const data = [
   },
   {
     pid: "hama_ya",
-    image: image.dummy,
+    image: image.hama_ya,
     category: "授与品",
     name: { "破魔矢": 0 },
     types: {},
@@ -125,7 +125,7 @@ const data = [
   },
   {
     pid: "traffic_safety_sticker",
-    image: image.dummy,
+    image: image.traffic_safety_sticker,
     category: "授与品",
     name: { "交通安全ステッカー": 0 },
     types: {},
@@ -135,7 +135,7 @@ const data = [
   },
   {
     pid: "traffic_safety_car_mamori",
-    image: image.dummy,
+    image: image.traffic_safety_car_mamori,
     category: "授与品",
     name: { "交通安全車体守": 0 },
     types: {},
@@ -145,7 +145,7 @@ const data = [
   },
   {
     pid: "kanau_wa_gosyoku",
-    image: image.dummy,
+    image: image.kanau_wa_gosyoku,
     category: "授与品",
     name: { "『五色版』叶う輪": 0 },
     types: { "台紙：白黒": 0, "台紙：緑": 0 },
@@ -165,7 +165,7 @@ const data = [
   // },
   {
     pid: "kanau_wa_soccer",
-    image: image.dummy,
+    image: image.kanau_wa_soccer,
     category: "授与品",
     name: { "叶う輪―サッカー、フットサル": 0 },
     types: {},
@@ -175,7 +175,7 @@ const data = [
   },
   {
     pid: "kanau_wa_baseball",
-    image: image.dummy,
+    image: image.kanau_wa_baseball,
     category: "授与品",
     name: { "叶う輪―野球、ソフトボール": 0 },
     types: {},
@@ -185,7 +185,7 @@ const data = [
   },
   {
     pid: "kanau_wa_volley",
-    image: image.dummy,
+    image: image.kanau_wa_volley,
     category: "授与品",
     name: { "叶う輪―バレー、ビーチバレー": 0 },
     types: {},
@@ -195,7 +195,7 @@ const data = [
   },
   {
     pid: "kanau_wa_basket",
-    image: image.dummy,
+    image: image.kanau_wa_basket,
     category: "授与品",
     name: { "叶う輪―バスケットボール": 0 },
     types: {},
@@ -205,7 +205,7 @@ const data = [
   },
   {
     pid: "kanau_wa_tennis",
-    image: image.dummy,
+    image: image.kanau_wa_tennis,
     category: "授与品",
     name: { "叶う輪―テニス、スカッシュ": 0 },
     types: {},
@@ -215,7 +215,7 @@ const data = [
   },
   {
     pid: "kanau_wa_badminton",
-    image: image.dummy,
+    image: image.kanau_wa_badminton,
     category: "授与品",
     name: { "叶う輪―バドミントン": 0 },
     types: {},
@@ -225,7 +225,7 @@ const data = [
   },
   {
     pid: "kanau_wa_table_tennis",
-    image: image.dummy,
+    image: image.kanau_wa_table_tennis,
     category: "授与品",
     name: { "叶う輪―卓球": 0 },
     types: {},
@@ -235,7 +235,7 @@ const data = [
   },
   {
     pid: "kanau_wa_table_all",
-    image: image.dummy,
+    image: image.kanau_wa_table_all,
     category: "授与品",
     name: { "叶う輪―全般": 0 },
     types: {},
@@ -245,7 +245,7 @@ const data = [
   },
   {
     pid: "hair_band",
-    image: image.dummy,
+    image: image.hair_band,
     category: "授与品",
     name: { "ヘアバンド": 0 },
     types: {},
@@ -266,7 +266,7 @@ const data = [
   },
   {
     pid: "wrist_band",
-    image: image.dummy,
+    image: image.wrist_band,
     category: "授与品",
     name: { "リストバンド": 0 },
     types: {},
@@ -276,7 +276,7 @@ const data = [
   },
   {
     pid: "towel",
-    image: image.dummy,
+    image: image.towel,
     category: "授与品",
     name: { "タオル（赤・青 1組）": 0 },
     types: { "サイズ：タテ約30cm×ヨコ約40cm": 0 },
@@ -286,7 +286,7 @@ const data = [
   },
   {
     pid: "towel_long",
-    image: image.dummy,
+    image: image.towel_long,
     category: "授与品",
     name: { "ロングタオル": 0 },
     types: { "サイズ：タテ約36cm×ヨコ約84cm": 0 },
@@ -296,7 +296,7 @@ const data = [
   },
   {
     pid: "ema_sky",
-    image: image.dummy,
+    image: image.ema_sky,
     category: "授与品",
     name: { "絵馬（心願成就）": 0 },
     types: { "銀河・黒": 0, "宵の明星・青": 0, "明の明星・茜": 0 },
@@ -306,7 +306,7 @@ const data = [
   },
   {
     pid: "ema",
-    image: image.dummy,
+    image: image.ema,
     category: "授与品",
     name: { "絵馬": 0 },
     types: { "スポーツ系": 0, "恋愛成就": 0, "文化系": 0 },
@@ -316,7 +316,7 @@ const data = [
   },
   {
     pid: "kanau_wa_hashi",
-    image: image.dummy,
+    image: image.kanau_wa_hashi,
     category: "授与品",
     name: { "叶う和箸": 0 },
     types: { "心願成就・黄": 0, "除災招福・赤": 0 },
@@ -326,7 +326,7 @@ const data = [
   },
   {
     pid: "syuin_chou",
-    image: image.dummy,
+    image: image.syuin_chou,
     category: "授与品",
     name: { "御朱印帳": 0 },
     types: { "御朱印帳": 0, "限定御朱印帳": 0 },
@@ -336,7 +336,7 @@ const data = [
   },
   {
     pid: "mari_dorei",
-    image: image.dummy,
+    image: image.mari_dorei,
     category: "授与品",
     name: { "まり土鈴": 0 },
     types: {},
@@ -346,7 +346,7 @@ const data = [
   },
   {
     pid: "ba_tei",
-    image: image.dummy,
+    image: image.ba_tei,
     category: "授与品",
     name: { "馬蹄": 0 },
     types: {},
@@ -356,7 +356,7 @@ const data = [
   },
   {
     pid: "yui_syo",
-    image: image.dummy,
+    image: image.yui_syo,
     category: "授与品",
     name: { "由緒（朱印付き）": 0 },
     types: {},
