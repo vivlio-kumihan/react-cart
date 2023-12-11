@@ -21,7 +21,6 @@ const OrderList = ({
   const openShut = () => {
     return !toggle ? "開く" : "閉じる"
   };
-  console.log(toggle);
 
   return (
     <div className="order-list">

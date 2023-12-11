@@ -1,4 +1,6 @@
 @use "../forwards" as fw
+@use '../media-query' as *
+
 
 .wrapper
   background-color: f0f0dc
@@ -19,6 +21,12 @@
     display: grid
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr))
     gap: 30px
+
+  +max(md)
+    h2
+      padding-top: 30px
+
+      
 // .read-more-links
 //   position: absolute
 //   top: 0

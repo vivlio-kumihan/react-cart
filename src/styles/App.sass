@@ -4,8 +4,6 @@
 .container
   position: relative
   padding: 120px 10% 60px
-
-
 .container
   // 500px以上だったらこの設定
   +min(md)
@@ -18,3 +16,6 @@
   // 1200px以上だったらこの設定
   +min(xl)
     grid-template-columns: 4fr 1fr
+.container
+  +max(md)
+    padding: 60px 10% 60px
