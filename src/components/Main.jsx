@@ -212,7 +212,6 @@ const Main = ({
         handleBackClick={handleBackClick}
       />
     </div>
-
     </>
   );
 };

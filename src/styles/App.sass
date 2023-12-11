@@ -1,4 +1,5 @@
 @use "./parts/forwards" as fw
+@use './media-query' as *
 
 .container
   position: relative
@@ -7,13 +8,13 @@
 
 .container
   // 500px以上だったらこの設定
-  +fw.media(md)
+  +min(md)
     grid-template-columns: 2fr 1fr
 .container
   // 900px以上だったらこの設定
-  +fw.media(lg)
+  +min(lg)
     grid-template-columns: 3fr 1fr
 .container
   // 1200px以上だったらこの設定
-  +fw.media(xl)
+  +min(xl)
     grid-template-columns: 4fr 1fr

@@ -101,11 +101,11 @@ const App = () => {
   const reloadCartItems = () => {
     return [calculateTotalFee(cartItems), calculateTotalWeight(cartItems)];
   };
-  // リストボタンに仕込んだイベントリスナー関連
-  const handleClick = () => {
-    reloadCartItems();
-    toggleAction();
-  };
+  // // リストボタンに仕込んだイベントリスナー関連
+  // const handleClick = () => {
+  //   reloadCartItems();
+  //   toggleAction();
+  // };
 
   return (
     <>
@@ -118,7 +118,7 @@ const App = () => {
         onRemoveCart={onRemoveCart}
         nameValueZero={nameValueZero}
         hasItem={hasItem}
-        updateCartItems={updateCartItems}
+        updateCartItems={updateCartItems}      
       />
       <OrderList
         // dataList={dataList}

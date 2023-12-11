@@ -1,15 +1,15 @@
-@use "../parts/forwards" as fw
+@use "../forwards" as fw
 
 .order-list
   .cart-title-wrapper
     position: fixed
-    top: 0
+    top: 55px
     right: 0
     width: 20%
     height: 130px
     padding-top: 0px
-    font-family: fw.$noto-sans
-    z-index: 100
+    font-family: fw.$noto-gth
+    z-index: fw.get_index(cart-title-wrapper)
     .cart-title
       display: block
       position: relative
@@ -19,14 +19,15 @@
       font-size: 1.1rem
       line-height: 1em
       font-weight: 700
-      z-index: 100
+      z-index: fw.get_index(cart-title)
       &::before
-        +fw.font_aws("\f022", 30px)
+        +fw.fontAwesome("\f022", 30px)
         position: absolute
         top: 50%
         transform: translateY(-40%)
         left: -8px
         color: fw.$orange
+        // z-index: 24
       span
         display: grid
         place-content: center
@@ -40,6 +41,7 @@
         color: #fff
         background-color: red
         border-radius: 50%
+        // z-index: 25
     .ami
       position: absolute
       top: 60px
@@ -49,4 +51,4 @@
       background-color: #eee
       border-radius: 999px 0 0 999px
       opacity: .6
-      z-index: 99
+      z-index: fw.get_index(ami)

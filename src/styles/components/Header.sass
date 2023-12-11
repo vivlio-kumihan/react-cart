@@ -12,7 +12,7 @@ header
   padding: 0 200px
   background: linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(255,255,255,0.85) 40%, rgba(255,255,255,0.7) 55%, rgba(255,255,255,0) 100%)
   opacity: .95
-  z-index: 100
+  z-index: fw.get_index(header)
   // 隠れるヘッダー用
   // box-shadow: 0 3px 5px #eee
   // transform: translateY(-100%)
@@ -56,6 +56,7 @@ header
           li.menu-item
             position: relative
             transition: .3s
+            cursor: pointer
             a
               display: block
               line-height: 1.25
@@ -113,6 +114,7 @@ header
                 width: 13rem
                 text-align: center
                 background-color: #fff
+                transition: .3s
                 a
                   height: auto
                   padding: 8px 16px
@@ -191,7 +193,6 @@ header
             gap: 40px
             font-size: 1rem
 
-
   // ハンバーガーメニュー
   +max(md)
     background: unset
@@ -215,7 +216,7 @@ header
         transition: .7s
         visibility: hidden
         opacity: 0
-        z-index: 99
+        z-index: fw.get_index(global-menu)
         &.flag
           right: 0
           visibility: visible
@@ -266,7 +267,7 @@ header
         aspect-ratio: 1
         background-color: rgba(35, 80, 130, .7)          
         border-radius: 50%
-        z-index: 100
+        z-index: fw.get_index(menu-toggle-btn)
         span
           +fw.positionAbsoluteCTL($left: true)
           width: 30px
@@ -293,3 +294,62 @@ header
           bottom: 47.5%
           transform: rotate(-45deg)
           left: 24%              
+
+
+// ========================================
+
+  // header
+  //   .wrapper
+  //     .logo-space
+  //       .logo
+  //       p
+  //         &.shrine-name
+  //     .global-menu
+  //       .upper, .lower
+  //         ul
+  //           li.menu-item
+  //             a
+  //             &:hover
+
+  //       .upper ul
+  //         li:nth-of-type(3)
+  //         .language
+  //           &::after
+  //           a
+  //             span
+  //               img
+
+  //       .lower
+  //         ul.menu
+  //           li.menu-item
+  //             &.active .sub-menu
+  //             .sub-menu
+  //               li
+  //                 a
+  //                 &:hover
+
+  //   // ハンバーガーメニュー
+  //   +max(md)
+  //     .wrapper
+  //       .logo-space
+  //       .global-menu
+  //         &.flag
+  //         .upper
+  //           ul
+  //             .language
+  //         .lower
+  //           ul.menu
+  //             li.menu-item
+  //               .sub-menu
+  //                 li
+  //                   + li
+  //                   a
+  //       .menu-toggle-btn 
+  //         span
+  //           &:first-of-type
+  //           &:nth-of-type(2)
+  //           &:last-of-type
+  //       .menu-toggle-btn.flag span
+  //         &:first-of-type
+  //         &:nth-of-type(2)
+  //         &:last-of-type
