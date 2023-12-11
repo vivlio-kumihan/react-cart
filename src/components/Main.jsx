@@ -23,7 +23,7 @@ import KanauWaBasket from "../containers/ReadMoreLinks/KanauWaBasket"
 import KanauWaTennis from "../containers/ReadMoreLinks/KanauWaTennis"
 import KanauWaBadminton from "../containers/ReadMoreLinks/KanauWaBadminton"
 import KanauWaTableTennis from "../containers/ReadMoreLinks/KanauWaTableTennis"
-import KanauWaTableAll from "../containers/ReadMoreLinks/KanauWaTableAll"
+import KanauWaAll from "../containers/ReadMoreLinks/KanauWaAll"
 import HairBand from "../containers/ReadMoreLinks/HairBand"
 import WristBand from "../containers/ReadMoreLinks/WristBand"
 import Towel from "../containers/ReadMoreLinks/Towel"
@@ -163,8 +163,8 @@ const Main = ({
         selectedItemId={selectedItemId === "kanau_wa_table_tennis" ? "kanau_wa_table_tennis" : null} 
         handleBackClick={handleBackClick}
       />
-      <KanauWaTableAll 
-        selectedItemId={selectedItemId === "kanau_wa_table_all" ? "kanau_wa_table_all" : null} 
+      <KanauWaAll 
+        selectedItemId={selectedItemId === "kanau_wa_all" ? "kanau_wa_all" : null} 
         handleBackClick={handleBackClick}
       />
       <HairBand 

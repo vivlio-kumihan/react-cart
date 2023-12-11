@@ -19,17 +19,17 @@ import kanau_wa_basket from "./kanau_wa_basket.png";
 import kanau_wa_tennis from "./kanau_wa_tennis.png";
 import kanau_wa_badminton from "./kanau_wa_badminton.png";
 import kanau_wa_table_tennis from "./kanau_wa_table_tennis.png";
-import kanau_wa_table_all from "./kanau_wa_table_all.jpg";
+import kanau_wa_all from "./kanau_wa_all.jpg";
 import hair_band from "./hair_band.png";
 import wrist_band from "./wrist_band.png";
 import towel from "./towel.jpg";
 import towel_long from "./towel_long.jpg";
 import ema_sky from "./ema_sky.png";
 import ema from "./ema.png";
-import kanau_wa_hashi from "./kanau_wa_hashi.jpg";
+import kanau_wa_hashi from "./kanau_wa_hashi.png";
 import syuin_chou from "./syuin_chou.png";
 import mari_dorei from "./mari_dorei.jpg";
-import ba_tei from "./ba_tei.jpg";
+import ba_tei from "./ba_tei.png";
 import yui_syo from "./yui_syo.png";
 
 const image = {
@@ -54,7 +54,7 @@ const image = {
   kanau_wa_tennis: kanau_wa_tennis,
   kanau_wa_badminton: kanau_wa_badminton,
   kanau_wa_table_tennis: kanau_wa_table_tennis,
-  kanau_wa_table_all: kanau_wa_table_all,
+  kanau_wa_all: kanau_wa_all,
   hair_band: hair_band,
   wrist_band: wrist_band,
   towel: towel,

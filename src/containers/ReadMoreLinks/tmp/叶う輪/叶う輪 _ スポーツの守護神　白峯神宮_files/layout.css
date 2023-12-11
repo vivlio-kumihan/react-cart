@@ -1,0 +1,765 @@
+@charset "utf-8";
+
+/*共通
+----------------------------------------------------------------*/
+#conbox .header_img {
+	margin:0 0 30px;
+	}
+
+
+#conbox ul.menu_icon {
+	margin:0 -5px 60px 0;
+	padding:0;
+	font-size:0.857em;
+	}
+
+#conbox ul.menu_icon:after {
+	visibility:hidden;
+	height:0;
+	display:block;
+	font-size:0;
+	content:" ";
+	clear:both;
+}
+
+#conbox ul.menu_icon li {
+	background-color:#CBCBDA;
+	float:left;
+	margin:0 5px 0 0;
+	padding:5px 10px;
+	list-style:none;
+	color:#FFF;
+	}
+
+#conbox ul.menu_icon li.on {background-color:#666666;}
+
+
+#conbox ul.staff_list,
+#conbox ul.photo_list {
+	margin:0 -20px 20px 0;
+	padding:0;
+	}
+
+#conbox ul.staff_list:after,
+#conbox ul.photo_list:after {
+	visibility:hidden;
+	height:0;
+	display:block;
+	font-size:0;
+	content:" ";
+	clear:both;
+}
+
+#conbox ul.staff_list li,
+#conbox ul.photo_list li {
+	float:left;
+	margin:0 20px 20px 0;
+	padding:0;
+	list-style:none;
+	}
+
+#conbox ul.staff_list li img {
+	margin:0 0 5px;
+	}
+	
+
+
+#conbox ul.photo_list {
+	margin:0 -20px 20px 0;
+	padding:0;
+	}
+
+#conbox ul.photo_list:after {
+	visibility:hidden;
+	height:0;
+	display:block;
+	font-size:0;
+	content:" ";
+	clear:both;
+}
+
+#conbox ul.photo_list li {
+	float:left;
+	margin:0 20px 20px 0;
+	padding:0;
+	list-style:none;
+	}
+
+#conbox table.price {}
+
+#conbox table.price th {
+	background:url(../img/li-mark.png) no-repeat 0px 19px;
+	padding:15px 0 5px 20px;
+	width:580px;
+	}
+
+#conbox table.price td {
+	padding:15px 0 0;
+	text-align:right;
+	}
+
+
+#conbox .title_tel_no {
+	position:absolute;
+	top:5px;
+	right:0px;
+	font-size:1.2em;
+	font-family:'Marcellus', 'serif';
+	letter-spacing: 0.1em;
+	}
+
+
+
+/*css3 ボタン
+----------------------------------------------------------------*/
+@media only screen {
+#btm_contact .btn_button {
+    -webkit-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.5) inset;
+    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.5) inset;
+    -webkit-transition: background-color 300ms ease-out;
+    -moz-transition: background-color 300ms ease-out;
+    transition: background-color 300ms ease-out; }
+    #btm_contact .btn_button:active {
+      -webkit-box-shadow: 0 1px 0 rgba(0, 0, 0, 0.2) inset;
+      box-shadow: 0 1px 0 rgba(0, 0, 0, 0.2) inset; }
+    #btm_contact .btn_button.radius {
+      -webkit-border-radius: 3px;
+      border-radius: 3px; }
+    #btm_contact .btn_button.round {
+      -webkit-border-radius: 1000px;
+      border-radius: 1000px; } }
+
+
+#btm_contact .btn_button {
+	border-style: solid;
+	border-width: 1px;
+	cursor: pointer;
+	font-family: inherit;
+	font-weight: bold;
+	line-height: 1;
+	position: relative;
+	text-decoration: none;
+	text-align: center;
+	display: inline-block;
+	padding:20px 100px;
+	font-size: 2em;
+	background-color: #868695;
+	border-color: #9E9EAA;
+	color: white !important;
+	text-decoration:none !important;
+	border-radius:         5px;
+	-webkit-border-radius: 5px;
+	-moz-border-radius:    5px;
+	behavior: url(/common/PIE.htc);
+	position:relative;
+	}
+
+#btm_contact .btn_button:hover,#btm_contact .btn_button:focus,#btm_contact .btn_button:hover,.button:focus {
+	background-color:#9E9EAA;
+	text-decoration:none!important;
+		}
+#btm_contact .btn_button:hover,#btm_contact .btn_button:focus,#btm_contact .btn_button:hover,.button:focus {
+    color: white;!important
+		}
+
+
+@media only screen {
+button,.button {
+    -webkit-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.5) inset;
+    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.5) inset;
+    -webkit-transition: background-color 300ms ease-out;
+    -moz-transition: background-color 300ms ease-out;
+    transition: background-color 300ms ease-out; }
+    button:active,.button:active {
+      -webkit-box-shadow: 0 1px 0 rgba(0, 0, 0, 0.2) inset;
+      box-shadow: 0 1px 0 rgba(0, 0, 0, 0.2) inset; }
+    button.radius,.button.radius {
+      -webkit-border-radius: 3px;
+      border-radius: 3px; }
+    button.round,.button.round {
+      -webkit-border-radius: 1000px;
+      border-radius: 1000px; } }
+
+.button {
+	border-style: solid;
+	border-width: 1px;
+	cursor: pointer;
+	font-family: inherit;
+	font-weight: bold;
+	line-height: 1;
+	position: relative;
+	text-decoration: none;
+	text-align: center;
+	display: inline-block;
+	padding-top: 0.75em;
+	padding-right: 1.5em;
+	padding-bottom: 0.8125em;
+	padding-left: 1.5em;
+	font-size: 1em;
+	background-color: #868695;
+	border-color: #9E9EAA;
+	color: white !important;
+	text-decoration:none !important;
+	border-radius:         5px;
+	-webkit-border-radius: 5px;
+	-moz-border-radius:    5px;
+	behavior: url(/common/PIE.htc);
+	position:relative;
+	}
+
+button:hover, button:focus,.button:hover,.button:focus {
+	background-color:#9E9EAA;
+	text-decoration:none!important;
+		}
+button:hover,button:focus,.button:hover,.button:focus {
+    color: white;!important
+		}
+
+/*トップページ
+----------------------------------------------------------------*/
+
+#top_menu {
+	background:url(../img/top-menu-bg.png);
+	margin:0 0 40px;
+	padding:10px 0;
+	}
+
+#top_menu .wrap {
+	width:960px;
+	margin:0 auto;
+	}
+
+#top_menu .wrap:after {
+	visibility:hidden;
+	height:0;
+	display:block;
+	font-size:0;
+	content:" ";
+	clear:both;
+}
+
+#top_menu .wrap ul {
+/*	margin:0 -20px 0 0;	*/
+	margin:0 -142px 0 0;	/* ライブカメラ削除20180728 */
+	}
+
+#top_menu .wrap ul li {
+	float:left;
+	position:relative;
+	width:225px;
+/*	margin:0 20px 0 0;	*/
+	margin:0 142px 0 0;	/* ライブカメラ削除20180728 */
+	}
+
+
+
+
+#toppage #conbox .newslist {
+	position:relative;
+	margin:0 0 40px;
+	}
+
+#toppage #conbox .newslist h2 {}
+
+#toppage #conbox .newslist:after {
+	visibility:hidden;
+	height:0;
+	display:block;
+	font-size:0;
+	content:" ";
+	clear:both;
+}
+
+#toppage #conbox .newslist dl {
+	margin:0 0 10px;
+	}
+
+#toppage #conbox .newslist dl:after {
+	visibility:hidden;
+	height:0;
+	display:block;
+	font-size:0;
+	content:" ";
+	clear:both;
+}
+
+#toppage #conbox .newslist dt {
+	float:left;
+	width:100px;
+	}
+
+#toppage #conbox .newslist dd {
+	float:left;
+	width:615px;
+	}
+
+#toppage #conbox .newslist ul.news_menu {
+	position:absolute;
+	top:10px;
+	right:0px;
+	}
+
+#toppage #conbox .newslist ul.news_menu li {
+	float:left;
+	margin:0 0 0 20px;
+	font-size:0.857em;
+	list-style:none;
+	}
+
+#toppage #conbox .attention {
+	font-size:120%;
+	color:#27477A;
+	}
+
+/*霊木
+-------------------------------------------------------------------------*/
+#reiboku {}
+
+#reiboku #conbox .reiboku_menu {}
+
+#reiboku #conbox .reiboku_menu dl {
+	margin:0 0 50px;
+	}
+
+#reiboku #conbox .reiboku_menu dl:after {
+	visibility:hidden;
+	height:0;
+	display:block;
+	font-size:0;
+	content:" ";
+	clear:both;
+}
+
+#reiboku #conbox .reiboku_menu dl dt {
+	float:left;
+	width:150px;
+	}
+
+#reiboku #conbox .reiboku_menu dl dd {
+	float:right;
+	width:540px;
+	}
+
+#conbox .child_pages {}
+
+#conbox .child_page-container {
+	background:none;
+	background-color:#FFF;
+	}
+
+#conbox .post_thumb {
+	background:none;
+	margin:0 0 10px;
+	}
+	
+#conbox .post_excerpt {
+	word-wrap: break-word;
+	}
+
+
+
+/*お守り・授与品
+-------------------------------------------------------------------------*/
+#item {}
+
+#item #conbox {}
+
+#item #conbox h3 {
+	font-size:1em;
+	border:none;
+	margin:0 0 5px;
+	}
+
+#item #conbox p {margin:0 0 5px;}
+
+
+#item #conbox dl.item_list {
+	float:left;
+	background-color:#FFF;
+	margin:0 15px 20px 0;
+	padding:20px;
+	width:120px;
+	}
+
+#item #conbox dl.item_list:after {
+	visibility:hidden;
+	height:0;
+	display:block;
+	font-size:0;
+	content:" ";
+	clear:both;
+}
+
+#item #conbox dl.item_list dt {
+	margin:0 0 5px;
+	height:140px;
+	text-align:center;
+	}
+
+#item #conbox #itempage h3 {
+	background:none !important;
+	color:#333 !important;
+	}
+
+
+/*お守り・授与品一覧*/
+
+#omamori #conbox .child_pages {}
+
+#omamori #conbox .child_pages .post_excerpt {
+	display:none;
+	}
+
+
+
+/*年中行事
+-------------------------------------------------------------------------*/
+
+/*七五三詣*/
+
+#conbox .bridal_info {
+	width:400px;
+	border:2px dashed #CC0000;
+	margin:0 auto 20px;
+	padding:20px 20px 0;
+	}
+
+
+/*境内のご案内
+-------------------------------------------------------------------------*/
+
+/*地主社（じしゅしゃ）*/
+
+.zinushi #conbox table th {
+	width:inherit;
+	}
+
+.zinushi #conbox table th.title {
+	width:30%;
+	}
+
+
+
+/*申込書出力
+-------------------------------------------------------------------------*/
+
+#conbox .order_form table.item_list {
+	width: 715px;
+	margin:0 0 30px;
+	border-top:1px solid #533C25;
+	border-bottom:1px solid #533C25;
+}
+
+#conbox .order_form table.item_list td.item_photo {
+	width: 150px;
+	text-align:center;
+}
+
+#conbox .order_form table.item_list th,
+#conbox .order_form table.item_list td {
+	padding:10px 5px;
+	border:none;
+	border-bottom:1px dashed #533C25;
+	vertical-align:top;
+	}
+
+#conbox .order_form table.item_list th {
+	background-color:transparent;
+	text-align:left;
+}
+
+#conbox .order_form table.item_list td.item_price {
+	width: 80px;
+	text-align:right;
+}
+
+#conbox .order_form table.item_list td.item_number {
+	width: 80px;
+	text-align:right;
+}
+
+#conbox .order_form table.item_list td.item_number .field_no {
+	width: 30px;
+}
+
+#conbox .order_form table.item_list td.item_subtotal {
+	width: 80px;
+	text-align:right;
+}
+
+
+#conbox .order_form table.bottom_area {
+	display:none;
+	}
+
+
+#conbox .order_form table.item_price_total {
+	margin:0 0 40px;
+	border-bottom:1px solid #533C25;
+	}
+
+#conbox .order_form table.item_price_total th,
+#conbox .order_form table.item_price_total td {
+	padding:0 5px 10px;
+	border:none;
+}
+
+#conbox .order_form table.item_price_total th {
+	background-color: transparent;
+	text-align:right;
+	width:inherit;
+	}
+
+#conbox .order_form table.item_price_total td {
+	text-align:right;
+	width: 120px;
+	}
+
+#conbox .order_form table.item_price_total td.item_total {
+	font-size:1.4em;
+	font-weight:bold;
+	}
+
+#conbox .order_form table.order_address {
+	margin:0 0 30px;
+}
+
+#conbox .order_form table.order_address th {
+	width: 20%;
+}
+
+#conbox .order_form table.order_address td .field {
+	width:90%;
+}
+
+#conbox .order_form table.order_address td .field_s {
+	width:100px;
+}
+
+#conbox .order_form .order_btn {
+	text-align:center;
+	}
+
+#conbox .order_form .order_btn a {
+	background-color:#333;
+	border:#333;
+	padding:20px 40px;
+	}
+
+/*授与品のご案内（FAX申込用紙）
+-------------------------------------------------------------------------*/
+
+#conbox .item_weight {
+	text-align:right;
+	color:#FFF;
+	display:none;
+}
+#conbox .errormessage {
+	color:#F00;
+}
+#conbox .error {
+	background-color:#FDD;
+}
+
+
+/*御祈祷ご案内
+-------------------------------------------------------------------------*/
+#devotions #conbox .fax_entry {
+	text-align:center;
+	margin:50px 0 0;
+	}
+
+
+
+#devotions #conbox .fax_entry a {
+	background:#F60 url(../img/pdf_icon.png) no-repeat 10px center;
+	padding:20px 20px 20px 50px;
+	
+	border-style: solid;
+	border-width: 1px;
+	cursor: pointer;
+	font-family: inherit;
+	font-weight: bold;
+	line-height: 1;
+	position: relative;
+	text-decoration: none;
+	text-align: center;
+	display: inline-block;
+	font-size: 1em;
+	background-color: #FF6600;
+	border-color: #FF9900;
+	color: white !important;
+	text-decoration:none !important;
+	border-radius:         5px;
+	-webkit-border-radius: 5px;
+	-moz-border-radius:    5px;
+	behavior: url(/common/PIE.htc);
+	position:relative;
+	}
+
+#devotions #conbox .fax_entry a:hover,#devotions #conbox .fax_entry a:focus,#devotions #conbox .fax_entry a:hover,#devotions #conbox .fax_entry a:focus {
+	background-color:#A63500;
+	border-color:#A63500;
+	text-decoration:none!important;
+		}
+#devotions #conbox .fax_entry a:hover,#devotions #conbox .fax_entry a:focus,.#devotions #conbox .fax_entry a:hover,#devotions #conbox .fax_entry a:focus {
+    color: white;!important
+		}
+
+
+
+/*お問い合わせ
+-------------------------------------------------------------------------*/
+#contact {}
+
+#conbox #trust-form .contact-form {
+  height: auto;
+}
+
+
+#conbox p#message-container-input {
+	color:#F00;
+	}
+
+#conbox #trust-form table {
+	width:100%;
+	margin:0 0 30px;
+	}
+
+#conbox #trust-form table th {
+	width:180px;
+	text-align:left;
+	padding:20px 0;
+	border:none;
+	border-bottom:1px dashed #999;
+	}
+
+#conbox #trust-form table td {
+	padding:20px 0;
+	border:none;
+	border-bottom:1px dashed #999;
+	}
+
+#conbox #trust-form table td ul {
+	margin:0;
+	}
+
+#conbox #trust-form table td ul li {
+	list-style:none;
+	}
+
+#conbox #trust-form input,
+#conbox #trust-form textarea {
+	border:1px solid #CCC;
+	
+	padding:5px;
+
+	border-radius:         5px;
+	-webkit-border-radius: 5px;
+	-moz-border-radius:    5px;
+
+	behavior: url(/common/PIE.htc);
+	position:relative;
+	}
+
+
+#conbox #trust-form .field {width:90%;}
+
+
+#conbox #trust-form .field_s {width:20%;}
+
+
+#conbox #trust-form .zipcode {width:20%;}
+
+
+#conbox #trust-form .e_mail {}
+
+#conbox #trust-form .inquiry {
+	width:90%;
+	height:200px;
+	}
+	
+#conbox #trust-form .submit-container {
+	margin:0px 0px 50px;
+	text-align:center;
+	}
+
+#conbox div#trust-form.contact-form table tr:hover{}
+
+#conbox #confirm-button input {
+	width:30%;
+	border-style: solid;
+	border-width: 1px;
+	cursor: pointer;
+	font-family: inherit;
+	font-weight: bold;
+	line-height: 1;
+	margin: 0 10px 1.25em;
+	position: relative;
+	text-decoration: none;
+	text-align: center;
+	display: inline-block;
+	padding:5px 10px;
+	font-size: 1em;
+	background-color: #333333;
+	border-color: #666666;
+	color: white;
+	
+	border-radius:         5px;
+	-webkit-border-radius: 5px;
+	-moz-border-radius:    5px;
+	
+	behavior: url(/common/PIE.htc);
+	position:relative;
+}
+
+
+/*サイトマップ*/
+
+#sitemaps {}
+
+ul#menu-sitemaps {}
+
+ul#menu-sitemaps li {
+	background:url(../img/arrow-sitemap.png) no-repeat 0px 7px;
+	margin:0;
+	padding:0 0 0 10px;
+	list-style:none;
+	}
+
+ul#menu-sitemaps ul.sub-menu {
+	padding-top:20px;
+	}
+
+ul#menu-sitemaps ul.sub-menu li {
+	margin-bottom:20px;
+	}
+
+
+
+
+/*英語ページの設定
+----------------------------------------------------------------*/
+#english #header {margin-bottom:50px;}
+#english #header_inner {background:url(../img/header-inner-bg-eng.png) no-repeat left top;}
+#english #hdnav {
+	background:url(../img/hdcontct-bg-t-eng.png) no-repeat left top;
+	position:absolute;
+	top:0px;
+	right:0px;
+	width:90px;
+	height:30px;
+	}
+
+#english #hdnav ul li.hd_menu01_en {width:90px;}
+
+
+.kakomi{
+	padding:2px 8px; /* 枠と文字の空間 */
+	margin:0 5px; /* 枠の外の空間 */
+	background-color:#f9f9f9; /* 枠の背景色 */
+	border:1px solid #777; /* 枠の線の太さ・種類・色 */
+	border-radius:2px; /* 枠の角を丸くする */
+	font-family:inherit; /* フォントの種類を継承する */
+	font-size:0.85em;	/* フォントの大きさ */
+}

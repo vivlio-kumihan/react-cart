@@ -1,6 +1,6 @@
 import "../../styles/containers/ReadMoreLinks.sass";
 
-const HairBand = ({ selectedItemId, handleBackClick }) => {
+const KanauWaAll = ({ selectedItemId, handleBackClick }) => {
   return (
     <div 
       id={selectedItemId}
@@ -12,4 +12,4 @@ const HairBand = ({ selectedItemId, handleBackClick }) => {
   );
 };
 
-export default HairBand;
+export default KanauWaAll;

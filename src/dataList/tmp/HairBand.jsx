@@ -234,7 +234,7 @@ const data = [
     weight: 10,
   },
   {
-    pid: "kanau_wa_table_all",
+    pid: "kanau_wa_all",
     image: image.dummy,
     category: "授与品",
     name: { "叶う輪―全般": 0 },

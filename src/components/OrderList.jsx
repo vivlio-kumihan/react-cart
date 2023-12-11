@@ -18,6 +18,11 @@ const OrderList = ({
   reloadCartItems,
   }) => {
 
+  const openShut = () => {
+    return !toggle ? "開く" : "閉じる"
+  };
+  console.log(toggle);
+
   return (
     <div className="order-list">
       <div className="cart-title-wrapper">
@@ -28,7 +33,10 @@ const OrderList = ({
               toggleAction()
             }}
         >
-          <span></span>
+          <span className="title">リスト</span>
+          <span className="open-shut">{openShut()}</span>
+          {/* className={`menu-toggle-btn ${flag ? "flag" : ""}`} */}
+
         </button>
         <div className="ami"></div>
       </div>
