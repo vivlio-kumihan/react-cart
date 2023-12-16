@@ -47,6 +47,24 @@ const MailForm = ({
       return `${key}: ${item.colors[key]}`
     });
     const itemColors = tmpItemColors.reduce((acc, itemText) => acc + "\n" + itemText, "");
+    
+    // リファクタリング　個数0の行をなくしたい。
+    // // 種類
+    // const tmpItemTypes = Object.keys(item.types).reduce((arr, key) => {
+    //   if (item.types[key] !== 0) {
+    //     arr.push(`${key}: ${item.types[key]}`);
+    //   }
+    //   return arr;
+    // }, []);
+    // const itemTypes = tmpItemTypes.reduce((acc, itemText) => acc + "\n" + itemText, "");
+    // // 色
+    // const tmpItemColors = Object.keys(item.colors).reduce((arr, key) => {
+    //   if (item.colors[key] !== 0) {
+    //     arr.push(`${key}: ${item.colors[key]}`);
+    //   }
+    //   return arr;
+    // }, []);
+    // const itemColors = tmpItemColors.reduce((acc, itemText) => acc + "\n" + itemText, "");    
     // 単価
     const itemPrice = `${item.price}円`;
     // 注文数
