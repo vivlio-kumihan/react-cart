@@ -10,8 +10,8 @@ const MailForm = ({
   inputFormInfo,
   nameValueZero,
   hasItem,
+  prefectureSelected
   }) => {
-  
   const form = useRef();
 
   const sendEmail = (e) => {
@@ -68,7 +68,7 @@ const MailForm = ({
   const userName = inputFormInfo.name;
   const userEmail = inputFormInfo.email;
   const postalCode = inputFormInfo.postalCode;
-  const address = inputFormInfo.prefecture + inputFormInfo.city + inputFormInfo.town;
+  const address = prefectureSelected + inputFormInfo.city + inputFormInfo.town;
   const tel =inputFormInfo.tel;
   const note = inputFormInfo.note;
 

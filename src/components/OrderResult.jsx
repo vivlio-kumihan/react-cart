@@ -1,7 +1,7 @@
 import { useState, useRef } from "react";
 import ReactToPrint from "react-to-print";
 import CartItem from "./CartItem";
-import FaxForm from "../containers/FaxForm";
+import OrgForm from "../containers/OrgForm";
 import MailForm from "../containers/MailForm";
 import SendFee from "../containers/SendFee";
 import "../styles/components/OrderResult.sass";
@@ -21,17 +21,17 @@ const OrderResult = ({
 
   const componentRef = useRef(null); 
 
-  const [selected, setSelected] = useState("");
+  const [prefectureSelected, setPrefectureSelected] = useState("");
 
   // formの入力情報
   const inputVal = {
-      name: "白峯太郎", 
-      postalCode: "0000000", 
+      name: "", 
+      postalCode: "", 
       prefecture: "", 
       city: "",
       town: "",
-      email: "shiramine@taro.com", 
-      tel: "000-000-0000", 
+      email: "", 
+      tel: "", 
       note: "", 
   };
   // Formのinput値のstate  
@@ -73,8 +73,8 @@ const OrderResult = ({
               <SendFee 
                 totalWeight={reloadCartItems()[1]} 
                 setTotalSendFee={setTotalSendFee}
-                selected={selected}
-                setSelected={setSelected}
+                prefectureSelected={prefectureSelected}
+                setPrefectureSelected={setPrefectureSelected}
               />
             </li>
             <li>カートの重量合計<span>{reloadCartItems()[1]}</span>g</li>
@@ -86,12 +86,13 @@ const OrderResult = ({
           </ul>
         </div>
 
-        <FaxForm
+        <OrgForm
           inputFormInfo={inputFormInfo}
           setInputFormInfo={setInputFormInfo}
+          prefectureSelected={prefectureSelected}
         />   
 
-        {/* ___リファクタリング___ */}
+        {/* ___リファクタリング start___ */}
         <div className="for-only-print">
           <div className="wrapper">
             <h3>いずれかの下記口座までご送金（振込）してください。</h3>
@@ -172,7 +173,7 @@ const OrderResult = ({
             ここに郵便振込用紙の<br />控えを貼付けてください。
           </div>
         </div>
-        {/* ___リファクタリング___ */}
+        {/* ___リファクタリング end___ */}
 
         <div className="send-buttons">
           <ReactToPrint 
@@ -195,6 +196,7 @@ const OrderResult = ({
             nameValueZero={nameValueZero}
             hasItem={hasItem}
             inputFormInfo={inputFormInfo}
+            prefectureSelected={prefectureSelected}
           />             
         </div>
 

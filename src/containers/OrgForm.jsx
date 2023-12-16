@@ -1,7 +1,7 @@
-import "../styles/containers/FaxForm.sass";
+import "../styles/containers/OrgForm.sass";
 
 // 最終的には、郵便番号の入力で住所を自動補完される機能を付ける。
-const FaxForm = ({ inputFormInfo, setInputFormInfo }) => {
+const OrgForm = ({ inputFormInfo, setInputFormInfo, prefectureSelected }) => {
 
   const inputName = (e) => {
     setInputFormInfo(inputFormInfo => ({ ...inputFormInfo, name: e.target.value }))
@@ -9,9 +9,9 @@ const FaxForm = ({ inputFormInfo, setInputFormInfo }) => {
   const inputPostalCode = (e) => {
     setInputFormInfo(inputFormInfo => ({ ...inputFormInfo, postalCode: e.target.value }))
   };
-  const inputPrefecture = (e) => {
-    setInputFormInfo(inputFormInfo => ({ ...inputFormInfo, prefecture: e.target.value }))
-  };
+  // const inputPrefecture = (e) => {
+  //   setInputFormInfo(inputFormInfo => ({ ...inputFormInfo, prefecture: e.target.value }))
+  // };
   const inputCity = (e) => {
     setInputFormInfo(inputFormInfo => ({ ...inputFormInfo, city: e.target.value }))
   };
@@ -56,7 +56,12 @@ const FaxForm = ({ inputFormInfo, setInputFormInfo }) => {
         </div>
         <div>
           <label htmlFor="prefecture">都道府県</label>
-          <input onChange={inputPrefecture} placeholder={inputFormInfo.prefecture} id="prefecture" type="text" />
+          <div>{
+            prefectureSelected 
+              ? prefectureSelected
+              : "発送先の選択ボタンから都道府県を選対し、授与料合計を決定してください。"
+          }</div>
+          {/* <input onChange={inputPrefecture} placeholder={inputFormInfo.prefecture} id="prefecture" type="text" /> */}
         </div>
         <div>
           <label htmlFor="city">市町村</label>
@@ -84,7 +89,7 @@ const FaxForm = ({ inputFormInfo, setInputFormInfo }) => {
   );
 };
 
-export default FaxForm;
+export default OrgForm;
 
 // // textarea用
 // const inputContents = (e) => {

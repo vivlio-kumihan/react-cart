@@ -111,6 +111,13 @@
       transform: translateY(2px)
       transition: .3s
       opacity: .95
+      &.disable
+        opacity: .3
+        &:hover
+          transform: translateY(2px)
+          opacity: .3
+          box-shadow: 0 0 0 #fff
+          
       &:hover
         transform: translateY(0)
         opacity: .5

@@ -64,6 +64,7 @@ const CartItem = ({
       {
         (hasItem(types) || hasItem(colors)) && nameValueZero &&
           Object.keys(switchItem()[0]).map((key, idx) => (
+            switchItem()[0][key] > 0 &&
             <li className="quantity-state" key={idx}>
               <h3>{key}</h3>
               <div className="quantity-count">{switchItem()[0][key]}</div>

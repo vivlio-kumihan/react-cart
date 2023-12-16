@@ -18,7 +18,8 @@ const Product = ({
   const nameCount = parseInt((Object.keys(name).map((key) => name[key]).shift()));
   // name, types, colorsごとのカウントのstate
   const [eachCount, setEachCount] = useState({});
-  
+  const typesColorsCount = Object.keys(eachCount).reduce((acc, key) => acc + parseInt(eachCount[key]), 0);
+
   // ___リファクタリング___
   // 他にもある。Appコンポーネントで統合するべき。
   // name, types, colorsのそれぞれカウント合計
@@ -96,10 +97,17 @@ const Product = ({
             }}
           >リストから削除</button>
         ) : (
-          <button className="mask-btn" onClick={() => {
-            onAddCart(data)
-          }}
-          >リストに追加</button>
+          (nameCount || typesColorsCount)
+          ?
+            <button className="mask-btn" onClick={() => {
+              onAddCart(data)
+            }}
+            >リストに追加</button>
+          :
+            <button disabled={true} className="mask-btn disable" onClick={() => {
+              onAddCart(data)
+            }}
+            >リストに追加</button>
         )}
       </div>
     </div>

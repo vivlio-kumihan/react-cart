@@ -4,10 +4,9 @@ import "../styles/containers/SendFee.sass";
 const SendFee = ({ 
   totalWeight, 
   setTotalSendFee,
-  selected,
-  setSelected,
+  prefectureSelected,
+  setPrefectureSelected,
 }) => {
-  // const [selected, setSelected] = useState("");
 
 	// 都道府県
 	const LOCATION = [
@@ -41,7 +40,7 @@ const SendFee = ({
 
 	// 方面別送料
 	// フォームで選択された都道府県のpropsが入る。とりあえず今は大阪府を入れている。
-	const direction = Object.keys(AREA).find(key => AREA[key].includes(selected));
+	const direction = Object.keys(AREA).find(key => AREA[key].includes(prefectureSelected));
 	const fee = {
     "---": { 50: 0, 125: 0, 250: 0, 500: 0, 1000: 0, 2000: 0, 5000: 0, 10000: 0 },
     "北海道": { 50: 330, 125: 400, 250: 500, 500: 600, 1000: 850, 2000: 1350, 5000: 1850, 10000: 2350, 10001: 2450 },
@@ -101,8 +100,12 @@ const SendFee = ({
         <div className="send-fee-selector">
           <p>発送先の選択</p>
           <select 
-            value={selected}
-            onChange={(e) => setSelected(e.target.value)}
+            value={prefectureSelected}
+            onChange={(e) => {
+              e.target.value === "---"
+                ? setPrefectureSelected("発送先の選択ボタンから都道府県を選対し、授与料合計を決定してください。")
+                : setPrefectureSelected(e.target.value)
+            }}
             name=""
             id=""
           >
