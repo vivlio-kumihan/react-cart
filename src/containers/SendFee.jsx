@@ -1,8 +1,13 @@
 import { useEffect, useState } from "react";
 import "../styles/containers/SendFee.sass";
 
-const SendFee = ({ totalWeight, setTotalSendFee }) => {
-  const [selected, setSelected] = useState("");
+const SendFee = ({ 
+  totalWeight, 
+  setTotalSendFee,
+  selected,
+  setSelected,
+}) => {
+  // const [selected, setSelected] = useState("");
 
 	// 都道府県
 	const LOCATION = [

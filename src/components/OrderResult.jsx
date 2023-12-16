@@ -21,6 +21,8 @@ const OrderResult = ({
 
   const componentRef = useRef(null); 
 
+  const [selected, setSelected] = useState("");
+
   // formの入力情報
   const inputVal = {
       name: "白峯太郎", 
@@ -71,6 +73,8 @@ const OrderResult = ({
               <SendFee 
                 totalWeight={reloadCartItems()[1]} 
                 setTotalSendFee={setTotalSendFee}
+                selected={selected}
+                setSelected={setSelected}
               />
             </li>
             <li>カートの重量合計<span>{reloadCartItems()[1]}</span>g</li>
