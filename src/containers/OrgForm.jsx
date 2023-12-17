@@ -46,12 +46,13 @@ const OrgForm = ({ inputFormInfo, setInputFormInfo, prefectureSelected }) => {
     <>
     <div className="form">
       <div className="input-wrapper">
+        <div className="note">※印は必須事項になります。</div>
         <div>
-          <label htmlFor="name">名前</label>
+          <label htmlFor="name" className="required">お名前</label>
           <input onChange={inputName} placeholder={inputFormInfo.name} id="name" type="text" />
         </div>
         <div>
-          <label htmlFor="postalCode">郵便番号</label>
+          <label htmlFor="postalCode" className="required">郵便番号</label>
           <input onChange={inputPostalCode} placeholder={inputFormInfo.postalCode} id="postalCode" type="text" pattern="\d{3}-?\d{4}" />
         </div>
         <div>
@@ -64,7 +65,7 @@ const OrgForm = ({ inputFormInfo, setInputFormInfo, prefectureSelected }) => {
           {/* <input onChange={inputPrefecture} placeholder={inputFormInfo.prefecture} id="prefecture" type="text" /> */}
         </div>
         <div>
-          <label htmlFor="city">市町村</label>
+          <label htmlFor="city" className="required">ご住所</label>
           <input onChange={inputCity} placeholder={inputFormInfo.city} id="city" type="text" />
         </div>
         <div>
@@ -72,18 +73,29 @@ const OrgForm = ({ inputFormInfo, setInputFormInfo, prefectureSelected }) => {
           <input onChange={inputTown} placeholder={inputFormInfo.town} id="town" type="text" />
         </div>
         <div>
-          <label htmlFor="email">Email</label>
+          <label htmlFor="email">
+            メールアドレス
+            <span>※メールお申し込みの場合は必須になります。</span>
+          </label>
           <input onChange={inputEmail} placeholder={inputFormInfo.email} id="email" type="email" />
         </div>
         <div>
-          <label htmlFor="tel">電話番号</label>
+          <label htmlFor="tel" className="required">電話番号</label>
           <input onChange={inputTel} placeholder={inputFormInfo.tel} id="tel" type="text" pattern="\d{2,4}-?\d{2,4}-?\d{3,4}" />
         </div>
         <div>
           <label htmlFor="note">備考</label>
           <textarea onChange={inputNote} placeholder={inputFormInfo.note} id="note" />
         </div>
-      </div>      
+      </div> 
+      <div>
+        <p>必要事項をご記入のうえ、確認ボタンを押して確認後、送信してください。</p>
+        <a class="privacy-policy-anchor" href="<?php echo esc_url(home_url('/privacy-policy/')); ?>">▶️&nbsp;プライバシー・ポリシー</a>
+        <div class="check-box">
+          <input type="checkbox" id="name" />
+          <label for="name">プライバシーポリシーに同意する</label>
+        </div>
+      </div>
     </div>
     </>
   );

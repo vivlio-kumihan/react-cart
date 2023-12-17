@@ -111,6 +111,11 @@ const MailForm = ({
       <textarea name="note" readOnly value={`${note}`} />
       <button className='to-send-form' type="submit" value="メールで送信">メールで送信</button>
     </form>
+      
+      <p>FAXでのお申込みができない方は、<br />こちらをお選びください。</p>
+      <p>ご記入いただいたメールアドレスにEメールが届きますので、</p>
+      <p>撮影した郵便振込用紙を添付のうえ<br />ご返信ください。</p>
+      （※メールが届かない場合、迷惑メールフィルターなどごかくにんください。）
     </>
   );
 };

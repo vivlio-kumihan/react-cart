@@ -98,7 +98,7 @@ const Product = ({
       ) : (
         (nameCount || typesColorsCount)
         ?
-          <button className="mask-btn to-index" onClick={() => {
+          <button className="mask-btn to-index hover-active" onClick={() => {
             onAddCart(data)
           }}
           >一覧に追加</button>

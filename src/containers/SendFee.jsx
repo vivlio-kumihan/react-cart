@@ -123,8 +123,8 @@ const SendFee = ({
         </div>
         {
           sendFee
-            ? <div className="send-fee">郵送料（口座徴収通知料を含む）: <span>{sendFee}</span>円</div>
-            : <div className="send-fee">郵送料（口座徴収通知料を含む）: <span>0</span>円</div>
+            ? <div className="send-fee">郵送料<span className="send-fee-note">（口座徴収通知料を含む）</span><span>{sendFee}</span>円</div>
+            : <div className="send-fee">郵送料<span className="send-fee-note">（口座徴収通知料を含む）</span><span>0</span>円</div>
         }
       </div>
     </>

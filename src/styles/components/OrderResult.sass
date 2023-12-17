@@ -6,7 +6,6 @@
   right: -100%
   width: 100%
   height: 100vh
-  padding: 70px 0
   background-color: rgba(0, 0, 0, .8)
   transition: .7s
   visibility: hidden
@@ -18,54 +17,73 @@
     visibility: visible
     opacity: 1
   .cart-container
-    width: 80%
-    margin: 40px auto
+    width: 70%
+    margin: 80px auto
+    padding: 4rem 3rem
     background: url(/src/images/bg.jpg)
-
     .component-ref
       position: relative
-      width: 80%
       margin: 0 auto
-      h2
-        font-family: fw.$noto-rm
-        font-weight: 600
-        font-size: 1.7rem
-        text-align: center
+      h3
+        &.toggle-web::before, &.toggle-web::after
+          width: calc( 50% - 105px )
         &.toggle-print
           display: none
+      > p
+        margin-top: 30px
+        font-size: 1.15rem
+        line-height: 1.5em
+        text-align: center
       .default-msg
         margin-top: 30px
         font-size: 1.2rem
         line-height: 1em
         font-weight: 600
         text-align: center
-      .cart-index
-        font-family: fw.$noto-gth
-        font-size: 1rem
-        line-height: 1em
-        .result-wrapper
-          display: grid
-          grid-template-columns: repeat(4, 1fr)
-          gap: 30px
-          margin-top: 40px
-        .calc-amount
-          display: flex
-          flex-direction: column
-          align-items: flex-end
-          margin-top: 15px
-          > li + li
-            margin-top: 8px
-          span
-            margin: 0 3px 0 6px
-            font-size: 1.2rem
-          .total-fee
-            margin-top: 10px
-            line-height: 1.4
-            &.direction
-              color: #517dac
-            span
-              font-size: 1.4rem
-              font-weight: 700
+      .flex-wrapper
+        display: grid
+        grid-template-columns: 1.5fr 3fr
+        gap: 30px
+        margin-top: 40px
+        .calc-result
+          font-family: fw.$noto-rm
+          font-size: 1.15rem
+          line-height: 1em
+          .calc-amount
+            display: flex
+            flex-direction: column
+            align-items: flex-end
+            > li + li
+              margin-top: 15px
+            > li
+              span
+                margin: 0 3px 0 6px
+                font-family: fw.$noto-gth
+                font-size: 1.4rem
+              .location-selector 
+                .send-fee
+                  > .send-fee-note
+                    font-size: .85rem
+            .total-fee
+              width: 100%
+              margin-top: 15px
+              padding-top: 20px
+              text-align: right
+              border-top: 1px solid #333
+              &.direction
+                font-family: fw.$noto-gth
+                font-size: .9rem
+                color: #517dac
+              span
+                font-size: 1.4rem
+                font-weight: 400          
+        .cart-index
+          // .result-wrapper
+          //   display: grid
+          //   grid-template-columns: repeat(4, 1fr)
+          //   gap: 30px
+          //   margin-top: 40px
+
       .for-only-print
         display: none
       .send-buttons

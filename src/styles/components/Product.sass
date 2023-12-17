@@ -113,7 +113,7 @@
         &.display-none
           display: none
 
-  .mask-btn
+  .mask-btn.details, .mask-btn.to-index
     padding: 5px 15px
     font-family: fw.$noto-rm
     font-size: 1rem
@@ -122,23 +122,18 @@
     border: 1px solid #333
     transform: translateY(2px)
     transition: .3s
-    opacity: .95
     &.disable
       opacity: .4
-      &:hover
-        transform: translateY(2px)
-        opacity: .3
-        box-shadow: 0 0 0 #fff
-    &:hover
-      transform: translateY(0)
-      opacity: .5
-      box-shadow: 0 1px 2px #999
-    &.remove-btn
-      color: #fff
-      background-color: #999
-      border: 1px solid #999 
+  .mask-btn.details:hover, .mask-btn.to-index.hover-active:hover, .mask-btn.to-index.remove-btn:hover
+    transform: translateY(0)
+    box-shadow: 0 1px 2px #999
+    opacity: .5
   .mask-btn.to-index
     position: absolute
     bottom: 20px
     right: 15px
     z-index: 100
+    &.remove-btn
+      color: #fff
+      background-color: #999
+      border: 1px solid #999

@@ -73,8 +73,8 @@ const CartItem = ({
       }
 
       <li className="sub-total">
-        <span>{price}円&nbsp;×&nbsp;{whichItemSumCalcCount()}</span>
-        <span>&nbsp;小計:&nbsp;{price*whichItemSumCalcCount()}円</span>
+        <div><span>{price}</span>円&nbsp;×&nbsp;<span>{whichItemSumCalcCount()}</span></div>
+        <div>&nbsp;小計:&nbsp;<span>{price*whichItemSumCalcCount()}</span>円</div>
         {/* <span>&nbsp;重量:&nbsp;{weight*whichItemSumCalcCount()}g</span> */}
       </li>
     </ul>
