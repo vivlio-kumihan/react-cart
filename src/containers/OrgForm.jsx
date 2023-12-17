@@ -1,107 +1,137 @@
+
 import "../styles/containers/OrgForm.sass";
 
 // 最終的には、郵便番号の入力で住所を自動補完される機能を付ける。
 const OrgForm = ({ inputFormInfo, setInputFormInfo, prefectureSelected }) => {
-
   const inputName = (e) => {
-    setInputFormInfo(inputFormInfo => ({ ...inputFormInfo, name: e.target.value }))
+    setInputFormInfo(inputFormInfo => ({ ...inputFormInfo, name: e.target.value }));
   };
   const inputPostalCode = (e) => {
-    setInputFormInfo(inputFormInfo => ({ ...inputFormInfo, postalCode: e.target.value }))
+    setInputFormInfo(inputFormInfo => ({ ...inputFormInfo, postalCode: e.target.value }));
   };
   // const inputPrefecture = (e) => {
-  //   setInputFormInfo(inputFormInfo => ({ ...inputFormInfo, prefecture: e.target.value }))
+  //   setInputFormInfo(inputFormInfo => ({ ...inputFormInfo, prefecture: e.target.value }));
   // };
-  const inputCity = (e) => {
-    setInputFormInfo(inputFormInfo => ({ ...inputFormInfo, city: e.target.value }))
-  };
-  const inputTown = (e) => {
-    setInputFormInfo(inputFormInfo => ({ ...inputFormInfo, town: e.target.value }))
+  const inputAddress = (e) => {
+    setInputFormInfo(inputFormInfo => ({ ...inputFormInfo, address: e.target.value }));
   };
   const inputEmail = (e) => {
-    setInputFormInfo(inputFormInfo => ({ ...inputFormInfo, email: e.target.value }))
+    setInputFormInfo(inputFormInfo => ({ ...inputFormInfo, email: e.target.value }));
   };
   const inputTel = (e) => {
-    setInputFormInfo(inputFormInfo => ({ ...inputFormInfo, tel: e.target.value }))
+    setInputFormInfo(inputFormInfo => ({ ...inputFormInfo, tel: e.target.value }));
   };
   const inputNote = (e) => {
-    setInputFormInfo(inputFormInfo => ({ ...inputFormInfo, note: e.target.value }))
+    setInputFormInfo(inputFormInfo => ({ ...inputFormInfo, note: e.target.value }));
   };
 
-  // const reset = () => {
-  //   // どれをやっても入力がリセットされない。理由がわからない。
-  //   setInputFormInfo( 
-  //     { name: "",
-  //       postalCode: "", 
-  //       prefecture: "", 
-  //       city: "" ,
-  //       town: "" ,
-  //       email: "" ,
-  //       tel: "" ,
-  //       note: "" ,
-  //     });
+  // const inputName = (e) => {
+  //   setInputFormInfo((prevInputFormInfo) => ({ ...prevInputFormInfo, name: e.target.value }));
+  // };
+  // const inputPostalCode = (e) => {
+  //   setInputFormInfo((prevInputFormInfo) => ({ ...prevInputFormInfo, postalCode: e.target.value }));
+  // };
+  // const inputAddress = (e) => {
+  //   setInputFormInfo((prevInputFormInfo) => ({ ...prevInputFormInfo, address: e.target.value }));
+  // };
+  // const inputEmail = (e) => {
+  //   setInputFormInfo((prevInputFormInfo) => ({ ...prevInputFormInfo, email: e.target.value }));
+  // };
+  // const inputTel = (e) => {
+  //   setInputFormInfo((prevInputFormInfo) => ({ ...prevInputFormInfo, tel: e.target.value }));
+  // };
+  // const inputNote = (e) => {
+  //   setInputFormInfo((prevInputFormInfo) => ({ ...prevInputFormInfo, note: e.target.value }));
   // };
 
+  // const reset = () => {
+  //   setInputFormInfo(inputFormInfo => ({ ...inputFormInfo, name: "" }));
+  //   setInputFormInfo(inputFormInfo => ({ ...inputFormInfo, postalCode: "" }));
+  //   setInputFormInfo(inputFormInfo => ({ ...inputFormInfo, address: "" }));
+  //   setInputFormInfo(inputFormInfo => ({ ...inputFormInfo, email: "" }));
+  //   setInputFormInfo(inputFormInfo => ({ ...inputFormInfo, tel: "" }));
+  //   setInputFormInfo(inputFormInfo => ({ ...inputFormInfo, note: "" }));
+  //   console.log(inputFormInfo);
+  // };
+  const reset = () => {
+    setInputFormInfo({
+      name: "",
+      postalCode: "",
+      address: "",
+      email: "",
+      tel: "",
+      note: "",
+    });
+  };
+  console.log(inputFormInfo);  
+  
   return (
     <>
     <div className="form">
       <div className="input-wrapper">
         <div className="note">※印は必須事項になります。</div>
         <div>
-          <label htmlFor="name" className="required">お名前</label>
-          <input onChange={inputName} placeholder={inputFormInfo.name} id="name" type="text" />
+          <label htmlFor="name" className="required"><span>お名前</span></label>
+          <input onChange={inputName} placeholder={inputFormInfo.name} value={inputFormInfo.name} id="name" type="text" />
         </div>
         <div>
-          <label htmlFor="postalCode" className="required">郵便番号</label>
-          <input onChange={inputPostalCode} placeholder={inputFormInfo.postalCode} id="postalCode" type="text" pattern="\d{3}-?\d{4}" />
+          <label htmlFor="postalCode" className="required"><span>郵便番号</span></label>
+          <input onChange={inputPostalCode} placeholder={inputFormInfo.postalCode} value={inputFormInfo.postalCode} id="postalCode" type="text" pattern="\d{3}-?\d{4}" />
         </div>
         <div>
           <label htmlFor="prefecture">都道府県</label>
           <div>{
             prefectureSelected 
               ? prefectureSelected
-              : "発送先の選択ボタンから都道府県を選対し、授与料合計を決定してください。"
+              : "発送先の選択ボタンから都道府県を選択し、授与料合計を決定してください。"
           }</div>
           {/* <input onChange={inputPrefecture} placeholder={inputFormInfo.prefecture} id="prefecture" type="text" /> */}
         </div>
         <div>
-          <label htmlFor="city" className="required">ご住所</label>
-          <input onChange={inputCity} placeholder={inputFormInfo.city} id="city" type="text" />
+          <label htmlFor="city" className="required"><span>ご住所</span></label>
+          <input onChange={inputAddress} placeholder={inputFormInfo.address} value={inputFormInfo.address} id="address" type="text" />
         </div>
-        <div>
-          <label htmlFor="town">町・番地</label>
-          <input onChange={inputTown} placeholder={inputFormInfo.town} id="town" type="text" />
-        </div>
-        <div>
+        <div className="email-container">
           <label htmlFor="email">
-            メールアドレス
-            <span>※メールお申し込みの場合は必須になります。</span>
+            <span>メールアドレス</span>
+            <span className="note">※メールお申し込みの場合は必須になります。</span>
           </label>
-          <input onChange={inputEmail} placeholder={inputFormInfo.email} id="email" type="email" />
+          <input onChange={inputEmail} placeholder={inputFormInfo.email} value={inputFormInfo.email} id="email" type="email" />
         </div>
         <div>
-          <label htmlFor="tel" className="required">電話番号</label>
-          <input onChange={inputTel} placeholder={inputFormInfo.tel} id="tel" type="text" pattern="\d{2,4}-?\d{2,4}-?\d{3,4}" />
+          <label htmlFor="tel" className="required"><span>電話番号</span></label>
+          <input onChange={inputTel} placeholder={inputFormInfo.tel} value={inputFormInfo.tel} id="tel" type="text" pattern="\d{2,4}-?\d{2,4}-?\d{3,4}" />
         </div>
         <div>
           <label htmlFor="note">備考</label>
-          <textarea onChange={inputNote} placeholder={inputFormInfo.note} id="note" />
+          <textarea onChange={inputNote} placeholder={inputFormInfo.note} value={inputFormInfo.note} id="note" />
         </div>
       </div> 
-      <div>
+      <div className="privacy-policy">
         <p>必要事項をご記入のうえ、確認ボタンを押して確認後、送信してください。</p>
-        <a class="privacy-policy-anchor" href="<?php echo esc_url(home_url('/privacy-policy/')); ?>">▶️&nbsp;プライバシー・ポリシー</a>
-        <div class="check-box">
+        <a className="privacy-policy-anchor" href=""><span>▶️</span>&nbsp;プライバシー・ポリシー</a>
+        <div className="check-box">
           <input type="checkbox" id="name" />
-          <label for="name">プライバシーポリシーに同意する</label>
+          <label htmlFor="name">プライバシーポリシーに同意する</label>
         </div>
       </div>
+      <button className="reset-btn" type="button" onClick={reset}>リセット</button>
     </div>
     </>
   );
 };
 
 export default OrgForm;
+
+// setInputFormInfo( 
+//   { name: "",
+//     postalCode: "", 
+//     prefecture: "", 
+//     address: "" ,
+//     email: "" ,
+//     tel: "" ,
+//     note: "" ,
+//   });
 
 // // textarea用
 // const inputContents = (e) => {
@@ -129,7 +159,7 @@ export default OrgForm;
 //     </li>
 //     <li>
 //       <label htmlFor="contents">【市町村】</label>
-//       <div className="output">{inputFormInfo.city}</div>
+//       <div className="output">{inputFormInfo.address}</div>
 //     </li>
 //     <li>
 //       <label htmlFor="name">【町・番地】</label>

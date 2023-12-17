@@ -16,7 +16,6 @@ const MailForm = ({
 
   const sendEmail = (e) => {
     e.preventDefault();
-
     emailjs.sendForm('service_rnt4ier', 'template_dq4zyxs', form.current, 'qFuS96-H2M1rD2BgC')
       .then((result) => {
           console.log(result.text);
@@ -86,10 +85,9 @@ const MailForm = ({
   const userName = inputFormInfo.name;
   const userEmail = inputFormInfo.email;
   const postalCode = inputFormInfo.postalCode;
-  const address = prefectureSelected + inputFormInfo.city + inputFormInfo.town;
+  const address = prefectureSelected + inputFormInfo.address;
   const tel =inputFormInfo.tel;
   const note = inputFormInfo.note;
-
   return (
     <>
     <form ref={form} onSubmit={sendEmail}>
@@ -109,7 +107,7 @@ const MailForm = ({
       <input type="tel" name="tel" readOnly value={`${tel}`} />
       <label>【備考】</label>
       <textarea name="note" readOnly value={`${note}`} />
-      <button className='to-send-form' type="submit" value="メールで送信">メールで送信</button>
+      <button className='to-send-form' type="submit" value="メール申し込みを送信">メール申し込みを送信</button>
     </form>
       
       <p>FAXでのお申込みができない方は、<br />こちらをお選びください。</p>

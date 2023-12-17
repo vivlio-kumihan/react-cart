@@ -28,8 +28,7 @@ const OrderResult = ({
       name: "", 
       postalCode: "", 
       prefecture: "", 
-      city: "",
-      town: "",
+      address: "",
       email: "", 
       tel: "", 
       note: "", 
@@ -156,8 +155,8 @@ const OrderResult = ({
                       <dt>ご住所</dt>
                       <dd>
                         {inputFormInfo.prefecture}
-                        {inputFormInfo.city}
-                        {inputFormInfo.town}
+                        {inputFormInfo.address}
+                        {/* {inputFormInfo.town} */}
                       </dd>
                     </div>
                     <div>
@@ -185,7 +184,7 @@ const OrderResult = ({
                   trigger={() => (
                     <div>
                       <button className="to-print-btn">
-                        印刷する
+                        FAX申込書を印刷する
                       </button>
                       <p>申込み用紙の印刷ができない方は、<br />FAX申込み用紙の必要事項をご確認のうえ<br />他の紙に記載したものでも代用可能です。</p>
                     </div>
