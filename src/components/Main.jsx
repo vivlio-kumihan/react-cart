@@ -57,7 +57,14 @@ const Main = ({
   return (
     <>
     <div className="wrapper">
-      <h2>お守り・ご祈祷</h2>
+      <h3>お守り・授与品のご案内</h3>
+      <div className="head-line">
+        <p className="copy">御神札やお守り・授与品は神社に参拝いただき御社頭でお受けいただくのが本来ですが、</p>
+        <p className="copy">どうしても諸事情や遠方で直接御参りできない方は下記よりお求めください。</p>
+        <p>お求めの数量を入れ、一覧に追加ボタンを押してください。</p>
+        <p>最後に画面右下の『一覧<span className="fa-solid fa-rectangle-list"></span>開く』でお申込み画面へ進みます。</p>
+      </div>
+
       <ul className="data-wrapper">
         {
           dataList.map((data) => (

@@ -110,6 +110,9 @@ const App = () => {
   return (
     <>
     <Header />
+    <div className="frame amulet">
+      <h1>お守り・授与品</h1>
+    </div>
     <div className="container">
       <Main
         dataList={dataList}
@@ -140,6 +143,9 @@ const App = () => {
         reloadCartItems={reloadCartItems}
       />
     </div>
+    <a href="#" className="to-page-top">
+      <div className="page-top-arrow"></div>
+    </a>
     <Footer />
     </>
   );

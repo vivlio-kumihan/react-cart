@@ -3,7 +3,8 @@
 
 .container
   position: relative
-  padding: 120px 10% 60px
+  padding: 100px 10% 60px
+  background: url(/src/images/bg.png) repeat
 .container
   // 500px以上だったらこの設定
   +min(md)
@@ -19,3 +20,44 @@
 .container
   +max(md)
     padding: 60px 10% 60px
+
+.frame.amulet
+  +fw.background-image("/src/images/amulet-top.jpg", $size: cover, $position: center)
+  position: relative
+  width: 100vw
+  height: 63vh
+  h1
+    +fw.positionAbsoluteCTL($left: ture)
+    top: 55%
+    padding: 25px 120px
+    font-size: 1.85rem
+    font-weight: 300
+    letter-spacing: .3em
+    color: #fff
+    border: 1px solid #fff
+
+.to-page-top 
+  display: flex
+  justify-content: center
+  align-items: center
+  position: fixed
+  bottom: 50px
+  right: 82px
+  width: 45px
+  aspect-ratio: 1
+  background: rgba(0, 0, 0, .5)
+  border-radius: 50%
+  z-index: 1
+.page-top-arrow 
+  width: 20px
+  aspect-ratio: 1
+  border-top: 2px solid #fff
+  border-right: 2px solid #fff
+  transform: translateY(20%) rotate(-45deg) 
++min(xl)
+  .to-page-top 
+    right: 200px
++max(md)
+  .to-page-top 
+    bottom: 30px
+    right: 40px

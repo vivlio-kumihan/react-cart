@@ -32,7 +32,7 @@ const OrderList = ({
               toggleAction()
             }}
         >
-          <span className="title">リスト</span>
+          <span className="title">一覧</span>
           <span className="open-shut">{openShut()}</span>
           {/* className={`menu-toggle-btn ${flag ? "flag" : ""}`} */}
 

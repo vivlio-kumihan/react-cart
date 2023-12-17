@@ -10,6 +10,7 @@
   box-shadow: 0 0 10px #eee
   .image_frame-info
     .image-frame
+      position: relative
       width: 100%
       aspect-ratio: 4/3
       background-color: #eee
@@ -17,9 +18,18 @@
         width: 100%
         height: 100%
         object-fit: cover
+      .mask-btn.details
+        position: absolute
+        bottom: -38px
+        right: 15px
+        z-index: 100
     .item-info
-      padding: 20px 20px 5px
+      position: relative
+      padding: 50px 20px
+      // inputの数字を太字のゴシックにしないといけないから親要素で指定して
+      // 他をRymに変えていく
       font-family: fw.$noto-gth
+      font-weight: 500
       .name
         margin: 0 0 15px
         padding-bottom: 10px
@@ -31,6 +41,7 @@
           justify-content: space-between
           width: 100%
           .item-name
+            font-family: fw.$noto-rm
             font-size: 1.1rem
             font-weight: 500
           > input
@@ -40,7 +51,6 @@
             background-color: #eee
             border-radius: 5px
             text-align: right
-
       .types, .colors
         position: relative
         width: 100%
@@ -62,6 +72,9 @@
           display: flex
           align-items: center
           gap: 5px
+          span
+            font-family: fw.$noto-rm
+            font-weight: 400
           input
             width: 3rem
             text-align: right
@@ -82,9 +95,15 @@
         padding-left: 35px
       .price
         font-size: 1.1rem
-        font-weight: 700
+        font-weight: 400
         > span
+          font-family: fw.$noto-rm
           font-size: .7rem
+          font-weight: 400
+        > .delimit
+          font-size: 1.1rem
+          font-weight: 100
+
       > div, > ul
         margin-top: 10px
       > ul
@@ -94,33 +113,32 @@
         &.display-none
           display: none
 
-  .btn-wrapper
-    display: flex
-    justify-content: flex-end
-    gap: 10px
-    padding: 5px 20px 25px
-    .mask-btn
-      padding: 5px 15px
-      font-family: fw.$noto-gth
-      font-size: .8rem
-      line-height: 1em
-      font-weight: 700
-      color: #fff
-      background-color: fw.$green-dark
-      border-radius: 9999px
-      transform: translateY(2px)
-      transition: .3s
-      opacity: .95
-      &.disable
-        opacity: .3
-        &:hover
-          transform: translateY(2px)
-          opacity: .3
-          box-shadow: 0 0 0 #fff
-          
+  .mask-btn
+    padding: 5px 15px
+    font-family: fw.$noto-rm
+    font-size: 1rem
+    line-height: 1em
+    font-weight: 400
+    border: 1px solid #333
+    transform: translateY(2px)
+    transition: .3s
+    opacity: .95
+    &.disable
+      opacity: .4
       &:hover
-        transform: translateY(0)
-        opacity: .5
-        box-shadow: 0 1px 2px #999
-      &.remove-btn
-        background-color: fw.$orange-dark  
+        transform: translateY(2px)
+        opacity: .3
+        box-shadow: 0 0 0 #fff
+    &:hover
+      transform: translateY(0)
+      opacity: .5
+      box-shadow: 0 1px 2px #999
+    &.remove-btn
+      color: #fff
+      background-color: #999
+      border: 1px solid #999 
+  .mask-btn.to-index
+    position: absolute
+    bottom: 20px
+    right: 15px
+    z-index: 100

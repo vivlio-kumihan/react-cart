@@ -38,7 +38,15 @@ const Product = ({
       <div className="image_frame-info">
         <div className="image-frame">
           <img className="image" src={image} alt={name} />
+          {/* 詳細へのボタン */}
+          <button 
+            className="mask-btn details"
+            onClick={() => handleItemId(data.pid)}
+          >
+            詳細を見る
+          </button>
         </div>
+
         <div className="item-info">         
           <NameAndSetCount 
             name={name}
@@ -62,54 +70,44 @@ const Product = ({
           <div className="price">
             {price}
             <span>円</span>
-            &nbsp;|&nbsp;
+            <span className="delimit">&nbsp;|&nbsp;</span>
             <span>小計</span>
             {price * whichItemSumCalcCount()}
             <span>円</span>
           </div>
+
         </div>
       </div>
-      
-      <div className="btn-wrapper">
-        {/* 詳細へのボタン */}
-        <button 
-          className="mask-btn details"
-          onClick={() => handleItemId(data.pid)}
-        >
-          詳細を見る
-        </button>
-        
-        {/* 追加と削除のボタン */}
-        {cartItems.find((cartItem) => cartItem.pid === pid) ? (
-          <button
-            className="mask-btn remove-btn"
-            onClick={() => {
-              [name, types, colors].forEach(hash => {
-                Object.keys(hash).map((key) => {
-                  // ___リファクタリング___
-                  // 値をリセットする時に必要だが、よく理解できていない。
-                  hash[key] = 0
-                  setEachCount({...hash, [key]: 0})
-                  // ___リファクタリング___
-                })
+      {/* 追加と削除のボタン */}
+      {cartItems.find((cartItem) => cartItem.pid === pid) ? (
+        <button
+          className="mask-btn to-index remove-btn"
+          onClick={() => {
+            [name, types, colors].forEach(hash => {
+              Object.keys(hash).map((key) => {
+                // ___リファクタリング___
+                // 値をリセットする時に必要だが、よく理解できていない。
+                hash[key] = 0
+                setEachCount({...hash, [key]: 0})
+                // ___リファクタリング___
               })
-              onRemoveCart(data)
-            }}
-          >リストから削除</button>
-        ) : (
-          (nameCount || typesColorsCount)
-          ?
-            <button className="mask-btn" onClick={() => {
-              onAddCart(data)
-            }}
-            >リストに追加</button>
-          :
-            <button disabled={true} className="mask-btn disable" onClick={() => {
-              onAddCart(data)
-            }}
-            >リストに追加</button>
-        )}
-      </div>
+            })
+            onRemoveCart(data)
+          }}
+        >一覧から削除</button>
+      ) : (
+        (nameCount || typesColorsCount)
+        ?
+          <button className="mask-btn to-index" onClick={() => {
+            onAddCart(data)
+          }}
+          >一覧に追加</button>
+        :
+          <button disabled={true} className="mask-btn to-index disable" onClick={() => {
+            onAddCart(data)
+          }}
+          >一覧に追加</button>
+      )}
     </div>
   );
 };
