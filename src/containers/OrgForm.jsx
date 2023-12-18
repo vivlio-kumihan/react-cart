@@ -1,4 +1,3 @@
-
 import "../styles/containers/OrgForm.sass";
 
 // 最終的には、郵便番号の入力で住所を自動補完される機能を付ける。
@@ -25,34 +24,6 @@ const OrgForm = ({ inputFormInfo, setInputFormInfo, prefectureSelected }) => {
     setInputFormInfo(inputFormInfo => ({ ...inputFormInfo, note: e.target.value }));
   };
 
-  // const inputName = (e) => {
-  //   setInputFormInfo((prevInputFormInfo) => ({ ...prevInputFormInfo, name: e.target.value }));
-  // };
-  // const inputPostalCode = (e) => {
-  //   setInputFormInfo((prevInputFormInfo) => ({ ...prevInputFormInfo, postalCode: e.target.value }));
-  // };
-  // const inputAddress = (e) => {
-  //   setInputFormInfo((prevInputFormInfo) => ({ ...prevInputFormInfo, address: e.target.value }));
-  // };
-  // const inputEmail = (e) => {
-  //   setInputFormInfo((prevInputFormInfo) => ({ ...prevInputFormInfo, email: e.target.value }));
-  // };
-  // const inputTel = (e) => {
-  //   setInputFormInfo((prevInputFormInfo) => ({ ...prevInputFormInfo, tel: e.target.value }));
-  // };
-  // const inputNote = (e) => {
-  //   setInputFormInfo((prevInputFormInfo) => ({ ...prevInputFormInfo, note: e.target.value }));
-  // };
-
-  // const reset = () => {
-  //   setInputFormInfo(inputFormInfo => ({ ...inputFormInfo, name: "" }));
-  //   setInputFormInfo(inputFormInfo => ({ ...inputFormInfo, postalCode: "" }));
-  //   setInputFormInfo(inputFormInfo => ({ ...inputFormInfo, address: "" }));
-  //   setInputFormInfo(inputFormInfo => ({ ...inputFormInfo, email: "" }));
-  //   setInputFormInfo(inputFormInfo => ({ ...inputFormInfo, tel: "" }));
-  //   setInputFormInfo(inputFormInfo => ({ ...inputFormInfo, note: "" }));
-  //   console.log(inputFormInfo);
-  // };
   const reset = () => {
     setInputFormInfo({
       name: "",
@@ -63,7 +34,6 @@ const OrgForm = ({ inputFormInfo, setInputFormInfo, prefectureSelected }) => {
       note: "",
     });
   };
-  console.log(inputFormInfo);  
   
   return (
     <>

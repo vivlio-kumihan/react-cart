@@ -1,6 +1,7 @@
 import React, { useRef } from 'react';
 import emailjs from '@emailjs/browser';
 import "../styles/components/CartItem.sass";
+import "../styles/components/OrderResult.sass";
 import "../styles/containers/MailForm.sass";
 
 const MailForm = ({ 
@@ -108,12 +109,8 @@ const MailForm = ({
       <label>【備考】</label>
       <textarea name="note" readOnly value={`${note}`} />
       <button className='to-send-form' type="submit" value="メール申し込みを送信">メール申し込みを送信</button>
+      <div className="note">FAXでのお申込みができない方は、こちらをお選びください。ご記入いただいたメールアドレスにEメールが届きますので、撮影した郵便振込用紙を添付のうえご返信ください。<span>（※メールが届かない場合、迷惑メールフィルターなどご確認ください。）</span></div>
     </form>
-      
-      <p>FAXでのお申込みができない方は、<br />こちらをお選びください。</p>
-      <p>ご記入いただいたメールアドレスにEメールが届きますので、</p>
-      <p>撮影した郵便振込用紙を添付のうえ<br />ご返信ください。</p>
-      （※メールが届かない場合、迷惑メールフィルターなどごかくにんください。）
     </>
   );
 };

@@ -35,6 +35,7 @@ const OrderResult = ({
   };
   // Formのinput値のstate  
   const [inputFormInfo, setInputFormInfo] = useState(inputVal);  
+  
   // カートに商品が入っているか否か条件分岐で使う。
   const isEmpty = (arr) => arr.length < 1;
 
@@ -47,7 +48,7 @@ const OrderResult = ({
           <h3 className="toggle-print">授与品のご案内&nbsp;FAX申込用紙印刷</h3>
           <p>お申し込み社務所到着後、翌日の午前中に執り行います。</p>
           {isEmpty(cartItems) && (
-            <div className="default-msg">現在、登録された商品はありません。</div>
+            <div className="default-msg">現在、登録されたお守り・授与品はありません。</div>
           )}
 
           <div className="flex-wrapper">
@@ -186,7 +187,7 @@ const OrderResult = ({
                       <button className="to-print-btn">
                         FAX申込書を印刷する
                       </button>
-                      <p>申込み用紙の印刷ができない方は、<br />FAX申込み用紙の必要事項をご確認のうえ<br />他の紙に記載したものでも代用可能です。</p>
+                      <div className="note">申込み用紙の印刷ができない方は、FAX申込み用紙の必要事項をご確認のうえ他の紙に記載したものでも代用可能です。</div>
                     </div>
                   )}
                   pageStyle="@page {
