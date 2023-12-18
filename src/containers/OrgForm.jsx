@@ -3,7 +3,7 @@ import "../styles/containers/OrgForm.sass";
 // 最終的には、郵便番号の入力で住所を自動補完される機能を付ける。
 const OrgForm = ({ inputFormInfo, setInputFormInfo, prefectureSelected }) => {
   const inputName = (e) => {
-    setInputFormInfo(inputFormInfo => ({ ...inputFormInfo, name: e.target.value }));
+    setInputFormInfo(inputFormInfo => ({ ...inputFormInfo, senderName: e.target.value }));
   };
   const inputPostalCode = (e) => {
     setInputFormInfo(inputFormInfo => ({ ...inputFormInfo, postalCode: e.target.value }));
@@ -26,7 +26,7 @@ const OrgForm = ({ inputFormInfo, setInputFormInfo, prefectureSelected }) => {
 
   const reset = () => {
     setInputFormInfo({
-      name: "",
+      senderName: "",
       postalCode: "",
       address: "",
       email: "",
@@ -41,8 +41,8 @@ const OrgForm = ({ inputFormInfo, setInputFormInfo, prefectureSelected }) => {
       <div className="input-wrapper">
         <div className="note">※印は必須事項になります。</div>
         <div>
-          <label htmlFor="name" className="required"><span>お名前</span></label>
-          <input onChange={inputName} placeholder={inputFormInfo.name} value={inputFormInfo.name} id="name" type="text" />
+          <label htmlFor="senderName" className="required"><span>お名前</span></label>
+          <input onChange={inputName} placeholder={inputFormInfo.senderName} value={inputFormInfo.senderName} id="senderName" type="text" />
         </div>
         <div>
           <label htmlFor="postalCode" className="required"><span>郵便番号</span></label>
@@ -117,7 +117,7 @@ export default OrgForm;
 //   <ul className="inputed-contents">
 //     <li>
 //       <label htmlFor="name">【お名前】</label>
-//       <div className="output">{inputFormInfo.name}</div>
+//       <div className="output">{inputFormInfo.senderName}</div>
 //     </li>
 //     <li>
 //       <label htmlFor="name">【郵便番号】</label>

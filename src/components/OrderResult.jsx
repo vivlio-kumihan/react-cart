@@ -23,18 +23,61 @@ const OrderResult = ({
 
   const [prefectureSelected, setPrefectureSelected] = useState("");
 
-  // formの入力情報
+  // Formのinput属性値のstate  
   const inputVal = {
-      name: "", 
+      senderName: "", 
       postalCode: "", 
-      prefecture: "", 
       address: "",
       email: "", 
       tel: "", 
       note: "", 
   };
-  // Formのinput値のstate  
-  const [inputFormInfo, setInputFormInfo] = useState(inputVal);  
+  const [inputFormInfo, setInputFormInfo] = useState(inputVal); 
+
+  // エラーメッセージのstate
+  const [nameErrorMsg, setNameErrorMsg] = useState("");
+  const [postalCodeErrorMsg, setPostalCodeErrorMsg] = useState("");
+  const [addressErrorMsg, setAddressErrorMsg] = useState("");
+  const [emailErrorMsg, setEmailErrorMsg] = useState("");
+  const [telErrorMsg, setTelErrorMsg] = useState("");
+
+  const onSubmit = (e) => {
+    e.preventDefault();
+
+    setNameErrorMsg("");
+    setPostalCodeErrorMsg("");
+    setAddressErrorMsg("");
+    setEmailErrorMsg("");
+    setTelErrorMsg("");
+    
+    const formData = {
+      senderName,
+      postalCode,
+      address,
+      email,
+      tel,
+      note,
+    }
+    
+      // 条件
+      const emptyName = inputFormInfo.senderName === "";
+      const emptyPostalCode = inputFormInfo.postalCode === "";
+      const isNumPostalCode = !isNaN(parseInt(inputFormInfo.postalCode));
+      const isJustLenghtPostalCode = inputFormInfo.postalCode.length === 8;
+      const emptyAddress = inputFormInfo.address === "";
+      const emptyEmail = inputFormInfo.email === "";
+      const emptyTel = inputFormInfo.tel === "";
+      const isNumTel = !isNaN(parseInt(inputFormInfo.tel));
+      const isJustLenghtTel = inputFormInfo.tel.length === 10;
+    
+      emptyName && setNameErrorMsg("氏名を入力してください。");
+      if (emptyName) setNameErrorMsg("氏名を入力してください。");
+      console.log((emptyPostalCode || isNumPostalCode || isJustLenghtPostalCode) && setPostalCodeErrorMsg("郵便番号を8桁の数字で入力してください。"));
+      emptyAddress && setAddressErrorMsg("住所を入力してください。");
+      emptyEmail && setEmailErrorMsg("メールアドレスを入力してください。");
+      console.log((emptyTel || isNumTel ||isJustLenghtTel) && setTelErrorMsg("電話番号を10桁の数字で入力してください。"));
+  };
+
 
   // カートに商品が入っているか否か条件分岐で使う。
   const isEmpty = (arr) => arr.length < 1;
@@ -146,7 +189,7 @@ const OrderResult = ({
                   <dl>
                     <div>
                       <dt>お名前</dt>
-                      <dd>{inputFormInfo.name}</dd>
+                      <dd>{inputFormInfo.senderName}</dd>
                     </div>
                     <div>
                       <dt>郵便番号</dt>
@@ -214,3 +257,9 @@ const OrderResult = ({
 };
 
 export default OrderResult;
+
+// const [senderName, setSenderName] = useState("");
+// const [postalCode, setPostalCode] = useState("");
+// const [address, setAddress] = useState("");
+// const [email, setEmail] = useState("");
+// const [tel, setTel] = useState("");
