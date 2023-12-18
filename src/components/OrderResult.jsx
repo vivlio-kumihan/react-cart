@@ -35,7 +35,7 @@ const OrderResult = ({
   };
   // Formのinput値のstate  
   const [inputFormInfo, setInputFormInfo] = useState(inputVal);  
-  
+
   // カートに商品が入っているか否か条件分岐で使う。
   const isEmpty = (arr) => arr.length < 1;
 
@@ -155,9 +155,7 @@ const OrderResult = ({
                     <div>
                       <dt>ご住所</dt>
                       <dd>
-                        {inputFormInfo.prefecture}
-                        {inputFormInfo.address}
-                        {/* {inputFormInfo.town} */}
+                        {prefectureSelected}{inputFormInfo.address}
                       </dd>
                     </div>
                     <div>
