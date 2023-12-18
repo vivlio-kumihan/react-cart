@@ -2,7 +2,8 @@ import { useState } from "react";
 import "../styles/containers/OrgForm.sass";
 
 // 最終的には、郵便番号の入力で住所を自動補完される機能を付ける。
-const OrgForm = ({ 
+const OrgForm = ({
+  sendEmail,
   senderName,
   setSenderName,
   postalCode,
@@ -15,6 +16,8 @@ const OrgForm = ({
   setTel,
   note,
   setNote, 
+  privacyPolicy,
+  setPrivacyPolicy,
   prefectureSelected,
   setPrefectureSelected, 
 }) => {
@@ -24,10 +27,13 @@ const OrgForm = ({
   const [postalCodeErrorMsg, setPostalCodeErrorMsg] = useState("");
   const [addressErrorMsg, setAddressErrorMsg] = useState("");
   const [emailErrorMsg, setEmailErrorMsg] = useState("");
-  const [telErrorMsg, setTelErrorMsg] = useState("");  
+  const [telErrorMsg, setTelErrorMsg] = useState("");
+  const [privacyPolicyErrorMsg, setPrivacyPolicyErrorMsg] = useState("");
+  const [prefectureErrorMsg, setPrefectureErrorMsg] = useState("");
 
   // トリガー
   const onSubmit = (e) => {
+    console.log(e);
     e.preventDefault();
     // エラーメッセージの初期化
     setNameErrorMsg("");
@@ -35,6 +41,8 @@ const OrgForm = ({
     setAddressErrorMsg("");
     setEmailErrorMsg("");
     setTelErrorMsg("");
+    setPrefectureErrorMsg("");
+    setPrivacyPolicyErrorMsg("");
     
     const formData = {
       senderName,
@@ -43,24 +51,32 @@ const OrgForm = ({
       email,
       tel,
       note,
+      privacyPolicy,
+      prefectureSelected
     };
 
     // 条件
     const emptyName = senderName === "";
     const emptyPostalCode = postalCode === "";
-    const isJustLenghtPostalCode = postalCode.length !==  8;
-    const isNumPostalCode = !isNaN(parseInt(postalCode));
+    const isJustLenghtPostalCode = postalCode.length !==  7;
+    const isNumPostalCode = isNaN(parseInt(postalCode));
     const emptyAddress = address === "";
     const emptyEmail = email === "";
+    const notFormalityEmail = !email.match(/.+@.+\..+/);
+    const sampleEmail = email !== "sample@shiramine.com";
     const emptyTel = tel === "";
     const isJustLenghtTel = tel.length !== 10;
-    const isNumTel = !isNaN(parseInt(tel));
+    const isNumTel = isNaN(parseInt(tel));
+    const flagPrivacyPolicy = privacyPolicy === false;
+    const defaultNotePref = prefectureSelected === "" || "発送先の選択ボタンから都道府県を選択し、授与料合計を決定してください。";
   
     emptyName && setNameErrorMsg("氏名を入力してください。");
-    (emptyPostalCode || isNumPostalCode || isJustLenghtPostalCode) && setPostalCodeErrorMsg("郵便番号を8桁の数字で入力してください。");
+    (emptyPostalCode || isNumPostalCode || isJustLenghtPostalCode) && setPostalCodeErrorMsg("郵便番号を7桁の数字で入力してください。");
     emptyAddress && setAddressErrorMsg("住所を入力してください。");
-    emptyEmail && setEmailErrorMsg("メールアドレスを入力してください。");
+    (emptyEmail || notFormalityEmail || sampleEmail) && setEmailErrorMsg("メールアドレスを入力してください。");
     (emptyTel || isNumTel ||isJustLenghtTel) && setTelErrorMsg("電話番号を10桁の数字で入力してください。");
+    flagPrivacyPolicy && setPrivacyPolicyErrorMsg("プライバシー・ポリシーのチェックをご確認ください。");
+    defaultNotePref && setPrefectureErrorMsg("発送先の選択ボタンから都道府県を選択してください。")
 
     const enableSubmit = 
       !emptyName &&
@@ -71,9 +87,11 @@ const OrgForm = ({
       !emptyEmail &&
       !emptyTel &&
       !isJustLenghtTel &&
-      !isNumTel;
+      !isNumTel &&
+      !flagPrivacyPolicy;
 
     if (enableSubmit) {
+      // sendEmail();
       console.log("送信しました。");
       console.log(formData);
     }
@@ -85,13 +103,12 @@ const OrgForm = ({
   const inputPostalCode = (e) => {
     setPostalCode(e.target.value);
   };
-  // const inputPrefecture = (e) => {
-  //   setInputFormInfo(inputFormInfo => ({ ...inputFormInfo, prefecture: e.target.value }));
-  // };
   const inputAddress = (e) => {
     setAddress(e.target.value);
   };
   const inputEmail = (e) => {
+
+    console.log(setEmail(e.target.value));
     setEmail(e.target.value);
   };
   const inputTel = (e) => {
@@ -100,8 +117,11 @@ const OrgForm = ({
   const inputNote = (e) => {
     setNote(e.target.value);
   };
+  const inputPrivacyPolicy = () => {
+    setPrivacyPolicy(true);
+  };
 
-  const reset = () => {
+  const inputReset = () => {
     setSenderName("");
     setPostalCode("");
     setAddress("");
@@ -109,58 +129,88 @@ const OrgForm = ({
     setNote("");
     setPrefectureSelected("");
   };
-  
+
   return (
     <>
-    <div className="form">
+    <div className="form" onSubmit={onSubmit}>
       <div className="input-wrapper">
         <div className="note">※印は必須事項になります。</div>
         <div>
-          <label htmlFor="senderName" className="required"><span>お名前</span></label>
-          <input onChange={inputName} placeholder={senderName} value={senderName} id="senderName" type="text" />
+          <label htmlFor="senderName" className="required">
+            <span>お名前</span>
+            {nameErrorMsg && (
+              <div className="error-msg">{nameErrorMsg}</div>
+            )}
+          </label>
+          <input onChange={inputName} value={senderName} id="senderName" type="text" />
+        </div>
+        <div className="with-note-container">
+          <label htmlFor="postalCode" className="required">
+            <span>郵便番号</span>
+            <span className="note">※ハイフンを抜いた7桁の数字を入力してください。</span>
+            {postalCodeErrorMsg && (
+              <div className="error-msg">{postalCodeErrorMsg}</div>
+            )}           
+          </label>
+          <input onChange={inputPostalCode} value={postalCode} id="postalCode" type="text" />
         </div>
         <div>
-          <label htmlFor="postalCode" className="required"><span>郵便番号</span></label>
-          <input onChange={inputPostalCode} placeholder={postalCode} value={postalCode} id="postalCode" type="text" pattern="\d{3}-?\d{4}" />
-        </div>
-        <div>
-          <label htmlFor="prefecture">都道府県</label>
-          <div>{
+          <label htmlFor="prefectureSelected">都道府県</label>
+          {/* <input onChange={inputPrefecture} value={prefectureSelected} id="prefectureSelected" type="text" /> */}
+          {
             prefectureSelected 
-              ? prefectureSelected
-              : "発送先の選択ボタンから都道府県を選択し、授与料合計を決定してください。"
-          }</div>
-          {/* <input onChange={inputPrefecture} placeholder={inputFormInfo.prefecture} id="prefecture" type="text" /> */}
+              ?  <div>{prefectureSelected}</div>
+              :  <div className="notice">発送先の選択ボタンから都道府県を選択し、授与料合計を決定してください。</div>
+          }         
         </div>
         <div>
-          <label htmlFor="city" className="required"><span>ご住所</span></label>
-          <input onChange={inputAddress} placeholder={address} value={address} id="address" type="text" />
+          <label htmlFor="address" className="required">
+            <span>ご住所</span>
+            {addressErrorMsg && (
+              <div className="error-msg">{addressErrorMsg}</div>
+            )}          
+          </label>
+          <input onChange={inputAddress} value={address} id="address" type="text" />
         </div>
-        <div className="email-container">
+        <div className="with-note-container">
           <label htmlFor="email">
             <span>メールアドレス</span>
             <span className="note">※メールお申し込みの場合は必須になります。</span>
+            {emailErrorMsg && (
+              <div className="error-msg">{emailErrorMsg}</div>
+            )}            
           </label>
-          <input onChange={inputEmail} placeholder={email} value={email} id="email" type="email" />
+          <input onChange={inputEmail} value={email} id="email" type="email" />
         </div>
-        <div>
-          <label htmlFor="tel" className="required"><span>電話番号</span></label>
-          <input onChange={inputTel} placeholder={tel} value={tel} id="tel" type="text" pattern="\d{2,4}-?\d{2,4}-?\d{3,4}" />
+        <div className="with-note-container">
+          <label htmlFor="tel" className="required">
+            <span>電話番号</span>
+            <span className="note">※ハイフンを抜いた10桁の数字を入力してください。</span>
+            {telErrorMsg && (
+              <div className="error-msg">{telErrorMsg}</div>
+            )}                    
+          </label>
+          <input onChange={inputTel} value={tel} id="tel" type="text" />
         </div>
         <div>
           <label htmlFor="note">備考</label>
-          <textarea onChange={inputNote} placeholder={note} value={note} id="note" />
+          <textarea onChange={inputNote} value={note} id="note" />
         </div>
       </div> 
       <div className="privacy-policy">
         <p>必要事項をご記入のうえ、確認ボタンを押して確認後、送信してください。</p>
         <a className="privacy-policy-anchor" href=""><span>▶️</span>&nbsp;プライバシー・ポリシー</a>
         <div className="check-box">
-          <input type="checkbox" id="name" />
-          <label htmlFor="name">プライバシーポリシーに同意する</label>
+          <input onChange={inputPrivacyPolicy} type="checkbox" id="privacy-policy" />
+          <label htmlFor="privacy-policy">プライバシーポリシーに同意する</label>
+          {privacyPolicyErrorMsg && (
+            <div className="error-msg">{privacyPolicyErrorMsg}</div>
+          )}    
         </div>
       </div>
-      <button className="reset-btn" type="button" onClick={reset}>リセット</button>
+      <button className="input-confirm-btn" type="button" onClick={onSubmit}>確認</button>
+      {/* <button disabled={true} className="input-confirm-btn" type="button" onClick={onSubmit}>確認</button> */}
+      <button className="input-reset-btn" type="button" onClick={inputReset}>リセット</button>
     </div>
     </>
   );

@@ -1,4 +1,5 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
+import emailjs from '@emailjs/browser';
 import ReactToPrint from "react-to-print";
 import CartItem from "./CartItem";
 import OrgForm from "../containers/OrgForm";
@@ -22,14 +23,28 @@ const OrderResult = ({
   const componentRef = useRef(null); 
 
   const [prefectureSelected, setPrefectureSelected] = useState("");
-
+  
   // Formのinput属性値のstate  
   const [senderName, setSenderName] = useState(""); 
   const [postalCode, setPostalCode] = useState(""); 
   const [address, setAddress] = useState(""); 
   const [email, setEmail] = useState(""); 
   const [tel, setTel] = useState(""); 
-  const [note, setNote] = useState(""); 
+  const [note, setNote] = useState("");
+  const [privacyPolicy, setPrivacyPolicy] = useState(false)
+  // 
+
+  // メール送信のトリガー
+  const sendForm = useRef();
+  const sendEmail = (e) => {
+    e.preventDefault();
+    emailjs.sendForm('service_rnt4ier', 'template_dq4zyxs', sendForm.current, 'qFuS96-H2M1rD2BgC')
+      .then((result) => {
+          console.log(result.text);
+      }, (error) => {
+          console.log(error.text);
+      });
+  };  
 
   // カートに商品が入っているか否か条件分岐で使う。
   const isEmpty = (arr) => arr.length < 1;
@@ -56,6 +71,8 @@ const OrderResult = ({
                     setTotalSendFee={setTotalSendFee}
                     prefectureSelected={prefectureSelected}
                     setPrefectureSelected={setPrefectureSelected}
+                    // isButtonDisabled={isButtonDisabled}
+                    // prefToggle={prefToggle}
                   />
                 </li>
                 {/* <li>カートの重量合計<span>{reloadCartItems()[1]}</span>g</li> */}
@@ -87,6 +104,7 @@ const OrderResult = ({
 
             <div className="offer-contents">
               <OrgForm
+                sendEmail={sendEmail}
                 senderName={senderName}
                 setSenderName={setSenderName}
                 postalCode={postalCode}
@@ -99,6 +117,8 @@ const OrderResult = ({
                 setTel={setTel}
                 note={note}
                 setNote={setNote}
+                privacyPolicy={privacyPolicy}
+                setPrivacyPolicy={setPrivacyPolicy}
                 prefectureSelected={prefectureSelected}
                 setPrefectureSelected={setPrefectureSelected}
               />   
@@ -188,7 +208,9 @@ const OrderResult = ({
                 <ReactToPrint 
                   trigger={() => (
                     <div>
-                      <button className="to-print-btn">
+                      <button 
+                        className="to-print-btn"
+                      >
                         FAX申込書を印刷する
                       </button>
                       <div className="note">申込み用紙の印刷ができない方は、FAX申込み用紙の必要事項をご確認のうえ他の紙に記載したものでも代用可能です。</div>
@@ -207,6 +229,8 @@ const OrderResult = ({
                   totalSendFee={totalSendFee}
                   nameValueZero={nameValueZero}
                   hasItem={hasItem}
+                  sendEmail={sendEmail}
+                  sendForm={sendForm}
                   senderName={senderName}
                   postalCode={postalCode}
                   address={address}
@@ -231,3 +255,21 @@ export default OrderResult;
 // const [address, setAddress] = useState("");
 // const [email, setEmail] = useState("");
 // const [tel, setTel] = useState("");
+
+// const sendBottonToggle = () => {
+//   const toPrintBtn = document.querySelector(".to-print-btn");
+//   const toSendForm = document.querySelector(".to-send-form");
+//   toPrintBtn.classList.toggle("active");
+//   toSendForm.classList.toggle("active");
+// };
+// e.target.value === "---" && sendBottonToggle()
+
+
+// const [isButtonDisabled, setIsButtonDisabled] = useState(true);
+// const prefToggle = () => {
+//   setIsButtonDisabled(false);
+// };
+// useEffect(() => {
+//   prefToggle();
+// }, []); 
+// console.log(isButtonDisabled);

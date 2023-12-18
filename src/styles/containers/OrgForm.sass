@@ -18,8 +18,9 @@
       align-items: center
       gap: 1em
       + div
-        margin-top: 20px
+        margin-top: 30px
       label
+        position: relative
         width: 9rem
         font-size: 1rem
         text-align: left
@@ -39,6 +40,17 @@
               right: -.7rem
               content: "※"
               font-size: .5rem
+        .error-msg
+          position: absolute
+          top: 1.5rem
+          left: 7.25rem
+          width: 100%
+          font-size: .85rem
+          line-height: 1
+          white-space: nowrap
+          color: red
+          background-color: unset
+          border: unset
       input, textarea, div
         width: 100%
         padding: .5em 1em
@@ -50,13 +62,13 @@
         height: 10rem
       input::placeholder, textarea::placeholder
         color: #777-middle
-    .email-container
+    .with-note-container
       position: relative
       margin-top: 40px
-      label
+      > label
         > .note
           position: absolute
-          top: -1.25rem
+          top: -1.8rem
           left: 8rem
   .privacy-policy
     display: flex
@@ -81,6 +93,7 @@
       span
         font-size: .5rem
     .check-box
+      position: relative
       display: flex
       align-items: center
       margin: 0 auto
@@ -100,7 +113,13 @@
         border-right: 2px solid #000
         border-bottom: 2px solid #000
         content: ''
-  .reset-btn
+      .error-msg
+        +fw.positionAbsoluteCTL($left: true)
+        top: 1.5rem
+        white-space: nowrap
+        color: red
+          
+  .input-reset-btn
     +fw.positionAbsoluteCTL($left: true)
     bottom: -75px
     display: block
@@ -123,7 +142,8 @@
   @media print
     .input-wrapper
       display: none
-
+.notice
+  color: fw.$blue-deep
 // .output-wrapper
 //   display: none
 //   > ul.inputed-contents

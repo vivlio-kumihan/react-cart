@@ -6,6 +6,8 @@ const SendFee = ({
   setTotalSendFee,
   prefectureSelected,
   setPrefectureSelected,
+  // isButtonDisabled,
+  // prefToggle,
 }) => {
 
 	// 都道府県
@@ -99,12 +101,13 @@ const SendFee = ({
       <div className="location-selector">
         <div className="send-fee-selector">
           <p>発送先の選択</p>
-          <select 
+          <select
             value={prefectureSelected}
             onChange={(e) => {
               e.target.value === "---"
-                ? setPrefectureSelected("発送先の選択ボタンから都道府県を選対し、授与料合計を決定してください。")
+                ? setPrefectureSelected("発送先の選択ボタンから都道府県を選択し、授与料合計を決定してください。")
                 : setPrefectureSelected(e.target.value)
+              // e.target.value === "---" && prefToggle()
             }}
             name=""
             id=""

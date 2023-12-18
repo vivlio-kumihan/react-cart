@@ -1,5 +1,3 @@
-import React, { useRef } from 'react';
-import emailjs from '@emailjs/browser';
 import "../styles/components/CartItem.sass";
 import "../styles/components/OrderResult.sass";
 import "../styles/containers/MailForm.sass";
@@ -10,25 +8,16 @@ const MailForm = ({
   totalSendFee,
   nameValueZero,
   hasItem,
+  sendEmail,
+  sendForm,
   senderName,
   postalCode,
   address,
   email,
   tel,
   note,
-  prefectureSelected
+  prefectureSelected,
   }) => {
-  const form = useRef();
-
-  const sendEmail = (e) => {
-    e.preventDefault();
-    emailjs.sendForm('service_rnt4ier', 'template_dq4zyxs', form.current, 'qFuS96-H2M1rD2BgC')
-      .then((result) => {
-          console.log(result.text);
-      }, (error) => {
-          console.log(error.text);
-      });
-  };
 
   const itemContents = cartItems.map((item) => {
     // name, types, colorsそれぞれの注文数を出す関数
@@ -96,7 +85,7 @@ const MailForm = ({
   const userNote = note;
   return (
     <>
-    <form ref={form} onSubmit={sendEmail}>
+    <form ref={sendForm} onSubmit={sendEmail}>
       <textarea name="totalItemContents" readOnly value={`${totalItemContents}`} />
       <input type="text" name="subTotalFee" readOnly value={`${reloadCartItems()[0]}円`} />
       <input type="text" name="totalSendFee" readOnly value={`${totalSendFee}円`} />
@@ -110,10 +99,17 @@ const MailForm = ({
       <label>【住所】</label>
       <input type="text" name="userAddress" readOnly value={`${userAddress}`} />
       <label>【電話】</label>
-      <input type="tel" name="tel" readOnly value={`${tel}`} />
+      <input type="tel" name="userTel" readOnly value={`${userTel}`} />
       <label>【備考】</label>
-      <textarea name="note" readOnly value={`${note}`} />
-      <button className='to-send-form' type="submit" value="メール申し込みを送信">メール申し込みを送信</button>
+      <textarea name="userNote" readOnly value={`${userNote}`} />
+      <button
+        // disabled
+        className='to-send-form' 
+        type="submit" 
+        value="メール申し込みを送信"
+      >
+        メール申し込みを送信
+      </button>
       <div className="note">FAXでのお申込みができない方は、こちらをお選びください。ご記入いただいたメールアドレスにEメールが届きますので、撮影した郵便振込用紙を添付のうえご返信ください。<span>（※メールが届かない場合、迷惑メールフィルターなどご確認ください。）</span></div>
     </form>
     </>
