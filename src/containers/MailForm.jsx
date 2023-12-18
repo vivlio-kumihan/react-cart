@@ -8,9 +8,14 @@ const MailForm = ({
   cartItems,
   reloadCartItems,
   totalSendFee,
-  inputFormInfo,
   nameValueZero,
   hasItem,
+  senderName,
+  postalCode,
+  address,
+  email,
+  tel,
+  note,
   prefectureSelected
   }) => {
   const form = useRef();
@@ -83,12 +88,12 @@ const MailForm = ({
   const totalItemContents = itemContents.join("\n\n");
   const cartTotalFee = reloadCartItems()[0];
   const grandTotalFee = cartTotalFee + totalSendFee;
-  const userName = inputFormInfo.senderName;
-  const userEmail = inputFormInfo.email;
-  const postalCode = inputFormInfo.postalCode;
-  const address = prefectureSelected + inputFormInfo.address;
-  const tel =inputFormInfo.tel;
-  const note = inputFormInfo.note;
+  const userName = senderName;
+  const userEmail = email;
+  const userPostalCode = postalCode;
+  const userAddress = prefectureSelected + address;
+  const userTel = tel;
+  const userNote = note;
   return (
     <>
     <form ref={form} onSubmit={sendEmail}>
@@ -101,9 +106,9 @@ const MailForm = ({
       <label>【Email】</label>
       <input type="email" name="userEmail" readOnly value={`${userEmail}`} />
       <label>【郵便番号】</label>
-      <input type="text" name="postalCode" readOnly value={`${postalCode}`} />
+      <input type="text" name="userPostalCode" readOnly value={`${userPostalCode}`} />
       <label>【住所】</label>
-      <input type="text" name="address" readOnly value={`${address}`} />
+      <input type="text" name="userAddress" readOnly value={`${userAddress}`} />
       <label>【電話】</label>
       <input type="tel" name="tel" readOnly value={`${tel}`} />
       <label>【備考】</label>

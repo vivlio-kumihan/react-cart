@@ -24,60 +24,12 @@ const OrderResult = ({
   const [prefectureSelected, setPrefectureSelected] = useState("");
 
   // Formのinput属性値のstate  
-  const inputVal = {
-      senderName: "", 
-      postalCode: "", 
-      address: "",
-      email: "", 
-      tel: "", 
-      note: "", 
-  };
-  const [inputFormInfo, setInputFormInfo] = useState(inputVal); 
-
-  // エラーメッセージのstate
-  const [nameErrorMsg, setNameErrorMsg] = useState("");
-  const [postalCodeErrorMsg, setPostalCodeErrorMsg] = useState("");
-  const [addressErrorMsg, setAddressErrorMsg] = useState("");
-  const [emailErrorMsg, setEmailErrorMsg] = useState("");
-  const [telErrorMsg, setTelErrorMsg] = useState("");
-
-  const onSubmit = (e) => {
-    e.preventDefault();
-
-    setNameErrorMsg("");
-    setPostalCodeErrorMsg("");
-    setAddressErrorMsg("");
-    setEmailErrorMsg("");
-    setTelErrorMsg("");
-    
-    const formData = {
-      senderName,
-      postalCode,
-      address,
-      email,
-      tel,
-      note,
-    }
-    
-      // 条件
-      const emptyName = inputFormInfo.senderName === "";
-      const emptyPostalCode = inputFormInfo.postalCode === "";
-      const isNumPostalCode = !isNaN(parseInt(inputFormInfo.postalCode));
-      const isJustLenghtPostalCode = inputFormInfo.postalCode.length === 8;
-      const emptyAddress = inputFormInfo.address === "";
-      const emptyEmail = inputFormInfo.email === "";
-      const emptyTel = inputFormInfo.tel === "";
-      const isNumTel = !isNaN(parseInt(inputFormInfo.tel));
-      const isJustLenghtTel = inputFormInfo.tel.length === 10;
-    
-      emptyName && setNameErrorMsg("氏名を入力してください。");
-      if (emptyName) setNameErrorMsg("氏名を入力してください。");
-      console.log((emptyPostalCode || isNumPostalCode || isJustLenghtPostalCode) && setPostalCodeErrorMsg("郵便番号を8桁の数字で入力してください。"));
-      emptyAddress && setAddressErrorMsg("住所を入力してください。");
-      emptyEmail && setEmailErrorMsg("メールアドレスを入力してください。");
-      console.log((emptyTel || isNumTel ||isJustLenghtTel) && setTelErrorMsg("電話番号を10桁の数字で入力してください。"));
-  };
-
+  const [senderName, setSenderName] = useState(""); 
+  const [postalCode, setPostalCode] = useState(""); 
+  const [address, setAddress] = useState(""); 
+  const [email, setEmail] = useState(""); 
+  const [tel, setTel] = useState(""); 
+  const [note, setNote] = useState(""); 
 
   // カートに商品が入っているか否か条件分岐で使う。
   const isEmpty = (arr) => arr.length < 1;
@@ -135,9 +87,20 @@ const OrderResult = ({
 
             <div className="offer-contents">
               <OrgForm
-                inputFormInfo={inputFormInfo}
-                setInputFormInfo={setInputFormInfo}
+                senderName={senderName}
+                setSenderName={setSenderName}
+                postalCode={postalCode}
+                setPostalCode={setPostalCode}
+                address={address}
+                setAddress={setAddress}
+                email={email}
+                setEmail={setEmail}
+                tel={tel}
+                setTel={setTel}
+                note={note}
+                setNote={setNote}
                 prefectureSelected={prefectureSelected}
+                setPrefectureSelected={setPrefectureSelected}
               />   
 
               {/* ___リファクタリング start___ */}
@@ -189,29 +152,29 @@ const OrderResult = ({
                   <dl>
                     <div>
                       <dt>お名前</dt>
-                      <dd>{inputFormInfo.senderName}</dd>
+                      <dd>{senderName}</dd>
                     </div>
                     <div>
                       <dt>郵便番号</dt>
-                      <dd>{inputFormInfo.postalCode}</dd>
+                      <dd>{postalCode}</dd>
                     </div>
                     <div>
                       <dt>ご住所</dt>
                       <dd>
-                        {prefectureSelected}{inputFormInfo.address}
+                        {prefectureSelected}{address}
                       </dd>
                     </div>
                     <div>
                       <dt>E-mail</dt>
-                      <dd>{inputFormInfo.email}</dd>
+                      <dd>{email}</dd>
                     </div>
                     <div>
                       <dt>電話番号</dt>
-                      <dd>{inputFormInfo.tel}</dd>
+                      <dd>{tel}</dd>
                     </div>
                     <div>
                       <dt>備考</dt>
-                      <dd>{inputFormInfo.note}</dd>
+                      <dd>{note}</dd>
                     </div>
                   </dl>
                 </div>
@@ -244,7 +207,12 @@ const OrderResult = ({
                   totalSendFee={totalSendFee}
                   nameValueZero={nameValueZero}
                   hasItem={hasItem}
-                  inputFormInfo={inputFormInfo}
+                  senderName={senderName}
+                  postalCode={postalCode}
+                  address={address}
+                  email={email}
+                  tel={tel}
+                  note={note}
                   prefectureSelected={prefectureSelected}
                 />             
               </div>
