@@ -206,11 +206,9 @@ const OrderResult = ({
 
               <div className="send-buttons">
                 <ReactToPrint 
-                  trigger={() => (
+                  trigger={(
                     <div>
-                      <button 
-                        className="to-print-btn"
-                      >
+                      <button className="to-print-btn">
                         FAX申込書を印刷する
                       </button>
                       <div className="note">申込み用紙の印刷ができない方は、FAX申込み用紙の必要事項をご確認のうえ他の紙に記載したものでも代用可能です。</div>
