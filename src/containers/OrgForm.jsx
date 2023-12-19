@@ -4,7 +4,7 @@ import "../styles/containers/OrgForm.sass";
 // 最終的には、郵便番号の入力で住所を自動補完される機能を付ける。
 const OrgForm = ({
   sendEmail,
-  onHandlePrint,
+  handlePrint,
   senderName,
   setSenderName,
   postalCode,
@@ -39,6 +39,7 @@ const OrgForm = ({
   const isNumPostalCode = isNaN(parseInt(postalCode));
   const emptyAddress = address === "";
   const emptyEmail = email === "";
+  const notFormalityEmail = !email.match(/.+@.+\..+/);
   const emptyTel = tel === "";
   const isJustLenghtTel = tel.length !== 10;
   const isNumTel = isNaN(parseInt(tel));
@@ -87,8 +88,7 @@ const OrgForm = ({
       !flagPrivacyPolicy;
 
     if (enableSubmit) {
-      // ここに関数を置く
-      // onHandlePrint();
+      handlePrint();
       console.log("fax");
       console.log(formData);
     }
@@ -155,7 +155,6 @@ const OrgForm = ({
     setAddress(e.target.value);
   };
   const inputEmail = (e) => {
-    console.log(setEmail(e.target.value));
     setEmail(e.target.value);
   };
   const inputTel = (e) => {

@@ -20,13 +20,6 @@ const OrderResult = ({
   reloadCartItems,
   }) => {
 
-  const componentRef = useRef(null); 
-  const handlePrint = () => {
-
-  };
-  
-  const [prefectureSelected, setPrefectureSelected] = useState("");
-  
   // Formのinput属性値のstate  
   const [senderName, setSenderName] = useState(""); 
   const [postalCode, setPostalCode] = useState(""); 
@@ -35,12 +28,19 @@ const OrderResult = ({
   const [tel, setTel] = useState(""); 
   const [note, setNote] = useState("");
   const [privacyPolicy, setPrivacyPolicy] = useState(false)
-  
+  const [prefectureSelected, setPrefectureSelected] = useState("");
 
+  // 印刷のトリガー
+  const componentRef = useRef(null); 
+  const handlePrint = () => {
+  };
+  
   // メール送信のトリガー
   const sendForm = useRef();
-  const sendEmail = (e) => {
-    e.preventDefault();
+  // このファイル内でクリックイベントに対応する場合、preventDefault()が必要みたい。
+  // const sendEmail = (e) => {
+  //   e.preventDefault();
+  const sendEmail = () => {
     emailjs.sendForm('service_rnt4ier', 'template_dq4zyxs', sendForm.current, 'qFuS96-H2M1rD2BgC')
       .then((result) => {
           console.log(result.text);
@@ -105,7 +105,7 @@ const OrderResult = ({
             <div className="offer-contents">
               <OrgForm
                 sendEmail={sendEmail}
-                onHandlePrint={onHandlePrint}
+                handlePrint={handlePrint}
                 senderName={senderName}
                 setSenderName={setSenderName}
                 postalCode={postalCode}
@@ -204,10 +204,6 @@ const OrderResult = ({
                 </div>
               </div>
               {/* ___リファクタリング end___ */}
-
-              <button onClick={handlePrint}>
-                ここをクリックしたら実行させたい。
-              </button>
 
               <div className="send-buttons">
                 <ReactToPrint
