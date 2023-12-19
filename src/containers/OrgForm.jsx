@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useState } from "react";
 import "../styles/containers/OrgForm.sass";
 
 // 最終的には、郵便番号の入力で住所を自動補完される機能を付ける。
@@ -256,7 +256,6 @@ const OrgForm = ({
       </div>
       <button className="input-confirm-btn" type="button" onClick={onSubmitPrint}>FAX</button>
       <button className="input-confirm-btn" type="button" onClick={onSubmitEmail}>メール</button>
-      {/* <button disabled={true} className="input-confirm-btn" type="button" onClick={onSubmit}>確認</button> */}
       <button className="input-reset-btn" type="button" onClick={inputReset}>リセット</button>
     </div>
     </>

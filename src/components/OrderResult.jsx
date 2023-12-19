@@ -1,6 +1,7 @@
 import { useState, useRef } from "react";
 import emailjs from '@emailjs/browser';
 import ReactToPrint from "react-to-print";
+import { useReactToPrint } from 'react-to-print';
 import CartItem from "./CartItem";
 import OrgForm from "../containers/OrgForm";
 import MailForm from "../containers/MailForm";
@@ -32,8 +33,9 @@ const OrderResult = ({
 
   // 印刷のトリガー
   const componentRef = useRef(null); 
-  const handlePrint = () => {
-  };
+  const handlePrint = useReactToPrint({
+    content: () => componentRef.current,
+  });
   
   // メール送信のトリガー
   const sendForm = useRef();
