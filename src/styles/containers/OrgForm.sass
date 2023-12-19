@@ -118,13 +118,22 @@
         top: 1.5rem
         white-space: nowrap
         color: red
-          
-  .input-reset-btn
-    +fw.positionAbsoluteCTL($left: true)
-    bottom: -75px
-    display: block
-    width: fit-content
-    padding: 11px 70px
+  .send-buttons
+    display: flex
+    justify-content: space-between
+    gap: 30px
+    .send-btn
+      width: 100%
+      .note
+        margin-top: 10px
+        font-size: 0.95rem
+        line-height: 1.5em
+        text-align: justify
+  .input-reset-btn, .input-print-btn, .input-mail-btn
+    display: grid
+    place-content: center
+    width: 100%
+    padding: 11px 0
     font-family: fw.$noto-rm
     font-size: 1.1rem
     font-weight: 500
@@ -132,11 +141,19 @@
     color: #333
     background-color: #fff
     border: 1px solid #333
+    transform: translateY(2px)
     transition: .3s
+    &.input-reset-btn
+      width: 50%
+      margin: 30px auto 0
     &:hover
+      color: #fff
+      background-color: #999
+      border: 1px solid #999
       box-shadow: 0 2px 5px #999
-      bottom: -72px
-      opacity: .5    
+      transform: translateY(0)
+      opacity: .5  
+
 // form.org-form
 .form
   @media print

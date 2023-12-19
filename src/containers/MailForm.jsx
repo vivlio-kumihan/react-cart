@@ -102,15 +102,14 @@ const MailForm = ({
       <input type="tel" name="userTel" readOnly value={`${userTel}`} />
       <label>【備考】</label>
       <textarea name="userNote" readOnly value={`${userNote}`} />
-      <button
-        // disabled
+      {/* <button
         className='to-send-form' 
         type="submit" 
         value="メール申し込みを送信"
       >
         メール申し込みを送信
       </button>
-      <div className="note">FAXでのお申込みができない方は、こちらをお選びください。ご記入いただいたメールアドレスにEメールが届きますので、撮影した郵便振込用紙を添付のうえご返信ください。<span>（※メールが届かない場合、迷惑メールフィルターなどご確認ください。）</span></div>
+      <div className="note">FAXでのお申込みができない方は、こちらをお選びください。ご記入いただいたメールアドレスにEメールが届きますので、撮影した郵便振込用紙を添付のうえご返信ください。<span>（※メールが届かない場合、迷惑メールフィルターなどご確認ください。）</span></div> */}
     </form>
     </>
   );
