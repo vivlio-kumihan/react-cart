@@ -1,11 +1,10 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import "../styles/containers/OrgForm.sass";
 
 // 最終的には、郵便番号の入力で住所を自動補完される機能を付ける。
 const OrgForm = ({
   sendEmail,
-  renderPrintButton,
-  contentFunc,
+  onHandlePrint,
   senderName,
   setSenderName,
   postalCode,
@@ -33,8 +32,21 @@ const OrgForm = ({
   const [privacyPolicyErrorMsg, setPrivacyPolicyErrorMsg] = useState("");
   const [prefectureErrorMsg, setPrefectureErrorMsg] = useState("");
 
-  // トリガー
-  const onSubmitFax = (e) => {
+  // 条件
+  const emptyName = senderName === "";
+  const emptyPostalCode = postalCode === "";
+  const isJustLenghtPostalCode = postalCode.length !==  7;
+  const isNumPostalCode = isNaN(parseInt(postalCode));
+  const emptyAddress = address === "";
+  const emptyEmail = email === "";
+  const emptyTel = tel === "";
+  const isJustLenghtTel = tel.length !== 10;
+  const isNumTel = isNaN(parseInt(tel));
+  const flagPrivacyPolicy = privacyPolicy === false;
+  const defaultNotePref = prefectureSelected === "" || "発送先の選択ボタンから都道府県を選択し、授与料合計を決定してください。";
+
+  // FAX
+  const onSubmitPrint = (e) => {
     e.preventDefault();
     // エラーメッセージの初期化
     setNameErrorMsg("");
@@ -56,25 +68,9 @@ const OrgForm = ({
       prefectureSelected
     };
 
-    // 条件
-    const emptyName = senderName === "";
-    const emptyPostalCode = postalCode === "";
-    const isJustLenghtPostalCode = postalCode.length !==  7;
-    const isNumPostalCode = isNaN(parseInt(postalCode));
-    const emptyAddress = address === "";
-    const emptyEmail = email === "";
-    const notFormalityEmail = !email.match(/.+@.+\..+/);
-    const sampleEmail = email !== "sample@shiramine.com";
-    const emptyTel = tel === "";
-    const isJustLenghtTel = tel.length !== 10;
-    const isNumTel = isNaN(parseInt(tel));
-    const flagPrivacyPolicy = privacyPolicy === false;
-    const defaultNotePref = prefectureSelected === "" || "発送先の選択ボタンから都道府県を選択し、授与料合計を決定してください。";
-  
     emptyName && setNameErrorMsg("氏名を入力してください。");
     (emptyPostalCode || isNumPostalCode || isJustLenghtPostalCode) && setPostalCodeErrorMsg("郵便番号を7桁の数字で入力してください。");
     emptyAddress && setAddressErrorMsg("住所を入力してください。");
-    // (emptyEmail || notFormalityEmail || sampleEmail) && setEmailErrorMsg("メールアドレスを入力してください。");
     (emptyTel || isNumTel ||isJustLenghtTel) && setTelErrorMsg("電話番号を10桁の数字で入力してください。");
     flagPrivacyPolicy && setPrivacyPolicyErrorMsg("プライバシー・ポリシーのチェックをご確認ください。");
     defaultNotePref && setPrefectureErrorMsg("発送先の選択ボタンから都道府県を選択してください。")
@@ -85,21 +81,21 @@ const OrgForm = ({
       !isJustLenghtPostalCode &&
       !isNumPostalCode &&
       !emptyAddress &&
-      // !emptyEmail &&
       !emptyTel &&
       !isJustLenghtTel &&
       !isNumTel &&
       !flagPrivacyPolicy;
 
     if (enableSubmit) {
-      renderPrintButton();
-      contentFunc();
+      // ここに関数を置く
+      // onHandlePrint();
       console.log("fax");
       console.log(formData);
     }
   };  
 
-  const onSubmit = (e) => {
+  // メール
+  const onSubmitEmail = (e) => {
     e.preventDefault();
     // エラーメッセージの初期化
     setNameErrorMsg("");
@@ -121,25 +117,10 @@ const OrgForm = ({
       prefectureSelected
     };
 
-    // 条件
-    const emptyName = senderName === "";
-    const emptyPostalCode = postalCode === "";
-    const isJustLenghtPostalCode = postalCode.length !==  7;
-    const isNumPostalCode = isNaN(parseInt(postalCode));
-    const emptyAddress = address === "";
-    const emptyEmail = email === "";
-    const notFormalityEmail = !email.match(/.+@.+\..+/);
-    const sampleEmail = email !== "sample@shiramine.com";
-    const emptyTel = tel === "";
-    const isJustLenghtTel = tel.length !== 10;
-    const isNumTel = isNaN(parseInt(tel));
-    const flagPrivacyPolicy = privacyPolicy === false;
-    const defaultNotePref = prefectureSelected === "" || "発送先の選択ボタンから都道府県を選択し、授与料合計を決定してください。";
-  
     emptyName && setNameErrorMsg("氏名を入力してください。");
     (emptyPostalCode || isNumPostalCode || isJustLenghtPostalCode) && setPostalCodeErrorMsg("郵便番号を7桁の数字で入力してください。");
     emptyAddress && setAddressErrorMsg("住所を入力してください。");
-    (emptyEmail || notFormalityEmail || sampleEmail) && setEmailErrorMsg("メールアドレスを入力してください。");
+    (emptyEmail || notFormalityEmail) && setEmailErrorMsg("メールアドレスを入力してください。");
     (emptyTel || isNumTel ||isJustLenghtTel) && setTelErrorMsg("電話番号を10桁の数字で入力してください。");
     flagPrivacyPolicy && setPrivacyPolicyErrorMsg("プライバシー・ポリシーのチェックをご確認ください。");
     defaultNotePref && setPrefectureErrorMsg("発送先の選択ボタンから都道府県を選択してください。")
@@ -198,7 +179,7 @@ const OrgForm = ({
 
   return (
     <>
-    <div className="form" onSubmit={onSubmit}>
+    <div className="form" onSubmit={onSubmitEmail}>
       <div className="input-wrapper">
         <div className="note">※印は必須事項になります。</div>
         <div>
@@ -274,8 +255,8 @@ const OrgForm = ({
           )}    
         </div>
       </div>
-      <button className="input-confirm-btn" type="button" onClick={onSubmitFax}>FAX</button>
-      <button className="input-confirm-btn" type="button" onClick={onSubmit}>メール</button>
+      <button className="input-confirm-btn" type="button" onClick={onSubmitPrint}>FAX</button>
+      <button className="input-confirm-btn" type="button" onClick={onSubmitEmail}>メール</button>
       {/* <button disabled={true} className="input-confirm-btn" type="button" onClick={onSubmit}>確認</button> */}
       <button className="input-reset-btn" type="button" onClick={inputReset}>リセット</button>
     </div>

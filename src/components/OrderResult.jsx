@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef } from "react";
 import emailjs from '@emailjs/browser';
 import ReactToPrint from "react-to-print";
 import CartItem from "./CartItem";
@@ -21,7 +21,10 @@ const OrderResult = ({
   }) => {
 
   const componentRef = useRef(null); 
+  const handlePrint = () => {
 
+  };
+  
   const [prefectureSelected, setPrefectureSelected] = useState("");
   
   // Formのinput属性値のstate  
@@ -32,7 +35,7 @@ const OrderResult = ({
   const [tel, setTel] = useState(""); 
   const [note, setNote] = useState("");
   const [privacyPolicy, setPrivacyPolicy] = useState(false)
-  // 
+  
 
   // メール送信のトリガー
   const sendForm = useRef();
@@ -60,7 +63,6 @@ const OrderResult = ({
           {isEmpty(cartItems) && (
             <div className="default-msg">現在、登録されたお守り・授与品はありません。</div>
           )}
-
           <div className="flex-wrapper">
             <div className="calc-result">
               <ul className="calc-amount">
@@ -71,8 +73,6 @@ const OrderResult = ({
                     setTotalSendFee={setTotalSendFee}
                     prefectureSelected={prefectureSelected}
                     setPrefectureSelected={setPrefectureSelected}
-                    // isButtonDisabled={isButtonDisabled}
-                    // prefToggle={prefToggle}
                   />
                 </li>
                 {/* <li>カートの重量合計<span>{reloadCartItems()[1]}</span>g</li> */}
@@ -105,6 +105,7 @@ const OrderResult = ({
             <div className="offer-contents">
               <OrgForm
                 sendEmail={sendEmail}
+                onHandlePrint={onHandlePrint}
                 senderName={senderName}
                 setSenderName={setSenderName}
                 postalCode={postalCode}
@@ -204,20 +205,21 @@ const OrderResult = ({
               </div>
               {/* ___リファクタリング end___ */}
 
+              <button onClick={handlePrint}>
+                ここをクリックしたら実行させたい。
+              </button>
+
               <div className="send-buttons">
-                <ReactToPrint 
-                  trigger={(
+                <ReactToPrint
+                  trigger={() => (
                     <div>
-                      <button className="to-print-btn">
+                      <button　className="to-print-btn">
                         FAX申込書を印刷する
                       </button>
                       <div className="note">申込み用紙の印刷ができない方は、FAX申込み用紙の必要事項をご確認のうえ他の紙に記載したものでも代用可能です。</div>
                     </div>
                   )}
-                  pageStyle="@page {
-                    size: A4 portrait;
-                    margin: 0;
-                    }"
+                  pageStyle="@page { size: A4 portrait; margin: 0; }"
                   content={() => componentRef.current}
                 />
 
@@ -247,27 +249,3 @@ const OrderResult = ({
 };
 
 export default OrderResult;
-
-// const [senderName, setSenderName] = useState("");
-// const [postalCode, setPostalCode] = useState("");
-// const [address, setAddress] = useState("");
-// const [email, setEmail] = useState("");
-// const [tel, setTel] = useState("");
-
-// const sendBottonToggle = () => {
-//   const toPrintBtn = document.querySelector(".to-print-btn");
-//   const toSendForm = document.querySelector(".to-send-form");
-//   toPrintBtn.classList.toggle("active");
-//   toSendForm.classList.toggle("active");
-// };
-// e.target.value === "---" && sendBottonToggle()
-
-
-// const [isButtonDisabled, setIsButtonDisabled] = useState(true);
-// const prefToggle = () => {
-//   setIsButtonDisabled(false);
-// };
-// useEffect(() => {
-//   prefToggle();
-// }, []); 
-// console.log(isButtonDisabled);
