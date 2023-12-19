@@ -51,7 +51,7 @@
           color: red
           background-color: unset
           border: unset
-      input, textarea, div
+      input, textarea, div, select
         width: 100%
         padding: .5em 1em
         line-height: 1.5
@@ -154,13 +154,25 @@
       transform: translateY(0)
       opacity: .5  
 
+.notice
+  color: fw.$blue-deep
+
 // form.org-form
 .form
   @media print
     .input-wrapper
       display: none
-.notice
-  color: fw.$blue-deep
+
+.form
+  @media print
+    .privacy-policy.non-print
+      display: none
+    .send-buttons.non-print
+      display: none
+    .input-reset-btn.non-print
+      display: none
+
+
 // .output-wrapper
 //   display: none
 //   > ul.inputed-contents

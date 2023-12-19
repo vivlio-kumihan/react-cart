@@ -5,25 +5,7 @@ const SendFee = ({
   totalWeight, 
   setTotalSendFee,
   prefectureSelected,
-  setPrefectureSelected,
-  // isButtonDisabled,
-  // prefToggle,
 }) => {
-
-	// 都道府県
-	const LOCATION = [
-    "---",
-    "北海道",
-    "青森県", "岩手県", "宮城県", "秋田県", "山形県", "福島県",
-    "東京都", "茨城県",	"神奈川県", "栃木県", "千葉県", "群馬県", "山梨県", "埼玉県",
-    "新潟県", "長野県", "富山県", "石川県", "福井県",
-    "静岡県", "岐阜県", "愛知県", "三重県",
-    "滋賀県", "京都府", "兵庫県", "大阪府", "奈良県", "和歌山県",
-    "鳥取県", "島根県", "岡山県", "広島県", "山口県",
-    "香川県", "愛媛県", "徳島県", "高知県",
-    "福岡県", "佐賀県", "長崎県", "熊本県", "大分県", "宮崎県", "鹿児島県",
-    "沖縄県",
-	];
 
 	// 方面
 	const AREA = {
@@ -99,31 +81,6 @@ const SendFee = ({
   return (
     <>
       <div className="location-selector">
-        <div className="send-fee-selector">
-          <p>発送先の選択</p>
-          <select
-            value={prefectureSelected}
-            onChange={(e) => {
-              e.target.value === "---"
-                ? setPrefectureSelected("発送先の選択ボタンから都道府県を選択し、授与料合計を決定してください。")
-                : setPrefectureSelected(e.target.value)
-              // e.target.value === "---" && prefToggle()
-            }}
-            name=""
-            id=""
-          >
-          {
-            LOCATION.map(location => (
-              <option 
-                key={location} 
-                value={location}
-              >
-                {location}
-              </option>
-            ))
-          }
-          </select>
-        </div>
         {
           sendFee
             ? <div className="send-fee">郵送料<span className="send-fee-note">（口座徴収通知料を含む）</span><span>{sendFee}</span>円</div>
@@ -133,5 +90,56 @@ const SendFee = ({
     </>
   );
 };
-	
+
 export default SendFee;
+
+// // 都道府県
+// const LOCATION = [
+//   "---",
+//   "北海道",
+//   "青森県", "岩手県", "宮城県", "秋田県", "山形県", "福島県",
+//   "東京都", "茨城県",	"神奈川県", "栃木県", "千葉県", "群馬県", "山梨県", "埼玉県",
+//   "新潟県", "長野県", "富山県", "石川県", "福井県",
+//   "静岡県", "岐阜県", "愛知県", "三重県",
+//   "滋賀県", "京都府", "兵庫県", "大阪府", "奈良県", "和歌山県",
+//   "鳥取県", "島根県", "岡山県", "広島県", "山口県",
+//   "香川県", "愛媛県", "徳島県", "高知県",
+//   "福岡県", "佐賀県", "長崎県", "熊本県", "大分県", "宮崎県", "鹿児島県",
+//   "沖縄県",
+// ];
+
+// return (
+//   <>
+//     <div className="location-selector">
+//       <div className="send-fee-selector">
+//         <p>発送先</p>
+//         <select
+//           value={prefectureSelected}
+//           onChange={(e) => {
+//             e.target.value === "---"
+//               ? setPrefectureSelected("発送先の選択ボタンから都道府県を選択し、授与料合計を決定してください。")
+//               : setPrefectureSelected(e.target.value)
+//           }}
+//           name=""
+//           id=""
+//         >
+//         {
+//           LOCATION.map(location => (
+//             <option 
+//               key={location} 
+//               value={location}
+//             >
+//               {location}
+//             </option>
+//           ))
+//         }
+//         </select>
+//       </div>
+//       {
+//         sendFee
+//           ? <div className="send-fee">郵送料<span className="send-fee-note">（口座徴収通知料を含む）</span><span>{sendFee}</span>円</div>
+//           : <div className="send-fee">郵送料<span className="send-fee-note">（口座徴収通知料を含む）</span><span>0</span>円</div>
+//       }
+//     </div>
+//   </>
+// );

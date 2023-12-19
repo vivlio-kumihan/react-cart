@@ -60,7 +60,7 @@ const OrderResult = ({
         {/* プリントアウト共用部 */}
         <div className="component-ref" ref={componentRef}>
           <h3 className="toggle-web">お求め一覧</h3>
-          <h3 className="toggle-print">授与品のご案内&nbsp;FAX申込用紙印刷</h3>
+          <h3 className="toggle-print">お守り・授与品のご案内&nbsp;FAX申込用紙印刷</h3>
           <p>お申し込み社務所到着後、翌日の午前中に執り行います。</p>
           {isEmpty(cartItems) && (
             <div className="default-msg">現在、登録されたお守り・授与品はありません。</div>
