@@ -121,7 +121,7 @@ const App = () => {
         onRemoveCart={onRemoveCart}
         nameValueZero={nameValueZero}
         hasItem={hasItem}
-        updateCartItems={updateCartItems}      
+        updateCartItems={updateCartItems}  
       />
       <OrderList
         // dataList={dataList}

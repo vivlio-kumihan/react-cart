@@ -2,7 +2,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100;200;300;400;500;600;700;900&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@200;300;400;500;600;700;900&display=swap");
 :root {
-  font-size: 93.75%;
+  font-size: 100%;
   scroll-behavior: smooth;
 }
 :root body {
@@ -11,4 +11,6 @@
   line-height: 1;
   font-feature-settings: "palt";
   color: #11100f;
+  width: min(1680px, 100%);
+  margin: 0 auto;
 }/*# sourceMappingURL=index.css.map */

@@ -35,6 +35,17 @@
     h2
       padding-top: 30px
 
+#root
+  .container
+    .wrapper
+      transform: translateY(100px)
+      visibility: hidden
+      opacity: 0
+      transition: .5s
+      &.active
+        transform: translateY(0)
+        visibility: visible
+        opacity: 1
       
 // .read-more-links
 //   position: absolute

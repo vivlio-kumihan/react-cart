@@ -1,6 +1,7 @@
 import { useState } from "react";
-import Logo from "../images/logo.png"
 import "../styles/components/Header.sass";
+import Logo from "../images/logo.png"
+import GlobePict from "../images/icon-global-middle.png"
 
 const Header = () => {
   // headerのglobal-menu pull-down-list
@@ -37,7 +38,7 @@ const Header = () => {
   return (
     <header id="header">
       <div className="wrapper">
-        <a className="logo-space" href="<?php echo esc_url(home_url()); ?>">
+        <a className="logo-space" href="">
           <img className="logo" src={Logo} alt="" />
 
           <div>
@@ -53,11 +54,11 @@ const Header = () => {
             <ul>
               <li><a href="">交通（アクセス）</a></li>
               <li>|</li>
-              <li><a href="<?php echo esc_url(home_url('/contact/')); ?>">お問い合わせ</a></li>
+              <li><a href="">お問い合わせ</a></li>
               <li className="language">
                 <a href="">
                   <span>
-                    {/* <img src="<?php echo get_template_directory_uri(); ?>/img/icon-global-middle.png" alt=""> */}
+                    <img src={GlobePict} alt="" />
                   </span>
                   Language
                 </a>
@@ -84,53 +85,21 @@ const Header = () => {
                 </ul>
               </li>
               <li className="menu-item">
-                境内のご案内
-                <ul className="sub-menu">
-                  <li>
-                    <a href=""></a>
-                  </li>
-                </ul>
+                <a href="">境内のご案内</a>
               </li>
               <li className="menu-item">
-                ご祈祷
-                <ul className="sub-menu">
-                  <li>
-                    <a href=""></a>
-                  </li>
-                </ul>
+                <a href="">ご祈祷</a>
               </li>
               <li className="menu-item">
-                お守り・授与品
-                <ul className="sub-menu">
-                  <li>
-                    <a href=""></a>
-                  </li>
-                </ul>
+                <a href="">お守り・授与品</a>
               </li>
               <li className="menu-item">
-                年中行事・祭事
-                <ul className="sub-menu">
-                  <li>
-                    <a href=""></a>
-                  </li>
-                </ul>
+                <a href="">年中行事・祭事</a>
               </li>
               <li className="menu-item">
-                お知らせ
-                <ul className="sub-menu">
-                  <li>
-                    <a href=""></a>
-                  </li>
-                </ul>
+                <a href="">お知らせ</a>
               </li>
             </ul>
-            {/* <?php
-            wp_nav_menu(array(
-              'theme_location' => 'global-menu',
-              'container'      => '',
-              'depth'          => 2,
-            ));
-            ?> */}
           </div>
         </nav>
         <button 

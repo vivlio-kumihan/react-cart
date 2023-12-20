@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import Product from "./Product";
 import "../styles/components/Main.sass";
 
@@ -47,16 +47,35 @@ const Main = ({
   }) => {
 
   const [selectedItemId, setSelectedItemId] = useState(null);
+
   const handleItemId = (itemPid) => {
     setSelectedItemId(itemPid);
   };
   const handleBackClick = () => {
     setSelectedItemId(null);
-  }    
+  }
+  // スクロール・アニメーション　ふわっと現れる
+  const [isGraduallyAppearActive, setGraduallyAppearActive] = useState(false);
+  const targetElemRef = useRef(null);
+  useEffect(() => {
+    const handleScrollAppear = () => {
+      const targetElem = targetElemRef.current;
+      if (targetElem) {
+        const windowHight = window.innerHeight;
+        const setHight = Math.abs(windowHight - (targetElem.clientHeight / 2.6));
+        const getElemDistance = targetElem.getBoundingClientRect().top;
+        setGraduallyAppearActive(setHight > getElemDistance);
+      }
+    };
+    document.addEventListener("scroll", handleScrollAppear);
+    return () => {
+      document.removeEventListener("scroll", handleScrollAppear);
+    };
+  }, []);
 
   return (
     <>
-    <div className="wrapper">
+    <div className={`wrapper ${isGraduallyAppearActive ? "active" : ""}`} ref={targetElemRef}>
       <h3>お守り・授与品のご案内</h3>
       <div className="head-line">
         <p className="copy">御神札やお守り・授与品は神社に参拝いただき御社頭でお受けいただくのが本来ですが、</p>
@@ -85,6 +104,7 @@ const Main = ({
         }
       </ul>
     </div>
+
     <div className="read-more-links">
       <OfudaFamilySafety 
         selectedItemId={selectedItemId === "ofuda_family_safety" ? "ofuda_family_safety" : null} 

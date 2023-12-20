@@ -199,7 +199,6 @@ const OrgForm = ({
     setNote("");
     setPrivacyPolicy(false);
   };
-  console.log(privacyPolicy);
 
   return (
     <>
@@ -209,7 +208,7 @@ const OrgForm = ({
         {/* 名前 */}
         <div>
           <label htmlFor="senderName" className="required">
-            <span>お名前</span>
+            <span className="required">お名前</span>
             {nameErrorMsg && (
               <div className="error-msg">{nameErrorMsg}</div>
             )}
@@ -219,7 +218,7 @@ const OrgForm = ({
         {/* 郵便番号 */}
         <div className="with-note-container">
           <label htmlFor="postalCode" className="required">
-            <span>郵便番号</span>
+            <span className="required">郵便番号</span>
             <span className="note">※ハイフンを抜いた7桁の数字を入力してください。</span>
             {postalCodeErrorMsg && (
               <div className="error-msg">{postalCodeErrorMsg}</div>
@@ -230,7 +229,7 @@ const OrgForm = ({
         {/* 都道府県 */}
         <div className="with-note-container">
           <label htmlFor="prefecture" className="required">
-            <span>都道府県</span>
+            <span className="required">都道府県</span>
             <span className="note">※都道府県を選択し、授与料合計を決定してください。</span>
             {prefectureErrorMsg && (
               <div className="error-msg">{prefectureErrorMsg}</div>
@@ -253,7 +252,7 @@ const OrgForm = ({
         {/* 住所 */}
         <div>
           <label htmlFor="address" className="required">
-            <span>ご住所</span>
+            <span className="required">ご住所</span>
             {addressErrorMsg && (
               <div className="error-msg">{addressErrorMsg}</div>
             )}          
@@ -274,7 +273,7 @@ const OrgForm = ({
         {/* 電話番号 */}
         <div className="with-note-container">
           <label htmlFor="tel" className="required">
-            <span>電話番号</span>
+            <span className="required">電話番号</span>
             <span className="note">※ハイフンを抜いた10桁の数字を入力してください。</span>
             {telErrorMsg && (
               <div className="error-msg">{telErrorMsg}</div>

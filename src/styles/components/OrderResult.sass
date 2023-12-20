@@ -42,10 +42,12 @@
         text-align: center
       .flex-wrapper
         display: grid
-        grid-template-columns: 1.5fr 3fr
+        grid-template-columns: 3fr 1.5fr
         gap: 30px
         margin-top: 40px
         .calc-result
+          grid-column: 2/3
+          grid-row: 1/2
           font-family: fw.$noto-rm
           font-size: 1.15rem
           line-height: 1em
@@ -78,6 +80,8 @@
                 font-size: 1.4rem
                 font-weight: 400          
         .offer-contents
+          grid-column: 1/2
+          grid-row: 1/2
           position: relative
 
       .for-only-print

@@ -2,23 +2,28 @@
 @use '../media-query' as *
 
 .order-list
+  position: fixed
+  top: 145px
+  left: 0
+  width: 100%
+  z-index: 150
   .cart-title-wrapper
-    position: fixed
-    top: 55px
-    right: 0
-    width: 20%
-    // height: 130px
-    // padding-top: 0px
+    position: absolute
+    top: 0
+    right: 0px
+    width: 220px
+    height: 40px
     font-family: fw.$noto-rm
+    background-color: rgba(255, 255, 255, .8)
+    border: 1px solid #333
+    border-top-left-radius: 999px
+    border-bottom-left-radius: 999px
     z-index: fw.get_index(cart-title-wrapper)
     .cart-title
-      display: block
-      position: fixed
-      bottom: 123px
+      +fw.positionAbsoluteCTL()
       right: 95px
       width: 20px
       height: 20px
-      margin: 600px auto 0
       font-size: 1.1rem
       line-height: 1em
       font-weight: 700
@@ -43,32 +48,7 @@
         font-size: 1.15rem
         font-weight: 500
         color: #777
-        white-space: nowrap
-        // display: grid
-        // place-content: center
-        // position: absolute
-        // top: -.5rem
-        // right: -.7rem
-        // content: ""
-        // width: .9rem
-        // height: .9rem
-        // font-size: .7rem
-        // color: #fff
-        // background-color: red
-        // border-radius: 50%
-    .ami
-      position: fixed
-      bottom: 110px
-      right: 0
-      width: 220px
-      height: 44px
-      background-color: #fff
-      border: 1px solid #333
-      border-radius: 999px 0 0 999px
-      box-shadow: 0 2px 3px rgba(0, 0, 0, .3)
-      opacity: .9
-      z-index: fw.get_index(ami)
-
+        white-space: nowrap   
   +max(md)
     .cart-title-wrapper
       top: unset
@@ -82,7 +62,3 @@
           left: -20px
         .open-shut
           right: -85px
-      .ami
-        top: -10px
-        left: -30px
-        width: 130px
