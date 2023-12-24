@@ -35,7 +35,7 @@
     letter-spacing: .3em
     color: #fff
     border: 1px solid #fff
-
+    white-space: nowrap
 h3
   position: relative
   width: 100%
@@ -78,3 +78,22 @@ h3
   .to-page-top 
     bottom: 30px
     right: 40px
++max(md)
+  .frame.amulet
+    height: 50vh
+    h1
+      +fw.positionAbsoluteCTL($left: true)
+      top: 50%
+      padding: 12px 30px
+      font-size: 1.65rem
+      letter-spacing: 0
+      background-color: rgba(0, 0, 0, .5)
+      border: unset
+      white-space: nowrap
+
+
+
+
+
+
+

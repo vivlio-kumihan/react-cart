@@ -1,4 +1,5 @@
 @use "../forwards" as fw
+@use '../media-query' as *
   
 .cart-wrapper
   position: fixed
@@ -199,3 +200,25 @@ h3.toggle-web
       line-height: 1.5
       text-align: center
       border: 1px solid #333
+
+.cart-wrapper
+  +max(md)
+    .cart-container
+      width: 100%
+      margin: 0
+      padding: 9rem 1rem 3rem
+      .component-ref
+        .flex-wrapper
+          display: block
+          .offer-contents
+            .form
+              .input-wrapper
+                > div
+                  display: block
+              .with-note-container
+                > label 
+                  > .note
+                    left: 0
+            .send-buttons
+              display: flex
+              flex-direction: column

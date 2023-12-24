@@ -262,7 +262,7 @@ const OrgForm = ({
         {/* メールアドレス */}
         <div className="with-note-container">
           <label htmlFor="email">
-            <span>メールアドレス</span>
+            <span>Eメール</span>
             <span className="note">※メールお申し込みの場合は必須になります。</span>
             {emailErrorMsg && (
               <div className="error-msg">{emailErrorMsg}</div>

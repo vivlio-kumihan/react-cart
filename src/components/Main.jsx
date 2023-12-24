@@ -78,10 +78,9 @@ const Main = ({
     <div className={`wrapper ${isGraduallyAppearActive ? "active" : ""}`} ref={targetElemRef}>
       <h3>お守り・授与品のご案内</h3>
       <div className="head-line">
-        <p className="copy">御神札やお守り・授与品は神社に参拝いただき御社頭でお受けいただくのが本来ですが、</p>
-        <p className="copy">どうしても諸事情や遠方で直接御参りできない方は下記よりお求めください。</p>
-        <p>お求めの数量を入れ、一覧に追加ボタンを押してください。</p>
-        <p>最後に画面右下の『一覧<span className="fa-solid fa-rectangle-list"></span>開く』でお申込み画面へ進みます。</p>
+        <div className="copy">
+          <p>御神札やお守り・授与品は神社に参拝いただき御社頭でお受けいただくのが本来ですが、<br className="line-break" />どうしても諸事情や遠方で直接御参りできない方は下記よりお求めください。<br />お求めの数量を入れ、一覧に追加ボタンを押してください。最後に画面右上の『一覧<span className="fa-solid fa-rectangle-list"></span>開く』でお申込み画面へ進みます。</p>
+        </div>
       </div>
 
       <ul className="data-wrapper">
