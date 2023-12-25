@@ -1,4 +1,5 @@
 import "../../styles/containers/ReadMoreLinks.sass";
+import Images from "../../dataList/img";
 
 const WristBand = ({ selectedItemId, handleBackClick }) => {
   return (
@@ -6,8 +7,13 @@ const WristBand = ({ selectedItemId, handleBackClick }) => {
       id={selectedItemId}
       className={`modal ${selectedItemId ? 'active' : ''}`}
     >
-      <h1>リストバンド</h1>
-      <button onClick={handleBackClick}>戻る</button>
+      <div className="container">
+        <h1>リストバンド</h1>
+        <div className="photo-frame">
+          <img src={Images.wrist_band} alt="" />
+        </div>
+        <button onClick={handleBackClick}>戻る</button>
+      </div>     
     </div>
   );
 };

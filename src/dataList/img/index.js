@@ -2,25 +2,33 @@ import ofuda_family_safety from "./ofuda_family_safety.png";
 import ofuda_yaku_yoke from "./ofuda_yaku_yoke.png";
 import ofuda_sen_ryu from "./ofuda_sen_ryu.png";
 import thokon_tukusu_mamori from "./thokon_tukusu_mamori.png";
+
 import kyugi_thokon_mamori from "./kyugi_thokon_mamori.png";
+
 import thokon_mamori_kado from "./thokon_mamori_kado.png";
 import thokon_mamori_maru from "./thokon_mamori_maru.png";
 import kisei_mamori from "./kisei_mamori.png";
 import deau_wa from "./deau_wa.jpg";
+
 import mori_ya from "./mori_ya.jpg";
+
 import hama_ya from "./hama_ya.jpg";
 import traffic_safety_sticker from "./traffic_safety_sticker.png";
 import traffic_safety_car_mamori from "./traffic_safety_car_mamori.jpg";
-import kanau_wa_gosyoku from "./kanau_wa_gosyoku.png";
-import kanau_wa_soccer from "./kanau_wa_soccer.png";
-import kanau_wa_baseball from "./kanau_wa_baseball.png";
-import kanau_wa_volley from "./kanau_wa_volley.png";
-import kanau_wa_basket from "./kanau_wa_basket.png";
-import kanau_wa_tennis from "./kanau_wa_tennis.png";
-import kanau_wa_badminton from "./kanau_wa_badminton.png";
-import kanau_wa_table_tennis from "./kanau_wa_table_tennis.png";
+import kanau_wa_gosyoku from "./kanau_wa_gosyoku.jpg";
+
+import kanau_wa_soccer from "./kanau_wa_soccer.jpg";
+
+import kanau_wa_baseball from "./kanau_wa_baseball.jpg";
+import kanau_wa_volley from "./kanau_wa_volley.jpg";
+import kanau_wa_basket from "./kanau_wa_basket.jpg";
+import kanau_wa_tennis from "./kanau_wa_tennis.jpg";
+import kanau_wa_badminton from "./kanau_wa_badminton.jpg";
+import kanau_wa_table_tennis from "./kanau_wa_table_tennis.jpg";
 import kanau_wa_all from "./kanau_wa_all.jpg";
+
 import hair_band from "./hair_band.png";
+
 import wrist_band from "./wrist_band.png";
 import towel from "./towel.jpg";
 import towel_long from "./towel_long.jpg";
@@ -31,6 +39,9 @@ import syuin_chou from "./syuin_chou.png";
 import mari_dorei from "./mari_dorei.jpg";
 import ba_tei from "./ba_tei.png";
 import yui_syo from "./yui_syo.png";
+import toukon_img01 from "./toukon-img01.png";
+import toukon_img02 from "./toukon-img02.png";
+import toukon_img03 from "./toukon-img03.png";
 
 const image = {
   ofuda_family_safety: ofuda_family_safety,
@@ -65,7 +76,10 @@ const image = {
   syuin_chou: syuin_chou,
   mari_dorei: mari_dorei,
   ba_tei: ba_tei,
-  yui_syo: yui_syo
+  yui_syo: yui_syo,
+  toukon_img01: toukon_img01,
+  toukon_img02: toukon_img02,
+  toukon_img03: toukon_img03,
 };
 
 export default image;

@@ -1,4 +1,5 @@
 import "../../styles/containers/ReadMoreLinks.sass";
+import Images from "../../dataList/img";
 
 const DeauWa = ({ selectedItemId, handleBackClick }) => {
   return (
@@ -6,8 +7,13 @@ const DeauWa = ({ selectedItemId, handleBackClick }) => {
       id={selectedItemId}
       className={`modal ${selectedItemId ? 'active' : ''}`}
     >
-      <h1>出逢う輪</h1>
-      <button onClick={handleBackClick}>戻る</button>
+      <div className="container">
+        <h1>出逢う輪</h1>
+        <div className="photo-frame">
+          <img src={Images.deau_wa} alt="" />
+        </div>
+        <button onClick={handleBackClick}>戻る</button>
+      </div>     
     </div>
   );
 };

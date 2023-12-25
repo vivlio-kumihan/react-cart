@@ -1,4 +1,5 @@
 import "../../styles/containers/ReadMoreLinks.sass";
+import Images from "../../dataList/img";
 
 const HamaYa = ({ selectedItemId, handleBackClick }) => {
   return (
@@ -6,8 +7,13 @@ const HamaYa = ({ selectedItemId, handleBackClick }) => {
       id={selectedItemId}
       className={`modal ${selectedItemId ? 'active' : ''}`}
     >
-      <h1>破魔矢</h1>
-      <button onClick={handleBackClick}>戻る</button>
+      <div className="container">
+        <h1>破魔矢</h1>
+        <div className="photo-frame">
+          <img src={Images.hama_ya} alt="" />
+        </div>
+        <button onClick={handleBackClick}>戻る</button>
+      </div>      
     </div>
   );
 };

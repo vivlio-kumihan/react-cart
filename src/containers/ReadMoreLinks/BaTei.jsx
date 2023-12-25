@@ -1,4 +1,5 @@
 import "../../styles/containers/ReadMoreLinks.sass";
+import Images from "../../dataList/img";
 
 const BaTei = ({ selectedItemId, handleBackClick }) => {
   return (
@@ -6,8 +7,13 @@ const BaTei = ({ selectedItemId, handleBackClick }) => {
       id={selectedItemId}
       className={`modal ${selectedItemId ? 'active' : ''}`}
     >
-      <h1>馬蹄</h1>
-      <button onClick={handleBackClick}>戻る</button>
+      <div className="container">
+        <h1>馬蹄</h1>
+        <div className="photo-frame">
+          <img src={Images.ba_tei} alt="" />
+        </div>
+        <button onClick={handleBackClick}>戻る</button>
+      </div>    
     </div>
   );
 };

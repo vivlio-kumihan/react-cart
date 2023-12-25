@@ -1,4 +1,5 @@
 import "../../styles/containers/ReadMoreLinks.sass";
+import Images from "../../dataList/img";
 
 const ThokonMamoriMaru = ({ selectedItemId, handleBackClick }) => {
   return (
@@ -6,8 +7,13 @@ const ThokonMamoriMaru = ({ selectedItemId, handleBackClick }) => {
       id={selectedItemId}
       className={`modal ${selectedItemId ? 'active' : ''}`}
     >
-      <h1>御守 闘魂守（丸）</h1>
-      <button onClick={handleBackClick}>戻る</button>
+      <div className="container">
+        <h1>御守 闘魂守（丸）</h1>
+        <div className="photo-frame">
+          <img src={Images.thokon_mamori_maru} alt="" />
+        </div>
+        <button onClick={handleBackClick}>戻る</button>
+      </div>      
     </div>
   );
 };

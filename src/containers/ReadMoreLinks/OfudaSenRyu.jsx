@@ -1,4 +1,5 @@
 import "../../styles/containers/ReadMoreLinks.sass";
+import Images from "../../dataList/img";
 
 const OfudaSenRyu = ({ selectedItemId, handleBackClick }) => {
   return (
@@ -6,8 +7,13 @@ const OfudaSenRyu = ({ selectedItemId, handleBackClick }) => {
       id={selectedItemId}
       className={`modal ${selectedItemId ? 'active' : ''}`}
     >
-      <h1>御神札 潜龍大神</h1>
-      <button onClick={handleBackClick}>戻る</button>
+      <div className="container">
+        <h1>御神札 潜龍大神</h1>
+        <div className="photo-frame">
+          <img src={Images.ofuda_sen_ryu} alt="" />
+        </div>
+        <button onClick={handleBackClick}>戻る</button>
+      </div>    
     </div>
   );
 };
