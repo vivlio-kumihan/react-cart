@@ -45,8 +45,8 @@
               font-size: .5rem
         .error-msg
           position: absolute
-          top: 1.5rem
-          left: 7.25rem
+          top: 1.7rem
+          left: 85px
           width: 100%
           font-size: .85rem
           line-height: 1
@@ -183,10 +183,11 @@
           > .note  
             top: -1.5rem
 .form
-  .input-wrapper
-    > div
-        label
-          .error-msg
-            top: 0
-            left: 4.25rem
-          
+  +max(md)
+    .input-wrapper
+      > div
+          label
+            .error-msg
+              top: 0
+              left: 4.25rem
+            

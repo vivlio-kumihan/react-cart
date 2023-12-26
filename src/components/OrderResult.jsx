@@ -43,6 +43,7 @@ const OrderResult = ({
   // const sendEmail = (e) => {
   //   e.preventDefault();
   const sendEmail = () => {
+    // emailjs.sendForm('service_g7yuumj', 'template_dq4zyxs', sendForm.current, 'qFuS96-H2M1rD2BgC')
     emailjs.sendForm('service_rnt4ier', 'template_dq4zyxs', sendForm.current, 'qFuS96-H2M1rD2BgC')
       .then((result) => {
           console.log(result.text);
@@ -130,9 +131,9 @@ const OrderResult = ({
               <div className="for-only-print">
                 <div className="wrapper">
                   <h3>いずれかの下記口座までご送金（振込）してください。</h3>
-                  <dl>
+                  <dl className="financial-institutions-name">
                     <div>
-                      <dt>銀行名</dt>
+                      <dt className="finacial-name">□銀行名</dt>
                       <dd>ゆうちょ銀行</dd>
                     </div>
                     <div>
@@ -156,9 +157,9 @@ const OrderResult = ({
                       <dd>0001231</dd>
                     </div>
                   </dl>
-                  <dl>
-                    <div>
-                      <dt>金融機関名</dt>
+                  <dl className="financial-institutions-name">
+                    <div className="first">
+                      <dt className="finacial-name">□金融機関名</dt>
                       <dd>郵便局</dd>
                     </div>
                     <div>
@@ -172,7 +173,7 @@ const OrderResult = ({
                   </dl>
 
                   <h3>申込者情報</h3>
-                  <dl>
+                  <dl className="entrys-information">
                     <div>
                       <dt>お名前</dt>
                       <dd>{senderName}</dd>
@@ -201,6 +202,7 @@ const OrderResult = ({
                     </div>
                   </dl>
                 </div>
+                
                 <div className="paste-area">
                   ここに郵便振込用紙の<br />控えを貼付けてください。
                 </div>

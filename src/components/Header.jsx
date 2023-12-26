@@ -38,7 +38,7 @@ const Header = () => {
   return (
     <header id="header">
       <div className="wrapper">
-        <a className="logo-space" href="">
+        <a className="logo-space" href="http://shiraminejingu.or.jp/">
           <img className="logo" src={Logo} alt="" />
 
           <div>
@@ -52,11 +52,11 @@ const Header = () => {
         >
           <div className="upper">
             <ul>
-              <li><a href="">交通（アクセス）</a></li>
+              <li><a href="http://shiraminejingu.or.jp/access/">交通（アクセス）</a></li>
               <li>|</li>
-              <li><a href="">お問い合わせ</a></li>
+              <li><a href="http://shiraminejingu.or.jp/contact/">お問い合わせ</a></li>
               <li className="language">
-                <a href="">
+                <a href="http://shiraminejingu.or.jp/english/">
                   <span>
                     <img src={GlobePict} alt="" />
                   </span>
@@ -71,33 +71,33 @@ const Header = () => {
                 白峯神宮について
                 <ul className="sub-menu">
                   <li>
-                    <a href="">白峯神宮 由緒</a>
+                    <a href="http://shiraminejingu.or.jp/history/">白峯神宮 由緒</a>
                   </li>
                   <li>
-                    <a href="">御祭神と御聖徳崇敬の意義</a>
+                    <a href="http://shiraminejingu.or.jp/gosaizin/">御祭神と御聖徳崇敬の意義</a>
                   </li>
                   <li>
-                    <a href="">崇徳天皇御廟所</a>
+                    <a href="http://shiraminejingu.or.jp/gobyo/">崇徳天皇御廟所</a>
                   </li>
                   <li>
-                    <a href="">略年表</a>
+                    <a href="http://shiraminejingu.or.jp/chronology/">略年表</a>
                   </li>
                 </ul>
               </li>
               <li className="menu-item">
-                <a href="">境内のご案内</a>
+                <a href="http://shiraminejingu.or.jp/guide-shrine/">境内のご案内</a>
               </li>
               <li className="menu-item">
-                <a href="">ご祈祷</a>
+                <a href="http://shiraminejingu.or.jp/prayer/">ご祈祷</a>
               </li>
               <li className="menu-item">
-                <a href="">お守り・授与品</a>
+                <a href="http://shiraminejingu.or.jp/omamori/">お守り・授与品</a>
               </li>
               <li className="menu-item">
-                <a href="">年中行事・祭事</a>
+                <a href="http://shiraminejingu.or.jp/annual-event/">年中行事・祭事</a>
               </li>
               <li className="menu-item">
-                <a href="">お知らせ</a>
+                <a href="http://shiraminejingu.or.jp/information/">お知らせ</a>
               </li>
             </ul>
           </div>

@@ -92,6 +92,12 @@ h3.toggle-web
   @media print
     display: none
 
+h3.toggle-print
+  @media print
+    &::before, &::after
+      position: unset
+      
+
 // for print
 .cart-wrapper.active
   @media print
@@ -114,20 +120,35 @@ h3.toggle-web
       opacity: .95
       // z-index: 20
 
+
 .component-ref
   @media print
     width: 100%
     margin: 0 auto
-    padding: 3rem 2rem 2rem
-    h2
+    padding: 4rem 2rem 2rem
+    h3.toggle-print
+      margin-bottom: 1rem
       font-family: fw.$noto-rm
       font-weight: 600
       font-size: 1.7rem
       text-align: center
       &.toggle-web
         display: none
-      &.toggle-print
-        display: block
+    > p
+      text-align: center
+    .flex-wrapper
+      .calc-result
+        .calc-amount
+          display: block
+          margin-top: 20px
+          padding-right: 55%
+          li
+            margin-top: 10px
+            text-align: right
+            .location-selector
+              display: unset
+              .send-fee
+                text-align: right
 
 .cart-index
   @media print
@@ -135,9 +156,7 @@ h3.toggle-web
     font-size: .85rem
     line-height: 1em
     .result-wrapper
-      display: grid
-      grid-template-columns: repeat(4, 1fr)
-      gap: 1rem
+      padding-right: 55%
       margin-top: 40px
     .calc-amount
       display: flex
@@ -160,43 +179,61 @@ h3.toggle-web
 
 .for-only-print
   @media print
-    display: grid
-    grid-template-columns: repeat(2, 48%)
-    gap: 2rem
+    display: flex
+    flex-direction: column
+    position: absolute
+    top: 9rem
+    right: 2rem
+    width: 45%
     font-family: fw.$noto-gth
     .wrapper
       h3
-        margin-bottom: 15px
-        padding-bottom: 10px
-        font-size: .95rem
-        font-weight: 600
+        margin-bottom: 10px
+        padding-bottom: 5px
+        font-size: .85rem
+        font-weight: 900
         line-height: 1em
+        text-align: left
         border-bottom: 1px solid fw.$black-light
         &:not(:first-of-type)
           margin-top: 20px
       dl
-        + dl
-          padding-top: 7px
         div
           display: flex
           align-items: center
+          padding: 3px
           + div
-            padding-top: 7px
+            border-top: 1px dotted #777
           dt
+            padding-left: 1em
             font-size: .95rem
             font-weight:400
-            width: 7rem
+            width: 8rem
+            &.finacial-name
+              padding-left: 0
           dd
-            width: calc(100% - 7rem)
+            width: calc(100% - 8rem)
             font-size: 1rem
             line-height: 1.2
             font-weight:500
             white-space: normal
+        &.financial-institutions-name
+          border: 3px solid #777
+        &:first-of-type
+          margin-bottom: 10px
+        &.entrys-information
+          padding: 0
+          margin-bottom: 10px
+          div
+            padding: 3px
+            margin: 0
+            border-top: none
+
     .paste-area
       display: grid
       place-content: center
       width: 100%
-      aspect-ratio: 1
+      height: 26rem
       line-height: 1.5
       text-align: center
       border: 1px solid #333
