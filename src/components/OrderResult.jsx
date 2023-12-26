@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect, useCallback } from "react";
 import emailjs from '@emailjs/browser';
 import ReactToPrint from "react-to-print";
 import { useReactToPrint } from 'react-to-print';
@@ -52,9 +52,9 @@ const OrderResult = ({
           console.log(error.text);
       });
   };  
-
+  
   // カートに商品が入っているか否か条件分岐で使う。
-  const isEmpty = (arr) => arr.length < 1;
+  const isEmpty = (arr) => arr.length < 1; 
 
   return (
     <div className={`cart-wrapper ${toggle && "active"}`}>
@@ -77,6 +77,7 @@ const OrderResult = ({
                     setTotalSendFee={setTotalSendFee}
                     prefectureSelected={prefectureSelected}
                     setPrefectureSelected={setPrefectureSelected}
+                    cartItems={cartItems}
                   />
                 </li>
                 {/* <li>カートの重量合計<span>{reloadCartItems()[1]}</span>g</li> */}
@@ -99,6 +100,7 @@ const OrderResult = ({
                         setTotalWeight={setTotalWeight}
                         nameValueZero={nameValueZero}
                         hasItem={hasItem}
+                        // goSyuinChouAction={goSyuinChouAction}
                       />
                   </div>
                   ))}

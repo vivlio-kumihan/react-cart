@@ -9,8 +9,8 @@ const CartItem = ({
   setTotalWeight,
   nameValueZero,
   hasItem,
+  goSyuinChouAction,
   }) => {
-  
   // nameのhashの値 = namenのカウント数
   const nameCount = parseInt((Object.keys(name).map((key) => name[key]).shift()));
   // 現在がtypesかcolorsかで扱うhashを切り替える。
@@ -32,6 +32,7 @@ const CartItem = ({
       return Object.keys(name).reduce((acc, key) => acc + parseInt(name[key]), 0);
     }
   };
+
   // ___リファクタリング___
   
   // 商品ごとの小計、重量小計
@@ -39,10 +40,19 @@ const CartItem = ({
   
   totalWeightHash[pid] = weight * whichItemSumCalcCount();
   
-  useEffect(() => {
-    setTotalFee(Object.values(totalFeeHash).reduce((acc, fee) => acc + fee, 0));
-    setTotalWeight(Object.values(totalWeightHash).reduce((acc, wgt) => acc + wgt, 0));
-  }, [totalFeeHash, totalWeightHash]); // 依存リストを追加
+  // useEffect(() => {
+  //   setTotalFee(Object.values(totalFeeHash).reduce((acc, fee) => acc + fee, 0));
+  //   setTotalWeight(Object.values(totalWeightHash).reduce((acc, wgt) => acc + wgt, 0));
+  // }, [totalFeeHash, totalWeightHash]); // 依存リストを追加
+
+  // if (pid === "syuin_chou") {
+  //   Object.keys(types).reduce((acc, key) => acc + parseInt(types[key]), 0) === 1 &&
+  //     // goSyuinChouAction();
+  //     console.log(types);
+  // }
+
+
+
 
   return (
     <ul id={pid} className="item" key={pid}>
@@ -82,3 +92,67 @@ const CartItem = ({
 };
 
 export default CartItem;
+
+
+// const [goSyuinChou, setGoSyuinChou] = useState(false);
+  // const goSyuinChouAction = () => {
+  //   setGoSyuinChou(prevState => !prevState);
+  // };
+  // useEffect(() => {
+  //   cartItems.map((item) => {
+  //     if (item.pid === "syuin_chou") {
+  //       Object.keys(item.types).reduce((acc, key) => acc + parseInt(item.types[key]), 0) === 1 &&
+  //         // goSyuinChouAction();
+  //         console.log(item.types);
+  //     }
+  // });
+  // }, [cartItems]);
+  
+  // console.log(goSyuinChou);
+
+  // const [goSyuinChou, setGoSyuinChou] = useState(false);
+  // const goSyuinChouAction = () => {
+  //   setGoSyuinChou(prevState => !prevState);
+  // };
+  // useEffect(() => {
+  // // マウント時に初期化
+  //   setGoSyuinChou(false);
+
+  //   cartItems.map((item) => {
+  //     if (item.pid === "syuin_chou") {
+  //       const typesCount = Object.values(item.types).reduce((acc, key) => acc + parseInt(item.types[key]), 0);
+
+  //       if (typesCount === 1) {
+  //         goSyuinChouAction();
+  //       }
+  //     }
+  //   });
+  // }, [cartItems]);
+
+  // console.log(goSyuinChou);  
+
+  // const [goSyuinChou, setGoSyuinChou] = useState(false);  
+  // const goSyuinChouAction = () => {
+  //   setGoSyuinChou(prevState => !prevState);
+  // };
+
+  // useEffect(() => {
+  //   // マウント時に初期化
+  //   setGoSyuinChou(false);
+
+  //   cartItems.map((item) => {
+  //     console.log(item.types);
+
+  //     if (item.pid === "syuin_chou") {
+  //       const typesCount = Object.values(item.types).reduce((acc, key) => acc + parseInt(item.types[key], 10), 0);
+  //       console.log(typesCount);
+
+  //       if (typesCount === 1) {
+  //         console.log("hello");
+  //         goSyuinChouAction();
+  //       }
+  //     }
+  //   });
+  // }, [cartItems]);
+
+  // console.log(goSyuinChou); 

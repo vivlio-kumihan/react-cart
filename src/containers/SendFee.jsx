@@ -5,6 +5,7 @@ const SendFee = ({
   totalWeight, 
   setTotalSendFee,
   prefectureSelected,
+  cartItems,
 }) => {
 
 	// 方面
@@ -40,24 +41,11 @@ const SendFee = ({
     "九州": { 50: 230, 100: 250, 150: 320, 200: 480, 201: 1310 },
     "沖縄": { 50: 230, 100: 250, 150: 320, 200: 480, 201: 1740 },
 	};
-	// const fee = {
-  //   "---": { 50: 0, 125: 0, 250: 0, 500: 0, 1000: 0, 2000: 0, 5000: 0, 10000: 0 },
-  //   "北海道": { 50: 330, 125: 400, 250: 500, 500: 600, 1000: 850, 2000: 1350, 5000: 1850, 10000: 2350, 10001: 2450 },
-  //   "東北": { 50: 260, 125: 330, 250: 430, 500: 530, 1000: 780, 2000: 1280, 5000: 1780, 10000: 2280, 10001: 2380 },
-  //   "関東": { 50: 260, 125: 330, 250: 430, 500: 530, 1000: 780, 2000: 1280, 5000: 1780, 10000: 2280, 10001: 2380 },
-  //   "北陸": { 50: 255, 125: 325, 250: 425, 500: 525, 1000: 775, 2000: 1275, 5000: 1775, 10000: 2275, 10001: 2375 },
-  //   "中部": { 50: 250, 125: 320, 250: 420, 500: 520, 1000: 770, 2000: 1270, 5000: 1770, 10000: 2270, 10001: 2370 },
-  //   "近畿": { 50: 230, 125: 300, 250: 400, 500: 500, 1000: 750, 2000: 1250, 5000: 1750, 10000: 2250, 10001: 2350 },
-  //   "中国": { 50: 250, 125: 320, 250: 420, 500: 520, 1000: 770, 2000: 1270, 5000: 1770, 10000: 2270, 10001: 2370 },
-  //   "四国": { 50: 255, 125: 325, 250: 425, 500: 525, 1000: 775, 2000: 1275, 5000: 1775, 10000: 2275, 10001: 2375 },
-  //   "九州": { 50: 260, 125: 330, 250: 430, 500: 530, 1000: 780, 2000: 1280, 5000: 1780, 10000: 2280, 10001: 2380 },
-  //   "沖縄": { 50: 330, 125: 400, 250: 500, 500: 600, 1000: 850, 2000: 1350, 5000: 1850, 10000: 2350, 10001: 2350 },
-	// };
 
   // 送料の計算
   // fee[{ propsで方面 }][{ propsでグラム数 }]
   // 条件分岐で回さないとエラーになる。
-  
+  totalWeight = totalWeight + 48
   let sendFee = 0;
   switch (true) {
     case totalWeight < 51:
@@ -73,7 +61,15 @@ const SendFee = ({
       sendFee = direction && fee[direction][200];
       break;
     case totalWeight >= 201:
-      sendFee = direction && fee[direction][201];
+      cartItems.forEach(item => {
+        if (item.pid === "syuin_chou") {
+          if (Object.keys(item.types).reduce((acc, key) => acc + parseInt(item.types[key]), 0) === 1) {
+            sendFee = direction && fee[direction][201] - 640;
+          } else {
+            sendFee = direction && fee[direction][201];
+          }
+        }
+      });
       break;
   }
 
@@ -391,3 +387,17 @@ export default SendFee;
 {/* <th>ご住所</th><!--送料改訂okn20191002--><!--郵便局通知手数料110円追加okn2020416-->
 <td><select name="pref" id="pref"><option selected="selected" value="">都道府県</option><option data-postage="1860">北海道</option><option data-postage="1420">青森県</option><option data-postage="1420">岩手県</option><option data-postage="1420">宮城県</option><option data-postage="1420">秋田県</option><option data-postage="1420">山形県</option><option data-postage="1420">福島県</option><option data-postage="1310">茨城県</option><option data-postage="1310">栃木県</option><option data-postage="1310">群馬県</option><option data-postage="1310">埼玉県</option><option data-postage="1310">千葉県</option><option data-postage="1310">東京都</option><option data-postage="1310">神奈川県</option><option data-postage="1310">新潟県</option><option data-postage="1210">富山県</option><option data-postage="1210">石川県</option><option data-postage="1210">福井県</option><option data-postage="1310">山梨県</option><option data-postage="1310">長野県</option><option data-postage="1210">岐阜県</option><option data-postage="1210">静岡県</option><option data-postage="1210">愛知県</option><option data-postage="1210">三重県</option><option data-postage="1210">滋賀県</option><option data-postage="1140">京都府</option><option data-postage="1210">大阪府</option><option data-postage="1210">兵庫県</option><option data-postage="1210">奈良県</option><option data-postage="1210">和歌山県</option><option data-postage="1210">鳥取県</option><option data-postage="1210">島根県</option><option data-postage="1210">岡山県</option><option data-postage="1210">広島県</option><option data-postage="1210">山口県</option><option data-postage="1210">徳島県</option><option data-postage="1210">香川県</option><option data-postage="1210">愛媛県</option><option data-postage="1210">高知県</option><option data-postage="1310">福岡県</option><option data-postage="1310">佐賀県</option><option data-postage="1310">長崎県</option><option data-postage="1310">熊本県</option><option data-postage="1310">大分県</option><option data-postage="1310">宮崎県</option><option data-postage="1310">鹿児島県</option><option data-postage="1740">沖縄県</option></select>
 <p><input name="address" class="field" id="address" type="text" /></p></td> */}
+
+// const fee = {
+  //   "---": { 50: 0, 125: 0, 250: 0, 500: 0, 1000: 0, 2000: 0, 5000: 0, 10000: 0 },
+  //   "北海道": { 50: 330, 125: 400, 250: 500, 500: 600, 1000: 850, 2000: 1350, 5000: 1850, 10000: 2350, 10001: 2450 },
+  //   "東北": { 50: 260, 125: 330, 250: 430, 500: 530, 1000: 780, 2000: 1280, 5000: 1780, 10000: 2280, 10001: 2380 },
+  //   "関東": { 50: 260, 125: 330, 250: 430, 500: 530, 1000: 780, 2000: 1280, 5000: 1780, 10000: 2280, 10001: 2380 },
+  //   "北陸": { 50: 255, 125: 325, 250: 425, 500: 525, 1000: 775, 2000: 1275, 5000: 1775, 10000: 2275, 10001: 2375 },
+  //   "中部": { 50: 250, 125: 320, 250: 420, 500: 520, 1000: 770, 2000: 1270, 5000: 1770, 10000: 2270, 10001: 2370 },
+  //   "近畿": { 50: 230, 125: 300, 250: 400, 500: 500, 1000: 750, 2000: 1250, 5000: 1750, 10000: 2250, 10001: 2350 },
+  //   "中国": { 50: 250, 125: 320, 250: 420, 500: 520, 1000: 770, 2000: 1270, 5000: 1770, 10000: 2270, 10001: 2370 },
+  //   "四国": { 50: 255, 125: 325, 250: 425, 500: 525, 1000: 775, 2000: 1275, 5000: 1775, 10000: 2275, 10001: 2375 },
+  //   "九州": { 50: 260, 125: 330, 250: 430, 500: 530, 1000: 780, 2000: 1280, 5000: 1780, 10000: 2280, 10001: 2380 },
+  //   "沖縄": { 50: 330, 125: 400, 250: 500, 500: 600, 1000: 850, 2000: 1350, 5000: 1850, 10000: 2350, 10001: 2350 },
+	// };
