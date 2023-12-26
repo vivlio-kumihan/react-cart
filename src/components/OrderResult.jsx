@@ -10,6 +10,7 @@ import "../styles/components/OrderResult.sass";
 
 const OrderResult = ({ 
   toggle, 
+  toggleAction,
   cartItems,
   totalFeeHash, setTotalFeeHash,
   setTotalFee,
@@ -125,6 +126,8 @@ const OrderResult = ({
                 setPrivacyPolicy={setPrivacyPolicy}
                 prefectureSelected={prefectureSelected}
                 setPrefectureSelected={setPrefectureSelected}
+                togglea={toggle}
+                toggleAction={toggleAction}
               />   
 
               {/* ___リファクタリング start___ */}
@@ -243,6 +246,7 @@ const OrderResult = ({
             </div>
           </div>
         </div>
+
       </div>
     </div>
   );

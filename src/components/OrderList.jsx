@@ -42,6 +42,7 @@ const OrderList = ({
       <OrderResult
         className="order-result"
         toggle={toggle}
+        toggleAction={toggleAction}
         cartItems={cartItems} 
         totalFeeHash={totalFeeHash}
         setTotalFeeHash={setTotalFeeHash}

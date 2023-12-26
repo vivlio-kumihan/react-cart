@@ -21,6 +21,8 @@ const OrgForm = ({
   setPrivacyPolicy,
   prefectureSelected,
   setPrefectureSelected, 
+  toggle,
+  toggleAction,
 }) => {
 
   // 都道府県名
@@ -46,6 +48,7 @@ const OrgForm = ({
   const [emailErrorMsg, setEmailErrorMsg] = useState("");
   const [telErrorMsg, setTelErrorMsg] = useState("");
   const [privacyPolicyErrorMsg, setPrivacyPolicyErrorMsg] = useState("");
+
 
   // 条件
   const emptyName = senderName === "";
