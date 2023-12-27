@@ -73,8 +73,9 @@ const App = () => {
       };
       return acc + parseInt(weight());
     }, 0);
+
     return tmpTotalWeight;
-  };   
+  };
   // ___リファクタリング___
   
   // 商品をカートから取る関数の定義
@@ -99,13 +100,15 @@ const App = () => {
   };  
   // リストボタンに仕込んだイベントリスナー関連
   const reloadCartItems = () => {
-    return [calculateTotalFee(cartItems), calculateTotalWeight(cartItems)];
+    return [calculateTotalFee(cartItems), calculateTotalWeight(cartItems) + 48];
   };
   // // リストボタンに仕込んだイベントリスナー関連
   // const handleClick = () => {
   //   reloadCartItems();
   //   toggleAction();
   // };
+  console.log(totalWeight)
+
 
   return (
     <>

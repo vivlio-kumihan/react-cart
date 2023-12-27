@@ -85,7 +85,7 @@ const Footer = () => {
           <div className="footer-right-links">
             <ul className="banner">
               <li><a href="http://www.arimura.tv/" target="_blank"><img src={BannerImg03} alt="" /></a></li>
-              <li><a href="https://www.eonet.ne.jp/~hakamaya/"><img src={BannerImg01} alt="" /></a></li>
+              <li><a href="https://www.eonet.ne.jp/~hakamaya/" target="_blank"><img src={BannerImg01} alt="" /></a></li>
               <li><a href="https://www.oe-co.jp/" target="_blank"><img src={BannerImg02} alt="" /></a></li>
               <li><a href="https://www.kodama-sekizai.net/" target="_blank"><img src={BannerImg04} alt="" /></a></li>
             </ul>

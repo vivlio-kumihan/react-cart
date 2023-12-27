@@ -334,16 +334,16 @@ const data = [
     price: 800,
     weight: 8,
   },
-  {
-    pid: "syuin_chou",
-    image: image.syuin_chou,
-    category: "授与品",
-    name: { "御朱印帳": 0 },
-    types: { "御朱印帳": 0, "限定御朱印帳": 0 },
-    colors: {},
-    price: 2000,
-    weight: 180,
-  },
+  // {
+  //   pid: "syuin_chou",
+  //   image: image.syuin_chou,
+  //   category: "授与品",
+  //   name: { "御朱印帳": 0 },
+  //   types: { "御朱印帳": 0, "限定御朱印帳": 0 },
+  //   colors: {},
+  //   price: 2000,
+  //   weight: 180,
+  // },
   {
     pid: "mari_dorei",
     image: image.mari_dorei,
@@ -377,51 +377,3 @@ const data = [
 ];
 
 export default data;
-
-
-// import image from "./img";
-
-// const data = [
-//   {
-//     pid: "DeauWa",
-//     image: image.dummy,
-//     category: "授与品",
-//     name: { "出逢う輪": 0 },
-//     types: {},
-//     colors: {},
-//     price: 800,
-//     weight: 9,
-//   },
-//   {
-//     pid: "MoriYa",
-//     image: image.dummy,
-//     category: "授与品",
-//     name: { "守り矢": 0 },
-//     types: { "スポーツ上達": 0, "必勝祈願": 0, "開運厄除": 0, "社運隆昌": 0, "心願成就": 0 },
-//     colors: {},
-//     price: 1500,
-//     weight: 260,
-//   },
-//   {
-//     pid: "ThokonMamoriKado",
-//     image: image.dummy,
-//     category: "御守",
-//     name: { "闘魂守（角）": 0 },
-//     types: {},
-//     colors: { "青": 0, "赤": 0, "白": 0 },
-//     price: 700,
-//     weight: 100,
-//   },
-//   {
-//     pid: "WristBand",
-//     image: image.dummy,
-//     category: "授与品",
-//     name: { "リストバンド": 0 },
-//     types: {},
-//     colors: { "青": 0, "赤": 0, "黒": 0, "白": 0, "黄": 0 },
-//     price: 800,
-//     weight: 24,
-//   },
-// ];
-
-// export default data;
