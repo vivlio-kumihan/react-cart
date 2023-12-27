@@ -157,11 +157,11 @@ export default SendFee;
 // <link rel="stylesheet" href="/common/css/wp.css">
 // <link rel="stylesheet" href="/common/css/layout.css">
 // <link rel="stylesheet" href="/common/css/responsive.css">
-// <link rel="icon" href="http://shiraminejingu.or.jp/wp-content/uploads/2017/08/shiramine-icon-16x16.png" sizes="16x16" />
-// <link rel="icon" href="http://shiraminejingu.or.jp/wp-content/uploads/2017/08/shiramine-icon-32x32.png" sizes="32x32" />
-// <link rel="icon" href="http://shiraminejingu.or.jp/wp-content/uploads/2017/08/shiramine-icon-192x192.png" sizes="192x192" />
-// <link rel="apple-touch-icon-precomposed" href="http://shiraminejingu.or.jp/wp-content/uploads/2017/08/shiramine-icon-180x180.png">
-// <meta name="msapplication-TileImage" content="http://shiraminejingu.or.jp/wp-content/uploads/2017/08/shiramine-icon-270x270.png">
+// <link rel="icon" href="https://shiraminejingu.or.jp/wp-content/uploads/2017/08/shiramine-icon-16x16.png" sizes="16x16" />
+// <link rel="icon" href="https://shiraminejingu.or.jp/wp-content/uploads/2017/08/shiramine-icon-32x32.png" sizes="32x32" />
+// <link rel="icon" href="https://shiraminejingu.or.jp/wp-content/uploads/2017/08/shiramine-icon-192x192.png" sizes="192x192" />
+// <link rel="apple-touch-icon-precomposed" href="https://shiraminejingu.or.jp/wp-content/uploads/2017/08/shiramine-icon-180x180.png">
+// <meta name="msapplication-TileImage" content="https://shiraminejingu.or.jp/wp-content/uploads/2017/08/shiramine-icon-270x270.png">
 // <!--[if lt IE 9]>
 // <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
 // <script src="/common/js/respond.js"></script>

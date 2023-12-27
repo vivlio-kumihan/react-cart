@@ -36,6 +36,8 @@ import ema_sky from "./ema_sky.png";
 import ema from "./ema.png";
 import kanau_wa_hashi from "./kanau_wa_hashi.png";
 import syuin_chou from "./syuin_chou.png";
+import syuin_chou_limited from "./syuin_chou_limited.png";
+import syuin_chou_regular from "./syuin_chou_regular.png";
 import mari_dorei from "./mari_dorei.jpg";
 import ba_tei from "./ba_tei.png";
 import yui_syo from "./yui_syo.png";
@@ -74,6 +76,8 @@ const image = {
   ema: ema,
   kanau_wa_hashi: kanau_wa_hashi,
   syuin_chou: syuin_chou,
+  syuin_chou_limited: syuin_chou_limited,
+  syuin_chou_regular: syuin_chou_regular,
   mari_dorei: mari_dorei,
   ba_tei: ba_tei,
   yui_syo: yui_syo,

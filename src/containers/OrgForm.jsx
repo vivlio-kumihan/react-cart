@@ -309,10 +309,10 @@ const OrgForm = ({
           <button className="input-print-btn" type="button" onClick={onSubmitPrint}>FAX申込書を印刷する</button>
           <div className="note">申込み用紙の印刷ができない方は、FAX申込み用紙の必要事項をご確認のうえ他の紙に記載したものでも代用可能です。</div>
         </div>
-        <div className="send-btn">
+        {/* <div className="send-btn">
           <button className="input-mail-btn" type="button" onClick={onSubmitEmail}>メール申し込みを送信</button>
           <div className="note">FAXでのお申込みができない方は、こちらをお選びください。ご記入いただいたメールアドレスにEメールが届きますので、撮影した郵便振込用紙を添付のうえご返信ください。（※メールが届かない場合、迷惑メールフィルターなどご確認ください。）</div>
-        </div>
+        </div> */}
       </div>
       <button className="input-reset-btn non-print" type="button" onClick={inputReset}>リセット</button>
     </div>
