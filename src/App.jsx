@@ -39,7 +39,7 @@ const App = () => {
       setCartItems(newCartItems);
     }
   };
-
+  
   // ___リファクタリング___
   // 合計金額を計算する
   const calculateTotalFee = (arrArg) => {

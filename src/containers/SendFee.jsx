@@ -5,6 +5,7 @@ const SendFee = ({
   totalWeight, 
   setTotalSendFee,
   prefectureSelected,
+  cartItems,
 }) => {
 
 	// 方面
@@ -46,9 +47,17 @@ const SendFee = ({
   // 条件分岐で回さないとエラーになる。
   
   let sendFee = 0;
-  
-
+  const isSyuinChou = () => {
+    const syuinChouItem = cartItems.find(item => item.pid === "syuin_chou");
+    if (syuinChouItem && cartItems.length === 1) {
+      return Object.keys(syuinChouItem.types).reduce((acc, key) => acc + parseInt(syuinChouItem.types[key]), 0) === 1;
+    }
+    return false; // カートに「御朱印帳」が見つからない場合は false を返す
+  };
   switch (true) {
+    case isSyuinChou():
+      sendFee = 500;
+      break;
     case totalWeight < 51:
       sendFee = direction && fee[direction][50];
       break;

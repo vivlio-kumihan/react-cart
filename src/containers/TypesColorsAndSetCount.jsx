@@ -31,7 +31,8 @@ const TypesColorsAndSetCount = ({
                 placeholder="0"
                 type="number" 
                 min="0"
-                value={eachCount[key] || 0}
+                // value={eachCount[key] || 0}
+                value={eachCount[key]}
                 onChange={(e)=>{
                   switchItem()[0][key] = e.target.value
                   setEachCount({...switchItem()[0], [key]: e.target.value})

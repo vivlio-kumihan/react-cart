@@ -342,8 +342,7 @@ const data = [
     types: { "御朱印帳": 0, "限定御朱印帳": 0 },
     colors: {},
     price: 2000,
-    weight: 152,
-    // weight: 180,
+    weight: 180,
   },
   {
     pid: "mari_dorei",
