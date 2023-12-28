@@ -46,6 +46,8 @@ const SendFee = ({
   // 条件分岐で回さないとエラーになる。
   
   let sendFee = 0;
+  
+
   switch (true) {
     case totalWeight < 51:
       sendFee = direction && fee[direction][50];

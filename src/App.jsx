@@ -107,7 +107,6 @@ const App = () => {
   //   reloadCartItems();
   //   toggleAction();
   // };
-  console.log(totalWeight)
 
 
   return (

@@ -22,6 +22,16 @@ const OrderResult = ({
   reloadCartItems,
   }) => {
 
+  cartItems.forEach(item => {
+    if (item.pid === "syuin_chou") {
+      if (Object.keys(item.types).reduce((acc, key) => acc + parseInt(item.types[key]), 0) === 1) {
+        console.log(reloadCartItems()[0] + 20);
+      } else {
+        console.log(reloadCartItems()[1]);
+      }
+    }
+  });
+  
   // Formのinput属性値のstate  
   const [senderName, setSenderName] = useState(""); 
   const [postalCode, setPostalCode] = useState(""); 
