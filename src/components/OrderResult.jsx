@@ -20,6 +20,9 @@ const OrderResult = ({
   nameValueZero,
   hasItem,
   reloadCartItems,
+  sendComplete,
+  sendCompleteToggle,
+  cloceSendCompleteModal,
   }) => {
 
   // Formのinput属性値のstate  
@@ -44,8 +47,10 @@ const OrderResult = ({
   // const sendEmail = (e) => {
   //   e.preventDefault();
   const sendEmail = () => {
-    // emailjs.sendForm('service_g7yuumj', 'template_dq4zyxs', sendForm.current, 'qFuS96-H2M1rD2BgC')
-    emailjs.sendForm('service_rnt4ier', 'template_dq4zyxs', sendForm.current, 'qFuS96-H2M1rD2BgC')
+    // emailjs.sendForm('service_tcm40ka', 'template_dq4zyxs', sendForm.current, 'qFuS96-H2M1rD2BgC')
+    // for test
+    emailjs.sendForm('service_g7yuumj', 'template_dq4zyxs', sendForm.current, 'qFuS96-H2M1rD2BgC')
+    // emailjs.sendForm('service_rnt4ier', 'template_dq4zyxs', sendForm.current, 'qFuS96-H2M1rD2BgC')
       .then((result) => {
           console.log(result.text);
       }, (error) => {
@@ -128,8 +133,8 @@ const OrderResult = ({
                 setPrivacyPolicy={setPrivacyPolicy}
                 prefectureSelected={prefectureSelected}
                 setPrefectureSelected={setPrefectureSelected}
-                togglea={toggle}
-                toggleAction={toggleAction}
+                sendComplete={sendComplete}
+                sendCompleteToggle={sendCompleteToggle}
               />   
 
               {/* ___リファクタリング start___ */}
@@ -247,8 +252,15 @@ const OrderResult = ({
               </div>
             </div>
           </div>
-        </div>
+        </div> 
 
+        <div className={`completion-notification-modal ${sendComplete ? 'active' : ''}`}>
+          <div className="completion-notification-modal-wrapper">
+            <h1>送信完了</h1>
+            <p>ご依頼いただいた内容をお申し込みのメールアドレス宛てに送信をいたしました。メールが届かない場合は、お手数ですが再度フォームから申し込み手続きをしていただきますようお願いいたします。</p>
+            <button onClick={sendCompleteToggle}>閉じる</button>
+          </div>
+        </div>               
       </div>
     </div>
   );

@@ -83,6 +83,7 @@ const MailForm = ({
   const userAddress = prefectureSelected + address;
   const userTel = tel;
   const userNote = note;
+
   return (
     <>
     <form ref={sendForm} onSubmit={sendEmail}>

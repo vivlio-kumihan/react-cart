@@ -18,7 +18,10 @@
     border: 1px solid #333
     border-top-left-radius: 999px
     border-bottom-left-radius: 999px
+    transition: .5s    
     z-index: fw.get_index(cart-title-wrapper)
+    &.hide
+      right: -100%
     .cart-title
       +fw.positionAbsoluteCTL()
       right: 95px

@@ -1,3 +1,4 @@
+import { useState } from "react";
 import OrderResult from "./OrderResult";
 import "../styles/components/OrderList.sass";
 
@@ -22,11 +23,20 @@ const OrderList = ({
     return !toggle ? "開く" : "閉じる"
   };
 
+  // 送信完了のトグルスイッチ
+  const [sendComplete, setSendComplete] = useState(false);
+  const sendCompleteToggle = () => {
+    setSendComplete(!sendComplete);
+  }; 
+  const cloceSendCompleteModal = () => {
+    setSendComplete(false);
+  };
+
   return (
     <div className="order-list">
-      <div className="cart-title-wrapper">
-        <button 
-          className="cart-title" 
+      <div className={`cart-title-wrapper ${sendComplete ? 'hide' : ''}`}>
+        <button
+          className="cart-title"
           onClick={() => {
               reloadCartItems()
               toggleAction()
@@ -54,7 +64,10 @@ const OrderList = ({
         setTotalSendFee={setTotalSendFee}
         nameValueZero={nameValueZero}  
         hasItem={hasItem} 
-        reloadCartItems={reloadCartItems}  
+        reloadCartItems={reloadCartItems} 
+        sendComplete={sendComplete}
+        sendCompleteToggle={sendCompleteToggle}
+        clocesendCompleteModal={cloceSendCompleteModal}
       />
     </div>
   );

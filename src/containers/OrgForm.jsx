@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "../styles/containers/OrgForm.sass";
 
 // 最終的には、郵便番号の入力で住所を自動補完される機能を付ける。
@@ -20,9 +20,8 @@ const OrgForm = ({
   privacyPolicy,
   setPrivacyPolicy,
   prefectureSelected,
-  setPrefectureSelected, 
-  toggle,
-  toggleAction,
+  setPrefectureSelected,
+  sendCompleteToggle,
 }) => {
 
   // 都道府県名
@@ -49,18 +48,22 @@ const OrgForm = ({
   const [telErrorMsg, setTelErrorMsg] = useState("");
   const [privacyPolicyErrorMsg, setPrivacyPolicyErrorMsg] = useState("");
 
+  // const isIncludeHyphen = !(postalCode && tel).includes('\u002D')
+  // console.log(isIncludeHyphen);
 
   // 条件
   const emptyName = senderName === "";
   const emptyPostalCode = postalCode === "";
-  const isJustLenghtPostalCode = postalCode.length !==  7;
+  const isPostalCodeIncludeHyphen = !postalCode.includes('\u002D');
+  const isJustLenghtPostalCode = postalCode.length !== 8
   const isNumPostalCode = isNaN(parseInt(postalCode));
   const defaultNotePref = prefectureSelected === "";
   const emptyAddress = address === "";
   const emptyEmail = email === "";
   const notFormalityEmail = !email.match(/.+@.+\..+/);
   const emptyTel = tel === "";
-  const isJustLenghtTel = tel.length !== 10;
+  const isJustLenghtTel = tel.length !== 12;
+  const isTelIncludeHyphen = !tel.includes('\u002D');
   const isNumTel = isNaN(parseInt(tel));
   const flagPrivacyPolicy = privacyPolicy === false;
 
@@ -87,13 +90,6 @@ const OrgForm = ({
       note,
       privacyPolicy,
     };
-
-    emptyName && setNameErrorMsg("氏名を入力してください。");
-    (emptyPostalCode || isNumPostalCode || isJustLenghtPostalCode) && setPostalCodeErrorMsg("郵便番号を7桁の数字で入力してください。");
-    defaultNotePref && setPrefectureErrorMsg("都道府県を選択してください。")
-    emptyAddress && setAddressErrorMsg("住所を入力してください。");
-    (emptyTel || isNumTel ||isJustLenghtTel) && setTelErrorMsg("電話番号を10桁の数字で入力してください。");
-    flagPrivacyPolicy && setPrivacyPolicyErrorMsg("プライバシー・ポリシーのチェックをご確認ください。");
 
     const enableSubmit = 
       !emptyName &&
@@ -138,11 +134,11 @@ const OrgForm = ({
     };
 
     emptyName && setNameErrorMsg("氏名を入力してください。");
-    (emptyPostalCode || isNumPostalCode || isJustLenghtPostalCode) && setPostalCodeErrorMsg("郵便番号を7桁の数字で入力してください。");
+    (emptyPostalCode || isNumPostalCode || isJustLenghtPostalCode || isPostalCodeIncludeHyphen) && setPostalCodeErrorMsg("ハイフン区切りの郵便番号を入力してください。");
     defaultNotePref && setPrefectureErrorMsg("都道府県を選択してください。")
     emptyAddress && setAddressErrorMsg("住所を入力してください。");
-    (emptyEmail || notFormalityEmail) && setEmailErrorMsg("メールアドレスを入力してください。");
-    (emptyTel || isNumTel ||isJustLenghtTel) && setTelErrorMsg("電話番号を10桁の数字で入力してください。");
+    (emptyEmail || notFormalityEmail) && setEmailErrorMsg("FAXの方は不要、メール送信の方は要確認です。");
+    (emptyTel || isNumTel ||isJustLenghtTel || isTelIncludeHyphen) && setTelErrorMsg("ハイフン区切りの電話番号を入力してください。");
     flagPrivacyPolicy && setPrivacyPolicyErrorMsg("プライバシー・ポリシーのチェックをご確認ください。");
 
     const enableSubmit = 
@@ -153,45 +149,60 @@ const OrgForm = ({
       !defaultNotePref &&
       !emptyAddress &&
       !emptyEmail &&
+      !notFormalityEmail &&
       !emptyTel &&
       !isJustLenghtTel &&
       !isNumTel &&
       !flagPrivacyPolicy;
 
     if (enableSubmit) {
+      sendCompleteToggle();
       sendEmail();
       console.log("送信しました。");
       console.log(formData);
     }
+
   };
   // セッター
   const inputName = (e) => {
     setSenderName(e.target.value);
+    nameErrorMsg && setNameErrorMsg("");
   };
   const inputPostalCode = (e) => {
     setPostalCode(e.target.value);
+    postalCodeErrorMsg && setPostalCodeErrorMsg("");
   };
-  // const inputPrefecture = (e) => {
-  //   setPrefectureSelected(e.target.value);
-  // };
+  const inputPrefecture = (e) => {
+    setPrefectureSelected(e.target.value);
+
+    // ユーザーが都道府県を選択した場合はエラーメッセージをクリア
+    if (e.target.value !== "---") {
+      setPrefectureErrorMsg("");
+    } else {
+      // ユーザーが都道府県を選択しなかった場合はエラーメッセージを表示
+      setPrefectureErrorMsg("都道府県を選択してください。");
+    }
+  };
   const inputAddress = (e) => {
     setAddress(e.target.value);
+    addressErrorMsg && setAddressErrorMsg("");
   };
   const inputEmail = (e) => {
     setEmail(e.target.value);
+    emailErrorMsg && setEmailErrorMsg("");
   };
   const inputTel = (e) => {
     setTel(e.target.value);
+    telErrorMsg && setTelErrorMsg("");
   };
   const inputNote = (e) => {
     setNote(e.target.value);
   };
   const inputPrivacyPolicy = () => {
     setPrivacyPolicy(prevState => !prevState);
+    privacyPolicyErrorMsg && setPrivacyPolicyErrorMsg("");
   };
-  // const inputPrivacyPolicy = (e) => {
-  //   setPrivacyPolicy(e.target.value);
-  // };
+
   // 入力値をリセットする関数
   const inputReset = () => {
     setSenderName("");
@@ -202,6 +213,12 @@ const OrgForm = ({
     setNote("");
     setPrivacyPolicy(false);
   };
+  
+  // 都道府県の初期エラーメッセージの設定
+  useEffect(() => {
+    // 初期表示時にエラーメッセージを設定
+    setPrefectureErrorMsg("");
+  }, []);
 
   return (
     <>
@@ -218,17 +235,19 @@ const OrgForm = ({
           </label>
           <input onChange={inputName} value={senderName} id="senderName" type="text" />
         </div>
+
         {/* 郵便番号 */}
         <div className="with-note-container">
           <label htmlFor="postalCode" className="required">
             <span className="required">郵便番号</span>
-            <span className="note">※ハイフンを抜いた7桁の数字を入力してください。</span>
+            <span className="note">※ハイフン区切りで入力願います。</span>
             {postalCodeErrorMsg && (
               <div className="error-msg">{postalCodeErrorMsg}</div>
             )}           
           </label>
           <input onChange={inputPostalCode} value={postalCode} id="postalCode" type="text" />
         </div>
+
         {/* 都道府県 */}
         <div className="with-note-container">
           <label htmlFor="prefecture" className="required">
@@ -239,19 +258,18 @@ const OrgForm = ({
             )}           
           </label>
           <select
-            onChange={(e) => {
-              e.target.value !== "---" && setPrefectureSelected(e.target.value)
-            }}
+            onChange={inputPrefecture}
             id="prefecture"
             value={prefectureSelected}
           >
-          {
-            LOCATION.map(location => (
-              <option key={location} value={location}>{location}</option>
-            ))
-          }
+            {
+              LOCATION.map(location => (
+                <option key={location} value={location}>{location}</option>
+              ))
+            }
           </select>
         </div>
+
         {/* 住所 */}
         <div>
           <label htmlFor="address" className="required">
@@ -262,28 +280,31 @@ const OrgForm = ({
           </label>
           <input onChange={inputAddress} value={address} id="address" type="text" />
         </div>
+
         {/* メールアドレス */}
         <div className="with-note-container">
           <label htmlFor="email">
             <span>Eメール</span>
-            <span className="note">※メールお申し込みの場合は必須になります。</span>
+            <span className="note color-green">※メールお申し込みの場合は必須になります。</span>
             {emailErrorMsg && (
-              <div className="error-msg">{emailErrorMsg}</div>
+              <div className="error-msg color-green">{emailErrorMsg}</div>
             )}            
           </label>
           <input onChange={inputEmail} value={email} id="email" type="email" />
         </div>
+
         {/* 電話番号 */}
         <div className="with-note-container">
           <label htmlFor="tel" className="required">
             <span className="required">電話番号</span>
-            <span className="note">※ハイフンを抜いた10桁の数字を入力してください。</span>
+            <span className="note">※ハイフン区切りで入力願います。</span>
             {telErrorMsg && (
               <div className="error-msg">{telErrorMsg}</div>
             )}                    
           </label>
           <input onChange={inputTel} value={tel} id="tel" type="text" />
         </div>
+
         {/* 備考 */}
         <div>
           <label htmlFor="note">備考</label>
@@ -309,11 +330,12 @@ const OrgForm = ({
           <button className="input-print-btn" type="button" onClick={onSubmitPrint}>FAX申込書を印刷する</button>
           <div className="note">申込み用紙の印刷ができない方は、FAX申込み用紙の必要事項をご確認のうえ他の紙に記載したものでも代用可能です。</div>
         </div>
-        {/* <div className="send-btn">
+        <div className="send-btn">
           <button className="input-mail-btn" type="button" onClick={onSubmitEmail}>メール申し込みを送信</button>
           <div className="note">FAXでのお申込みができない方は、こちらをお選びください。ご記入いただいたメールアドレスにEメールが届きますので、撮影した郵便振込用紙を添付のうえご返信ください。（※メールが届かない場合、迷惑メールフィルターなどご確認ください。）</div>
-        </div> */}
+        </div>
       </div>
+
       <button className="input-reset-btn non-print" type="button" onClick={inputReset}>リセット</button>
     </div>
     </>

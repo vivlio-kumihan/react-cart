@@ -87,7 +87,48 @@
 
       .for-only-print
         display: none
-
+    .completion-notification-modal
+      display: grid
+      place-content: center
+      position: fixed
+      top: 0
+      left: 0
+      width: 100vw
+      height: 100vh
+      background-color: rgba(255, 255, 255, .9)
+      transition: .5s
+      visibility: hidden
+      opacity: 0
+      z-index: fw.get_index(completion-notification-modal)
+      &.active
+        visibility: visible
+        opacity: 1
+      .completion-notification-modal-wrapper
+        width: 600px
+        padding: 3rem
+        line-height: 1.7
+        text-align: center
+        background-color: #fff
+        box-shadow: 0 2px 5px #aaa
+        h1
+          font-size: 1.5rem
+          font-weight: 800
+        button
+          margin-top: 30px
+          padding: .25rem 5rem
+          font-size: 1.1rem
+          font-weight: 600
+          line-height: 1
+          border: 1px solid #333
+          transition: .5s
+          transform: translateY(2px)
+          &:hover
+            color: #fff
+            background-color: #777
+            border: 1px solid #777
+            transform: translateY(0)
+            box-shadow: 0 2px 5px #aaa
+            
 h3.toggle-web
   @media print
     display: none

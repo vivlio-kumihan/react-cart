@@ -26,8 +26,7 @@ const NameAndSetCount = ({
             placeholder="0"
             type="number" 
             min="0"
-            // value={eachCount[key] || 0}
-            value={eachCount[key]}
+            value={eachCount[key] || ""}
             onChange={(e) => {
               name[key] = e.target.value
               setEachCount({...name, [key]: e.target.value})  

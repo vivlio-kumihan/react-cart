@@ -1,16 +1,11 @@
 // 紐付けたい要素を変数名にして配列に格納する。
-// about-salon-vibe-last+1
-// contents-title+3
-// header
-// sp-header+10
-// styling-view-modal+11
-// loading+11
 $index-map: 
   header,
   cart-wrapper,
   cart-title-wrapper,
   ami,
-  cart-title;
+  cart-title,
+  completion-notification-modal;
   
 // z-index属性へ代入する関数を定義する。
 // 配列と値の名称を引数とする。
