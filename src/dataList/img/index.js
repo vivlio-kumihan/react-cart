@@ -30,8 +30,8 @@ import kanau_wa_all from "./kanau_wa_all.jpg";
 import hair_band from "./hair_band.png";
 
 import wrist_band from "./wrist_band.png";
-import towel from "./towel.jpg";
-import towel_long from "./towel_long.jpg";
+import towel from "./towel.png";
+import towel_long from "./towel_long.png";
 import ema_sky from "./ema_sky.png";
 import ema from "./ema.png";
 import kanau_wa_hashi from "./kanau_wa_hashi.png";
