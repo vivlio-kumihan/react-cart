@@ -60,8 +60,6 @@ const Main = ({
   useEffect(() => {
     const handleScrollAppear = () => {
       const targetElem = targetElemRef.current;
-      console.log(targetElem, "ターゲット");
-      console.log("ターゲット");
       if (targetElem) {
         const windowHight = window.innerHeight;
         const setHight = Math.abs(windowHight - (targetElem.clientHeight / 1.5));

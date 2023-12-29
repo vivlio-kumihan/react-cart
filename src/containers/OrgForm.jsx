@@ -317,7 +317,6 @@ const OrgForm = ({
         <a className="privacy-policy-anchor" href="https://shiraminejingu.or.jp/privacy-policy" target="_blank"><span>▶️</span>&nbsp;プライバシー・ポリシー</a>
         <div className="check-box">
           <input onChange={inputPrivacyPolicy} type="checkbox" id="privacy-policy" />
-          {/* <input onChange={inputPrivacyPolicy} type="checkbox" id="privacy-policy" /> */}
           <label htmlFor="privacy-policy">プライバシーポリシーに同意する</label>
           {privacyPolicyErrorMsg && (
             <div className="error-msg">{privacyPolicyErrorMsg}</div>
