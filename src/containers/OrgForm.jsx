@@ -48,9 +48,6 @@ const OrgForm = ({
   const [telErrorMsg, setTelErrorMsg] = useState("");
   const [privacyPolicyErrorMsg, setPrivacyPolicyErrorMsg] = useState("");
 
-  // const isIncludeHyphen = !(postalCode && tel).includes('\u002D')
-  // console.log(isIncludeHyphen);
-
   // 条件
   const emptyName = senderName === "";
   const emptyPostalCode = postalCode === "";
@@ -90,6 +87,20 @@ const OrgForm = ({
       note,
       privacyPolicy,
     };
+
+    // emptyName && setNameErrorMsg("氏名を入力してください。");
+    // (emptyPostalCode || isNumPostalCode || isJustLenghtPostalCode) && setPostalCodeErrorMsg("郵便番号を7桁の数字で入力してください。");
+    // defaultNotePref && setPrefectureErrorMsg("都道府県を選択してください。")
+    // emptyAddress && setAddressErrorMsg("住所を入力してください。");
+    // (emptyTel || isNumTel ||isJustLenghtTel) && setTelErrorMsg("電話番号を10桁の数字で入力してください。");
+    // flagPrivacyPolicy && setPrivacyPolicyErrorMsg("プライバシー・ポリシーのチェックをご確認ください。");
+    // emptyName && setNameErrorMsg("氏名を入力してください。");
+
+    (emptyPostalCode || isNumPostalCode || isJustLenghtPostalCode || isPostalCodeIncludeHyphen) && setPostalCodeErrorMsg("ハイフン区切りの郵便番号を入力してください。");
+    defaultNotePref && setPrefectureErrorMsg("都道府県を選択してください。")
+    emptyAddress && setAddressErrorMsg("住所を入力してください。");
+    (emptyTel || isNumTel ||isJustLenghtTel || isTelIncludeHyphen) && setTelErrorMsg("ハイフン区切りの電話番号を入力してください。");
+    flagPrivacyPolicy && setPrivacyPolicyErrorMsg("プライバシー・ポリシーのチェックをご確認ください。");
 
     const enableSubmit = 
       !emptyName &&
