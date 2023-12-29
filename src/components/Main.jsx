@@ -60,9 +60,11 @@ const Main = ({
   useEffect(() => {
     const handleScrollAppear = () => {
       const targetElem = targetElemRef.current;
+      console.log(targetElem, "ターゲット");
+      console.log("ターゲット");
       if (targetElem) {
         const windowHight = window.innerHeight;
-        const setHight = Math.abs(windowHight - (targetElem.clientHeight / 2.6));
+        const setHight = Math.abs(windowHight - (targetElem.clientHeight / 1.5));
         const getElemDistance = targetElem.getBoundingClientRect().top;
         setGraduallyAppearActive(setHight > getElemDistance);
       }
@@ -75,6 +77,7 @@ const Main = ({
 
   return (
     <>
+    {/* <div className="wrapper" ref={targetElemRef}> */}
     <div className={`wrapper ${isGraduallyAppearActive ? "active" : ""}`} ref={targetElemRef}>
       <h3>お守り・授与品のご案内</h3>
       <div className="head-line">
