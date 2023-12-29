@@ -96,6 +96,7 @@ const OrgForm = ({
     // flagPrivacyPolicy && setPrivacyPolicyErrorMsg("プライバシー・ポリシーのチェックをご確認ください。");
     // emptyName && setNameErrorMsg("氏名を入力してください。");
 
+    emptyName && setNameErrorMsg("氏名を入力してください。");
     (emptyPostalCode || isNumPostalCode || isJustLenghtPostalCode || isPostalCodeIncludeHyphen) && setPostalCodeErrorMsg("ハイフン区切りの郵便番号を入力してください。");
     defaultNotePref && setPrefectureErrorMsg("都道府県を選択してください。")
     emptyAddress && setAddressErrorMsg("住所を入力してください。");
