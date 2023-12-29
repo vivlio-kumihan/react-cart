@@ -59,8 +59,9 @@ const OrgForm = ({
   const emptyEmail = email === "";
   const notFormalityEmail = !email.match(/.+@.+\..+/);
   const emptyTel = tel === "";
-  const isJustLenghtTel = tel.length !== 12;
+  console.log(tel.length);
   const isTelIncludeHyphen = !tel.includes('\u002D');
+  const isJustLenghtTel = (tel.length < 12 || tel.length > 13);
   // const isNumTel = isNaN(parseInt(tel));
   const flagPrivacyPolicy = privacyPolicy === false;
 
