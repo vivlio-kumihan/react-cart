@@ -53,7 +53,7 @@ const OrgForm = ({
   const emptyPostalCode = postalCode === "";
   const isPostalCodeIncludeHyphen = !postalCode.includes('\u002D');
   const isJustLenghtPostalCode = postalCode.length !== 8
-  const isNumPostalCode = isNaN(parseInt(postalCode));
+  // const isNumPostalCode = isNaN(parseInt(postalCode));
   const defaultNotePref = prefectureSelected === "";
   const emptyAddress = address === "";
   const emptyEmail = email === "";
@@ -61,7 +61,7 @@ const OrgForm = ({
   const emptyTel = tel === "";
   const isJustLenghtTel = tel.length !== 12;
   const isTelIncludeHyphen = !tel.includes('\u002D');
-  const isNumTel = isNaN(parseInt(tel));
+  // const isNumTel = isNaN(parseInt(tel));
   const flagPrivacyPolicy = privacyPolicy === false;
 
   // FAX
@@ -74,7 +74,7 @@ const OrgForm = ({
     setAddressErrorMsg("");
     setEmailErrorMsg("");
     setTelErrorMsg("");
-    setPrefectureErrorMsg("");
+    // setPrefectureErrorMsg("");
     setPrivacyPolicyErrorMsg("");
     
     const formData = {
@@ -88,31 +88,34 @@ const OrgForm = ({
       privacyPolicy,
     };
 
-    // emptyName && setNameErrorMsg("氏名を入力してください。");
     // (emptyPostalCode || isNumPostalCode || isJustLenghtPostalCode) && setPostalCodeErrorMsg("郵便番号を7桁の数字で入力してください。");
     // defaultNotePref && setPrefectureErrorMsg("都道府県を選択してください。")
     // emptyAddress && setAddressErrorMsg("住所を入力してください。");
     // (emptyTel || isNumTel ||isJustLenghtTel) && setTelErrorMsg("電話番号を10桁の数字で入力してください。");
     // flagPrivacyPolicy && setPrivacyPolicyErrorMsg("プライバシー・ポリシーのチェックをご確認ください。");
     // emptyName && setNameErrorMsg("氏名を入力してください。");
-
+    
     emptyName && setNameErrorMsg("氏名を入力してください。");
-    (emptyPostalCode || isNumPostalCode || isJustLenghtPostalCode || isPostalCodeIncludeHyphen) && setPostalCodeErrorMsg("ハイフン区切りの郵便番号を入力してください。");
+    // (emptyPostalCode || isNumPostalCode || isJustLenghtPostalCode || isPostalCodeIncludeHyphen) && setPostalCodeErrorMsg("ハイフン区切りの郵便番号を入力してください。");
+    (emptyPostalCode || isJustLenghtPostalCode || isPostalCodeIncludeHyphen) && setPostalCodeErrorMsg("ハイフン区切りの郵便番号を入力してください。");
     defaultNotePref && setPrefectureErrorMsg("都道府県を選択してください。")
     emptyAddress && setAddressErrorMsg("住所を入力してください。");
-    (emptyTel || isNumTel ||isJustLenghtTel || isTelIncludeHyphen) && setTelErrorMsg("ハイフン区切りの電話番号を入力してください。");
+    // (emptyTel || isNumTel ||isJustLenghtTel || isTelIncludeHyphen) && setTelErrorMsg("ハイフン区切りの電話番号を入力してください。");
+    (emptyTel || isJustLenghtTel || isTelIncludeHyphen) && setTelErrorMsg("ハイフン区切りの電話番号を入力してください。");
     flagPrivacyPolicy && setPrivacyPolicyErrorMsg("プライバシー・ポリシーのチェックをご確認ください。");
 
     const enableSubmit = 
       !emptyName &&
       !emptyPostalCode &&
       !isJustLenghtPostalCode &&
-      !isNumPostalCode &&
+      !isPostalCodeIncludeHyphen &&
+      // !isNumPostalCode &&
       !defaultNotePref &&
       !emptyAddress &&
       !emptyTel &&
       !isJustLenghtTel &&
-      !isNumTel &&
+      !isTelIncludeHyphen &&
+      // !isNumTel &&
       !flagPrivacyPolicy;
 
     if (enableSubmit) {
@@ -121,6 +124,7 @@ const OrgForm = ({
       console.log(formData);
     }
   };
+
   // メール
   const onSubmitEmail = (e) => {
     e.preventDefault();
@@ -131,7 +135,7 @@ const OrgForm = ({
     setAddressErrorMsg("");
     setEmailErrorMsg("");
     setTelErrorMsg("");
-    setPrefectureErrorMsg("");
+    // setPrefectureErrorMsg("");
     setPrivacyPolicyErrorMsg("");
     
     const formData = {
@@ -146,25 +150,28 @@ const OrgForm = ({
     };
 
     emptyName && setNameErrorMsg("氏名を入力してください。");
-    (emptyPostalCode || isNumPostalCode || isJustLenghtPostalCode || isPostalCodeIncludeHyphen) && setPostalCodeErrorMsg("ハイフン区切りの郵便番号を入力してください。");
+    // (emptyPostalCode || isNumPostalCode || isJustLenghtPostalCode || isPostalCodeIncludeHyphen) && setPostalCodeErrorMsg("ハイフン区切りの郵便番号を入力してください。");
+    (emptyPostalCode || isJustLenghtPostalCode || isPostalCodeIncludeHyphen) && setPostalCodeErrorMsg("ハイフン区切りの郵便番号を入力してください。");
     defaultNotePref && setPrefectureErrorMsg("都道府県を選択してください。")
     emptyAddress && setAddressErrorMsg("住所を入力してください。");
     (emptyEmail || notFormalityEmail) && setEmailErrorMsg("FAXの方は不要、メール送信の方は要確認です。");
-    (emptyTel || isNumTel ||isJustLenghtTel || isTelIncludeHyphen) && setTelErrorMsg("ハイフン区切りの電話番号を入力してください。");
+    // (emptyTel || isNumTel ||isJustLenghtTel || isTelIncludeHyphen) && setTelErrorMsg("ハイフン区切りの電話番号を入力してください。");
+    (emptyTel || isJustLenghtTel || isTelIncludeHyphen) && setTelErrorMsg("ハイフン区切りの電話番号を入力してください。");
     flagPrivacyPolicy && setPrivacyPolicyErrorMsg("プライバシー・ポリシーのチェックをご確認ください。");
 
     const enableSubmit = 
       !emptyName &&
       !emptyPostalCode &&
       !isJustLenghtPostalCode &&
-      !isNumPostalCode &&
+      !isPostalCodeIncludeHyphen &&
+      // !isNumPostalCode &&
       !defaultNotePref &&
       !emptyAddress &&
       !emptyEmail &&
       !notFormalityEmail &&
       !emptyTel &&
       !isJustLenghtTel &&
-      !isNumTel &&
+      // !isNumTel &&
       !flagPrivacyPolicy;
 
     if (enableSubmit) {
