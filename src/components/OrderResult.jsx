@@ -40,17 +40,14 @@ const OrderResult = ({
   const handlePrint = useReactToPrint({
     content: () => componentRef.current,
   });
-  
+
   // メール送信のトリガー
   const sendForm = useRef();
   // このファイル内でクリックイベントに対応する場合、preventDefault()が必要みたい。
   // const sendEmail = (e) => {
   //   e.preventDefault();
   const sendEmail = () => {
-    // emailjs.sendForm('service_tcm40ka', 'template_dq4zyxs', sendForm.current, 'qFuS96-H2M1rD2BgC')
-    // for test
-    emailjs.sendForm('service_g7yuumj', 'template_dq4zyxs', sendForm.current, 'qFuS96-H2M1rD2BgC')
-    // emailjs.sendForm('service_rnt4ier', 'template_dq4zyxs', sendForm.current, 'qFuS96-H2M1rD2BgC')
+    emailjs.sendForm('service_ipnpq29', 'template_dq4zyxs', sendForm.current, 'qFuS96-H2M1rD2BgC')
       .then((result) => {
           console.log(result.text);
       }, (error) => {
@@ -267,3 +264,6 @@ const OrderResult = ({
 };
 
 export default OrderResult;
+
+// for test
+// emailjs.sendForm('service_rnt4ier', 'template_dq4zyxs', sendForm.current, 'qFuS96-H2M1rD2BgC')

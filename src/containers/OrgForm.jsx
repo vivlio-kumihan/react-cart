@@ -59,7 +59,6 @@ const OrgForm = ({
   const emptyEmail = email === "";
   const notFormalityEmail = !email.match(/.+@.+\..+/);
   const emptyTel = tel === "";
-  console.log(tel.length);
   const isTelIncludeHyphen = !tel.includes('\u002D');
   const isJustLenghtTel = (tel.length < 12 || tel.length > 13);
   // const isNumTel = isNaN(parseInt(tel));
@@ -180,6 +179,10 @@ const OrgForm = ({
       sendEmail();
       console.log("送信しました。");
       console.log(formData);
+    } else {
+      console.log("error");
+      console.log(error);
+
     }
 
   };
