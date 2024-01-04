@@ -44,13 +44,26 @@
         transform: translateY(0)
         visibility: visible
         opacity: 1
-+max(lg)
+    +max(md)
+      .wrapper
+        transform: translateY(0)
+        visibility: visible
+        opacity: 1
+
+  +max(lg)
+    .wrapper
+      .head-line
+        .copy
+          text-align: justify
+          p
+            .line-break
+              display: none
++max(md)
   .wrapper
-    .head-line
-      .copy
-        text-align: justify
-        p
-          .line-break
-            display: none
+    > h3
+      line-height: 1.25em
++min(md)
+  .smp-br
+    display: none
 
 

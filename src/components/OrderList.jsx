@@ -32,6 +32,15 @@ const OrderList = ({
     setSendComplete(false);
   };
 
+  // 入力エラーのトグルスイッチ
+  const [sendInputError, setSendInputError] = useState(false);
+  const sendInputErrorToggle = () => {
+    setSendInputError(!sendInputError);
+  }; 
+  const cloceInputErrorModal = () => {
+    setSendInputError(false);
+  };
+
   return (
     <div className="order-list">
       <div className={`cart-title-wrapper ${sendComplete ? 'hide' : ''}`}>
@@ -68,6 +77,9 @@ const OrderList = ({
         sendComplete={sendComplete}
         sendCompleteToggle={sendCompleteToggle}
         clocesendCompleteModal={cloceSendCompleteModal}
+        sendInputError={sendInputError}
+        sendInputErrorToggle={sendInputErrorToggle}
+        cloceInputErrorModal={cloceInputErrorModal}
       />
     </div>
   );

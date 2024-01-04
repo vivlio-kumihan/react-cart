@@ -22,7 +22,8 @@ const OrderResult = ({
   reloadCartItems,
   sendComplete,
   sendCompleteToggle,
-  cloceSendCompleteModal,
+  sendInputError,
+  sendInputErrorToggle,
   }) => {
 
   // Formのinput属性値のstate  
@@ -130,8 +131,8 @@ const OrderResult = ({
                 setPrivacyPolicy={setPrivacyPolicy}
                 prefectureSelected={prefectureSelected}
                 setPrefectureSelected={setPrefectureSelected}
-                sendComplete={sendComplete}
                 sendCompleteToggle={sendCompleteToggle}
+                sendInputErrorToggle={sendInputErrorToggle}
               />   
 
               {/* ___リファクタリング start___ */}
@@ -256,6 +257,14 @@ const OrderResult = ({
             <h1>送信完了</h1>
             <p>ご依頼いただいた内容をお申し込みのメールアドレス宛てに送信をいたしました。メールが届かない場合は、お手数ですが再度フォームから申し込み手続きをしていただきますようお願いいたします。</p>
             <button onClick={sendCompleteToggle}>閉じる</button>
+          </div>
+        </div>  
+
+        <div className={`completion-notification-modal ${sendInputError ? 'active' : ''}`}>
+          <div className="completion-notification-modal-wrapper">
+            <h1>入力に誤りがあります</h1>
+            <p>入力に誤りがあるようです。<br />入力画面に戻り入力欄の下に表示されている内容をご確認ください。</p>
+            <button onClick={sendInputErrorToggle}>戻る</button>
           </div>
         </div>               
       </div>

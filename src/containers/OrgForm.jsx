@@ -22,6 +22,7 @@ const OrgForm = ({
   prefectureSelected,
   setPrefectureSelected,
   sendCompleteToggle,
+  sendInputErrorToggle,
 }) => {
 
   // 都道府県名
@@ -180,11 +181,9 @@ const OrgForm = ({
       console.log("送信しました。");
       console.log(formData);
     } else {
-      console.log("error");
-      console.log(error);
-
+      sendInputErrorToggle();
+      console.log("入力エラーが発生。");
     }
-
   };
   // セッター
   const inputName = (e) => {
