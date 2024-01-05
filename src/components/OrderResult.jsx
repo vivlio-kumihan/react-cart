@@ -262,8 +262,8 @@ const OrderResult = ({
 
         <div className={`completion-notification-modal ${sendInputError ? 'active' : ''}`}>
           <div className="completion-notification-modal-wrapper">
-            <h1>入力に誤りがあります</h1>
-            <p>入力に誤りがあるようです。<br />入力画面に戻りエラー表示の内容をご確認ください。</p>
+            <h1>入力内容に問題があり</h1>
+            <p>入力内容に問題があるようです。<br />入力画面に戻りエラー表示の内容をご確認ください。</p>
             <button onClick={sendInputErrorToggle}>戻る</button>
           </div>
         </div>               
