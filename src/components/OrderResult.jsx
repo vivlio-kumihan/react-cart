@@ -6,6 +6,7 @@ import CartItem from "./CartItem";
 import OrgForm from "../containers/OrgForm";
 import MailForm from "../containers/MailForm";
 import SendFee from "../containers/SendFee";
+import PrivacyPolicy from "../containers/PrivacyPolicy"
 import "../styles/components/OrderResult.sass";
 
 const OrderResult = ({ 
@@ -58,6 +59,15 @@ const OrderResult = ({
   
   // カートに商品が入っているか否か条件分岐で使う。
   const isEmpty = (arr) => arr.length < 1; 
+
+  const [privacyPolicyToggle, setPrivacyPolicyToggle] = useState(false);
+  const handlePrivacyPolicy = () => {
+    setPrivacyPolicyToggle(!privacyPolicyToggle);
+  };
+  const handleBack = () => {
+    setPrivacyPolicyToggle(false);
+  }  
+
 
   return (
     <div className={`cart-wrapper ${toggle && "active"}`}>
@@ -133,6 +143,7 @@ const OrderResult = ({
                 setPrefectureSelected={setPrefectureSelected}
                 sendCompleteToggle={sendCompleteToggle}
                 sendInputErrorToggle={sendInputErrorToggle}
+                handlePrivacyPolicy={handlePrivacyPolicy}
               />   
 
               {/* ___リファクタリング start___ */}
@@ -251,6 +262,11 @@ const OrderResult = ({
             </div>
           </div>
         </div> 
+
+        <PrivacyPolicy 
+          privacyPolicyToggle={privacyPolicyToggle} 
+          handleBack={handleBack}
+        />
 
         <div className={`completion-notification-modal ${sendComplete ? 'active' : ''}`}>
           <div className="completion-notification-modal-wrapper">

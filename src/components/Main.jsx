@@ -47,13 +47,13 @@ const Main = ({
   }) => {
 
   const [selectedItemId, setSelectedItemId] = useState(null);
-
   const handleItemId = (itemPid) => {
     setSelectedItemId(itemPid);
   };
   const handleBackClick = () => {
     setSelectedItemId(null);
   }
+
   // スクロール・アニメーション　ふわっと現れる
   const [isGraduallyAppearActive, setGraduallyAppearActive] = useState(false);
   const targetElemRef = useRef(null);

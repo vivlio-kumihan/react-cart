@@ -23,6 +23,7 @@ const OrgForm = ({
   setPrefectureSelected,
   sendCompleteToggle,
   sendInputErrorToggle,
+  handlePrivacyPolicy
 }) => {
 
   // 都道府県名
@@ -336,7 +337,7 @@ const OrgForm = ({
 
       <div className="privacy-policy non-print">
         <p>必要事項をご記入のうえ、確認ボタンを押して確認後、送信してください。</p>
-        <a className="privacy-policy-anchor" href="https://shiraminejingu.or.jp/privacy-policy" target="_blank"><span>▶️</span>&nbsp;プライバシー・ポリシー</a>
+        <a className="privacy-policy-anchor" onClick={handlePrivacyPolicy}><span>▶️</span>&nbsp;プライバシー・ポリシー</a>
         <div className="check-box">
           <input onChange={inputPrivacyPolicy} type="checkbox" id="privacy-policy" />
           <label htmlFor="privacy-policy">プライバシーポリシーに同意する</label>

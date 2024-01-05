@@ -1,0 +1,102 @@
+@use '../forwards' as fw
+@use '../media-query' as *
+
+.modal-privacy-policy
+  position: fixed
+  top: 0
+  right: 0
+  width: 100vw
+  height: 100vh
+  background-color: rgba(0, 0, 0, .8)
+  overflow: auto
+  transition: .9s
+  visibility: hidden
+  opacity: 0
+  z-index: 200
+  &.active
+    right: 0
+    visibility: visible
+    opacity: 1
+  .container
+    position: relative
+    margin: 90px auto
+    width: 74%
+    padding: 5rem 9rem
+    background: url(/src/images/bg.jpg) repeat    
+    .modal-privacy-policy-close-btn
+      position: absolute
+      top: 60px
+      right: 60px
+      width: 40px
+      height: 40px
+      border-radius: 50%
+      border: 1px solid #333
+      transform: translateY(0)
+      transition: .3s
+      span
+        position: absolute
+        top: 50%
+        transform: translateY(-50%)
+        left: 18%
+        content: ""
+        width: 25px
+        height: 2px
+        background-color: #333
+        &:first-of-type
+          transform: rotate(45deg)
+          transform-origin: center center 0
+        &:last-of-type
+          transform: rotate(-45deg)
+          transform-origin: center center 0
+      &:hover
+        background-color: #eee
+        transform: translateY(-1px)
+        opacity: .5
+    h4.modal-pp-header
+      font-size: 1.95rem
+      margin-bottom: 50px
+      letter-spacing: 0
+    h5.leading-square-header
+      position: relative
+      margin-bottom: 20px
+      padding-left: 1em
+      font-size: 1.55rem
+      &:not(:first-of-type) 
+        margin-top: 40px
+      &.two-line
+        line-height: 1.55em
+        &::before
+          height: 3rem
+      &::before
+        position: absolute
+        top: 50%
+        transform: translateY(-50%)
+        left: 0
+        content: ""
+        width: 5px
+        height: 1.55rem
+        background-color: #BB9A01
+    p
+      font-size: 1.15rem
+      line-height: 1.75em
+      + p
+        margin-top: .75em
+      &.lead-copy
+        margin-bottom: 40px
+
+.modal-privacy-policy
+  +max(md)
+    .container
+      margin: 1rem auto
+      width: calc(100% - 2rem)
+      padding: 4rem 1rem 1rem 
+      .modal-privacy-policy-close-btn
+        top: 15px
+        right: 15px
+      h4.modal-pp-header 
+        margin-bottom: 30px
+        font-size: 1.5rem
+        text-align: center
+      p
+        font-size: 1rem
+        line-height: 1.5em
