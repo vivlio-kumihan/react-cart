@@ -3,7 +3,6 @@ import "../styles/containers/PrivacyPolicy.sass";
 const PrivacyPolicy = ({
   privacyPolicyToggle, handleBack
 }) => {
-  console.log(privacyPolicyToggle);
   return (
     <div className={`modal-privacy-policy ${privacyPolicyToggle ? 'active' : ''}`}>
       <div className="container">

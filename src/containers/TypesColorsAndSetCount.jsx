@@ -32,11 +32,15 @@ const TypesColorsAndSetCount = ({
                 type="number" 
                 min="0"
                 value={eachCount[key] || ""}
-                onChange={(e)=>{
-                  switchItem()[0][key] = e.target.value
-                  setEachCount({...switchItem()[0], [key]: e.target.value})
+                onChange={(e) => {
+                  const inputValue = e.target.value;
+                  const newValue = inputValue !== "" ? parseInt(inputValue, 10) : 0;
+                  switchItem()[0][key] = newValue;
+                  setEachCount({...switchItem()[0], [key]: newValue});
                 }}
               />
+
+
             </li>
           ))}
           {
@@ -53,3 +57,16 @@ const TypesColorsAndSetCount = ({
 };
 
 export default TypesColorsAndSetCount;
+
+
+// <input 
+//   id={`${switchItem()[1]}_${key}`}
+//   placeholder="0"
+//   type="number" 
+//   min="0"
+//   value={eachCount[key] || ""}
+//   onChange={(e)=>{
+//     switchItem()[0][key] = e.target.value
+//     setEachCount({...switchItem()[0], [key]: e.target.value})
+//   }}
+// />
