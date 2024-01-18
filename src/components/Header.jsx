@@ -38,9 +38,8 @@ const Header = () => {
   return (
     <header id="header">
       <div className="wrapper">
-        <a className="logo-space" href="https://shiraminejingu.or.jp/">
+        <a className="logo-space" href="#">
           <img className="logo" src={Logo} alt="" />
-
           <div>
             <p>スポーツの守護神<span>・</span><br />武道上達の神<span>・</span><br />上昇気運氣運の神</p>
             <p className="shrine-name">白峯神宮</p>
@@ -63,6 +62,18 @@ const Header = () => {
                   Language
                 </a>
               </li>
+              {/* <li className="language">
+                <button id="language" type="button">
+                  <span>
+                    <img src={GlobePict} alt="グローバルなイメージを想起させるピクトグラム" />
+                  </span>
+                  Language
+                </button>
+                <ul>
+                  <li><a href="<?php echo home_url(); ?>">日本語</a></li>
+                  <li><a href="https://shiraminejingu.or.jp/english/">English</a></li>
+                </ul>
+              </li> */}
             </ul>
           </div>
           <div className="lower">

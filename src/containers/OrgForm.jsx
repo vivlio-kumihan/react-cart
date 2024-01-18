@@ -354,7 +354,7 @@ const OrgForm = ({
         </div>
         <div className="send-btn">
           <button className="input-mail-btn" type="button" onClick={onSubmitEmail}>メール申し込みを送信</button>
-          <div className="note">FAXでのお申込みができない方は、こちらをお選びください。ご記入いただいたメールアドレスにEメールが届きますので、撮影した郵便振込用紙を添付のうえご返信ください。（※メールが届かない場合、迷惑メールフィルターなどご確認ください。）</div>
+          <div className="note">FAXでのお申込みができない方は、こちらをお選びください。ご記入いただいたメールアドレスにEメールが届きますので、<span className="underLine">届いたEメールに撮影した郵便振込用紙を添付のうえご返信ください</span> 。（※メールが届かない場合、迷惑メールフィルターなどご確認ください。）</div>
         </div>
       </div>
 
