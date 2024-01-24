@@ -21,6 +21,44 @@ const Header = () => {
     setFlag(present => !present);
   };
 
+  const [isActive, setIsActive] = useState(false);
+
+  const handleButtonClick = () => {
+    setIsActive(!isActive);
+  };
+  // lang
+  // HTMLバージョンから持ってきたもの　このままでは使えない。
+  // とりあえずクラスの付け替えでかわす。
+  // // メニューを開く関数
+  // const slideDown = (el) => {
+  //   console.log(el);
+  //   el.style.height = 'auto'; //いったんautoに
+  //   let h = el.offsetHeight; //autoにした要素から高さを取得
+  //   el.style.height = h + 'px';
+  //   el.animate([ //高さ0から取得した高さまでのアニメーション
+  //     { height: 0 },
+  //     { height: h + 'px' }
+  //   ], {
+  //     duration: 300, //アニメーションの時間（ms）
+  //   });
+  // };
+
+  // // メニューを閉じる関数
+  // const slideUp = (el) => {
+  //   el.style.height = 0;
+  // };
+
+  // const langBtn = document.getElementById("language");
+  // langBtn.addEventListener("click", (e) => {
+  //   e.target.parentNode.classList.toggle("active");
+  //   const getUl = langBtn.nextElementSibling;
+  //   if (e.target.parentNode.classList.contains("active")) {
+  //     slideDown (getUl)
+  //   } else {
+  //     slideUp(getUl);
+  //   }
+  // });
+
   // // ハンバーガー・メニュー
   // // ボタン
   // const menuToggleBtn = document.getElementById('menu-toggle-btn');
@@ -54,6 +92,7 @@ const Header = () => {
               <li><a href="https://shiraminejingu.or.jp/access/">交通（アクセス）</a></li>
               <li>|</li>
               <li><a href="https://shiraminejingu.or.jp/contact/">お問い合わせ</a></li>
+              {/* 
               <li className="language">
                 <a href="https://shiraminejingu.or.jp/english/">
                   <span>
@@ -61,19 +100,19 @@ const Header = () => {
                   </span>
                   Language
                 </a>
-              </li>
-              {/* <li className="language">
-                <button id="language" type="button">
+              </li> */}
+              <li className={`language ${isActive ? 'active' : ''}`}>
+                <button id="language" type="button" onClick={handleButtonClick}>
                   <span>
                     <img src={GlobePict} alt="グローバルなイメージを想起させるピクトグラム" />
                   </span>
                   Language
                 </button>
                 <ul>
-                  <li><a href="<?php echo home_url(); ?>">日本語</a></li>
+                  <li><a href="https://shiraminejingu.or.jp">日本語</a></li>
                   <li><a href="https://shiraminejingu.or.jp/english/">English</a></li>
                 </ul>
-              </li> */}
+              </li>
             </ul>
           </div>
           <div className="lower">

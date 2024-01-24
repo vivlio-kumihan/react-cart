@@ -68,42 +68,92 @@ header
         justify-content: flex-end
         align-items: center
         gap: 5px
+        position: relative
+        padding-right: 140px        
         font-size: .9rem
         li:nth-of-type(3)
           margin-left: 5px
         .language
-          position: relative
-          margin-left: 40px
+          position: absolute
+          top: -8px
+          right: 0
+          width: 125px
+          padding-bottom: 3px
+          height: auto
           background-color: #fff
-          border-radius: 999px
+          border-radius: 18px
           box-shadow: 0 2px 5px #aaa
-          &::after
-            +fw.positionAbsoluteCTL($top: true)
-            +fw.fontAwesome("\f078", $fontSize: .6rem)
-            right: 5px
-          a
-            display: flex
-            align-items: center
-            gap: 7px
-            padding: 2px 18px 2px 7px
-            font-size: .75rem
-            line-height: 1em            
+          z-index: fw.get_index(language)
+          > button
+            position: relative
+            width: 100%
+            padding: 5px 20px 3px 30px
             span
+              +fw.positionAbsoluteCTL($top: true)
+              top: 60%
+              left: 10px
               img
                 width: 17px
-          button
+            &::after
+              +fw.positionAbsoluteCTL($top: true)
+              +fw.fontAwesome("\f078", $fontSize: .6rem)
+              top: 60%
+              right: 12px
+          > ul
             display: flex
-            align-items: center
-            gap: 5px
-            span
-              display: inline-block
-              width: 18px
-              height: 18px
-              img
+            flex-direction: column
+            align-items: flex-start
+            height: 0
+            margin: 0
+            padding: 0 0 0 31px
+            border: unset
+            overflow: hidden
+            transition: .5s
+            li
+              &:first-of-type
+                padding-top: 2px
+              &:last-of-type
+                padding-bottom: 6px
+              a
+                display: block
                 width: 100%
-                object-fit: cover
-          ul
-            display: block
+                padding: 8px 0 0
+                white-space: nowrap          
+        .language.active > ul
+          height: 58px
+
+          // position: relative
+          // margin-left: 40px
+          // background-color: #fff
+          // border-radius: 999px
+          // box-shadow: 0 2px 5px #aaa
+          // &::after
+          //   +fw.positionAbsoluteCTL($top: true)
+          //   +fw.fontAwesome("\f078", $fontSize: .6rem)
+          //   right: 5px
+          // a
+          //   display: flex
+          //   align-items: center
+          //   gap: 7px
+          //   padding: 2px 18px 2px 7px
+          //   font-size: .75rem
+          //   line-height: 1em            
+          //   span
+          //     img
+          //       width: 17px
+          // button
+          //   display: flex
+          //   align-items: center
+          //   gap: 5px
+          //   span
+          //     display: inline-block
+          //     width: 18px
+          //     height: 18px
+          //     img
+          //       width: 100%
+          //       object-fit: cover
+          // ul
+          //   display: block
 
       .lower
         ul.menu
