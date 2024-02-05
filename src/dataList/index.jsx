@@ -120,7 +120,7 @@ const data = [
     name: { "破魔矢": 0 },
     types: {},
     colors: {},
-    price: 700,
+    price: 1000,
     weight: 21,
   },
   {
@@ -271,7 +271,7 @@ const data = [
     name: { "ロングタオル": 0 },
     types: {},
     colors: {},
-    price: 500,
+    price: 800,
     weight: 80,
   },
   {
@@ -281,7 +281,7 @@ const data = [
     name: { "タオル 赤・青1組": 0 },
     types: {},
     colors: {},
-    price: 500,
+    price: 700,
     weight: 75,
   },
   {
