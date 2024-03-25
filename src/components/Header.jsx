@@ -76,8 +76,8 @@ const Header = () => {
   return (
     <header id="header">
       <div className="wrapper">
-        <a className="logo-space" href="#">
-          <img className="logo" src={Logo} alt="" />
+        <a className="logo-space" href="https://shiraminejingu.or.jp/">
+          <img className="logo" src={Logo} alt="白峯神宮のロゴ" />
           <div>
             <p>スポーツの守護神<span>・</span><br />武道上達の神<span>・</span><br />上昇気運氣運の神</p>
             <p className="shrine-name">白峯神宮</p>
