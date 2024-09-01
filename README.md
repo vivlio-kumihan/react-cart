@@ -1,3 +1,15 @@
+起動は、
+```zsh
+npm run dev
+```
+
+buildは、
+```zsh
+npm run build
+```
+
+
+
 ### CRON問題
 
 この問題の解決は、[【Ajax】ローカルファイルを読み込もうとしたらCORSエラーが発生したので解決した](https://qiita.com/terufumi1122/items/39b2a3659bc585c07f64)を参照しました。
