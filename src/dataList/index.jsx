@@ -228,7 +228,7 @@ const data = [
     pid: "kanau_wa_all",
     image: image.kanau_wa_all,
     category: "授与品",
-    name: { "叶う輪―全般": 0 },
+    name: { "叶う輪―スポーツ全般": 0 },
     types: {},
     colors: { "赤": 0, "青": 0, "黄": 0, "緑": 0 },
     price: 800,

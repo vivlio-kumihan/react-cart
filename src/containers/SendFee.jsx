@@ -26,6 +26,8 @@ const SendFee = ({
 
 	// 方面別送料
 
+  // 送料判定の商品重量について、defaultで『48g』である。『48g + totalWeight』となる。
+
   // 50g - 150gは、『ゆうパック』
   //　 『ゆうパック』の基本運賃 + 郵便局通知手数料110円
   // 200gは、『レターパックライト』
@@ -65,6 +67,7 @@ const SendFee = ({
     }
     return false; // カートに「御朱印帳」が見つからない場合は false を返す
   };
+
   switch (true) {
     case isSyuinChou():
       sendFee = 500;

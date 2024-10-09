@@ -8,7 +8,7 @@ const KanauWaAll = ({ selectedItemId, handleBackClick }) => {
       className={`modal ${selectedItemId ? 'active' : ''}`}
     >
       <div className="container">
-        <h1>叶う輪―全般</h1>
+        <h1>叶う輪―スポーツ全般</h1>
         <div className="photo-frame kanau_wa_all">
           <img src={Images.kanau_wa_all} alt="" />
         </div>
